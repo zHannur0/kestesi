@@ -3,18 +3,18 @@ import {initialStateSchoolInfo} from "@/store/types/school.system";
 import {
     getClassIdThunk,
     getClassroomsThunk, getClassroomThunk, getClassThunk, getDopScheduleThunk,
-    getMapThunk,
+    getMapThunk, getMenuThunk,
     getNewsThunk, getScheduleThunk,
     getSchoolIdThunk,
     getSchoolPassportThunk,
-    getSchoolThunk,
+    getSchoolThunk, getSectionsThunk,
     getTeachersThunk, getTeacherThunk
 } from "@/store/thunks/school.thunk";
 import {
     ClassRoom,
     IClass,
-    IDopSchedule,
-    IMap,
+    IDopSchedule, IKruzhok,
+    IMap, IMenu,
     ISchedule,
     News,
     School,
@@ -167,6 +167,28 @@ export const schoolSlice=createSlice(
                             return {
                                 ...state,
                                 classId: action.payload,
+                            };
+                        }
+                        return state;
+                    },
+                ).addCase(
+                    getMenuThunk.fulfilled,
+                    (state, action: PayloadAction<IMenu[]>) => {
+                        if (action.payload) {
+                            return {
+                                ...state,
+                                menus: action.payload,
+                            };
+                        }
+                        return state;
+                    },
+                ).addCase(
+                    getSectionsThunk.fulfilled,
+                    (state, action: PayloadAction<IKruzhok[]>) => {
+                        if (action.payload) {
+                            return {
+                                ...state,
+                                sections: action.payload,
                             };
                         }
                         return state;

@@ -18,7 +18,7 @@ interface ILayouts {
 const MainLayout = ({ children, handleClick, isMain, link }: ILayouts) => {
     const router = useRouter();
     return (
-        <div className={`w-[1920px] relative min-h-[1080px] bg-cover bg-no-repeat px-[100px] py-[30px] ${oswald.variable} font-sans`} style={{background: "url('/images/bg.svg')"}}
+        <div className={`w-[1920px] relative h-[1080px] bg-cover bg-no-repeat px-[100px] py-[30px] ${oswald.variable} font-sans`} style={{background: "url('/images/bg.svg')"}}
         >
             <Header onClick={handleClick} isMain={isMain} toMain={link}/>
             <div>

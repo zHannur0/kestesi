@@ -44,10 +44,8 @@ const Schedule = () =>{
 
     useEffect(() => {
         let time = new Date();
-        console.log(time.getDay());
         setDay(time.getDay());
     }, []);
-
 
 
     return(
@@ -58,7 +56,7 @@ const Schedule = () =>{
                         {item.short}
                     </div>
                 ) : (
-                    <ScheduleCard key={item.id} os={currSchedule} dop={currDopSchedule} day={item.type}/>
+                    <ScheduleCard key={item.id} os={currSchedule} dop={currDopSchedule} day={item.type} dayNumber={day}/>
                 )
             ))}
         </div>

@@ -36,7 +36,7 @@ const ScheduleTabsPage = () => {
                 if (a.class_letter === undefined) return 1; // Поместить a после b, если class_letter у a не определен
                 if (b.class_letter === undefined) return -1; // Поместить a перед b, если class_letter у b не определен
 
-                return a.class_letter.charCodeAt(0) - b.class_letter.charCodeAt(0);
+                return a.class_letter?.charCodeAt(0) - b.class_letter?.charCodeAt(0);
             });
 
             let i: IClass[] = [];

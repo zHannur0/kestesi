@@ -68,4 +68,13 @@ export const getClassIdThunk= createAsyncThunk(
     async(id?:number)=> await allApi.getClassId(id),
 );
 
+export const getMenuThunk= createAsyncThunk(
+    "getMenuThunk",
+    async(id?:number)=> await allApi.getMenu(id),
+);
+
+export const getSectionsThunk= createAsyncThunk(
+    "getSectionsThunk",
+    async(id?:number)=> await allApi.getSections(id),
+);
 

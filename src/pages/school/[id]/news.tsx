@@ -16,7 +16,6 @@ const NewsPage = () => {
     }, [dispatch, id]);
 
     const handleBack = () => {
-
         router.push(`/school/${id}/main`);
     }
 

@@ -2,8 +2,8 @@ import { instance } from "./axios.instance";
 import {
     ClassRoom,
     IClass,
-    IDopSchedule,
-    IMap,
+    IDopSchedule, IKruzhok,
+    IMap, IMenu,
     ISchedule,
     News,
     School,
@@ -65,6 +65,12 @@ export const allApi={
     },
     async getClassId(id?: number): Promise<IClass> {
         return await instance.get(`/admins/api/class/${id}`);
+    },
+    async getMenu(id?: number): Promise<IMenu[]> {
+        return await instance.get(`/admins/api/menu/?school=${id}`);
+    },
+    async getSections(id?: number): Promise<IKruzhok[]> {
+        return await instance.get(`/admins/api/kruzhok/?school=${id}`);
     },
 
 }

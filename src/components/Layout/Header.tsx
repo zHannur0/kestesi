@@ -1,5 +1,6 @@
 import { Oswald } from 'next/font/google'
 import {FC, useEffect, useState} from "react";
+import {useRouter} from "next/router";
 
 const oswald = Oswald({
     subsets: ['latin'],
@@ -12,9 +13,18 @@ interface HeaderProps{
     toMain?:string,
 }
 const Header: FC<HeaderProps> = ({isMain, onClick, toMain}) => {
+    const router = useRouter();
+    const  id  =Number(router.query.id);
+    const handleBack = () => {
+        router.push(`/school/${id}/main`);
+    }
+
     const [time, setTime] = useState<Date>();
     useEffect(() => {
-        setInterval(()=>setTime(new Date()), 1000);
+        const intervalId = setInterval(()=> {
+            setTime(new Date())
+        }, 1000);
+        return () => clearInterval(intervalId);
     }, [])
     return (
         <div className={`flex justify-between ${oswald.variable}  font-sans mb-[30px]`}>
@@ -50,7 +60,7 @@ const Header: FC<HeaderProps> = ({isMain, onClick, toMain}) => {
                     </div>
                 )
             }
-            <div className={"w-[134.42px] h-[50px]"}>
+            <div className={"w-[134.42px] h-[50px] hover:cursor-pointer"} onClick={handleBack}>
                 <img className="w-[100%] h-[50px]" src="/images/Logo.svg" alt=""/>
             </div>
             <div className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex">

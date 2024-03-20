@@ -13,8 +13,8 @@ const MainPage = () => {
     const schoolPassport = useTypedSelector((state) => state.schoolInfo.schoolPassport);
 
     useEffect(() => {
-        dispatch(getSchoolIdThunk(id));
-        dispatch(getSchoolPassportThunk(id));
+        id && dispatch(getSchoolIdThunk(id));
+        id && dispatch(getSchoolPassportThunk(id));
     }, [dispatch, id]);
 
     console.log(schoolPassport)
@@ -118,7 +118,7 @@ const sidebar: IType[] = [
     {
         id: 4,
         type: "Кружки",
-        link: "clubs",
+        link: "sections",
     },
 
     {
