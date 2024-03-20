@@ -11,8 +11,8 @@ interface TeachersTableProps {
 const TeachersBlock: FC<TeachersTableProps> = ({ teacher}) => {
     return(
         <div className={`w-full flex gap-[20px]`}>
-            <div className={`w-[341px] h-[575px] flex flex-col items-center bg-white rounded-[40px] gap-[20px]`}>
-                <img src={teacher?.photo3x4} alt="teacher" className={`w-full h-[333px] rounded-tl-[40px] rounded-tr-[40px]`}/>
+            <div className={`w-[341px] h-[575px] flex flex-col items-center bg-white rounded-[40px] gap-[20px] pt-[30px]`}>
+                <img src={teacher?.photo3x4} alt="teacher" className={`w-[280px] h-280px] rounded-full`}/>
                 <div className={`flex flex-col gap-[20px] items-center text-center`}>
                     <div className={`text-neutral-800 text-2xl font-bold leading-[100%]`}>{teacher?.pedagog !== "Null" && teacher?.pedagog ? pedagog[teacher?.pedagog] : "Педагог"}</div>
                     <p className="text-zinc-500 text-2xl font-normal leading-[143.3%]">{teacher?.subject !== "Null" && teacher?.subject ? teacher?.subject : "Учитель"} </p>
@@ -23,14 +23,14 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher}) => {
                     </div>
                 </Button>
             </div>
-            <div className={`p-[50px] flex flex-col items-start gap-[50px] bg-white w-[998px] h-[894px] rounded-[40px]`}>
+            <div className={`p-[50px] flex flex-col items-start gap-[50px] bg-white w-[998px] h-[910px] rounded-[40px] overflow-auto scrollbar-hide `}>
                 <div className={`flex flex-col gap-[20px] w-full`}>
                     <h1 className={`text-pink-600 text-3xl font-bold leading-[8.40px]`}>
                         Опыт работы
                     </h1>
                     {
                         teacher?.job_history?.map((item,index) => (
-                            <div key={index} className={`py-[20px] px-[30px] flex flex-col bg-slate-50 items-start text-start gap-[20px] rounded-[20px]`}>
+                            <div key={index} className={`py-[20px] px-[30px] w-[840px] min-h-[80px]  flex flex-col bg-slate-50 text-start gap-[20px] rounded-[20px]`}>
                                 <h1 className={`text-pink-600 text-2xl font-bold leading-tight tracking-wider`}>
                                     {
                                         item.start_date + "-" + (item.end_date ? item.end_date : "До настоящего времени")
@@ -51,7 +51,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher}) => {
                     </h1>
                     {
                         teacher?.speciality_history?.map((item,index) => (
-                            <div key={index} className={`py-[20px] px-[30px] flex flex-col bg-slate-50 items-start text-start gap-[20px] rounded-[20px]`}>
+                            <div key={index} className={`py-[20px] px-[30px] w-[840px] min-h-[80px] flex flex-col bg-slate-50 items-start text-start gap-[20px] rounded-[20px]`}>
                                 <h1 className={`text-pink-600 text-2xl font-bold leading-tight tracking-wider`}>
                                     {
                                          (item.end_date ? item.end_date : "До настоящего времени")

@@ -40,13 +40,13 @@ const TeachersTable: FC<TeachersTableProps> = ({handleChooseTeacher, teachers}) 
 
     return(
         <>
-        <div className={`px-[50px] pt-[30px] bg-white rounded-[40px] flex-col justify-end items-start gap-5 inline-flex min-w-full`}>
-            <div
-                className={`w-[100%] h-[66px] px-5 rounded-[20px] border-2 border-purple-800 justify-start items-center inline-flex`}>
-                {isFocused ? <img src="/images/searchIcon.svg" alt=""/> : <img src="/images/searchIconFocus.svg" alt=""/>}
-                <input value={inputValue} onChange={handleInputChange} onFocus={handleOnFocus} type="text" className="w-full text-2xl border-none outline-0 border-b-2"/>
-                {!isFocused && <img src="/images/x.svg" className={"w-10 h-10 hover:cursor-pointer"} alt="" onClick={handleClose} />}
-            </div>
+        <div className={`px-[50px] pt-[30px] bg-white rounded-[40px] flex flex-col items-start gap-5 w-[100%] h-[910px] overflow-auto scrollbar-hide`}>
+            {/*<div*/}
+            {/*    className={`w-[100%] h-[66px] px-5 rounded-[20px] border-2 border-purple-800 justify-start items-center flex`}>*/}
+            {/*    {isFocused ? <img src="/images/searchIcon.svg" alt=""/> : <img src="/images/searchIconFocus.svg" alt=""/>}*/}
+            {/*    <input value={inputValue} onChange={handleInputChange} onFocus={handleOnFocus} type="text" className="w-full text-2xl border-none outline-0 border-b-2"/>*/}
+            {/*    {!isFocused && <img src="/images/x.svg" className={"w-10 h-10 hover:cursor-pointer"} alt="" onClick={handleClose} />}*/}
+            {/*</div>*/}
             <div className={`flex flex-wrap gap-[30px]`}>
                 {
                     teachers ?
@@ -58,7 +58,6 @@ const TeachersTable: FC<TeachersTableProps> = ({handleChooseTeacher, teachers}) 
                 }
             </div>
         </div>
-        {!isFocused && <Keyboard handleClick={handleClick}/>}
         </>
 
     )

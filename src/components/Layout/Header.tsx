@@ -19,7 +19,7 @@ const Header: FC<HeaderProps> = ({isMain, onClick, toMain}) => {
         router.push(`/school/${id}/main`);
     }
 
-    const [time, setTime] = useState<Date>();
+    const [time, setTime] = useState<Date>(new Date());
     useEffect(() => {
         const intervalId = setInterval(()=> {
             setTime(new Date())
