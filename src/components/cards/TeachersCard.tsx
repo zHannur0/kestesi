@@ -10,7 +10,7 @@ interface TeachersCardProps{
 
 const TeachersCard: FC<TeachersCardProps> = ({id, img, fullname, job, handleChooseTeacher }) => {
     return (
-        <div onClick={() => handleChooseTeacher(id)} className={`flex justify-between py-[20px] w-[520px] h-[200px] px-[30px] gap-[20px] rounded-[30px] border-2 border-purple-800`}>
+        <div onClick={() => handleChooseTeacher(id)} className={`flex py-[20px] w-[520px] h-[200px] px-[30px] gap-[20px] rounded-[30px] border-2 border-purple-800`}>
              <img className={`w-40 h-40 min-w-40 rounded-[80px]`} src={img} alt="Teacher" />
             <div >
                  <h2 className={`text-2xl font-bold leading-normal text-[#524FA2]`}>{fullname}</h2>

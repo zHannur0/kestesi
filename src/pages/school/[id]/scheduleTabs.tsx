@@ -78,9 +78,6 @@ const ScheduleTabsPage = () => {
                 <div>
                     <ScheduleClassTabs classl={classl} chooseClassNumber={chooseClassNumber} selectedClassI={selectedClassI} selectedClassII={selectedClassII} selectedClassIII={selectedClassIII}/>
                 </div>
-                <div>
-
-                </div>
             </div>
         </MainLayout>
     )

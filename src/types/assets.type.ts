@@ -31,8 +31,8 @@ export interface SchoolPassport {
     number_of_5_9_classes?: number;
     number_of_10_11_students?: number;
     number_of_10_11_classes?: number;
-    amount_of_family?: string;
-    amount_of_parents?: string;
+    amount_of_family?: number;
+    amount_of_parents?: number;
     all_pedagog_number?: number;
     pedagog_sheber?: number;
     pedagog_zertteushy?: number;

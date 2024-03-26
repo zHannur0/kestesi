@@ -1,0 +1,262 @@
+import {useRouter} from "next/router";
+import {useTypedSelector} from "@/hooks/useTypedSelector";
+import {useEffect, useRef, useState} from "react";
+import {getMenuThunk, getSchoolPassportThunk, getSectionsThunk} from "@/store/thunks/school.thunk";
+import {useAppDispatch} from "@/hooks/useAppDispatch";
+import Link from "next/link";
+import {Oswald} from "next/font/google";
+import Header from "@/components/Layout/Header";
+import {SchoolPassport} from "@/types/assets.type";
+import HeaderWBg from "@/components/Layout/HeaderWBg";
+
+const oswald = Oswald({
+    subsets: ['latin'],
+    variable: '--font-oswald',
+});
+
+interface CountType {
+    title?: string,
+    count?: number,
+}
+
+
+const SchoolInformationPage = () => {
+    const router = useRouter();
+    const dispatch = useAppDispatch();
+    const id=Number(router.query.id);
+    const school = useTypedSelector((state) => state.schoolInfo.schoolPassport);
+    const [sch, setSch] = useState<SchoolPassport>();
+    const [aboutCount, setAboutCount] = useState<CountType[]>([]);
+    console.log(sch)
+    useEffect(() => {
+        id && dispatch(getSchoolPassportThunk(id));
+        if(school) {
+            setSch(school[0]);
+            let arr: CountType[] = [];
+            arr.push(
+                {
+                    title: "Общее количество учеников",
+                    count: school[0]?.number_of_students
+                }
+            );
+            arr.push(
+                {
+                    title: "Количество семей",
+                    count: school[0]?.amount_of_family
+                }
+            );
+            arr.push(
+                {
+                    title: "Количество мальчиков",
+                    count: school[0]?.ul_sany
+                }
+            );
+            arr.push(
+                {
+                    title: "Количество родителей",
+                    count: school[0]?.amount_of_parents
+                }
+            );
+            arr.push(
+                {
+                    title: "Количество девочек",
+                    count: school[0]?.kiz_sany
+                }
+            );
+            setAboutCount(arr);
+        }
+    }, [dispatch, id, sch, school]);
+    const handleBack = () => {
+        router.push(`/school/${id}/main`);
+    }
+
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const bigRef = useRef<HTMLDivElement>(null);
+    const [bgHeader, setBgHeader] = useState<boolean>(false);
+
+    useEffect(() => {
+        const handleWindowScroll = (event: WheelEvent) => {
+            if (scrollRef.current) {
+                const currentScrollPosition = scrollRef.current.scrollTop;
+                const scrollDelta = event.deltaY;
+                scrollRef.current.scrollTop = currentScrollPosition + scrollDelta;
+
+                if (scrollRef.current.scrollTop > 50) {
+                    setBgHeader(true);
+                } else {
+                    setBgHeader(false);
+                }
+            }
+        };
+
+        window.addEventListener('wheel', handleWindowScroll, { passive: false });
+
+        return () => {
+            window.removeEventListener('wheel', handleWindowScroll);
+        };
+    }, []);
+    return (
+        <div
+            className={`w-[1920px] relative h-[1080px] bg-cover bg-no-repeat px-[100px] pt-[30px] ${oswald.variable} font-sans`}
+            style={{background: "url('/images/bg.svg')"}}
+            ref={bigRef}
+        >
+            {
+                bgHeader ? (
+                        <HeaderWBg onClick={handleBack} isMain={false} toMain={"на главную"}/>
+                    )
+                    : (
+                        <div className={"w-[1720px] absolute z-40"}>
+                            <Header onClick={handleBack} isMain={false} toMain={"на главную"}/>
+                        </div>
+                    )
+            }
+            <div className={"flex flex-col gap-[30px] absolute left-[100px] top-[110px]"}>
+                <div
+                    className={"flex flex-col w-[341px] h-[497px] gap-[30px] items-center bg-white text-2xl text-center pb-[50px] rounded-[40px]"}>
+                    <img src="" alt="" className={"w-[341px] h-[365px] rounded-t-[40px]"}/>
+                    <div className={"text-[#211F23] font-bold"}>
+                        Улица Отеген Батыра, 40
+                    </div>
+                    <div className={"text-[#7B7984] font-medium"}>
+                        с. Шамалган, Карайский Район, Алматинская область
+                    </div>
+                </div>
+                <div className={"flex flex-col gap-[20px]"}>
+                    {
+                        sidebar.map((item) => (
+                            <Link
+                                href={`/school/${router.query.id}/${item.link}`}
+                                key={item.id}
+                            >
+                                <div
+                                    className={"w-[341px] h-[64px] flex items-center justify-center text-center text-2xl font-medium leading-[20px] rounded-[20px] text-[#524FA2] border-2 border-[#5D49A0]"}>
+                                    {item.type}
+                                </div>
+                            </Link>
+                        ))
+                    }
+                </div>
+            </div>
+            <div
+                className={"absolute w-[998px] h-[100%] top-0 left-[461px] overflow-auto scrollbar-hide pt-[110px] z-0"} ref={scrollRef}>
+                <div className={"bg-white w-full  z-0 p-[50px] rounded-[40px] flex flex-col gap-[30px]"}>
+                    <div className={"flex flex-col gap-[20px]"}>
+                        <div className={"text-[30px] font-bold leading-[28%]"}>
+                            {sch?.school_name}
+                        </div>
+                        <img src={sch?.photo} alt="" className={"w-[898px] h-[427px] rounded-[40px]"}/>
+                    </div>
+                    <div className={"flex flex-col gap-[30px] h-[158px] flex-wrap"}>
+                        {
+                            aboutCount?.map((item, index) => (
+                                <div key={index} className={"flex flex-col gap-[10px]"}>
+                                    <div className={"text-[18px] font-medium leading-[100%]"}>
+                                        {item.title}
+                                    </div>
+                                    <div className={"text-3xl font-semibold leading-[100%] text-[#ED008C]"}>
+                                        {item.count ? item.count : "0"}
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div className={"flex flex-col gap-[20px]"}>
+                        <div className = {"text-2xl font-bold leading-[100%]"}>
+                            Общая информация
+                        </div>
+                        <div className={"w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px]"}>
+                                <table
+                                    className="w-full text-[20px] leading-[100%]">
+                                    <tbody>
+                                    <tr className="border-b border-b-black ">
+                                        <td
+                                            className="text-[#211F23] text-left pb-[14px] pt-[10px]">
+                                            Язык обучения
+                                        </td>
+                                        <td className="text-end text-[211F23] font-medium pb-[14px] pt-[10px]">
+                                            {sch?.school_lang}
+                                        </td>
+                                    </tr>
+                                    <tr className="border-b border-b-black">
+                                        <td
+                                            className="text-[#211F23] text-left pb-[14px] pt-[10px]">
+                                            Статус
+                                        </td>
+                                        <td className="text-end text-[211F23] font-medium pb-[14px] pt-[10px]">
+                                            {sch?.status}
+                                        </td>
+                                    </tr>
+                                    <tr className="border-b border-b-black">
+                                        <td
+                                            className="text-[#211F23] text-left pb-[14px] pt-[10px]">
+                                            Вместимость
+                                        </td>
+                                        <td className="text-end text-[211F23] font-medium pb-[14px] pt-[10px]">
+                                            {sch?.vmestimost}
+                                        </td>
+                                    </tr>
+                                    <tr className="border-b border-b-black">
+                                        <td
+                                            className="text-[#211F23] text-left pb-[14px] pt-[10px]">
+                                            Фактическое количество обучающихся
+                                        </td>
+                                        <td className="text-end text-[211F23] font-medium pb-[14px] pt-[10px]">
+                                            {sch?.number_of_students}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                className="w-[340px] h-[448px] pl-5 pr-[9px] pt-[50px] pb-[78px] bg-white rounded-[40px] flex-col justify-start items-start gap-[30px] inline-flex absolute right-[100px] top-[110px]">
+                <div
+                    className="text-neutral-800 text-3xl font-normal leading-[8.40px]">Узнавайте
+                    первым
+                </div>
+                <div className="w-[142.86px] h-[140px] relative">
+                    <img src="/images/qr.svg"
+                         className="w-[163.27px] h-40 absolute rounded-[20px]"/>
+                </div>
+                <div
+                    className="text-zinc-500 text-2xl font-normal leading-[34.40px]">Сканируйте
+                    QR-код и будьте в курсе самых свежих новостей и сплетен в школе и на райони
+                </div>
+            </div>
+        </div>
+    );
+}
+
+interface IType {
+    id?: number;
+    type?: string;
+    link?: string;
+}
+
+const sidebar: IType[] = [
+
+    {
+        id: 1,
+        type: "Администрация",
+        link: "administration",
+    },
+
+    {
+        id: 2,
+        type: "Контакты",
+        link: "contacts",
+    },
+
+    {
+        id: 3,
+        type: "Фото-галерея",
+        link: "gallery",
+    },
+
+
+];
+
+export default SchoolInformationPage;

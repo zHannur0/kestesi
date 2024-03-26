@@ -35,12 +35,14 @@ const MainPage = () => {
                             className="w-[310px] h-[120px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">{cities.find(city => city.name === school?.region)?.nameUpper.toUpperCase()}
                         </div>
                     </div>
-                    <div className="text-center text-indigo-800 text-4xl font-bold">О школе</div>
+                    <Link href={`/school/${id}/schoolInformation`}>
+                        <div className="text-center text-indigo-800 text-4xl font-bold">О школе</div>
+                    </Link>
                 </div>
                 <div>
                     <div
-                        className="w-[900px] h-[380px] rounded-[40px] justify-center items-center inline-flex">
-                        <img className="w-[900px] h-[380px]" src={schoolPassport?.[0]?.photo}/>
+                        className="w-[900px] h-[380px]  justify-center items-center inline-flex">
+                        <img className="w-[900px] h-[380px] rounded-[40px]" src={schoolPassport?.[0]?.photo}/>
                     </div>
                 </div>
                 <div className=" h-[100%] flex flex-col gap-[30px] py-[50px]">
@@ -71,11 +73,6 @@ const MainPage = () => {
                     <Link
                         href={`/school/${router.query.id}/${item.link}`}
                         key={item.id}
-                        className={`${
-                            router.asPath.split("/")[1] === item.link?.split("/")[0]
-                                ? "active"
-                                : ""
-                        }`}
                     >
                         <div
                             className="w-[560px] h-[130px] bg-white rounded-[40px] flex justify-center items-center  mt-[20px]">

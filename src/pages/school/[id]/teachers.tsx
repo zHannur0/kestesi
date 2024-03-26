@@ -11,7 +11,7 @@ import {
     getTeachersThunk,
     getTeacherThunk
 } from "@/store/thunks/school.thunk";
-import TeachersTable from "@/components/tables/TeachersTable";
+import TeachersTable from "@/components/lists/TeachersTable";
 import TeachersBlock from "@/components/blocks/TeachersBlock";
 const TeachersPage = () => {
     const router = useRouter();

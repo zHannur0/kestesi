@@ -12,7 +12,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher}) => {
     return(
         <div className={`w-full flex gap-[20px]`}>
             <div className={`w-[341px] h-[575px] flex flex-col items-center bg-white rounded-[40px] gap-[20px] pt-[30px]`}>
-                <img src={teacher?.photo3x4} alt="teacher" className={`w-[280px] h-280px] rounded-full`}/>
+                <img src={teacher?.photo3x4} alt="teacher" className={`w-[280px] h-[280px] max-h-[280px] rounded-full`}/>
                 <div className={`flex flex-col gap-[20px] items-center text-center`}>
                     <div className={`text-neutral-800 text-2xl font-bold leading-[100%]`}>{teacher?.pedagog !== "Null" && teacher?.pedagog ? pedagog[teacher?.pedagog] : "Педагог"}</div>
                     <p className="text-zinc-500 text-2xl font-normal leading-[143.3%]">{teacher?.subject !== "Null" && teacher?.subject ? teacher?.subject : "Учитель"} </p>
@@ -57,11 +57,29 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher}) => {
                                          (item.end_date ? item.end_date : "До настоящего времени")
                                     }
                                 </h1>
-                                <p className={`text-neutral-800 text-lg font-medium leading-none`}>
-                                    {
-                                        item.mamandygy
-                                    }
-                                </p>
+                                <div className={`text-neutral-800 text-lg font-medium leading-none flex flex-col`}>
+                                    <div>
+                                        {
+                                            "Окончил в " + item.end_date + " году"
+                                        }
+                                    </div>
+                                    <div>
+                                        {
+                                            "Университет = " + item.speciality_university
+                                        }
+                                    </div>
+                                    <div>
+                                        {
+                                            "Уровень - " + item.degree
+                                        }
+                                    </div>
+                                    <div>
+
+                                        {
+                                            "Профессия: " + item.mamandygy
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         ))
                     }
