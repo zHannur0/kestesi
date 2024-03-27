@@ -33,15 +33,18 @@
 /*}*/
 
 .scrollbar-hide {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
+  display: none; /* Safari and Chrome */
 }
 
-
 .bg-gradient {
-    background-image: linear-gradient(to right, #5D49A0 50%, #E9028E 50%); /* Задаём градиент */
+  background-image: linear-gradient(
+    to right,
+    #5d49a0 50%,
+    #e9028e 50%
+  ); /* Задаём градиент */
 }

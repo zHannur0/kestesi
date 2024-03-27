@@ -1,75 +1,160 @@
 import { useRouter } from "next/router";
 import MainLayout from "@/layouts/MainLayout";
 import Link from "next/link";
-import {useTypedSelector} from "@/hooks/useTypedSelector";
-import {useEffect, useState} from "react";
-import {useAppDispatch} from "@/hooks/useAppDispatch";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { useEffect, useState } from "react";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
 import {
-    getClassroomsThunk,
-    getMapThunk,
-    getSchoolIdThunk,
-    getSchoolPassportThunk,
-    getSchoolThunk,
-    getTeachersThunk,
-    getTeacherThunk
+  getClassroomsThunk,
+  getMapThunk,
+  getSchoolIdThunk,
+  getSchoolPassportThunk,
+  getSchoolThunk,
+  getTeachersThunk,
+  getTeacherThunk,
 } from "@/store/thunks/school.thunk";
+import {IMap} from "@/types/assets.type";
 
 const SchoolMapPage = () => {
-    const router = useRouter();
-    const  id  =Number(router.query.id);
-    const dispatch = useAppDispatch();
-    const map = useTypedSelector((state) => state.schoolInfo.map);
-    const classrooms = useTypedSelector((state) => state.schoolInfo.classrooms);
-    const classroom = useTypedSelector((state) => state.schoolInfo.classroomId);
-    useEffect(() => {
-        id && dispatch(getMapThunk(id));
-        id && dispatch(getClassroomsThunk(id));
-    }, [dispatch, id]);
+  const router = useRouter();
+  const id = Number(router.query.id);
+  const dispatch = useAppDispatch();
+  const map = useTypedSelector((state) => state.schoolInfo.map);
+  const classrooms = useTypedSelector((state) => state.schoolInfo.classrooms);
+  useEffect(() => {
+    id && dispatch(getMapThunk(id));
+    id && dispatch(getClassroomsThunk(id));
+  }, [dispatch, id]);
+  const [curr, setCurr] = useState<string>("flat1");
+  const [currLink, setCurrLink] = useState<string>();
 
-    const handleBack = () => {
-        router.push(`/school/${id}/main`);
-    }
+    const handleClick = (flat: string) => {
+        if(flat === "flat1") {
+            setCurrLink(map?.[0].flat1);
+            setCurr("flat1");
+        }else if(flat === "flat2") {
+            setCurrLink(map?.[0].flat2);
+            setCurr("flat2");
+        }else if(flat === "flat3") {
+            setCurrLink(map?.[0].flat3);
+            setCurr("flat3");
+        }else if(flat === "flat4") {
+            setCurrLink(map?.[0].flat4);
+            setCurr("flat4");
+        }else if(flat === "flat5") {
+            setCurrLink(map?.[0].flat5);
+            setCurr("flat5");
+        }
+    };
 
-    return(
-        <MainLayout handleClick={handleBack} isMain={false} link={"на главную"}>
-            <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[50px]">
-                Карта школы
-            </h1>
-            <div className={"flex gap-[20px] text-[24px] mb-[36px]"}>
-                <div className={" text-[#7B7984]"}>
-                    1 этаж
+  const handleBack = () => {
+    router.push(`/school/${id}/main`);
+  };
+
+  return (
+    <MainLayout handleClick={handleBack} isMain={false} link={"на главную"}>
+      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px]">
+        Карта школы
+      </h1>
+        <div className={"flex gap-[20px]"}>
+            <div
+                className={"w-[1200] cursor-pointer h-[890px] bg-white rounded-[40px] p-[50px] flex flex-col gap-[27px]"}>
+                <div className={"flex gap-[20px]"}>
+                    <div
+                        className={"flex items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px]"}
+                        style={{
+                            backgroundColor: curr === "flat1" ? "#ED008C" : "white",
+                            color: curr === "flat1" ? "white" : "#211F23",
+                            borderColor: curr === "flat1" ? "#ED008C" : "#5D49A0",
+                        }}
+                        onClick={() => handleClick("flat1")}
+                    >
+                        1 этаж
+                    </div>
+                    {
+                        map?.[0]?.flat2 && (
+                            <div
+                                className={"flex cursor-pointer items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px]"}
+                                style={{
+                                    backgroundColor: curr === "flat2" ? "#ED008C" : "white",
+                                    color: curr === "flat2" ? "white" : "#211F23",
+                                    borderColor: curr === "flat2" ? "#ED008C" : "#5D49A0",
+                                }}
+                                onClick={() => handleClick("flat2")}
+                            >
+                                2 этаж
+                            </div>
+                        )
+                    }
+                    {
+                        map?.[0]?.flat3 && (
+                            <div
+                                className={"flex items-center cursor-pointer justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px]"}
+                                style={{
+                                    backgroundColor: curr === "flat3" ? "#ED008C" : "white",
+                                    color: curr === "flat3" ? "white" : "#211F23",
+                                    borderColor: curr === "flat3" ? "#ED008C" : "#5D49A0",
+                                }}
+                                onClick={() => handleClick("flat3")}
+                            >
+                                3 этаж
+                            </div>
+                        )
+                    }
+                    {
+                        map?.[0]?.flat4 && (
+                            <div
+                                className={"flex items-center cursor-pointer justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px]"}
+                                style={{
+                                    backgroundColor: curr === "flat4" ? "#ED008C" : "white",
+                                    color: curr === "flat4" ? "white" : "#211F23",
+                                    borderColor: curr === "flat4" ? "#ED008C" : "#5D49A0",
+                                }}
+                                onClick={() => handleClick("flat4")}
+                            >
+                                4 этаж
+                            </div>
+                        )
+                    }
+                    {
+                        map?.[0]?.flat5 && (
+                            <div
+                                className={"flex items-center cursor-pointer justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px]"}
+                                style={{
+                                    backgroundColor: curr === "flat5" ? "#ED008C" : "white",
+                                    color: curr === "flat5" ? "white" : "#211F23",
+                                    borderColor: curr === "flat5" ? "#ED008C" : "#5D49A0",
+                                }}
+                                onClick={() => handleClick("flat5")}
+                            >
+                                5 этаж
+                            </div>
+                        )
+                    }
                 </div>
-                <div className={" text-[#ED008C] font-medium"}>
-                    2 этаж
-                </div>
-                <div className={" text-[#7B7984]"}>
-                    3 этаж
-                </div>
+                <img src={currLink ? currLink : "/images/map.svg"} alt="" className={"w-[100%] h-[100%]"}/>
             </div>
-            <div className={"flex gap-[50px]"}>
-                <div className={"w-[1070px] h-[750px]"}>
-                    <img src="/images/map.svg" className={"w-full"} alt=""/>
-                </div>
-                <div className={"flex flex-col gap-[20px] h-[750px] overflow-auto  w-[600px] scrollbar-hide"}>
-                    {classrooms && classrooms.slice().sort((a, b) => {
-                        if (a.classroom_number && b.classroom_number) {
-                            return a.classroom_number - b.classroom_number;
-                        }
-                        return 0;
-                    }).map((item, index) => (
-                        <div key={item.id} className={"min-h-[90px] pl-[26px] pr-[30px] flex gap-[33px] bg-white items-center rounded-xl"}>
-                            <div className={"text-[#524FA2] text-[32px] font-semibold leading-[94%]"}>
-                                {item.classroom_number}
-                            </div>
-                            <div className={"text-[28px] text-[#7B7984] leading-[90%]"}>
-                                {item.classroom_name}
-                            </div>
+            <div className={"flex flex-col gap-[10px] h-[890px] overflow-auto  w-[500px] scrollbar-hide rounded-xl"}>
+                {classrooms && classrooms.slice().sort((a, b) => {
+                    if (a.classroom_number && b.classroom_number) {
+                        return a.classroom_number - b.classroom_number;
+                    }
+                    return 0;
+                }).map((item, index) => (
+                    <div key={item.id}
+                         className={"min-h-[90px] pl-[26px] pr-[30px] flex gap-[20px] bg-white items-center rounded-xl"}>
+                        <div className={"text-[#524FA2] text-[32px] font-normal leading-[94%]"}>
+                            {item.classroom_number}
                         </div>
-                    ))}
-                </div>
+                        <div className={"text-[28px] text-[#211F23] font-normal leading-[90%]"}>
+                            {item.classroom_name}
+                        </div>
+                    </div>
+                ))}
             </div>
-        </MainLayout>
-    )
-}
+        </div>
+    </MainLayout>
+  );
+};
 
 export default SchoolMapPage;

@@ -37,6 +37,6 @@ export const useModalLogic = () => {
     onDeleteModalClose,
     showSuccess,
     showError,
-    showDelete
+    showDelete,
   };
 };

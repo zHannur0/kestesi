@@ -13,10 +13,10 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        'main': "url('/public/images/bg.svg')",
+        main: "url('/public/images/bg.svg')",
       },
       fontFamily: {
-        sans: ['var(--font-oswald)'],
+        sans: ["var(--font-oswald)"],
       },
     },
   },
