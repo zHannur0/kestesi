@@ -50,6 +50,7 @@ const Schedule = () => {
     id && dispatch(getDopScheduleThunk(id));
   }, [dispatch, id]);
 
+
   useEffect(() => {
     if (os && dop) {
       let arr1 = os
@@ -83,7 +84,7 @@ const Schedule = () => {
       setCurrSchedule(arr1);
       setCurrDopSchedule(arr2);
     }
-  }, [day, os, dop]);
+  }, [day, os, dop, classId, who]);
 
   useEffect(() => {
     let time = new Date();

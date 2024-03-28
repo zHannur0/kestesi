@@ -22,6 +22,7 @@ const ScheduleTabsPage = () => {
   const t = translations[router.locale || "kz"] || en;
   const dispatch = useAppDispatch();
   const classl = useTypedSelector((state) => state.schoolInfo.class);
+  const [curr, setCurr] = useState<number | null>(null);
   const [selectedClassI, setSelectedClassI] = useState<IClass[] | null>(null);
   const [selectedClassII, setSelectedClassII] = useState<IClass[] | null>(null);
   const [selectedClassIII, setSelectedClassIII] = useState<IClass[] | null>(
@@ -37,6 +38,7 @@ const ScheduleTabsPage = () => {
       setSelectedClassI(null);
       setSelectedClassII(null);
       setSelectedClassIII(null);
+      setCurr(null)
     } else router.push(`/school/${id}/main`);
   };
 
@@ -76,6 +78,8 @@ const ScheduleTabsPage = () => {
       if (iii.length !== 0) {
         setSelectedClassIII(iii);
       }
+      console.log(arr)
+      setCurr(arr?.[0]?.class_number || null);
     }
   };
 
@@ -92,7 +96,7 @@ const ScheduleTabsPage = () => {
     >
       <>
         <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
-          {t.schedule.name}
+          {curr && (curr + " - ")}{t.schedule.name}
         </h1>
       </>
       <div

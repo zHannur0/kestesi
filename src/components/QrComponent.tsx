@@ -4,11 +4,21 @@ import {ISchoolSocialMedia} from "@/types/assets.type";
 import {getDirectorThunk, getSocialMediaThunk} from "@/store/thunks/school.thunk";
 import {useRouter} from "next/router";
 import {useAppDispatch} from "@/hooks/useAppDispatch";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 
 const QrComponent = () => {
     const router = useRouter();
     const id = Number(router.query.id);
+    const translations: any= {
+        kz: kz,
+        ru: ru,
+        en: en,
+    };
+    const t = translations[router.locale || "kz"] || en;
+
     const dispatch = useAppDispatch();
     const [isSelected, setIsSelected] = useState<string>("site");
     const socialMedia = useTypedSelector((state) => state.schoolInfo.socialMedia);
@@ -31,7 +41,23 @@ const QrComponent = () => {
             setTg(socialMedia?.find((item) => item.type === "tgbot") || null);
             setSite(socialMedia?.find((item) => item.type === "website") || null);
         }
-    }, [socialMedia]);
+        if(site) {
+            setIsSelected("site");
+        }else {
+            if(facebook) {
+                setIsSelected("facebook");
+
+            }else {
+                if(insta) {
+                    setIsSelected("instagram");
+                } else {
+                    if(youtube) setIsSelected("youtube")
+                    else setIsSelected("tg")
+                }
+            }
+        }
+
+    }, [socialMedia,site, insta, facebook, insta, tg]);
 
     return(
         <div className={"flex flex-col p-[30px] bg-[#F9F8FD] w-[341px] h-[419px]  rounded-[40px]"}>
@@ -39,7 +65,7 @@ const QrComponent = () => {
                 {
                     site && (
                         <div onClick={() => setIsSelected("site")}
-                             className={"flex items-center justify-center w-[53px] h-[53px]"}
+                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[20px]"}
                              style={{backgroundColor: isSelected === "site" ? "white" : "transparent"}}>
                             <img src={isSelected === "site" ? "/images/siteContact.svg" : "/images/siteBlack.svg"} alt=""
                                  className={"w-[36px]"}/>
@@ -49,7 +75,7 @@ const QrComponent = () => {
                 {
                     facebook && (
                         <div onClick={() => setIsSelected("facebook")}
-                             className={"flex items-center justify-center w-[53px] h-[53px]"}
+                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[20px]"}
                              style={{backgroundColor: isSelected === "facebook" ? "white" : "transparent"}}>
                             <img src={isSelected === "facebook" ? "/images/facebook.svg" : "/images/facebookBlack.svg"}
                                  alt=""
@@ -60,7 +86,7 @@ const QrComponent = () => {
                 {
                     insta && (
                         <div onClick={() => setIsSelected("instagram")}
-                             className={"flex items-center justify-center w-[53px] h-[53px]"}
+                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[20px]"}
                              style={{backgroundColor: isSelected === "instagram" ? "white" : "transparent"}}>
                             <img src={isSelected === "instagram" ? "/images/instagram.svg" : "/images/instaBlack.svg"}
                                  alt=""
@@ -71,7 +97,7 @@ const QrComponent = () => {
                 {
                     youtube && (
                         <div onClick={() => setIsSelected("youtube")}
-                             className={"flex items-center justify-center w-[53px] h-[53px]"}
+                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[20px]"}
                              style={{backgroundColor: isSelected === "youtube" ? "white" : "transparent"}}>
                             <img src={isSelected === "youtube" ? "/images/youtube.svg" : "/images/youtubeBlack.svg"} alt=""
                                  className={"w-[36px]"}/>
@@ -81,7 +107,7 @@ const QrComponent = () => {
                 {
                     tg && (
                         <div onClick={() => setIsSelected("tg")}
-                             className={"flex items-center justify-center w-[53px] h-[53px]"}
+                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[20px]"}
                              style={{backgroundColor: isSelected === "tg" ? "white" : "transparent"}}>
                             <img src={isSelected === "tg" ? "/images/telegram.svg" : "/images/tgBlack.svg"} alt=""
                                  className={"w-[36px]"}/>
@@ -89,9 +115,9 @@ const QrComponent = () => {
                     )
                 }
             </div>
-            <div className={"p-[30px] w-[281px] h-[305px] flex flex-col gap-[30px] bg-white rounded-b-[20px]"}>
+            <div className={"p-[30px] w-[281px] h-[305px] flex flex-col gap-[30px] bg-white rounded-b-[20px] rounded-tr-[20px]"}>
                 <div className={"text-2xl font-bold leading-[28%]"}>
-                    Школа в Kestesi.kz
+                    {t.main.schoolInKestesiKz}
                 </div>
                 {
                     isSelected === "site" && (

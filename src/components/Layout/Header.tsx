@@ -2,6 +2,9 @@ import { Oswald } from "next/font/google";
 import { FC, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -17,6 +20,12 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
   const router = useRouter();
   const id = Number(router.query.id);
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   const handleBack = () => {
     router.push(`/school/${id}/main`);
   };
@@ -31,6 +40,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
     }
   }, []);
 
+  const localeKey = router.locale as 'ru' | 'kz' | 'en';
 
   return (
     <div
@@ -49,14 +59,14 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
           </div>
           <div className="w-10 h-[31px] left-[74px] top-[3px] absolute">
             <div className="left-0 top-0 absolute text-center text-black text-sm font-normal leading-[18px]">
-              {time && weekDay[time.getDay() - 1]}
+              {time && weekDay[time.getDay() - 1]?.[localeKey || "kz"]}
             </div>
             <div className="w-10 h-[15px] left-0 top-[16px] absolute justify-start items-start gap-[3px] inline-flex">
               <div className="text-center text-zinc-500 text-[10px] font-normal ">
                 {time?.getDate()}
               </div>
               <div className="text-center text-zinc-500 text-[10px] font-normal ">
-                {time && months[time.getMonth()]}
+                {time && months[time.getMonth()]?.[localeKey || "kz"]}
               </div>
             </div>
           </div>
@@ -110,27 +120,29 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
 };
 
 const weekDay = [
-  "понедельник",
-  "вторник",
-  "среда",
-  "четверг",
-  "пятница",
-  "суббота",
-  "воскресенье",
+  { ru: "понедельник", kz: "дүйсенбі", en: "monday" },
+  { ru: "вторник", kz: "сейсенбі", en: "tuesday" },
+  { ru: "среда", kz: "сәрсенбі", en: "wednesday" },
+  { ru: "четверг", kz: "бейсенбі", en: "thursday" },
+  { ru: "пятница", kz: "жұма", en: "friday" },
+  { ru: "суббота", kz: "сенбі", en: "saturday" },
+  { ru: "воскресенье", kz: "жексенбі", en: "sunday" },
 ];
+
 const months = [
-  "января",
-  "февраля",
-  "марта",
-  "апреля",
-  "май",
-  "июня",
-  "июля",
-  "августа",
-  "сентября",
-  "октября",
-  "ноября",
-  "декабря",
+  { ru: "января", kz: "қаңтар", en: "january" },
+  { ru: "февраля", kz: "ақпан", en: "february" },
+  { ru: "марта", kz: "наурыз", en: "march" },
+  { ru: "апреля", kz: "сәуір", en: "april" },
+  { ru: "май", kz: "мамыр", en: "may" },
+  { ru: "июня", kz: "маусым", en: "june" },
+  { ru: "июля", kz: "шілде", en: "july" },
+  { ru: "августа", kz: "тамыз", en: "august" },
+  { ru: "сентября", kz: "қыркүйек", en: "september" },
+  { ru: "октября", kz: "қазан", en: "october" },
+  { ru: "ноября", kz: "қараша", en: "november" },
+  { ru: "декабря", kz: "желтоқсан", en: "december" },
 ];
+
 
 export default Header;

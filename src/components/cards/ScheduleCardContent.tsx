@@ -129,7 +129,9 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
             "flex justify-between text-[#524FA2] text-[18px] leading-[26%] font-bold "
           }
         >
-          <div className={""}>{getInitials(item.teacher?.full_name)}</div>
+          <Link href={`/school/${id}/schedule/teacher/${item.teacher?.id}`}>
+            <div className={""}>{getInitials(item.teacher?.full_name)}</div>
+          </Link>
           <div className={""}>
             <span className={"text-[#7B7984]"}>{t.schedule.cabinet}</span>{" "}
             <Link href={`/school/${id}/schedule/classroom/${item.classroom?.id}`}>
@@ -147,7 +149,10 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
                 "flex justify-between text-[#524FA2] text-[18px] leading-[26%] font-bold "
               }
             >
+              <Link href={`/school/${id}/schedule/teacher/${item.teacher2?.id}`}>
               <div className={""}>{getInitials(item.teacher2?.full_name)}</div>
+              </Link>
+
               <div className={""}>
                 <span className={"text-[#7B7984]"}>Кабинет</span>{" "}
                 <Link href={`/school/${id}/schedule/classroom/${item.classroom2?.id}`}>

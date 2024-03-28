@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
+import Link from "next/link";
 
 interface IProps {
     item: ISchedule;
@@ -13,6 +14,8 @@ interface IProps {
 
 const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
     const router = useRouter();
+    const id = Number(router.query.id);
+    const classId = Number(router.query.scheduleId);
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -125,11 +128,16 @@ const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) =>
                         "flex justify-between text-[#524FA2] text-[18px] leading-[26%] font-bold "
                     }
                 >
-                    <div className={""}>{item.classl?.class_name}
-                    </div>
+                    <Link href={`/school/${id}/schedule/class/${item.classl?.id}`}>
+                        <div className={""}>
+                            {item.classl?.class_name}
+                        </div>
+                    </Link>
                     <div className={""}>
                         <span className={"text-[#7B7984]"}>{t.schedule.cabinet}</span>{" "}
-                        {item.classroom?.classroom_number}
+                        <Link href={`/school/${id}/schedule/teacher/${item.teacher?.id === classId ? item.classroom?.id : item.classroom2?.id}`}>
+                            {item.teacher?.id === classId ? item.classroom?.classroom_number : item.classroom2?.classroom_number }
+                        </Link>
                     </div>
                 </div>
 

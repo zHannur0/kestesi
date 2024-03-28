@@ -7,6 +7,7 @@ import {en} from "@/locales/en";
 import {useAppDispatch} from "@/hooks/useAppDispatch";
 import {useTypedSelector} from "@/hooks/useTypedSelector";
 import {getClassroomThunk} from "@/store/thunks/school.thunk";
+import Link from "next/link";
 
 interface IProps {
     item: ISchedule;
@@ -18,6 +19,7 @@ interface IProps {
 const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
     const router = useRouter();
     const classId = Number(router.query.scheduleId);
+    const id = Number(router.query.id);
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -41,9 +43,13 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
         return initials;
     };
 
+
     function removeSecondOfTime(time?: string): string {
-        const splitTime: string[] = time?.split(":") as string[];
-        const removeSeconds: string = splitTime?.slice(0, 2).join(":");
+        if (!time) {
+            return "";
+        }
+        const splitTime: string[] = time.split(":");
+        const removeSeconds: string = splitTime.slice(0, 2).join(":");
         return removeSeconds;
     }
 
@@ -130,11 +136,15 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
                         "flex justify-between text-[#524FA2] text-[18px] leading-[26%] font-bold "
                     }
                 >
-                    <div className={""}>{item.classroom?.id === classId ? item.teacher?.full_name : item.teacher2?.full_name}
-                    </div>
-                    <div className={""}>
-                        {item.classl?.class_name}
-                    </div>
+                    <Link href={`/school/${id}/schedule/teacher/${item.classroom?.id === classId ? item.teacher?.id : item.teacher2?.id}`}>
+                        <div className={""}>{item.classroom?.id === classId ? item.teacher?.full_name : item.teacher2?.full_name}
+                        </div>
+                    </Link>
+                    <Link href={`/school/${id}/schedule/class/${item.classl?.id}`}>
+                        <div className={""}>
+                            {item.classl?.class_name}
+                        </div>
+                    </Link>
                 </div>
 
             </div>
