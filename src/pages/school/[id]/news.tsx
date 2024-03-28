@@ -51,6 +51,7 @@ const NewsPage = () => {
       link={currNews ? t.news.toTheNewsList : t.news.back}
       handleClick={handleBack}
       page={`/school/${id}/news`}
+      bg={currNews ? "bg3" : "bg2"}
     >
       {currNews ? (
         <NewsBlock news={news} currNews={currNews} handleClick={handleClick} />

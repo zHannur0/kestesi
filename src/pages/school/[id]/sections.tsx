@@ -29,7 +29,7 @@ const SectionsPage = () => {
   };
 
   return (
-    <MainLayout isMain={false} link={t.sections.toTheMainPage} handleClick={handleBack} page={`/school/${id}/map`}>
+    <MainLayout isMain={false} link={t.sections.toTheMainPage} handleClick={handleBack} page={`/school/${id}/map`} bg={"bg2"}>
       <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
           {t.sections.clubsAndSections}
       </h1>

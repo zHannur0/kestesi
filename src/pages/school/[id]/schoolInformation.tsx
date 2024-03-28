@@ -171,7 +171,7 @@ const SchoolInformationPage = () => {
   return (
     <div
       className={`w-[1920px] relative h-[1080px] bg-cover bg-no-repeat px-[100px] pt-[30px] ${oswald.variable} font-sans`}
-      style={{ background: "url('/images/bg.svg')" }}
+      style={{ background: "url('/images/bg2.svg')" }}
       ref={bigRef}
     >
       {bgHeader ? (

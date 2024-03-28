@@ -48,7 +48,7 @@ const MainPage = () => {
   },[school, router.locale])
 
   return (
-    <MainLayout isMain={true}>
+    <MainLayout isMain={true} bg={"bg"}>
       <div className={"flex gap-[30px]"}>
         <div
             className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center pr-[20px] pl-[50px]">

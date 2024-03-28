@@ -20,7 +20,7 @@ const MenuPage = () => {
   };
 
   return (
-    <MainLayout isMain={false} link={t.menu.toTheMainPage} handleClick={handleBack} page={`/school/${id}/menu`}>
+    <MainLayout isMain={false} link={t.menu.toTheMainPage} handleClick={handleBack} page={`/school/${id}/menu`} bg={"bg2"}>
       <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
         {t.menu.name}
       </h1>

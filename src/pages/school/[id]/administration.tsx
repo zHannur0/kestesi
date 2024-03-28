@@ -28,7 +28,7 @@ const Administration = () => {
         router.push(`/school/${id}/schoolInformation`);
     };
     return (
-        <MainLayout isMain={false} link={t.administration.toSchoolPassport} handleClick={handleBack} page={`/school/${id}/administration`}>
+        <MainLayout isMain={false} link={t.administration.toSchoolPassport} handleClick={handleBack} page={`/school/${id}/administration`} bg={"bg3"}>
             <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
                 {t.administration.administration}
             </h1>

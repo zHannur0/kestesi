@@ -93,6 +93,7 @@ const ScheduleTabsPage = () => {
           : t.schedule.toTheMainPage
       }
       page={`/school/${id}/scheduleTabs`}
+      bg={curr ? "bg3" : "bg2"}
     >
       <>
         <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">

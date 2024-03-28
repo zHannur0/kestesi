@@ -69,7 +69,7 @@ const SchoolMapPage = () => {
   };
 
   return (
-    <MainLayout handleClick={handleBack} isMain={false} link={t.map.toTheMainPage} page={`/school/${id}/map`}>
+    <MainLayout handleClick={handleBack} isMain={false} link={t.map.toTheMainPage} page={`/school/${id}/map`} bg={"bg2"}>
       <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px]">
           {t.map.schoolMap}
       </h1>

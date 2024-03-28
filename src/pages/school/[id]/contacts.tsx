@@ -48,7 +48,7 @@ const Contacts = () => {
     };
 
     return (
-        <MainLayout isMain={false} link={t.contacts.toSchoolPassport} handleClick={handleBack} page={`/school/${id}/contacts`}>
+        <MainLayout isMain={false} link={t.contacts.toSchoolPassport} handleClick={handleBack} page={`/school/${id}/contacts`} bg={"bg3"}>
             <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
                 {t.contacts.contacts}
             </h1>

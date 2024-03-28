@@ -103,7 +103,7 @@ const ProudOfSchool = () => {
         router.push(`/school/${id}/main`);
     };
     return (
-        <MainLayout isMain={false} link={t.proud.toTheMainPage} handleClick={handleBack} page={`/school/${id}/proudOfSchool/${proudId}`}>
+        <MainLayout isMain={false} link={t.proud.toTheMainPage} handleClick={handleBack} page={`/school/${id}/proudOfSchool/${proudId}`} bg={"bg2"}>
             <h1 className="text-[#211F23] text-[36px] font-bold leading-[80%] mb-[30px]">
                 {t.proud.schoolPride}
             </h1>
