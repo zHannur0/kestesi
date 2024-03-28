@@ -59,6 +59,7 @@ export const en = {
         back: "back",
         toTheMainPage: "to the main page",
         toChooseClass: "to choose class"
+
     },
     sections: {
 
