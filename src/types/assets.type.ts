@@ -337,3 +337,10 @@ export interface ISchoolSocialMedia {
   school?: number;
   qr_code?:string;
 }
+
+export interface ISchoolPhotos {
+  id?: number;
+  slider_name?: string;
+  slider_photo?: string;
+  school?: number;
+}

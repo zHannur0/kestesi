@@ -46,7 +46,6 @@ const Contacts = () => {
     const handleBack = () => {
         router.push(`/school/${id}/schoolInformation`);
     };
-    console.log(socialMedia)
 
     return (
         <MainLayout isMain={false} link={t.contacts.toSchoolPassport} handleClick={handleBack} page={`/school/${id}/contacts`}>

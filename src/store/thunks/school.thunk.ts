@@ -117,3 +117,7 @@ export const getSocialMediaThunk = createAsyncThunk(
     "getSocialMediaThunk",
     async (id?: number) => await allApi.getSocialMedia(id),
 );
+export const getPhotosThunk = createAsyncThunk(
+    "getPhotosThunk",
+    async (id?: number) => await allApi.getPhotos(id),
+);

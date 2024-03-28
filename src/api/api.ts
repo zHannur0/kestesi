@@ -103,4 +103,7 @@ export const allApi = {
   async getSocialMedia(id?: number): Promise<ISchoolSocialMedia[]> {
     return await instance.get(`/admins/api/School_SocialMediaApi/?school=${id}`);
   },
+  async getPhotos(id?: number): Promise<ISchoolSocialMedia[]> {
+    return await instance.get(`/admins/api/slider/?school=${id}`);
+  },
 };

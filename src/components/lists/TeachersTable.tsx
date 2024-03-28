@@ -66,7 +66,7 @@ const TeachersTable: FC<TeachersTableProps> = ({
       <div
         className={`px-[50px] py-[30px] bg-white rounded-[40px] flex flex-col items-start gap-5 w-[100%] max-h-[910px]`}
       >
-        <div className={"flex gap-[10px]"}>
+        <div className={"flex gap-[10px] w-[100%]"}>
           <div onClick={() => setInputValue("all")}
               className={"px-[35px] py-[14px] flex justify-center items-center border-2 rounded-[20px] text-2xl font-bold leading-normal cursor-pointer"}
                style={{
@@ -78,7 +78,7 @@ const TeachersTable: FC<TeachersTableProps> = ({
             {t.teachers.all}
           </div>
           {
-            filterValues.map((item, index) => (
+            filterValues.sort((a,b) => a.localeCompare(b)).map((item, index) => (
                 <div key={index}
                     className={"w-[60px] h-[65px] flex justify-center items-center border-2 rounded-[20px] text-2xl font-bold leading-normal cursor-pointer"}
                     style={{

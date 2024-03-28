@@ -190,7 +190,7 @@ const SchoolInformationPage = () => {
           }
         >
           <img
-            src=""
+            src="/images/defMap.png"
             alt=""
             className={"w-[341px] h-[365px] rounded-t-[40px]"}
           />

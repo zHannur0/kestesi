@@ -11,7 +11,7 @@ import {
   ISchoolAtest,
   ISchoolDirector,
   ISchoolOlimp,
-  ISchoolOner,
+  ISchoolOner, ISchoolPhotos,
   ISchoolSocialMedia,
   ISchoolSport,
   News,
@@ -47,6 +47,7 @@ export interface SchoolInfo {
   director: ISchoolDirector[];
   administration: ISchoolAdmin[];
   socialMedia: ISchoolSocialMedia[];
+  photos: ISchoolPhotos[];
 }
 
 export const initialStateSchoolInfo: SchoolInfo = {
@@ -75,4 +76,5 @@ export const initialStateSchoolInfo: SchoolInfo = {
   director: [],
   administration: [],
   socialMedia:[],
+  photos:[]
 };

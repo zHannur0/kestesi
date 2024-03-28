@@ -10,7 +10,7 @@ import {
     getDopScheduleThunk, getGoldThunk,
     getMapThunk,
     getMenuThunk,
-    getNewsThunk, getOlympiadThunk, getRedThunk,
+    getNewsThunk, getOlympiadThunk, getPhotosThunk, getRedThunk,
     getScheduleThunk,
     getSchoolIdThunk,
     getSchoolPassportThunk,
@@ -32,7 +32,7 @@ import {
     ISchoolAtest,
     ISchoolDirector,
     ISchoolOlimp,
-    ISchoolOner,
+    ISchoolOner, ISchoolPhotos,
     ISchoolSocialMedia,
     ISchoolSport,
     News,
@@ -310,6 +310,17 @@ export const schoolSlice = createSlice({
                 return {
                     ...state,
                     socialMedia: action.payload,
+                };
+            }
+            return state;
+        },
+    ).addCase(
+        getPhotosThunk.fulfilled,
+        (state, action: PayloadAction<ISchoolPhotos[]>) => {
+            if (action.payload) {
+                return {
+                    ...state,
+                    photos: action.payload,
                 };
             }
             return state;
