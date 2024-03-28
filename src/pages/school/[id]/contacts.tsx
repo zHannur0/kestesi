@@ -7,10 +7,19 @@ import {getAdministrationThunk, getDirectorThunk, getNewsThunk, getSocialMediaTh
 import ContactBlock from "@/components/blocks/ContactsBlock";
 import {ISchoolSocialMedia} from "@/types/assets.type";
 import QrBlock from "@/components/blocks/QrBlock";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 const Contacts = () => {
     const router = useRouter();
     const id = Number(router.query.id);
+    const translations: any= {
+        kz: kz,
+        ru: ru,
+        en: en,
+    };
+    const t = translations[router.locale || "kz"] || en;
     const dispatch = useAppDispatch();
     const director = useTypedSelector((state) => state.schoolInfo.director);
     const socialMedia = useTypedSelector((state) => state.schoolInfo.socialMedia);
@@ -35,41 +44,38 @@ const Contacts = () => {
         }
     }, [socialMedia]);
     const handleBack = () => {
-        router.push(`/school/${id}/main`);
+        router.push(`/school/${id}/schoolInformation`);
     };
     console.log(socialMedia)
 
     return (
-        <MainLayout isMain={false} link={"на главную"} handleClick={handleBack}>
+        <MainLayout isMain={false} link={t.contacts.toSchoolPassport} handleClick={handleBack} page={`/school/${id}/contacts`}>
             <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
-                Контакты
+                {t.contacts.contacts}
             </h1>
             <div className={"bg-white py-[40px] px-[60px] gap-[60px] flex flex-col w-full min-h-[860px]"}>
                 <div className={"flex flex-col gap-[30px]"}>
                     <div className={"text-[30px] font-bold leading-[80%]"}>
-                        Способы связи
+                        {t.contacts.waysToConnect}
                     </div>
                     <div className={"flex gap-[20px]"}>
                         {
-                            director?.[0]?.phone_number &&
-                            <ContactBlock img={"/images/phoneContact.svg"} type={"Приемная:"}
+                            <ContactBlock img={"/images/phoneContact.svg"} type={`${t.contacts.receptionPhones}:`}
                                           content={director?.[0]?.phone_number}/>
                         }
                         {
-                            director?.[0]?.email &&
-                            <ContactBlock img={"/images/emailContact.svg"} type={"Электронная почта:"}
+                            <ContactBlock img={"/images/emailContact.svg"} type={`${t.contacts.emailAddress}:`}
                                           content={director?.[0]?.email}/>
                         }
                         {
-                            director?.[0]?.phone_number &&
-                            <ContactBlock img={"/images/phoneContact.svg"} type={"Сайт:"}
-                                          content={director?.[0]?.phone_number}/>
+                            <ContactBlock img={"/images/siteContact.svg"} type={`${t.contacts.website}:`}
+                                          content={site?.account_name}/>
                         }
                     </div>
                 </div>
                 <div className={"flex flex-col gap-[30px]"}>
                     <div className={"text-[30px] font-bold leading-[80%]"}>
-                        Социальные сети
+                        {t.contacts.socialNetworks}
                     </div>
                     <div className={"flex gap-[20px]"}>
                         {

@@ -20,7 +20,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
       <div className={" h-[100%] flex flex-col gap-[20px] w-[100%]"}>
         <div
           className={
-            "text-[#211F23] text-2xl leading-[85%] font-bold tracking-[1.44px]"
+            "text-[#211F23] text-2xl leading-[85%] font-bold"
           }
         >
           {item.food_name}

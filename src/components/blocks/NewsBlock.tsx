@@ -1,6 +1,10 @@
 import { News } from "@/types/assets.type";
 import { FC, useEffect, useState } from "react";
 import QrComponent from "@/components/QrComponent";
+import {useRouter} from "next/router";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 interface IProps {
   news?: News[];
@@ -11,6 +15,13 @@ interface IProps {
 const NewsBlock: FC<IProps> = ({ news, currNews, handleClick }) => {
   const [prev, setPrev] = useState<News>();
   const [curr, setCurr] = useState<News>();
+  const router = useRouter();
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   useEffect(() => {
     if (news && currNews) {
       setCurr(news[currNews - 1]);
@@ -29,7 +40,7 @@ const NewsBlock: FC<IProps> = ({ news, currNews, handleClick }) => {
           className="w-[341px] h-[575px] px-[30px] pt-[50px] cursor-pointer pb-16 bg-white rounded-[40px] flex-col justify-start items-start gap-[30px] flex"
         >
           <div className="text-[#211F23] text-[30px] font-normal leading-[28%]">
-            Предыдущая новость
+            {t.news.prev}
           </div>
           <div className={"flex flex-col gap-[20px]"}>
             <img

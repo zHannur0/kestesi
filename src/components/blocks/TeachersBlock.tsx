@@ -3,44 +3,61 @@ import { Teachers } from "@/types/assets.type";
 import TeachersCard from "@/components/cards/TeachersCard";
 import Button from "@/components/ui/Button";
 import QrComponent from "@/components/QrComponent";
+import {useRouter} from "next/router";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
+import Link from "next/link";
 
 interface TeachersTableProps {
   teacher?: Teachers;
 }
 
 const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
+  const router = useRouter();
+  const id = Number(router.query.id);
+
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   return (
     <div className={`w-full flex gap-[20px]`}>
       <div
-        className={`w-[341px] h-[575px] flex flex-col items-center bg-white rounded-[40px] gap-[20px] pt-[30px]`}
+        className={`w-[341px] h-[575px] flex flex-col items-center justify-between bg-white rounded-[40px] py-[30px]`}
       >
         <img
           src={teacher?.photo3x4 ? teacher?.photo3x4 : "/images/user.svg"}
           alt="teacher"
           className={`w-[280px] h-[280px] max-h-[280px] rounded-full`}
         />
-        <div className={`flex flex-col gap-[20px] items-center text-center`}>
+        <div className={`flex flex-col gap-[20px] text-left`}>
           <div className={`text-neutral-800 text-2xl font-bold leading-[100%]`}>
             {teacher?.pedagog !== "Null" && teacher?.pedagog
               ? pedagog[teacher?.pedagog]
               : "Педагог"}
           </div>
-          <p className="text-zinc-500 text-2xl font-normal leading-[143.3%]">
+          <p className="text-zinc-500 text-2xl leading-[143.3%]">
             {teacher?.subject !== "Null" && teacher?.subject
               ? teacher?.subject
               : "Учитель"}{" "}
           </p>
         </div>
-        <Button width={280} height={64}>
-          <div className="text-indigo-800 text-2xl font-medium">Расписание</div>
-        </Button>
+        <Link href={`/school/${id}/schedule/teacher/${teacher?.id}`}>
+          <Button width={280} height={64}>
+            <div className="text-indigo-800 text-2xl font-medium">{t.teachers.schedule}</div>
+          </Button>
+        </Link>
+
       </div>
       <div
-        className={`p-[50px] flex flex-col items-start gap-[50px] bg-white w-[998px] h-[910px] rounded-[40px] overflow-auto scrollbar-hide `}
+        className={`p-[50px] flex flex-col items-start gap-[50px] bg-white w-[998px] max-h-[910px] rounded-[40px] overflow-auto scrollbar-hide `}
       >
         <div className={`flex flex-col gap-[20px] w-full`}>
-          <h1 className={`text-pink-600 text-3xl font-bold leading-[8.40px]`}>
-            Опыт работы
+          <h1 className={`text-[#211F23] text-3xl font-bold leading-[8.40px]`}>
+            {t.teachers.workExperience}
           </h1>
           {teacher?.job_history?.map((item, index) => (
             <div
@@ -52,7 +69,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
               >
                 {item.start_date +
                   "-" +
-                  (item.end_date ? item.end_date : "До настоящего времени")}
+                  (item.end_date ? item.end_date : t.teachers.today)}
               </h1>
               <p
                 className={`text-neutral-800 text-lg font-medium leading-none`}
@@ -63,8 +80,8 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
           ))}
         </div>
         <div className={`flex flex-col gap-[20px]`}>
-          <h1 className={`text-pink-600 text-3xl font-bold leading-[8.40px]`}>
-            Специальность
+          <h1 className={`text-[#211F23] text-3xl font-bold leading-[8.40px]`}>
+            {t.teachers.speciality}
           </h1>
           {teacher?.speciality_history?.map((item, index) => (
             <div
@@ -74,15 +91,15 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
               <h1
                 className={`text-pink-600 text-2xl font-bold leading-tight tracking-wider`}
               >
-                {item.end_date ? item.end_date : "До настоящего времени"}
+                {item.end_date ? item.end_date : t.teachers.today}
               </h1>
               <div
                 className={`text-neutral-800 text-lg font-medium leading-none flex flex-col`}
               >
-                <div>{"Год окончания: " + item.end_date + " году"}</div>
-                <div>{"Учебное заведение - " + item.speciality_university}</div>
-                <div>{"Уровень - " + educationLevels[item.degree ? item.degree : ""] }</div>
-                <div>{"Профессия: " + item.mamandygy}</div>
+                <div>{t.teachers.yearOfGraduation + ": " + item.end_date + " году"}</div>
+                <div>{t.teachers.educationalInstitution + " - " + item.speciality_university}</div>
+                <div>{t.teachers.level + " - " + educationLevels[item.degree ? item.degree : ""] }</div>
+                <div>{t.teachers.profession +": " + item.mamandygy}</div>
               </div>
             </div>
           ))}

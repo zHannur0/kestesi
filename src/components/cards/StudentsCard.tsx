@@ -15,7 +15,7 @@ const TeachersCard: FC<StudentCardProps> = ({
                                              }) => {
     return (
         <div
-            className={`flex py-[20px] w-[520px] h-[200px] px-[30px] gap-[20px] rounded-[30px] border-2 border-purple-800`}
+            className={`flex py-[20px] w-[520px] h-[200px] px-[30px] gap-[20px] rounded-[30px] bg-[#F8F8FB]`}
         >
             <img
                 className={`w-40 h-40 min-w-40 rounded-[80px]`}

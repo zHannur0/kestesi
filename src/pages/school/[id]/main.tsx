@@ -10,9 +10,20 @@ import {
   getSchoolThunk,
 } from "@/store/thunks/school.thunk";
 import QrComponent from "@/components/QrComponent";
+import { en } from "@/locales/en";
+import { kz } from "@/locales/kz";
+import { ru } from "@/locales/ru";
+
 const MainPage = () => {
   const router = useRouter();
   const id = Number(router.query.id);
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
+
   const dispatch = useAppDispatch();
   const school = useTypedSelector((state) => state.schoolInfo.schoolId);
   const schoolPassport = useTypedSelector(
@@ -30,7 +41,7 @@ const MainPage = () => {
     <MainLayout isMain={true}>
       <div className={"flex gap-[30px]"}>
         <div
-            className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center px-[50px]">
+            className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center pr-[20px] pl-[50px]">
           <div className=" h-[100%] flex flex-col gap-[36px] py-[50px]">
             <div className="flex flex-col gap-[16px]">
               <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
@@ -54,8 +65,8 @@ const MainPage = () => {
               </div>
             </div>
             <Link href={`/school/${id}/schoolInformation`}>
-              <div className="text-center text-indigo-800 text-4xl font-bold">
-                О школе
+              <div className="text-center text-indigo-800 text-4xl font-bold border-2 border-[#5D49A0] rounded-[20px] w-[300px] h-[70px] flex leading-[20px]  justify-center items-center">
+                {t.main.aboutSchool}
               </div>
             </Link>
           </div>
@@ -78,7 +89,7 @@ const MainPage = () => {
           }}
       >
         <div className="h-[44px] text-white text-7xl font-bold leading-[30%] text-center">
-          Расписание
+          {t.main.schedule}
         </div>
       </div>
       <div className={"flex justify-between flex-wrap"}>
@@ -97,48 +108,58 @@ const MainPage = () => {
 };
 
 interface IType {
-  id?: number;
-  type?: string;
-  link?: string;
+  id: number;
+  type: string; // Русский
+  typeKz: string; // Казахский
+  typeEn: string; // Английский
+  link: string;
 }
 
 const sidebar: IType[] = [
   {
     id: 1,
     type: "Преподаватели",
+    typeKz: "Мұғалімдер",
+    typeEn: "Teachers",
     link: "teachers",
   },
-
   {
     id: 2,
     type: "Гордость школы",
+    typeKz: "Мектеп мақтанышы",
+    typeEn: "School Pride",
     link: "proudOfSchool/1",
   },
-
   {
     id: 3,
     type: "Новости",
+    typeKz: "Жаңалықтар",
+    typeEn: "News",
     link: "news",
   },
-
   {
     id: 4,
     type: "Кружки",
+    typeKz: "Үйірмелер",
+    typeEn: "Clubs",
     link: "sections",
   },
-
   {
     id: 5,
     type: "Меню",
+    typeKz: "Ас мәзірі",
+    typeEn: "Menu",
     link: "menu",
   },
-
   {
     id: 6,
     type: "Карта школы",
+    typeKz: "Мектеп картасы",
+    typeEn: "School Map",
     link: "map",
   },
 ];
+
 
 const cities = [
   {

@@ -1,5 +1,10 @@
 import { IDopSchedule, ISchedule } from "@/types/assets.type";
 import { FC, useEffect, useState } from "react";
+import {useRouter} from "next/router";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
+import Link from "next/link";
 
 interface IProps {
   item: ISchedule;
@@ -8,6 +13,14 @@ interface IProps {
 }
 
 const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
+  const router = useRouter();
+  const id = Number(router.query.id);
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   const getInitials = (fullName?: string) => {
     if (!fullName) return ""; // Return empty if fullName is falsy
 
@@ -79,7 +92,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
           {removeSecondOfTime(item.ring?.start_time)}
         </div>
         <div className={"text-white text-[18px] leading-[26%] font-normal"}>
-          {index + 1} урок
+          {index + 1 + " " + t.schedule.lesson}
         </div>
       </div>
       <div
@@ -90,7 +103,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
         <div className={"flex justify-between"}>
           <div
             className={
-              "text-[#211F23] text-2xl leading-[85%] font-bold tracking-[1.44px]"
+              "text-[#211F23] text-2xl leading-[85%] font-bold"
             }
           >
             {item.subject?.full_name}
@@ -105,7 +118,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
                   "text-right text-[18px] font-bold leading-[85%] text-[#ED008C]"
                 }
               >
-                идет сейчас
+                {t.schedule.atPresent}
               </div>
             )}
           </div>
@@ -118,8 +131,10 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
         >
           <div className={""}>{getInitials(item.teacher?.full_name)}</div>
           <div className={""}>
-            <span className={"text-[#7B7984]"}>Кабинет</span>{" "}
-            {item.classroom?.classroom_number}
+            <span className={"text-[#7B7984]"}>{t.schedule.cabinet}</span>{" "}
+            <Link href={`/school/${id}/schedule/classroom/${item.classroom?.id}`}>
+              {item.classroom?.classroom_number}
+            </Link>
           </div>
         </div>
         {item.teacher2 && item.classroom2 && (
@@ -135,7 +150,9 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
               <div className={""}>{getInitials(item.teacher2?.full_name)}</div>
               <div className={""}>
                 <span className={"text-[#7B7984]"}>Кабинет</span>{" "}
-                {item.classroom2?.classroom_number}
+                <Link href={`/school/${id}/schedule/classroom/${item.classroom2?.id}`}>
+                  {item.classroom2?.classroom_number}
+                </Link>
               </div>
             </div>
           </div>

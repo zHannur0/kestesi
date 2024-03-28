@@ -4,6 +4,9 @@ import { IClass } from "@/types/assets.type";
 import { number } from "prop-types";
 import ClassLetterTabs from "@/components/grids/ClassLetterTabs";
 import { useRouter } from "next/router";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 interface ScheduleProps {
   handleClick?: any;
@@ -21,6 +24,13 @@ const ScheduleClassTabs: FC<ScheduleProps> = ({
   selectedClassII,
   selectedClassIII,
 }) => {
+  const router = useRouter();
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   const [classNumbers, setClassNumbers] = useState<number[]>([]);
 
   useEffect(() => {
@@ -52,7 +62,7 @@ const ScheduleClassTabs: FC<ScheduleProps> = ({
                 {item}
               </div>
               <div className={"text-[36px] text-black font-bold leading-[30%]"}>
-                класс
+                {t.schedule.class}
               </div>
             </div>
           ))

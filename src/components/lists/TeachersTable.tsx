@@ -2,6 +2,10 @@ import {FC, useEffect, useState} from "react";
 import { Teachers } from "@/types/assets.type";
 import TeachersCard from "@/components/cards/TeachersCard";
 import Keyboard from "@/components/Keyboard";
+import {useRouter} from "next/router";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 interface TeachersTableProps {
   handleChooseTeacher?: any;
@@ -13,6 +17,13 @@ const TeachersTable: FC<TeachersTableProps> = ({
   handleChooseTeacher,
   teachers,
 }) => {
+  const router = useRouter();
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   const [isFocused, setIsFocused] = useState(true);
   const [inputValue, setInputValue] = useState<string>("all");
   const [filterValues, setFilterValues] = useState<string[] >([]);
@@ -64,7 +75,7 @@ const TeachersTable: FC<TeachersTableProps> = ({
                  borderColor: inputValue === "all" ? "#ED008C" : "#5D49A0",
                }}
           >
-            Все
+            {t.teachers.all}
           </div>
           {
             filterValues.map((item, index) => (

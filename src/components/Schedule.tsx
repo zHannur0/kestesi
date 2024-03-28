@@ -9,18 +9,42 @@ import {
 } from "@/store/thunks/school.thunk";
 import ScheduleCard from "@/components/cards/ScheduleCard";
 import { it } from "node:test";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 const Schedule = () => {
   const router = useRouter();
   const id = Number(router.query.id);
   const classId = Number(router.query.scheduleId);
+  const who = router.query.which;
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   const dispatch = useAppDispatch();
   const os = useTypedSelector((state) => state.schoolInfo.osSchedule);
   const dop = useTypedSelector((state) => state.schoolInfo.dopSchedule);
   const [day, setDay] = useState<number>(1);
   const [currSchedule, setCurrSchedule] = useState<ISchedule[]>([]);
   const [currDopSchedule, setCurrDopSchedule] = useState<IDopSchedule[]>([]);
-
+  const [weekDays, setWeekDays] = useState<any[]>();
+  useEffect(() => {
+    console.log()
+    const getLocalizedWeekdays =()=>{
+      return [
+        { id: 1, type: t.menu.Monday, short: t.menu.Mon },
+        { id: 2, type: t.menu.Tuesday, short: t.menu.Tue },
+        { id: 3, type: t.menu.Wednesday, short: t.menu.Wen },
+        { id: 4, type: t.menu.Thursday, short: t.menu.Thu },
+        { id: 5, type: t.menu.Friday, short: t.menu.Fri },
+        { id: 6, type: t.menu.Saturday, short: t.menu.Sat },
+      ];
+    }
+    setWeekDays(getLocalizedWeekdays);
+  }, [t]);
   useEffect(() => {
     id && dispatch(getScheduleThunk(id));
     id && dispatch(getDopScheduleThunk(id));
@@ -30,8 +54,14 @@ const Schedule = () => {
     if (os && dop) {
       let arr1 = os
         .filter(
-          (item) =>
-            Number(item.week_day) === day && item.classl?.id === classId,
+          (item) => {
+            if(who === "class")
+            return Number(item.week_day) === day && item.classl?.id === classId;
+            else if(who === "teacher")
+              return Number(item.week_day) === day && (item.teacher?.id === classId || item.teacher2?.id === classId );
+              else
+              return Number(item.week_day) === day && (item.classroom?.id === classId || item.classroom2?.id === classId );
+          },
         )
         .sort((a, b) => {
           const timeA = new Date(`2000-01-01 ${a.ring?.start_time}`);
@@ -62,7 +92,7 @@ const Schedule = () => {
 
   return (
     <div className={"flex gap-[20px]"}>
-      {weekdays.map((item) =>
+      {weekDays?.map((item) =>
         item.id !== day ? (
           <div
             key={item.id}
@@ -86,43 +116,5 @@ const Schedule = () => {
     </div>
   );
 };
-
-const weekdays = [
-  {
-    id: 1,
-    type: "Понедельник",
-    short: "Пн",
-  },
-
-  {
-    id: 2,
-    type: "Вторник",
-    short: "Вт",
-  },
-
-  {
-    id: 3,
-    type: "Среда",
-    short: "Ср",
-  },
-
-  {
-    id: 4,
-    type: "Четверг",
-    short: "Чт",
-  },
-
-  {
-    id: 5,
-    type: "Пятница",
-    short: "Пт",
-  },
-
-  {
-    id: 6,
-    type: "Суббота",
-    short: "Сб",
-  },
-];
 
 export default Schedule;

@@ -12,10 +12,19 @@ import {
 } from "@/store/thunks/school.thunk";
 import NewsList from "@/components/lists/NewsList";
 import NewsBlock from "@/components/blocks/NewsBlock";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 const NewsPage = () => {
   const router = useRouter();
   const id = Number(router.query.id);
   const dispatch = useAppDispatch();
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   const news = useTypedSelector((state) => state.schoolInfo.news);
   const [currNews, setCurrNews] = useState<number | null>();
   useEffect(() => {
@@ -34,18 +43,21 @@ const NewsPage = () => {
     setCurrNews(index);
   };
 
+
+
   return (
     <MainLayout
       isMain={false}
-      link={currNews ? "к списку новостей" : "на главную"}
+      link={currNews ? t.news.toTheNewsList : t.news.back}
       handleClick={handleBack}
+      page={`/school/${id}/news`}
     >
       {currNews ? (
         <NewsBlock news={news} currNews={currNews} handleClick={handleClick} />
       ) : (
         <div>
           <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
-            Новости
+            {t.news.news}
           </h1>
           <NewsList news={news} handleClick={handleClick} />
         </div>

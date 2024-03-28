@@ -11,6 +11,9 @@ import Header from "@/components/Layout/Header";
 import { SchoolPassport } from "@/types/assets.type";
 import HeaderWBg from "@/components/Layout/HeaderWBg";
 import QrComponent from "@/components/QrComponent";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -27,80 +30,95 @@ interface TableType {
   content?: string;
 }
 
+interface IType {
+  id?: number;
+  type?: string;
+  link?: string;
+}
+
 const SchoolInformationPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const id = Number(router.query.id);
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   const school = useTypedSelector((state) => state.schoolInfo.schoolPassport);
   const [sch, setSch] = useState<SchoolPassport>();
   const [aboutCount, setAboutCount] = useState<CountType[]>([]);
   const [tableTeacher, setTableTeacher] = useState<TableType[]>([]);
   useEffect(() => {
     id && dispatch(getSchoolPassportThunk(id));
+  }, [dispatch, id]);
+
+  useEffect(() => {
     if (school) {
       setSch(school[0]);
       let arr: CountType[] = [];
       arr.push({
-        title: "Общее количество учеников",
+        title: t.school.totalNumberOfStudents,
         count: school[0]?.number_of_students,
       });
       arr.push({
-        title: "Количество семей",
+        title: t.school.numberOfFamilies,
         count: school[0]?.amount_of_family,
       });
       arr.push({
-        title: "Количество мальчиков",
+        title: t.school.numberOfBoys,
         count: school[0]?.ul_sany,
       });
       arr.push({
-        title: "Количество родителей",
+        title: t.school.numberOfParents,
         count: school[0]?.amount_of_parents,
       });
       arr.push({
-        title: "Количество девочек",
+        title: t.school.numberOfGirls,
         count: school[0]?.kiz_sany,
       });
       setAboutCount(arr);
       let teacherArr: TableType[] = [];
       teacherArr.push({
-        title: "Педагог-мастер",
+        title: t.school.teacherMaster,
         content: String(school[0]?.pedagog_sheber || 0),
       });
       teacherArr.push({
-        title: "Педагог-исследователь",
+        title: t.school.teacherResearcher,
         content: String(school[0]?.pedagog_zertteushy || 0),
       });
       teacherArr.push({
-        title: "Педагог-эксперт",
+        title: t.school.teacherExpert,
         content: String(school[0]?.pedagog_sarapshy || 0),
       });
       teacherArr.push({
-        title: "Педагог-модератор",
+        title: t.school.teacherModerator,
         content: String(school[0]?.pedagog_moderator || 0),
       });
       teacherArr.push({
-        title: "Педагог",
+        title:  t.school.teacher,
         content: String(school[0]?.pedagog || 0),
       });
       teacherArr.push({
-        title: "Педагог-стажер",
+        title: t.school.teacherIntern,
         content: String(school[0]?.pedagog_stazher || 0),
       });
       teacherArr.push({
-        title: "Высшая категория",
+        title: t.school.highestCategory,
         content: String(school[0]?.pedagog_zhogary || 0),
       });
       teacherArr.push({
-        title: "I категория",
+        title: t.school.categoryI,
         content: String(school[0]?.pedagog_1sanat || 0),
       });
       teacherArr.push({
-        title: "II категория ",
+        title: t.school.categoryII,
         content: String(school[0]?.pedagog_2sanat || 0),
       });
       setTableTeacher(teacherArr);
     }
-  }, [dispatch, id, sch, school]);
+  }, [sch, school,t]);
   const handleBack = () => {
     router.push(`/school/${id}/main`);
   };
@@ -130,6 +148,26 @@ const SchoolInformationPage = () => {
       window.removeEventListener("wheel", handleWindowScroll);
     };
   }, []);
+
+  const [sideBar, setSideBar] = useState<IType[]>();
+  useEffect(() => {
+     setSideBar( [{
+           id: 1,
+           type: t.school.administration,
+           link: "administration",
+         },
+
+         {
+           id: 2,
+           type: t.school.contacts,
+           link: "contacts",
+         },
+         {
+           id: 3,
+           type: t.school.photoGallery,
+           link: "gallery",
+         }])
+  }, [t]);
   return (
     <div
       className={`w-[1920px] relative h-[1080px] bg-cover bg-no-repeat px-[100px] pt-[30px] ${oswald.variable} font-sans`}
@@ -137,10 +175,10 @@ const SchoolInformationPage = () => {
       ref={bigRef}
     >
       {bgHeader ? (
-        <HeaderWBg onClick={handleBack} isMain={false} toMain={"на главную"} />
+        <HeaderWBg onClick={handleBack} isMain={false} toMain={"на главную"} page={`/school/${id}/schoolInformation`}/>
       ) : (
         <div className={"w-[1720px] absolute z-40"}>
-          <Header onClick={handleBack} isMain={false} toMain={"на главную"} />
+          <Header onClick={handleBack} isMain={false} toMain={"на главную"} page={`/school/${id}/schoolInformation`}/>
         </div>
       )}
       <div
@@ -148,7 +186,7 @@ const SchoolInformationPage = () => {
       >
         <div
           className={
-            "flex flex-col w-[341px] h-[497px] gap-[30px] items-center bg-white text-2xl text-center pb-[50px] rounded-[40px]"
+            "flex flex-col w-[341px] gap-[30px] bg-white text-2xl pb-[50px] rounded-[40px]"
           }
         >
           <img
@@ -156,22 +194,25 @@ const SchoolInformationPage = () => {
             alt=""
             className={"w-[341px] h-[365px] rounded-t-[40px]"}
           />
-          <div className={"text-[#211F23] font-bold"}>
-            Адрес
+          <div className={"flex flex-col gap-[30px] px-[20px]"}>
+            <div className={"text-[#211F23] font-bold text-left"}>
+              {t.school.address}
+            </div>
+            <div className={"text-[#7B7984] font-medium text-left"}>
+              {sch?.school_address}
+            </div>
           </div>
-          <div className={"text-[#7B7984] font-medium"}>
-            {sch?.school_address}
-          </div>
+
         </div>
         <div className={"flex flex-col gap-[20px]"}>
-          {sidebar.map((item) => (
-            <Link
-              href={`/school/${router.query.id}/${item.link}`}
-              key={item.id}
+          {sideBar?.map((item) => (
+              <Link
+                  href={`/school/${router.query.id}/${item.link}`}
+                  key={item.id}
             >
               <div
                 className={
-                  "w-[341px] h-[64px] flex items-center justify-center text-center text-2xl font-medium leading-[20px] rounded-[20px] text-[#524FA2] border-2 border-[#5D49A0]"
+                  "w-[341px] h-[64px] flex items-center justify-center text-center text-2xl font-bold leading-[20px] rounded-[20px] text-[#524FA2] border-2 border-[#5D49A0]"
                 }
               >
                 {item.type}
@@ -209,7 +250,7 @@ const SchoolInformationPage = () => {
                   </div>
                   <div
                       className={
-                        "text-3xl font-semibold leading-[100%] text-[#ED008C]"
+                        "text-3xl font-bold leading-[100%] text-[#ED008C]"
                       }
                   >
                     {item.count ? item.count : "0"}
@@ -219,7 +260,7 @@ const SchoolInformationPage = () => {
           </div>
           <div className={"flex flex-col gap-[20px]"}>
             <div className={"text-2xl font-bold leading-[100%]"}>
-              Общая информация
+              {t.school.generalInformation}
             </div>
             <div
                 className={
@@ -230,33 +271,33 @@ const SchoolInformationPage = () => {
                 <tbody>
                 <tr className="border-b border-b-black ">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
-                    Язык обучения
+                    {t.school.languageOfInstruction}
                   </td>
-                  <td className="text-right text-[#211F23] font-medium pb-[14px] pt-[10px]">
+                  <td className="text-right text-[#211F23] font-bold pb-[14px] pt-[10px]">
                     {sch?.school_lang}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
-                    Статус
+                    {t.school.status}
                   </td>
-                  <td className="text-right text-[211F23] font-medium pb-[14px] pt-[10px]">
+                  <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
                     {sch?.status}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
-                    Вместимость
+                    {t.school.capacity}
                   </td>
-                  <td className="text-right text-[211F23] font-medium pb-[14px] pt-[10px]">
+                  <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
                     {sch?.vmestimost}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
-                    Фактическое количество обучающихся
+                    {t.school.actualNumberOfStudents}
                   </td>
-                  <td className="text-right text-[211F23] font-medium pb-[14px] pt-[10px]">
+                  <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
                     {sch?.number_of_students}
                   </td>
                 </tr>
@@ -266,7 +307,7 @@ const SchoolInformationPage = () => {
           </div>
           <div className={"flex flex-col gap-[20px]"}>
             <div className={"text-2xl font-bold leading-[100%]"}>
-              Распределение учеников по классам
+              {t.school.distributionOfStudentsByClass}
             </div>
             <div
                 className={
@@ -277,46 +318,46 @@ const SchoolInformationPage = () => {
                 <tbody>
                 <tr className="border-b border-b-black ">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
-                    Подготовительный класс
+                    {t.school.preparatoryClass}
                   </td>
-                  <td className="text-center text-[211F23] font-medium pb-[14px] pt-[10px]">
-                    {sch?.dayarlyk_class_number} класс-комплект
+                  <td className="text-center text-[211F23] font-bold pb-[14px] pt-[10px]">
+                    {sch?.dayarlyk_class_number + " " + t.school.set}
                   </td>
-                  <td className="text-right text-[211F23] font-medium pb-[14px] pt-[10px]">
-                    {sch?.dayarlyk_student_number} учеников
-                  </td>
-                </tr>
-                <tr className="border-b border-b-black">
-                  <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
-                    1-4 классы
-                  </td>
-                  <td className="text-center text-[211F23] font-medium pb-[14px] pt-[10px]">
-                    {sch?.number_of_1_4_classes} класс-комплект
-                  </td>
-                  <td className="text-right text-[211F23] font-medium pb-[14px] pt-[10px]">
-                    {sch?.number_of_1_4_students} учеников
+                  <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
+                    {sch?.dayarlyk_student_number  + " " + t.school.students}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
-                    5-9 классы
+                    {t.school.classes1To4}
                   </td>
-                  <td className="text-center text-[211F23] font-medium pb-[14px] pt-[10px]">
-                    {sch?.number_of_5_9_classes} класс-комплект
+                  <td className="text-center text-[211F23] font-bold pb-[14px] pt-[10px]">
+                    {sch?.number_of_1_4_classes + " " + t.school.set}
                   </td>
-                  <td className="text-right text-[211F23] font-medium pb-[14px] pt-[10px]">
-                    {sch?.number_of_5_9_students} учеников
+                  <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
+                    {sch?.number_of_1_4_students  + " " + t.school.students}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
-                    10-11 классы
+                    {t.school.classes5To9}
                   </td>
-                  <td className="text-center text-[211F23] font-medium pb-[14px] pt-[10px]">
-                    {sch?.number_of_10_11_classes} класс-комплект
+                  <td className="text-center text-[211F23] font-bold pb-[14px] pt-[10px]">
+                    {sch?.number_of_5_9_classes + " " + t.school.set}
                   </td>
-                  <td className="text-right text-[211F23] font-medium pb-[14px] pt-[10px]">
-                    {sch?.number_of_10_11_students} учеников
+                  <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
+                    {sch?.number_of_5_9_students  + " " + t.school.students}
+                  </td>
+                </tr>
+                <tr className="border-b border-b-black">
+                  <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
+                    {t.school.classes10To11}
+                  </td>
+                  <td className="text-center text-[211F23] font-bold pb-[14px] pt-[10px]">
+                    {sch?.number_of_10_11_classes + " " + t.school.set}
+                  </td>
+                  <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
+                    {sch?.number_of_10_11_students  + " " + t.school.students}
                   </td>
                 </tr>
                 </tbody>
@@ -325,7 +366,7 @@ const SchoolInformationPage = () => {
           </div>
           <div className={"flex flex-col gap-[20px]"}>
             <div className={"text-2xl font-bold leading-[100%]"}>
-              Распределение преподавателей по категориям
+              {t.school.distributionOfTeachersByCategory}
             </div>
             <div
                 className={
@@ -340,8 +381,8 @@ const SchoolInformationPage = () => {
                         <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
                           {item.title}
                         </td>
-                        <td className="text-right text-[211F23] font-medium pb-[14px] pt-[10px]">
-                          {item.content} специалист
+                        <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
+                          {item.content + " " + t.school.specialist}
                         </td>
                       </tr>
                   ))
@@ -364,11 +405,7 @@ const SchoolInformationPage = () => {
   );
 };
 
-interface IType {
-  id?: number;
-  type?: string;
-  link?: string;
-}
+
 
 const sidebar: IType[] = [
   {

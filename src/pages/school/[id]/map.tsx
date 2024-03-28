@@ -14,10 +14,19 @@ import {
   getTeacherThunk,
 } from "@/store/thunks/school.thunk";
 import {IMap} from "@/types/assets.type";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 const SchoolMapPage = () => {
   const router = useRouter();
   const id = Number(router.query.id);
+    const translations: any= {
+        kz: kz,
+        ru: ru,
+        en: en,
+    };
+    const t = translations[router.locale || "kz"] || en;
   const dispatch = useAppDispatch();
   const map = useTypedSelector((state) => state.schoolInfo.map);
   const classrooms = useTypedSelector((state) => state.schoolInfo.classrooms);
@@ -27,6 +36,7 @@ const SchoolMapPage = () => {
   }, [dispatch, id]);
   const [curr, setCurr] = useState<string>("flat1");
   const [currLink, setCurrLink] = useState<string>();
+  const [filter,setFilter] = useState<number>();
 
     useEffect(() => {
         handleClick(curr);
@@ -35,29 +45,33 @@ const SchoolMapPage = () => {
         if(flat === "flat1") {
             setCurrLink(map?.[0]?.flat1);
             setCurr("flat1");
+            setFilter(1);
         }else if(flat === "flat2") {
             setCurrLink(map?.[0]?.flat2);
             setCurr("flat2");
+            setFilter(2);
         }else if(flat === "flat3") {
             setCurrLink(map?.[0]?.flat3);
+            setFilter(3);
             setCurr("flat3");
         }else if(flat === "flat4") {
             setCurrLink(map?.[0]?.flat4);
+            setFilter(4);
             setCurr("flat4");
         }else if(flat === "flat5") {
             setCurrLink(map?.[0]?.flat5);
+            setFilter(5);
             setCurr("flat5");
         }
     };
-
   const handleBack = () => {
     router.push(`/school/${id}/main`);
   };
 
   return (
-    <MainLayout handleClick={handleBack} isMain={false} link={"на главную"}>
+    <MainLayout handleClick={handleBack} isMain={false} link={t.map.toTheMainPage} page={`/school/${id}/map`}>
       <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px]">
-        Карта школы
+          {t.map.schoolMap}
       </h1>
         <div className={"flex gap-[20px]"}>
             <div
@@ -72,7 +86,7 @@ const SchoolMapPage = () => {
                         }}
                         onClick={() => handleClick("flat1")}
                     >
-                        1 этаж
+                        1 {t.map.floor}
                     </div>
                     {
                         map?.[0]?.flat2 && (
@@ -85,7 +99,7 @@ const SchoolMapPage = () => {
                                 }}
                                 onClick={() => handleClick("flat2")}
                             >
-                                2 этаж
+                                2 {t.map.floor}
                             </div>
                         )
                     }
@@ -100,7 +114,7 @@ const SchoolMapPage = () => {
                                 }}
                                 onClick={() => handleClick("flat3")}
                             >
-                                3 этаж
+                                3 {t.map.floor}
                             </div>
                         )
                     }
@@ -115,7 +129,7 @@ const SchoolMapPage = () => {
                                 }}
                                 onClick={() => handleClick("flat4")}
                             >
-                                4 этаж
+                                4 {t.map.floor}
                             </div>
                         )
                     }
@@ -130,7 +144,7 @@ const SchoolMapPage = () => {
                                 }}
                                 onClick={() => handleClick("flat5")}
                             >
-                                5 этаж
+                                5 {t.map.floor}
                             </div>
                         )
                     }
@@ -138,7 +152,7 @@ const SchoolMapPage = () => {
                 <img src={currLink ? currLink : "/images/map.svg"} alt="" className={"w-[100%] h-[100%]"}/>
             </div>
             <div className={"flex flex-col gap-[10px] h-[890px] overflow-auto  w-[500px] scrollbar-hide rounded-xl"}>
-                {classrooms && classrooms.slice().sort((a, b) => {
+                {classrooms && classrooms.filter((item)=>item.flat===filter).sort((a, b) => {
                     if (a.classroom_number && b.classroom_number) {
                         return a.classroom_number - b.classroom_number;
                     }

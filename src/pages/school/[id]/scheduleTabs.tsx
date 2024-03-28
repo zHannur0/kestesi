@@ -7,10 +7,19 @@ import MainLayout from "@/layouts/MainLayout";
 
 import ScheduleClassTabs from "@/components/grids/ScheduleClassTabs";
 import { IClass } from "@/types/assets.type";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 const ScheduleTabsPage = () => {
   const router = useRouter();
   const id = Number(router.query.id);
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   const dispatch = useAppDispatch();
   const classl = useTypedSelector((state) => state.schoolInfo.class);
   const [selectedClassI, setSelectedClassI] = useState<IClass[] | null>(null);
@@ -76,13 +85,14 @@ const ScheduleTabsPage = () => {
       isMain={false}
       link={
         selectedClassI || selectedClassII || selectedClassIII
-          ? "к выбору класса"
-          : "на главную"
+          ? t.schedule.toChooseClass
+          : t.schedule.toTheMainPage
       }
+      page={`/school/${id}/scheduleTabs`}
     >
       <>
         <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
-          {"Расписание уроков и дополнительных занятий"}
+          {t.schedule.name}
         </h1>
       </>
       <div

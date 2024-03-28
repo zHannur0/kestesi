@@ -11,14 +11,24 @@ import {
 import ScheduleCard from "@/components/cards/ScheduleCard";
 import { it } from "node:test";
 import MenuCard from "@/components/cards/MenuCard";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 const MenuBlocks = () => {
   const router = useRouter();
   const id = Number(router.query.id);
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   const dispatch = useAppDispatch();
   const [day, setDay] = useState<number>(1);
   const menus = useTypedSelector((state) => state.schoolInfo.menus);
   const [currMenu, setCurrMenu] = useState<IMenu[]>([]);
+  const [weekDays, setWeekDays] = useState<any[]>();
   useEffect(() => {
     id && dispatch(getMenuThunk(id));
   }, [dispatch, id]);
@@ -33,9 +43,24 @@ const MenuBlocks = () => {
     setDay(time.getDay());
   }, []);
 
+  useEffect(() => {
+    console.log()
+    const getLocalizedWeekdays =()=>{
+      return [
+        { id: 1, type: t.menu.Monday, short: t.menu.Mon },
+        { id: 2, type: t.menu.Tuesday, short: t.menu.Tue },
+        { id: 3, type: t.menu.Wednesday, short: t.menu.Wen },
+        { id: 4, type: t.menu.Thursday, short: t.menu.Thu },
+        { id: 5, type: t.menu.Friday, short: t.menu.Fri },
+        { id: 6, type: t.menu.Saturday, short: t.menu.Sat },
+      ];
+    }
+    setWeekDays(getLocalizedWeekdays);
+  }, [t]);
+
   return (
     <div className={"flex gap-[20px]"}>
-      {weekdays.map((item) =>
+      {weekDays?.map((item) =>
         item.id !== day ? (
           <div
             key={item.id}
@@ -59,42 +84,42 @@ const MenuBlocks = () => {
   );
 };
 
-const weekdays = [
-  {
-    id: 1,
-    type: "Понедельник",
-    short: "Пн",
-  },
-
-  {
-    id: 2,
-    type: "Вторник",
-    short: "Вт",
-  },
-
-  {
-    id: 3,
-    type: "Среда",
-    short: "Ср",
-  },
-
-  {
-    id: 4,
-    type: "Четверг",
-    short: "Чт",
-  },
-
-  {
-    id: 5,
-    type: "Пятница",
-    short: "Пт",
-  },
-
-  {
-    id: 6,
-    type: "Суббота",
-    short: "Сб",
-  },
-];
+// const weekdays = [
+//   {
+//     id: 1,
+//     type: "Понедельник",
+//     short: "Пн",
+//   },
+//
+//   {
+//     id: 2,
+//     type: "Вторник",
+//     short: "Вт",
+//   },
+//
+//   {
+//     id: 3,
+//     type: "Среда",
+//     short: "Ср",
+//   },
+//
+//   {
+//     id: 4,
+//     type: "Четверг",
+//     short: "Чт",
+//   },
+//
+//   {
+//     id: 5,
+//     type: "Пятница",
+//     short: "Пт",
+//   },
+//
+//   {
+//     id: 6,
+//     type: "Суббота",
+//     short: "Сб",
+//   },
+// ];
 
 export default MenuBlocks;

@@ -39,10 +39,10 @@ const SectionCard: FC<IProps> = ({ section }) => {
             <div
               key={index}
               className={
-                "py-[19px] px-[23px] flex justify-center items-center leading-[23px] tracking-[0.5px] text-[16px] bg-[#F9F8FD]"
+                "py-[19px] px-[23px] flex rounded-[20px] justify-center items-center leading-[23px] tracking-[0.5px] text-[16px] bg-[#F9F8FD]"
               }
             >
-              <div className={" font-medium "}>
+              <div className={"font-medium "}>
                 {item.week_day && weekDays[item.week_day - 1]}:
               </div>
               <div className={"text-[#7B7984]"}>{item.start_end_time}</div>

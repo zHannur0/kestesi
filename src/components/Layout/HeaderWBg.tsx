@@ -1,6 +1,7 @@
 import { Oswald } from "next/font/google";
 import { FC, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -11,8 +12,9 @@ interface HeaderProps {
   isMain?: boolean;
   onClick?: any;
   toMain?: string;
+  page?:string
 }
-const HeaderWBg: FC<HeaderProps> = ({ isMain, onClick, toMain }) => {
+const HeaderWBg: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
   const router = useRouter();
   const id = Number(router.query.id);
   const handleBack = () => {
@@ -80,15 +82,21 @@ const HeaderWBg: FC<HeaderProps> = ({ isMain, onClick, toMain }) => {
         <img className="w-[100%] h-[50px]" src="/images/Logo.svg" alt="" />
       </div>
       <div className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex">
-        <div className="text-center text-neutral-800 text-[27px] font-normal">
-          KZ
-        </div>
-        <div className="text-center text-zinc-500 text-[27px] font-normal">
-          RU
-        </div>
-        <div className="text-center text-zinc-500 text-[27px] font-normal">
-          EN
-        </div>
+        <Link href={page || `/school/${id}/main`}  locale="kz">
+          <div className="text-center text-neutral-800 text-[27px] font-normal">
+            KZ
+          </div>
+        </Link>
+        <Link href={page || `/school/${id}/main`} locale="ru">
+          <div className="text-center text-zinc-500 text-[27px] font-normal">
+            RU
+          </div>
+        </Link>
+        <Link href={page || `/school/${id}/main`}  locale="en">
+          <div className="text-center text-zinc-500 text-[27px] font-normal">
+            EN
+          </div>
+        </Link>
       </div>
     </div>
   );

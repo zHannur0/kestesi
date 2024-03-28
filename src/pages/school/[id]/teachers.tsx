@@ -13,10 +13,19 @@ import {
 } from "@/store/thunks/school.thunk";
 import TeachersTable from "@/components/lists/TeachersTable";
 import TeachersBlock from "@/components/blocks/TeachersBlock";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 const TeachersPage = () => {
   const router = useRouter();
   const id = Number(router.query.id);
   const dispatch = useAppDispatch();
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   const teachers = useTypedSelector((state) => state.schoolInfo.teachers);
   const teacher = useTypedSelector((state) => state.schoolInfo.teacher);
   const [teacherId, setTeacherId] = useState<number | null>();
@@ -37,11 +46,12 @@ const TeachersPage = () => {
     <MainLayout
       handleClick={handleBack}
       isMain={false}
-      link={teacherId ? "к списку учителей" : "на главную"}
+      link={teacherId ? t.teachers.toQueueOfTeachers : t.teachers.back}
+      page={`/school/${id}/teachers`}
     >
       <div className={``}>
         <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
-          {teacherId && teacher ? teacher.full_name : "Преподаватели"}
+          {teacherId && teacher ? teacher.full_name : t.teachers.teachers }
         </h1>
         {!teacherId ? (
           <TeachersTable
