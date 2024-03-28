@@ -25,11 +25,11 @@ const Administration = () => {
             </h1>
             <div className={"flex flex-col bg-white rounded-[40px] w-[100%] max-h-[933px]"}>
                 <div className={"flex gap-[50px] py-[46px] px-[50px] bg-[#F8F8FB] rounded-tl-[40px] rounded-tr-[40px] w-[100%] h-[362px] items-center"}>
-                    <img src={director ? director?.[0].director_photo : "/images/user.svg"} alt="" className={"w-[270px] h-[270px] rounded-full"}/>
+                    <img src={director ? director?.[0]?.director_photo : "/images/user.svg"} alt="" className={"w-[270px] h-[270px] rounded-full"}/>
                     <div className={"flex flex-col gap-[20px]"}>
                         <div className={"flex flex-col"}>
                             <div className={"text-[30px] leading-[50px] font-bold text-[#524FA2]"}>
-                                {director?.[0].director_name}
+                                {director?.[0]?.director_name}
                             </div>
                             <div className={"text-[24px] leading-[20px] text-[#211F23]"}>
                                 Мектеп директоры
@@ -42,7 +42,7 @@ const Administration = () => {
                                     Приемная
                                 </div>
                                 <div className={"text-[18px] font-bold"}>
-                                    {director?.[0].phone_number}
+                                    {director?.[0]?.phone_number}
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@ const Administration = () => {
                                     Электронная почта
                                 </div>
                                 <div className={"text-[18px] font-bold"}>
-                                    {director?.[0].email}
+                                    {director?.[0]?.email}
                                 </div>
                             </div>
                         </div>
