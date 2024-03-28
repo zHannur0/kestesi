@@ -136,7 +136,7 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
                         "flex justify-between text-[#524FA2] text-[18px] leading-[26%] font-bold "
                     }
                 >
-                    <Link href={`/school/${id}/schedule/teacher/${item.classroom?.id === classId ? item.teacher?.id : item.teacher2?.id}`}>
+                    <Link href={`/school/${id}/teacher/${item.classroom?.id === classId ? item.teacher?.id : item.teacher2?.id}`}>
                         <div className={""}>{item.classroom?.id === classId ? item.teacher?.full_name : item.teacher2?.full_name}
                         </div>
                     </Link>

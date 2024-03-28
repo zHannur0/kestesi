@@ -33,14 +33,12 @@ const TeachersPage = () => {
     id && dispatch(getTeachersThunk(id));
   }, [dispatch, id]);
 
-  const handleChooseTeacher = (id?: number) => {
-    setTeacherId(id);
-    dispatch(getTeacherThunk(id));
+  const handleChooseTeacher = (idTeacher?: number) => {
+    router.push(`/school/${id}/teacher/${idTeacher}`);
   };
 
   const handleBack = () => {
-    if (teacherId) setTeacherId(null);
-    else router.push(`/school/${id}/main`);
+    router.push(`/school/${id}/main`);
   };
   return (
     <MainLayout
@@ -51,16 +49,13 @@ const TeachersPage = () => {
     >
       <div className={``}>
         <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
-          {teacherId && teacher ? teacher.full_name : t.teachers.teachers }
+          {t.teachers.teachers }
         </h1>
-        {!teacherId ? (
           <TeachersTable
             teachers={teachers}
             handleChooseTeacher={handleChooseTeacher}
           />
-        ) : (
-          <TeachersBlock teacher={teacher} />
-        )}
+
       </div>
     </MainLayout>
   );

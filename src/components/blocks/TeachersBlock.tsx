@@ -62,7 +62,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
           {teacher?.job_history?.map((item, index) => (
             <div
               key={index}
-              className={`py-[20px] px-[30px] w-[840px] min-h-[80px]  flex flex-col bg-slate-50 text-start gap-[20px] rounded-[20px]`}
+              className={`py-[20px] px-[30px] w-[full] min-h-[80px]  flex flex-col bg-slate-50 text-start gap-[20px] rounded-[20px]`}
             >
               <h1
                 className={`text-pink-600 text-2xl font-bold leading-tight tracking-wider`}
@@ -79,14 +79,14 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
             </div>
           ))}
         </div>
-        <div className={`flex flex-col gap-[20px]`}>
+        <div className={`flex flex-col w-full gap-[20px]`}>
           <h1 className={`text-[#211F23] text-3xl font-bold leading-[8.40px]`}>
             {t.teachers.speciality}
           </h1>
           {teacher?.speciality_history?.map((item, index) => (
             <div
               key={index}
-              className={`py-[20px] px-[30px] w-[840px] min-h-[80px] flex flex-col bg-slate-50 items-start text-start gap-[20px] rounded-[20px]`}
+              className={`py-[20px] px-[30px] w-[100%] min-h-[80px] flex flex-col bg-slate-50 items-start text-start gap-[20px] rounded-[20px]`}
             >
               <h1
                 className={`text-pink-600 text-2xl font-bold leading-tight tracking-wider`}
@@ -96,7 +96,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
               <div
                 className={`text-neutral-800 text-lg font-medium leading-none flex flex-col`}
               >
-                <div>{t.teachers.yearOfGraduation + ": " + item.end_date + " году"}</div>
+                <div>{t.teachers.yearOfGraduation + ": " + item.end_date + " год"}</div>
                 <div>{t.teachers.educationalInstitution + " - " + item.speciality_university}</div>
                 <div>{t.teachers.level + " - " + educationLevels[item.degree ? item.degree : ""] }</div>
                 <div>{t.teachers.profession +": " + item.mamandygy}</div>

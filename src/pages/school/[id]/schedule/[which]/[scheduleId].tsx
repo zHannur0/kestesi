@@ -22,11 +22,11 @@ const SchedulePage = () => {
   };
   const t = translations[router.locale || "kz"] || en;
   const handleBack = () => {
-    router.push(`/school/${id}/scheduleTabs`);
+    if(who === "teacher") router.push(`/school/${id}/teacher/${classId}`);
+    else router.push(`/school/${id}/scheduleTabs`);
   };
   const dispatch = useAppDispatch();
   let classl = useTypedSelector((state) => state.schoolInfo.classId);
-  console.log(classl)
   useEffect(() => {
     id && dispatch(getClassIdThunk(classId));
   }, [dispatch, id, classId, who]);
@@ -49,8 +49,6 @@ const SchedulePage = () => {
     return initials;
   };
 
-
-
   return (
     <MainLayout
       isMain={false}
@@ -63,7 +61,7 @@ const SchedulePage = () => {
           {who === "class" && classl.class_name && (classl.class_name + " - ")}{t.schedule.name}
         </h1>
         <div className={"text-2xl text-[#7B7984]"}>
-          {who === "class" && classl.class_teacher && t.schedule.classTeacher}: <Link className={"text-[#524FA2]"} href={`/school/${id}/schedule/teacher/${classl?.class_teacher?.id}`} >{who === "class" && classl.class_teacher && getInitials(classl.class_teacher.full_name)}</Link>
+          {who === "class" && classl.class_teacher && t.schedule.classTeacher}: <Link className={"text-[#524FA2]"} href={`/school/${id}/teacher/${classl?.class_teacher?.id}`} >{who === "class" && classl.class_teacher && getInitials(classl.class_teacher.full_name)}</Link>
         </div>
       </div>
 
