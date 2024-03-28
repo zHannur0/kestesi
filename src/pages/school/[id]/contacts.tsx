@@ -18,6 +18,7 @@ const Contacts = () => {
     const [youtube,setYoutube] = useState<ISchoolSocialMedia | null>(null);
     const [insta,setInsta] = useState<ISchoolSocialMedia | null>(null);
     const [tg,setTg] = useState<ISchoolSocialMedia | null>(null);
+    const [site,setSite] = useState<ISchoolSocialMedia | null>(null);
 
     useEffect(() => {
         id && dispatch(getDirectorThunk(id));
@@ -29,6 +30,8 @@ const Contacts = () => {
             setFacebook(socialMedia?.find((item) => item.type === "facebook") || null);
             setYoutube(socialMedia?.find((item) => item.type === "Youtube") || null);
             setInsta(socialMedia?.find((item) => item.type === "instagram") || null);
+            setTg(socialMedia?.find((item) => item.type === "tgbot") || null);
+            setSite(socialMedia?.find((item) => item.type === "website") || null);
         }
     }, [socialMedia]);
     const handleBack = () => {
@@ -59,7 +62,7 @@ const Contacts = () => {
                         }
                         {
                             director?.[0]?.phone_number &&
-                            <ContactBlock img={"/images/phoneContact.svg"} type={"Приемная:"}
+                            <ContactBlock img={"/images/phoneContact.svg"} type={"Сайт:"}
                                           content={director?.[0]?.phone_number}/>
                         }
                     </div>
@@ -81,7 +84,6 @@ const Contacts = () => {
                         {
                             youtube &&
                             <QrBlock img={"/images/youtube.svg"} type={"Youtube"} qr={youtube.qr_code} content={youtube.account_name}/>
-
                         }
                     </div>
 

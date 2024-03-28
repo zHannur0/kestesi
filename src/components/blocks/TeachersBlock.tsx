@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Teachers } from "@/types/assets.type";
 import TeachersCard from "@/components/cards/TeachersCard";
 import Button from "@/components/ui/Button";
+import QrComponent from "@/components/QrComponent";
 
 interface TeachersTableProps {
   teacher?: Teachers;
@@ -87,21 +88,8 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
           ))}
         </div>
       </div>
-      <div className="w-[340px] h-[448px] pl-5 pr-[9px] pt-[50px] pb-[78px] bg-white rounded-[40px] flex-col justify-start items-start gap-[30px] inline-flex">
-        <div className="text-neutral-800 text-3xl font-normal leading-[8.40px]">
-          Узнавайте первым
-        </div>
-        <div className="w-[142.86px] h-[140px] relative">
-          <img
-            src="/images/qr.svg"
-            className="w-[163.27px] h-40 absolute rounded-[20px]"
-          />
-        </div>
-        <div className="text-zinc-500 text-2xl font-normal leading-[34.40px]">
-          Сканируйте QR-код и будьте в курсе самых свежих новостей и сплетен в
-          школе и на райони
-        </div>
-      </div>
+      <QrComponent/>
+
     </div>
   );
 };

@@ -9,6 +9,7 @@ import {
   getSchoolPassportThunk,
   getSchoolThunk,
 } from "@/store/thunks/school.thunk";
+import QrComponent from "@/components/QrComponent";
 const MainPage = () => {
   const router = useRouter();
   const id = Number(router.query.id);
@@ -27,63 +28,54 @@ const MainPage = () => {
 
   return (
     <MainLayout isMain={true}>
-      <div className="h-[420px] relative bg-white rounded-[40px] flex justify-between items-center px-[50px]">
-        <div className=" h-[100%] flex flex-col gap-[36px]  py-[50px]">
-          <div className="flex flex-col gap-[16px]">
-            <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
-              {school?.school_kz_name
-                ?.substring(school?.school_kz_name?.indexOf(" ") + 1)
-                .charAt(0)
-                .toUpperCase() +
-                "" +
-                school?.school_kz_name?.substring(
-                  school?.school_kz_name?.indexOf(" ") + 2,
-                )}
+      <div className={"flex gap-[30px]"}>
+        <div
+            className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center px-[50px]">
+          <div className=" h-[100%] flex flex-col gap-[36px] py-[50px]">
+            <div className="flex flex-col gap-[16px]">
+              <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
+                {school?.school_kz_name
+                        ?.substring(school?.school_kz_name?.indexOf(" ") + 1)
+                        .charAt(0)
+                        .toUpperCase() +
+                    "" +
+                    school?.school_kz_name?.substring(
+                        school?.school_kz_name?.indexOf(" ") + 2,
+                    )}
+              </div>
+              <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px]">
+                {school?.school_kz_name?.split(" ")[0]}
+              </div>
+              <div
+                  className="w-[310px] h-[120px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
+                {cities
+                    .find((city) => city.name === school?.region)
+                    ?.nameUpper.toUpperCase()}
+              </div>
             </div>
-            <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px]">
-              {school?.school_kz_name?.split(" ")[0]}
+            <Link href={`/school/${id}/schoolInformation`}>
+              <div className="text-center text-indigo-800 text-4xl font-bold">
+                О школе
+              </div>
+            </Link>
+          </div>
+          <div>
+            <div className="w-[900px] h-[380px]  justify-center items-center inline-flex">
+              <img
+                  className="w-[900px] h-[380px] rounded-[40px]"
+                  src={schoolPassport?.[0]?.photo}
+              />
             </div>
-            <div className="w-[310px] h-[120px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
-              {cities
-                .find((city) => city.name === school?.region)
-                ?.nameUpper.toUpperCase()}
-            </div>
-          </div>
-          <Link href={`/school/${id}/schoolInformation`}>
-            <div className="text-center text-indigo-800 text-4xl font-bold">
-              О школе
-            </div>
-          </Link>
-        </div>
-        <div>
-          <div className="w-[900px] h-[380px]  justify-center items-center inline-flex">
-            <img
-              className="w-[900px] h-[380px] rounded-[40px]"
-              src={schoolPassport?.[0]?.photo}
-            />
-          </div>
-        </div>
-        <div className=" h-[100%] flex flex-col gap-[30px] py-[50px]">
-          <div className="w-[311px] h-[18px] text-neutral-800 text-3xl font-bold leading-[8.40px]">
-            Школа у вас в телефоне
-          </div>
-          <div className="w-[142.86px] h-[140px] relative">
-            <img
-              src="/images/qr.svg"
-              className="w-[163.27px] h-40 left-0 top-[-10px] absolute"
-            />
-          </div>
-          <div className="w-[290px] text-zinc-500 text-2xl font-normal leading-[34.40px]">
-            Отсканируйте QR-код, чтобы просмотреть расписание занятий через
-            смартфон.
           </div>
         </div>
+        <QrComponent/>
       </div>
+
       <div
-        className="w-[1720px] h-[180px] bg-gradient-to-r from-purple-800 to-pink-600 rounded-[40px] flex justify-center items-center mt-[20px] hover:cursor-pointer"
-        onClick={() => {
-          router.push(`/school/${id}/scheduleTabs`);
-        }}
+          className="w-[1720px] h-[180px] bg-gradient-to-r from-purple-800 to-pink-600 rounded-[40px] flex justify-center items-center mt-[20px] hover:cursor-pointer"
+          onClick={() => {
+            router.push(`/school/${id}/scheduleTabs`);
+          }}
       >
         <div className="h-[44px] text-white text-7xl font-bold leading-[30%] text-center">
           Расписание
@@ -91,13 +83,13 @@ const MainPage = () => {
       </div>
       <div className={"flex justify-between flex-wrap"}>
         {sidebar.map((item) => (
-          <Link href={`/school/${router.query.id}/${item.link}`} key={item.id}>
-            <div className="w-[560px] h-[130px] bg-white rounded-[40px] flex justify-center items-center  mt-[20px]">
-              <div className="h-[10px] text-center text-indigo-800 text-4xl font-bold leading-[27%] tracking-normal">
-                {item.type}
+            <Link href={`/school/${router.query.id}/${item.link}`} key={item.id}>
+              <div className="w-[560px] h-[130px] bg-white rounded-[40px] flex justify-center items-center  mt-[20px]">
+                <div className="h-[10px] text-center text-indigo-800 text-4xl font-bold leading-[27%] tracking-normal">
+                  {item.type}
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
         ))}
       </div>
     </MainLayout>
