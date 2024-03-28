@@ -9,7 +9,7 @@ const SectionCard: FC<IProps> = ({ section }) => {
   return (
     <div className={"w-[1720px] min-h-[320px] bg-white flex rounded-[20px]"}>
       <div
-        className={""}
+        className={"rounded-l-[20px]"}
         style={{
           backgroundImage: `url(${section.photo})`,
           width: "560px",

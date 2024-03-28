@@ -16,6 +16,8 @@ const NewsBlock: FC<IProps> = ({ news, currNews, handleClick }) => {
       setCurr(news[currNews - 1]);
       if (currNews > 1) {
         setPrev(news[currNews - 2]);
+      }else {
+        setPrev(news[news.length - 1]);
       }
     }
   }, [news, currNews]);
@@ -53,10 +55,9 @@ const NewsBlock: FC<IProps> = ({ news, currNews, handleClick }) => {
             </div>
           </div>
         </div>
-
-        <div className="w-[998px] flex flex-col bg-white rounded-[40px] p-[50px] gap-[30px]">
+        <div className="w-[998px] max-h-[940px] overflow-auto scrollbar-hide flex flex-col bg-white rounded-[40px] p-[50px] gap-[30px]">
           <img
-            className="w-[898px] h-[380px] rounded-[40px]"
+            className="w-[898px]  rounded-[40px]"
             src={news && currNews ? news[currNews - 1].img1 : ""}
           />
           <div className="text-neutral-800 text-[18px] font-medium">

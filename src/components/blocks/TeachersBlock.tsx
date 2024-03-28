@@ -15,7 +15,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
         className={`w-[341px] h-[575px] flex flex-col items-center bg-white rounded-[40px] gap-[20px] pt-[30px]`}
       >
         <img
-          src={teacher?.photo3x4}
+          src={teacher?.photo3x4 ? teacher?.photo3x4 : "/images/user.svg"}
           alt="teacher"
           className={`w-[280px] h-[280px] max-h-[280px] rounded-full`}
         />
@@ -79,9 +79,9 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
               <div
                 className={`text-neutral-800 text-lg font-medium leading-none flex flex-col`}
               >
-                <div>{"Окончил в " + item.end_date + " году"}</div>
-                <div>{"Университет = " + item.speciality_university}</div>
-                <div>{"Уровень - " + item.degree}</div>
+                <div>{"Год окончания: " + item.end_date + " году"}</div>
+                <div>{"Учебное заведение - " + item.speciality_university}</div>
+                <div>{"Уровень - " + educationLevels[item.degree ? item.degree : ""] }</div>
                 <div>{"Профессия: " + item.mamandygy}</div>
               </div>
             </div>
@@ -89,10 +89,10 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
         </div>
       </div>
       <QrComponent/>
-
     </div>
   );
 };
+
 
 interface PedagogTypes {
   [key: string]: string;
@@ -110,5 +110,14 @@ const pedagog: PedagogTypes = {
   pedagog_sanat_zhok: "Санаты жоқ",
   pedagog: "Педагог",
 };
+
+const educationLevels:PedagogTypes = {
+  bakalavr: "Бакалавр",
+  magistratura: "Магистратура",
+  doktorantura: "Докторантура",
+  srednee: "Среднее",
+  viswee: "Высшее",
+};
+
 
 export default TeachersBlock;

@@ -60,8 +60,8 @@ const ProudOfSchool = () => {
                 Гордость школы
             </h1>
             <div
-                className={"w-full max-h-[910px] py-[30px] px-[60px] bg-white flex flex-col gap-[30px] rounded-[40px] overflow-auto scrollbar-hide"}>
-                <div className={"flex gap-[20px]"}>
+                className={"w-full relative max-h-[910px] py-[30px] px-[60px] bg-white flex flex-col gap-[30px] rounded-[40px] overflow-hidden scrollbar-hide"}>
+                <div className={"flex gap-[20px] bg-white"}>
                     {sidebar.map((item) => (
                         <Link href={`/school/${router.query.id}/proudOfSchool/${item.link}`} key={item.id}>
                             <div
@@ -76,7 +76,7 @@ const ProudOfSchool = () => {
                         </Link>
                     ))}
                 </div>
-                <div className={"flex gap-[20px] flex-wrap"}>
+                <div className={"flex gap-[20px] flex-wrap max-h-[810px] overflow-auto scrollbar-hide"}>
                     {
                         curr.map((item, index) => (
                             <StudentsCard id={item.id} key={index} photo={item.photo}
@@ -128,7 +128,7 @@ const sidebar: IType[] = [
 
     {
         id: 6,
-        type: "Крассный аттестат",
+        type: "Красный аттестат",
         link: "6",
     },
 ];

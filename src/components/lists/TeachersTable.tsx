@@ -53,7 +53,7 @@ const TeachersTable: FC<TeachersTableProps> = ({
   return (
     <>
       <div
-        className={`px-[50px] pt-[30px] bg-white rounded-[40px] flex flex-col items-start gap-5 w-[100%] h-[910px] overflow-auto scrollbar-hide`}
+        className={`px-[50px] py-[30px] bg-white rounded-[40px] flex flex-col items-start gap-5 w-[100%] max-h-[910px]`}
       >
         <div className={"flex gap-[10px]"}>
           <div onClick={() => setInputValue("all")}
@@ -82,7 +82,7 @@ const TeachersTable: FC<TeachersTableProps> = ({
             ))
           }
         </div>
-        <div className={`flex flex-wrap gap-[30px]`}>
+        <div className={`flex flex-wrap gap-[30px] h-[100%] overflow-auto scrollbar-hide rounded-[20px] `}>
           {teachers ? (
               teachers
                   .filter(

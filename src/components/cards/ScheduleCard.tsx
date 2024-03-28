@@ -16,7 +16,7 @@ const ScheduleCards: FC<IProps> = ({ os, dop, day, dayNumber }) => {
   return (
     <div
       className={
-        "flex flex-col gap-[30px] bg-[#fff] w-[960px] h-[852px] px-[45px] py-[53px] rounded-[40px]"
+        "flex flex-col gap-[30px] bg-[#fff] w-[960px] max-h-[852px] px-[45px] py-[53px] rounded-[40px]"
       }
     >
       <div className={"flex justify-between items-center"}>
@@ -35,7 +35,7 @@ const ScheduleCards: FC<IProps> = ({ os, dop, day, dayNumber }) => {
       </div>
       <div
         className={
-          "flex flex-col gap-[20px] h-[690px] overflow-auto scrollbar-hide"
+          "flex flex-col gap-[20px] h-max-[690px] overflow-auto scrollbar-hide"
         }
       >
         {os.sort().map((item, index) => (

@@ -28,21 +28,24 @@ const SchoolMapPage = () => {
   const [curr, setCurr] = useState<string>("flat1");
   const [currLink, setCurrLink] = useState<string>();
 
+    useEffect(() => {
+        handleClick(curr);
+    }, [map]);
     const handleClick = (flat: string) => {
         if(flat === "flat1") {
-            setCurrLink(map?.[0].flat1);
+            setCurrLink(map?.[0]?.flat1);
             setCurr("flat1");
         }else if(flat === "flat2") {
-            setCurrLink(map?.[0].flat2);
+            setCurrLink(map?.[0]?.flat2);
             setCurr("flat2");
         }else if(flat === "flat3") {
-            setCurrLink(map?.[0].flat3);
+            setCurrLink(map?.[0]?.flat3);
             setCurr("flat3");
         }else if(flat === "flat4") {
-            setCurrLink(map?.[0].flat4);
+            setCurrLink(map?.[0]?.flat4);
             setCurr("flat4");
         }else if(flat === "flat5") {
-            setCurrLink(map?.[0].flat5);
+            setCurrLink(map?.[0]?.flat5);
             setCurr("flat5");
         }
     };

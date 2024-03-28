@@ -19,7 +19,7 @@ const TeachersCard: FC<StudentCardProps> = ({
         >
             <img
                 className={`w-40 h-40 min-w-40 rounded-[80px]`}
-                src={photo}
+                src={photo ? photo : "/images/user.svg"}
                 alt="Teacher"
             />
             <div>

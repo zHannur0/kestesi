@@ -28,6 +28,9 @@ const NewsPage = () => {
   };
 
   const handleClick = (index: number) => {
+    if(index === 0) {
+      setCurrNews(news?.length)
+    }else
     setCurrNews(index);
   };
 
