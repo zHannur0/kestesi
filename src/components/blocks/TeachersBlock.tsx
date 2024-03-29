@@ -96,7 +96,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
               <div
                 className={`text-neutral-800 text-lg font-medium leading-none flex flex-col`}
               >
-                <div>{t.teachers.yearOfGraduation + ": " + item.end_date + " год"}</div>
+                <div>{t.teachers.yearOfGraduation + ": " + item.end_date}</div>
                 <div>{t.teachers.educationalInstitution + " - " + item.speciality_university}</div>
                 <div>{t.teachers.level + " - " + educationLevels[item.degree ? item.degree : ""] }</div>
                 <div>{t.teachers.profession +": " + item.mamandygy}</div>
