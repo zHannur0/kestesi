@@ -56,7 +56,6 @@ const TeachersPage = () => {
             teachers={teachers}
             handleChooseTeacher={handleChooseTeacher}
           />
-
       </div>
     </MainLayout>
   );

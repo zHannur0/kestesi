@@ -5,6 +5,8 @@ import {useRouter} from "next/router";
 import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
+import Slider from "@/components/Slider/Slider";
+import {images} from "next/dist/build/webpack/config/blocks/images";
 
 interface IProps {
   news?: News[];
@@ -14,7 +16,8 @@ interface IProps {
 
 const NewsBlock: FC<IProps> = ({ news, currNews, handleClick }) => {
   const [prev, setPrev] = useState<News>();
-  const [curr, setCurr] = useState<News>();
+  const [curr, setCurr] = useState<any>();
+  const [slider, setSlider] = useState<any[]>();
   const router = useRouter();
   const translations: any= {
     kz: kz,
@@ -32,6 +35,19 @@ const NewsBlock: FC<IProps> = ({ news, currNews, handleClick }) => {
       }
     }
   }, [news, currNews]);
+
+  useEffect(() => {
+    const images: any[] = [];
+
+    for (let i = 1; i <= 10; i++) {
+      const imgKey:string = `img${i}`;
+      if (curr?.[imgKey]) {
+        images.push(curr?.[imgKey]);
+      }
+    }
+    setSlider(images)
+  }, [curr]);
+
   return (
     <div>
       <div className="w-[100%] flex gap-[20px]">
@@ -67,10 +83,11 @@ const NewsBlock: FC<IProps> = ({ news, currNews, handleClick }) => {
           </div>
         </div>
         <div className="w-[998px] max-h-[940px] overflow-auto scrollbar-hide flex flex-col bg-white rounded-[40px] p-[50px] gap-[30px]">
-          <img
-            className="w-[898px]  rounded-[40px]"
-            src={news && currNews ? news[currNews - 1].img1 : ""}
-          />
+          {/*<img*/}
+          {/*  className="w-[898px]  rounded-[40px]"*/}
+          {/*  src={news && currNews ? news[currNews - 1].img1 : ""}*/}
+          {/*/>*/}
+          <Slider slides={slider || []}/>
           <div className="text-neutral-800 text-[18px] font-medium">
             {news && currNews && news[currNews - 1].text}
           </div>

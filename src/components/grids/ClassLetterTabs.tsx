@@ -30,13 +30,13 @@ const ClassLetterTabs: FC<IProps> = ({ classes, smena }) => {
         {smena === 2 && t.schedule.secondShift}
         {smena === 3 && t.schedule.thirdShift}
       </div>
-      <div className={"flex gap-[20px]"}>
+      <div className={"flex gap-[20px] flex-wrap"}>
         {classes?.map((item) => (
           <div
             key={item.id}
             onClick={() => handleClick(item.id)}
             className={
-              "flex justify-center items-center w-[145px] h-[150px] rounded-[30px] border-[3px] border-[#524FA2] text-[72px] text-[#524FA2] font-bold leading-[80%]"
+              "flex justify-center btn-gradient-1 items-center w-[145px] h-[150px] rounded-[30px] border-[3px] border-[#524FA2] text-[72px] text-[#524FA2] font-bold leading-[80%]"
             }
           >
             {item.class_letter}

@@ -80,16 +80,20 @@ const TeachersTable: FC<TeachersTableProps> = ({
           {
             filterValues.sort((a,b) => a.localeCompare(b)).map((item, index) => (
                 <div key={index}
-                    className={"w-[60px] h-[65px] flex justify-center items-center border-2 rounded-[20px] text-2xl font-bold leading-normal cursor-pointer"}
-                    style={{
-                      backgroundColor: inputValue === item ? "#ED008C" : "white",
-                      color: inputValue === item ? "white" : "#211F23",
-                      borderColor: inputValue === item ? "#ED008C" : "#5D49A0",
-                    }}
+                     className={"w-[60px] h-[65px] flex justify-center items-center rounded-[20px] text-2xl font-bold leading-normal cursor-pointer"}
+                     style={{
+                       background: inputValue === item ? "#ED008C" : "transparent",
+                       color: inputValue === item ? "white" : "#211F23",
+                       border: "3px solid transparent",
+                       backgroundImage: inputValue === item ? "none" : "linear-gradient(white, white), linear-gradient(to right, #5D49A0, #E9028E)",
+                       backgroundOrigin: 'border-box',
+                       backgroundClip: inputValue === item ? 'padding-box' : 'content-box, border-box',
+                     }}
                      onClick={() => setInputValue(item)}
                 >
                   {item}
                 </div>
+
             ))
           }
         </div>

@@ -46,9 +46,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
           </p>
         </div>
         <Link href={`/school/${id}/schedule/teacher/${teacher?.id}`}>
-          <Button width={280} height={64}>
-            <div className="text-indigo-800 text-2xl font-medium">{t.teachers.schedule}</div>
-          </Button>
+            <div className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center inline-flex w-[280px] h-[64px]">{t.teachers.schedule}</div>
         </Link>
 
       </div>

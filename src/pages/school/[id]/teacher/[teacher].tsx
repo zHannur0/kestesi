@@ -42,7 +42,7 @@ const TeachersPage = () => {
             handleClick={handleBack}
             isMain={false}
             link={t.teachers.toQueueOfTeachers}
-            page={`/school/${id}/teacher`}
+            page={`/school/${id}/teacher/${teach}`}
             bg={"bg3"}
         >
             <div className={``}>

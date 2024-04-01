@@ -54,7 +54,7 @@ const ScheduleClassTabs: FC<ScheduleProps> = ({
             <div
               key={item}
               onClick={() => chooseClassNumber(item)}
-              className="flex cursor-pointer flex-col items-center gap-[15px] rounded-[28px] border-[3px] border-purple-800 justify-center w-[390px] h-[240px]"
+              className="flex btn-gradient-1 cursor-pointer flex-col items-center gap-[15px] rounded-[28px] border-[3px] border-purple-800 justify-center w-[390px] h-[240px]"
             >
               <div
                 className={"text-[72px] text-[#524FA2] font-bold leading-[80%]"}

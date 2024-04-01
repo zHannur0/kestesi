@@ -41,10 +41,19 @@
   display: none; /* Safari and Chrome */
 }
 
-.bg-gradient {
-  background-image: linear-gradient(
-    to right,
-    #5d49a0 50%,
-    #e9028e 50%
-  ); /* Задаём градиент */
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 3rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.btn-gradient-1 {
+  background: linear-gradient(white, white) padding-box,
+  linear-gradient(to right, #5D49A0, #E9028E) border-box;
+  border-radius: 20px;
+  border: 3px solid transparent;
 }

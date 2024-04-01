@@ -75,9 +75,12 @@ const MainPage = () => {
               </div>
             </div>
             <Link href={`/school/${id}/schoolInformation`}>
-              <div className="text-center text-indigo-800 text-4xl font-bold border-2 border-[#5D49A0] rounded-[20px] w-[300px] h-[70px] flex leading-[20px]  justify-center items-center">
-                {t.main.aboutSchool}
-              </div>
+              {/*<div className="text-center text-indigo-800 text-4xl font-bold border-2 border-[#5D49A0] rounded-[20px] w-[300px] h-[70px] flex leading-[20px]  justify-center items-center">*/}
+              {/*  {t.main.aboutSchool}*/}
+              {/*</div>*/}
+                <div className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center"}>
+                  {t.main.aboutSchool}
+                </div>
             </Link>
           </div>
           <div>
