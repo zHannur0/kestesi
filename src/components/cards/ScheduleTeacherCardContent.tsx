@@ -135,7 +135,7 @@ const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) =>
                     </Link>
                     <div className={""}>
                         <span className={"text-[#7B7984]"}>{t.schedule.cabinet}</span>{" "}
-                        <Link href={`/school/${id}/schedule/teacher/${item.teacher?.id === classId ? item.classroom?.id : item.classroom2?.id}`}>
+                        <Link href={`/school/${id}/schedule/classroom/${item.teacher?.id === classId ? item.classroom?.id : item.classroom2?.id}`}>
                             {item.teacher?.id === classId ? item.classroom?.classroom_number : item.classroom2?.classroom_number }
                         </Link>
                     </div>

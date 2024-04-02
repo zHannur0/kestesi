@@ -121,3 +121,18 @@ export const getPhotosThunk = createAsyncThunk(
     "getPhotosThunk",
     async (id?: number) => await allApi.getPhotos(id),
 );
+
+export const getClassScheduleThunk = createAsyncThunk(
+    "getClassScheduleThunk",
+    async ({id, classId} : { id?: number, classId?: number }) => await allApi.getClassSchedule(id, classId),
+);
+
+export const getTeacherScheduleThunk = createAsyncThunk(
+    "getTeacherScheduleThunk",
+    async ({id, teacherId} : { id?: number, teacherId?: number }) => await allApi.getTeacherSchedule(id, teacherId),
+);
+
+export const getClassroomScheduleThunk = createAsyncThunk(
+    "getClassroomScheduleThunk",
+    async ({id, classroomId} : { id?: number, classroomId?: number }) => await allApi.getClassroomSchedule(id, classroomId),
+);

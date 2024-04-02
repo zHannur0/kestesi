@@ -106,4 +106,13 @@ export const allApi = {
   async getPhotos(id?: number): Promise<ISchoolSocialMedia[]> {
     return await instance.get(`/admins/api/slider/?school=${id}`);
   },
+  async getClassSchedule(id?: number, classId?:number): Promise<ISchedule[]> {
+    return await instance.get(`/admins/api/schedule/?school=${id}&classl=${classId}`);
+  },
+  async getClassroomSchedule(id?: number, classroomId?:number): Promise<ISchedule[]> {
+    return await instance.get(`/admins/api/schedule/?school=${id}&classroom=${classroomId}`);
+  },
+  async getTeacherSchedule(id?: number, teacherId?:number): Promise<ISchedule[]> {
+    return await instance.get(`/admins/api/schedule/?school=${id}&teacher=${teacherId}`);
+  },
 };

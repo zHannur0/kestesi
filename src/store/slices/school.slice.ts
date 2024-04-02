@@ -3,9 +3,9 @@ import { initialStateSchoolInfo } from "@/store/types/school.system";
 import {
     getAdministrationThunk,
     getArtThunk,
-    getClassIdThunk,
+    getClassIdThunk, getClassroomScheduleThunk,
     getClassroomsThunk,
-    getClassroomThunk,
+    getClassroomThunk, getClassScheduleThunk,
     getClassThunk, getDirectorThunk,
     getDopScheduleThunk, getGoldThunk,
     getMapThunk,
@@ -15,7 +15,7 @@ import {
     getSchoolIdThunk,
     getSchoolPassportThunk,
     getSchoolThunk,
-    getSectionsThunk, getSocialMediaThunk, getSportThunk,
+    getSectionsThunk, getSocialMediaThunk, getSportThunk, getTeacherScheduleThunk,
     getTeachersThunk,
     getTeacherThunk,
 } from "@/store/thunks/school.thunk";
@@ -321,6 +321,39 @@ export const schoolSlice = createSlice({
                 return {
                     ...state,
                     photos: action.payload,
+                };
+            }
+            return state;
+        },
+    ).addCase(
+        getClassroomScheduleThunk.fulfilled,
+        (state, action: PayloadAction<ISchedule[]>) => {
+            if (action.payload) {
+                return {
+                    ...state,
+                    scheduleClassroom: action.payload,
+                };
+            }
+            return state;
+        },
+    ).addCase(
+        getTeacherScheduleThunk.fulfilled,
+        (state, action: PayloadAction<ISchedule[]>) => {
+            if (action.payload) {
+                return {
+                    ...state,
+                    scheduleTeacher: action.payload,
+                };
+            }
+            return state;
+        },
+    ).addCase(
+        getClassScheduleThunk.fulfilled,
+        (state, action: PayloadAction<ISchedule[]>) => {
+            if (action.payload) {
+                return {
+                    ...state,
+                    scheduleClass: action.payload,
                 };
             }
             return state;

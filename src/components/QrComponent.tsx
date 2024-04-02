@@ -65,7 +65,7 @@ const QrComponent = () => {
                 {
                     site && (
                         <div onClick={() => setIsSelected("site")}
-                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[20px]"}
+                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
                              style={{backgroundColor: isSelected === "site" ? "white" : "transparent"}}>
                             <img src={isSelected === "site" ? "/images/siteContact.svg" : "/images/siteBlack.svg"} alt=""
                                  className={"w-[36px]"}/>
@@ -75,7 +75,7 @@ const QrComponent = () => {
                 {
                     facebook && (
                         <div onClick={() => setIsSelected("facebook")}
-                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[20px]"}
+                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
                              style={{backgroundColor: isSelected === "facebook" ? "white" : "transparent"}}>
                             <img src={isSelected === "facebook" ? "/images/facebook.svg" : "/images/facebookBlack.svg"}
                                  alt=""
@@ -86,7 +86,7 @@ const QrComponent = () => {
                 {
                     insta && (
                         <div onClick={() => setIsSelected("instagram")}
-                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[20px]"}
+                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
                              style={{backgroundColor: isSelected === "instagram" ? "white" : "transparent"}}>
                             <img src={isSelected === "instagram" ? "/images/instagram.svg" : "/images/instaBlack.svg"}
                                  alt=""
@@ -97,7 +97,7 @@ const QrComponent = () => {
                 {
                     youtube && (
                         <div onClick={() => setIsSelected("youtube")}
-                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[20px]"}
+                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
                              style={{backgroundColor: isSelected === "youtube" ? "white" : "transparent"}}>
                             <img src={isSelected === "youtube" ? "/images/youtube.svg" : "/images/youtubeBlack.svg"} alt=""
                                  className={"w-[36px]"}/>
@@ -107,7 +107,7 @@ const QrComponent = () => {
                 {
                     tg && (
                         <div onClick={() => setIsSelected("tg")}
-                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[20px]"}
+                             className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
                              style={{backgroundColor: isSelected === "tg" ? "white" : "transparent"}}>
                             <img src={isSelected === "tg" ? "/images/telegram.svg" : "/images/tgBlack.svg"} alt=""
                                  className={"w-[36px]"}/>

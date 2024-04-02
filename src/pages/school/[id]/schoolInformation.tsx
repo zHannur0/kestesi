@@ -128,13 +128,11 @@ const SchoolInformationPage = () => {
   const [bgHeader, setBgHeader] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleWindowScroll = (event: WheelEvent) => {
+    const handleScroll = () => {
       if (scrollRef.current) {
         const currentScrollPosition = scrollRef.current.scrollTop;
-        const scrollDelta = event.deltaY;
-        scrollRef.current.scrollTop = currentScrollPosition + scrollDelta;
 
-        if (scrollRef.current.scrollTop > 50) {
+        if (currentScrollPosition > 50) {
           setBgHeader(true);
         } else {
           setBgHeader(false);
@@ -142,12 +140,30 @@ const SchoolInformationPage = () => {
       }
     };
 
+    const handleWindowScroll = (event: WheelEvent) => {
+      if (scrollRef.current) {
+        const currentScrollPosition = scrollRef.current.scrollTop;
+        const scrollDelta = event.deltaY;
+        scrollRef.current.scrollTop = currentScrollPosition + scrollDelta;
+      }
+    };
+
+    // Отслеживание событий прокрутки
+    if (scrollRef.current) {
+      scrollRef.current.addEventListener("scroll", handleScroll, { passive: true });
+    }
+
+    // Отслеживание событий колесика мыши
     window.addEventListener("wheel", handleWindowScroll, { passive: false });
 
     return () => {
+      if (scrollRef.current) {
+        scrollRef.current.removeEventListener("scroll", handleScroll);
+      }
       window.removeEventListener("wheel", handleWindowScroll);
     };
   }, []);
+
 
   const [sideBar, setSideBar] = useState<IType[]>();
   useEffect(() => {

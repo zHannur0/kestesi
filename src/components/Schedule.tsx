@@ -4,8 +4,10 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { useEffect, useState } from "react";
 import {
+  getClassroomScheduleThunk,
+  getClassScheduleThunk,
   getDopScheduleThunk,
-  getScheduleThunk,
+  getScheduleThunk, getTeacherScheduleThunk,
 } from "@/store/thunks/school.thunk";
 import ScheduleCard from "@/components/cards/ScheduleCard";
 import { it } from "node:test";
@@ -25,7 +27,9 @@ const Schedule = () => {
   };
   const t = translations[router.locale || "kz"] || en;
   const dispatch = useAppDispatch();
-  const os = useTypedSelector((state) => state.schoolInfo.osSchedule);
+  const os = useTypedSelector((state) => who === "teacher" ? state.schoolInfo.scheduleTeacher :
+      who === "classroom" ? state.schoolInfo.scheduleClassroom : state.schoolInfo.scheduleClass);
+  console.log(os)
   const dop = useTypedSelector((state) => state.schoolInfo.dopSchedule);
   const [day, setDay] = useState<number>(1);
   const [currSchedule, setCurrSchedule] = useState<ISchedule[]>([]);
@@ -46,9 +50,16 @@ const Schedule = () => {
     setWeekDays(getLocalizedWeekdays);
   }, [t]);
   useEffect(() => {
-    id && dispatch(getScheduleThunk(id));
+    who === "teacher" && dispatch(getScheduleThunk(id));
+    if(who === "teacher") {
+      dispatch(getTeacherScheduleThunk({id: id, teacherId: classId}));
+    }else if(who === "classroom") {
+      dispatch(getClassroomScheduleThunk({id: id, classroomId: classId}));
+    }else {
+      dispatch(getClassScheduleThunk({id: id, classId: classId}));
+    }
     id && dispatch(getDopScheduleThunk(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, who]);
 
 
   useEffect(() => {

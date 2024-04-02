@@ -48,6 +48,10 @@ export interface SchoolInfo {
   administration: ISchoolAdmin[];
   socialMedia: ISchoolSocialMedia[];
   photos: ISchoolPhotos[];
+  scheduleClass: ISchedule[];
+  scheduleTeacher: ISchedule[];
+  scheduleClassroom: ISchedule[];
+
 }
 
 export const initialStateSchoolInfo: SchoolInfo = {
@@ -76,5 +80,8 @@ export const initialStateSchoolInfo: SchoolInfo = {
   director: [],
   administration: [],
   socialMedia:[],
-  photos:[]
+  photos:[],
+  scheduleClass: [],
+  scheduleClassroom: [],
+  scheduleTeacher: []
 };

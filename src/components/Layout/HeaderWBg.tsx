@@ -33,7 +33,7 @@ const HeaderWBg: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
 
   return (
     <div
-      className={`flex justify-between ${oswald.variable} font-sans mb-[30px] bg-white pt-[10px] absolute top-0 z-40 w-full left-0 px-[100px]`}
+      className={`flex justify-between ${oswald.variable} font-sans mb-[30px] bg-white py-[10px] absolute top-0 z-40 w-full left-0 px-[100px]`}
     >
       {isMain ? (
         <div className="w-[114px] h-[33px] relative">

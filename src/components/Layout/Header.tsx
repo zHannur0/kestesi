@@ -79,7 +79,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
           <div
             className={"flex flex-col items-start justify-center text-center"}
           >
-            <div className={"text-[14px] font-bold"}>назад</div>
+            <div className={"text-[14px] font-bold"}>{t.contacts.back}</div>
             <div className={"text-[10px] font-normal text-[#7B7984]"}>
               {toMain}
             </div>

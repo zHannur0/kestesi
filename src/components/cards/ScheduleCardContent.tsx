@@ -85,7 +85,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
             : "#7B7984",
         }}
         className={
-          "w-[100px] flex flex-col items-center justify-center gap-[20px] rounded-tl-[20px] rounded-bl-[20px]"
+          "w-[100px] flex flex-col items-center pt-[23px] px-[20px] gap-[20px] pb-[24px]  rounded-tl-[20px] rounded-bl-[20px]"
         }
       >
         <div className={"text-white text-2xl leading-[85%] font-bold"}>
@@ -97,7 +97,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
       </div>
       <div
         className={
-          "pt-[20px] pb-[30px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]"
+            "pt-[24px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]"
         }
       >
         <div className={"flex justify-between"}>
@@ -126,15 +126,15 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
 
         <div
           className={
-            "flex justify-between text-[#524FA2] text-[18px] leading-[26%] font-bold "
+            "flex justify-between text-[#524FA2] text-[18px] leading-[26%] "
           }
         >
           <Link href={`/school/${id}/teacher/${item.teacher?.id}`}>
-            <div className={""}>{getInitials(item.teacher?.full_name)}</div>
+            <div className={"font-bold"}>{getInitials(item.teacher?.full_name)}</div>
           </Link>
           <div className={""}>
-            <span className={"text-[#7B7984]"}>{t.schedule.cabinet}</span>{" "}
-            <Link href={`/school/${id}/schedule/classroom/${item.classroom?.id}`}>
+            <span className={"text-[#7B7984] font-normal"}>{t.schedule.cabinet}</span>{" "}
+            <Link href={`/school/${id}/schedule/classroom/${item.classroom?.id}`} className={"font-bold"}>
               {item.classroom?.classroom_number}
             </Link>
           </div>
@@ -146,16 +146,16 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
             </div>
             <div
               className={
-                "flex justify-between text-[#524FA2] text-[18px] leading-[26%] font-bold "
+                "flex justify-between text-[#524FA2] text-[18px] leading-[26%]  "
               }
             >
               <Link href={`/school/${id}/teacher/${item.teacher2?.id}`}>
-              <div className={""}>{getInitials(item.teacher2?.full_name)}</div>
+              <div className={"font-bold"}>{getInitials(item.teacher2?.full_name)}</div>
               </Link>
 
               <div className={""}>
-                <span className={"text-[#7B7984]"}>Кабинет</span>{" "}
-                <Link href={`/school/${id}/schedule/classroom/${item.classroom2?.id}`}>
+                <span className={"text-[#7B7984] font-normal"}>Кабинет</span>{" "}
+                <Link href={`/school/${id}/schedule/classroom/${item.classroom2?.id}`} className={"font-bold"}>
                   {item.classroom2?.classroom_number}
                 </Link>
               </div>
