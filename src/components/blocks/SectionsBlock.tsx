@@ -66,8 +66,8 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
                             {t.teachers.schedule}
                         </div>
                         {
-                            section?.lessons?.map((item) => (
-                                <div className={"w-full h-[100px] py-[20px] px-[30px] gap-[20px] flex flex-col items-start rounded-[20px] bg-[#F9F8FD]"}>
+                            section?.lessons?.map((item, index) => (
+                                <div key={index} className={"w-full h-[100px] py-[20px] px-[30px] gap-[20px] flex flex-col items-start rounded-[20px] bg-[#F9F8FD]"}>
                                     <div className={"text-2xl leading-[85%] font-bold"} style={{color: item.week_day === time.getDay() ? "#ED008C" : "#211F23"}}>
                                         {t.days?.[item.week_day || "none"]}
                                     </div>

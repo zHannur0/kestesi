@@ -31,8 +31,8 @@ const TeachersPage = () => {
     console.log(teacher)
 
     useEffect(() => {
-        id && dispatch(getTeacherThunk(teach));
-    }, [dispatch, id]);
+        id && teach && dispatch(getTeacherThunk(teach));
+    }, [dispatch, id, teach]);
 
     const handleBack = () => {
         router.push(`/school/${id}/teachers`);
