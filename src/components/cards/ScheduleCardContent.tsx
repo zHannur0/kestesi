@@ -5,6 +5,8 @@ import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
 import Link from "next/link";
+import {Simulate} from "react-dom/test-utils";
+import submit = Simulate.submit;
 
 interface IProps {
   item: ISchedule;
@@ -85,7 +87,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
             : "#7B7984",
         }}
         className={
-          "w-[100px] flex flex-col items-center pt-[23px] px-[20px] gap-[20px] pb-[24px]  rounded-tl-[20px] rounded-bl-[20px]"
+          "w-[100px] flex flex-col items-center pt-[23px] gap-[20px] pb-[24px]  rounded-tl-[20px] rounded-bl-[20px]"
         }
       >
         <div className={"text-white text-2xl leading-[85%] font-bold"}>
@@ -97,7 +99,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
       </div>
       <div
         className={
-            "pt-[24px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]"
+            "pt-[23px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]"
         }
       >
         <div className={"flex justify-between"}>
@@ -108,26 +110,30 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
           >
             {item.subject?.full_name}
           </div>
-          <div>
-            {isCurrentTimeWithinLesson(
-              item.ring?.start_time,
-              item.ring?.end_time,
-            ) && (
-              <div
-                className={
-                  "text-right text-[18px] font-bold leading-[85%] text-[#ED008C]"
-                }
-              >
-                {t.schedule.atPresent}
-              </div>
-            )}
+          <div className={"flex items-center"}>
+            <div className={"text-[18px] leading-[85%] text-[#7B7984]"}>{item.typez?.type_full_name}</div>
+            <div>
+              {isCurrentTimeWithinLesson(
+                  item.ring?.start_time,
+                  item.ring?.end_time,
+              ) && (
+                  <div
+                      className={
+                        "text-right text-[18px] font-bold leading-[85%] text-[#ED008C] ml-[20px]"
+                      }
+                  >
+                    {t.schedule.atPresent}
+                  </div>
+              )}
+            </div>
           </div>
+
         </div>
 
         <div
-          className={
-            "flex justify-between text-[#524FA2] text-[18px] leading-[26%] "
-          }
+            className={
+              "flex justify-between text-[#524FA2] text-[18px] leading-[26%] "
+            }
         >
           <Link href={`/school/${id}/teacher/${item.teacher?.id}`}>
             <div className={"font-bold"}>{getInitials(item.teacher?.full_name)}</div>

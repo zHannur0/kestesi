@@ -56,6 +56,7 @@ const SchedulePage = () => {
       handleClick={handleBack}
       page={`/school/${id}/schedule/${who}/${classId}`}
       bg={"bg4"}
+      back={true}
     >
       <div className={"flex justify-between w-full"}>
         <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">

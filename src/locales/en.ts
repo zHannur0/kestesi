@@ -104,6 +104,9 @@ export const en = {
         toTheMainPage: "to the main page",
         back: "back",
         goal: "Goal",
+        aboutSection: "About section",
+        schedule: "Schedule",
+        resume: "Resume"
     },
     teachers: {
         teachers: "Teachers",
@@ -167,5 +170,15 @@ export const en = {
         photoGallery: "Photo Gallery",
         back: "Back",
         toSchoolPassport: "To School Passport",
+    },
+    days: {
+        7: "Sunday",
+        1: "Monday",
+        2: "Tuesday",
+        3: "Wednesday",
+        4: "Thursday",
+        5: "Friday",
+        6: "Saturday",
+        none: ""
     }
 }

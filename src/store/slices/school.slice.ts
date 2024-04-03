@@ -15,7 +15,7 @@ import {
     getSchoolIdThunk,
     getSchoolPassportThunk,
     getSchoolThunk,
-    getSectionsThunk, getSocialMediaThunk, getSportThunk, getTeacherScheduleThunk,
+    getSectionsThunk, getSectionThunk, getSocialMediaThunk, getSportThunk, getTeacherScheduleThunk,
     getTeachersThunk,
     getTeacherThunk,
 } from "@/store/thunks/school.thunk";
@@ -354,6 +354,17 @@ export const schoolSlice = createSlice({
                 return {
                     ...state,
                     scheduleClass: action.payload,
+                };
+            }
+            return state;
+        },
+    ).addCase(
+        getSectionThunk.fulfilled,
+        (state, action: PayloadAction<IKruzhok>) => {
+            if (action.payload) {
+                return {
+                    ...state,
+                    sectionId: action.payload,
                 };
             }
             return state;

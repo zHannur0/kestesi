@@ -101,6 +101,9 @@ export const kz = {
         toTheMainPage: "басты бетке",
         back: "артқа",
         goal: "Мақсат",
+        aboutSection: "Үйірме жайлы",
+        schedule: "Кесте",
+        resume: "Резюме"
     },
     teachers: {
         teachers: "Мұғалімдер",
@@ -169,6 +172,18 @@ export const kz = {
         photoGallery: "Фото-галерея",
         back: "артқа",
         toSchoolPassport: "мектеп төлқұжатына",
+    },
+    days: {
+        7: 'Жексенбі',
+        1: 'Дүйсенбі',
+        2: 'Сейсенбі',
+        3: 'Сәрсенбі',
+        4: 'Бейсенбі',
+        5: 'Жұма',
+        6: 'Сенбі',
+        none: ""
+
     }
+
 
 }

@@ -99,6 +99,10 @@ export const ru = {
         toTheMainPage: "на главную",
         back: "назад",
         goal: "Цель",
+        aboutSection: "О секции",
+        schedule: "Расписание",
+        resume: "Резюме"
+
     },
     teachers: {
         teachers: "Преподаватели",
@@ -166,5 +170,16 @@ export const ru = {
         photoGallery: "Фото-галерея",
         back: "назад",
         toSchoolPassport: "к паспорту школы",
+    },
+    days: {
+        7: "Воскресенье",
+        1: "Понедельник",
+        2: "Вторник",
+        3: "Среда",
+        4: "Четверг",
+        5: "Пятница",
+        6: "Суббота",
+        none: ""
+
     }
 }

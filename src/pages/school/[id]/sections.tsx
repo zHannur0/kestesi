@@ -3,12 +3,13 @@ import MainLayout from "@/layouts/MainLayout";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { useEffect, useState } from "react";
 import { IMenu } from "@/types/assets.type";
-import { getMenuThunk, getSectionsThunk } from "@/store/thunks/school.thunk";
+import {getMenuThunk, getSectionsThunk, getSectionThunk} from "@/store/thunks/school.thunk";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import SectionCard from "@/components/cards/SectionCard";
 import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
+import SectionsBlock from "@/components/blocks/SectionsBlock";
 
 const SectionsPage = () => {
   const router = useRouter();
@@ -21,27 +22,47 @@ const SectionsPage = () => {
     };
     const t = translations[router.locale || "kz"] || en;
   const sections = useTypedSelector((state) => state.schoolInfo.sections);
+  const sectionId = useTypedSelector((state) => state.schoolInfo.sectionId);
+    const [curr, setCurr] = useState<number | null>(null);
+
   useEffect(() => {
     id && dispatch(getSectionsThunk(id));
   }, [dispatch, id]);
+
+    useEffect(() => {
+        if(curr)
+        dispatch(getSectionThunk(curr))
+    }, [curr]);
+
   const handleBack = () => {
-    router.push(`/school/${id}/main`);
+      if(curr) setCurr(null)
+      else
+        router.push(`/school/${id}/main`);
   };
 
   return (
-    <MainLayout isMain={false} link={t.sections.toTheMainPage} handleClick={handleBack} page={`/school/${id}/map`} bg={"bg2"}>
+    <MainLayout isMain={false} link={t.sections.toTheMainPage} handleClick={handleBack} page={`/school/${id}/sections`} bg={curr ? "bg3":"bg2"}>
       <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
           {t.sections.clubsAndSections}
       </h1>
-      <div
-        className={
-          "flex flex-col gap-[20px] overflow-auto scrollbar-hide h-[910px] rounded-[20px] pb-[30px]"
+        {
+            curr ? (
+                <SectionsBlock section={sectionId}/>
+            ) : (
+                <div
+                    className={
+                        "flex flex-col gap-[20px] overflow-auto scrollbar-hide h-[910px] rounded-[20px] pb-[30px]"
+                    }
+                >
+                    {sections.map((item) => (
+                        <div key={item.id} onClick={() => setCurr(item.id || null)}>
+                            <SectionCard section={item}/>
+                        </div>
+                    ))}
+                </div>
+            )
         }
-      >
-        {sections.map((item) => (
-          <SectionCard key={item.id} section={item} />
-        ))}
-      </div>
+
     </MainLayout>
   );
 };

@@ -36,7 +36,6 @@ const Schedule = () => {
   const [currDopSchedule, setCurrDopSchedule] = useState<IDopSchedule[]>([]);
   const [weekDays, setWeekDays] = useState<any[]>();
   useEffect(() => {
-    console.log()
     const getLocalizedWeekdays =()=>{
       return [
         { id: 1, type: t.menu.Monday, short: t.menu.Mon },
@@ -50,13 +49,14 @@ const Schedule = () => {
     setWeekDays(getLocalizedWeekdays);
   }, [t]);
   useEffect(() => {
-    who === "teacher" && dispatch(getScheduleThunk(id));
-    if(who === "teacher") {
-      dispatch(getTeacherScheduleThunk({id: id, teacherId: classId}));
-    }else if(who === "classroom") {
-      dispatch(getClassroomScheduleThunk({id: id, classroomId: classId}));
-    }else {
-      dispatch(getClassScheduleThunk({id: id, classId: classId}));
+    if(id) {
+      if (who === "teacher") {
+        dispatch(getTeacherScheduleThunk({id: id, teacherId: classId}));
+      } else if (who === "classroom") {
+        dispatch(getClassroomScheduleThunk({id: id, classroomId: classId}));
+      } else {
+        dispatch(getClassScheduleThunk({id: id, classId: classId}));
+      }
     }
     id && dispatch(getDopScheduleThunk(id));
   }, [dispatch, id, who]);

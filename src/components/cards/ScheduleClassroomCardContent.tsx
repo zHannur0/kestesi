@@ -93,7 +93,7 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
                         : "#7B7984",
                 }}
                 className={
-                    "w-[100px] flex flex-col items-center justify-center gap-[20px] rounded-tl-[20px] rounded-bl-[20px]"
+                    "w-[100px] flex flex-col items-center pt-[23px] gap-[20px] pb-[24px]  rounded-tl-[20px] rounded-bl-[20px]"
                 }
             >
                 <div className={"text-white text-2xl leading-[85%] font-bold"}>
@@ -105,10 +105,10 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
             </div>
             <div
                 className={
-                    "pt-[20px] pb-[30px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]"
+                    "pt-[23px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]"
                 }
             >
-                <div className={"flex justify-between"}>
+                <div className={"flex justify-between "}>
                     <div
                         className={
                             "text-[#211F23] text-2xl leading-[85%] font-bold"

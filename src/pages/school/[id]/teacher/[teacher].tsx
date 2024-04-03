@@ -44,6 +44,7 @@ const TeachersPage = () => {
             link={t.teachers.toQueueOfTeachers}
             page={`/school/${id}/teacher/${teach}`}
             bg={"bg3"}
+            back={true}
         >
             <div className={``}>
                 <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">

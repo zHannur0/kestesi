@@ -15,9 +15,10 @@ interface HeaderProps {
   isMain?: boolean;
   onClick?: any;
   toMain?: string;
-  page?:string
+  page?:string;
+  back?: boolean;
 }
-const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
+const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
   const router = useRouter();
   const id = Number(router.query.id);
   const translations: any= {
@@ -73,7 +74,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
         </div>
       ) : (
         <div className={"flex gap-[20px]"}>
-          <div className={"hover:cursor-pointer"} onClick={onClick}>
+          <div className={"hover:cursor-pointer"} onClick={!back ? onClick : () => router.back()}>
             <img src="/images/back.svg" alt="" />
           </div>
           <div

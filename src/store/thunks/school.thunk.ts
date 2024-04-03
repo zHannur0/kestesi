@@ -78,6 +78,11 @@ export const getSectionsThunk = createAsyncThunk(
   async (id?: number) => await allApi.getSections(id),
 );
 
+export const getSectionThunk = createAsyncThunk(
+    "getSectionThunk",
+    async (id?: number) => await allApi.getSection(id),
+);
+
 export const getSportThunk = createAsyncThunk(
     "getSportThunk",
     async (id?: number) => await allApi.getSport(id),

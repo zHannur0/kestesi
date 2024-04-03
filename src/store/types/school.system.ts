@@ -51,7 +51,7 @@ export interface SchoolInfo {
   scheduleClass: ISchedule[];
   scheduleTeacher: ISchedule[];
   scheduleClassroom: ISchedule[];
-
+  sectionId: IKruzhok;
 }
 
 export const initialStateSchoolInfo: SchoolInfo = {
@@ -83,5 +83,6 @@ export const initialStateSchoolInfo: SchoolInfo = {
   photos:[],
   scheduleClass: [],
   scheduleClassroom: [],
-  scheduleTeacher: []
+  scheduleTeacher: [],
+  sectionId: {}
 };

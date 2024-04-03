@@ -79,6 +79,9 @@ export const allApi = {
   async getSections(id?: number): Promise<IKruzhok[]> {
     return await instance.get(`/admins/api/kruzhok/?school=${id}`);
   },
+  async getSection(id?: number): Promise<IKruzhok> {
+    return await instance.get(`/admins/api/kruzhok/${id}`);
+  },
   async getSport(id?: number): Promise<ISchoolSport[]> {
     return await instance.get(`/admins/api/Sport_SuccessApi/?school=${id}`);
   },
