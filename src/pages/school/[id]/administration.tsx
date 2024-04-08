@@ -16,7 +16,7 @@ const Administration = () => {
         ru: ru,
         en: en,
     };
-    const t = translations[router.locale || "kz"] || en;
+    const t = translations[router.locale || "kz"] || kz;
     const dispatch = useAppDispatch();
     const director = useTypedSelector((state) => state.schoolInfo.director);
     const administration = useTypedSelector((state) => state.schoolInfo.administration);

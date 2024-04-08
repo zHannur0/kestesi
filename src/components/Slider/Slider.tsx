@@ -24,7 +24,7 @@ const Slider: FC<IProps> = ({ slides }) => {
     };
 
     return (
-        <div className="relative w-[898px] h-[380px] rounded-[40px]">
+        <div className="relative w-[898px] rounded-[40px]">
             {/*<div>*/}
             {/*    <div*/}
             {/*        onClick={goToPrevious}*/}
@@ -39,10 +39,11 @@ const Slider: FC<IProps> = ({ slides }) => {
             {/*        ❱*/}
             {/*    </div>*/}
             {/*</div>*/}
-            <div
-                className="w-full h-full rounded-[40px] bg-cover bg-center"
-                style={{ backgroundImage: `url(${slides[currentIndex]})` }}
-            ></div>
+            {/*<div*/}
+            {/*    className="w-full h-full rounded-[40px] bg-cover bg-center"*/}
+            {/*    style={{ backgroundImage: `url(${slides[currentIndex]})` }}*/}
+            {/*></div>*/}
+            <img src={slides[currentIndex]} alt=""/>
             <div className={"absolute bottom-4 flex justify-center items-center w-[100%]"}>
                 <div className="flex gap-1 justify-center">
                     {slides.length > 1 && slides.map((slide, slideIndex) => (

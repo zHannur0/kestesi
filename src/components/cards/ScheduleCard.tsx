@@ -46,52 +46,78 @@ const ScheduleCards: FC<IProps> = ({ os, dop, day, dayNumber }) => {
           </div>
         )}
       </div>
-      <div
-        className={
-          "flex flex-col gap-[20px] h-max-[690px] overflow-auto scrollbar-hide"
-        }
-      >
-        {os.sort().map((item, index) => (
-            <div key={item.id}>
-              {
-                who === "class" && <ScheduleCardContent
-                dayNumber={dayNumber}
-                index={index}
-                item={item}
-                />
-              }
-              {
-                  who === "teacher" && <ScheduleTeacherCardContent
-                      dayNumber={dayNumber}
-                      index={index}
-                      item={item}
-                  />
-              }
-              {
-                  who === "classroom" && <ScheduleClassroomCardContent
-                      dayNumber={dayNumber}
-                      index={index}
-                      item={item}
-                  />
-              }
-            </div>
+      {
+        os && os.length > 0 ? (
+            <div
+                className={
+                  "flex flex-col gap-[20px] h-max-[690px] overflow-auto scrollbar-hide"
+                }
+            >
+              {os.sort().map((item, index) => (
+                  <div key={item.id}>
+                    {
+                        who === "class" && <ScheduleCardContent
+                            dayNumber={dayNumber}
+                            index={index}
+                            item={item}
+                        />
+                    }
+                    {
+                        who === "teacher" && <ScheduleTeacherCardContent
+                            dayNumber={dayNumber}
+                            index={index}
+                            item={item}
+                        />
+                    }
+                    {
+                        who === "classroom" && <ScheduleClassroomCardContent
+                            dayNumber={dayNumber}
+                            index={index}
+                            item={item}
+                        />
+                    }
+                  </div>
 
-        ))}
-        {dop.length > 0 && (
-          <div className={"text-2xl leading-[80%]"}>{t.schedule.additionalLessons}</div>
-        )}
-        {dop.length > 0 &&
-          dop
-            .sort()
-            .map((item, index) => (
-              <ScheduleCardContent
-                key={item.id}
-                dayNumber={dayNumber}
-                index={index}
-                item={item}
-              />
-            ))}
-      </div>
+              ))}
+              {dop.length > 0 && (
+                  <div className={"text-2xl leading-[80%]"}>{t.schedule.additionalLessons}</div>
+              )}
+              {dop.length > 0 &&
+                  dop
+                      .sort()
+                      .map((item, index) => (
+                          <div key={item.id}>
+                            {
+                                who === "class" && <ScheduleCardContent
+                                    dayNumber={dayNumber}
+                                    index={index}
+                                    item={item}
+                                />
+                            }
+                            {
+                                who === "teacher" && <ScheduleTeacherCardContent
+                                    dayNumber={dayNumber}
+                                    index={index}
+                                    item={item}
+                                />
+                            }
+                            {
+                                who === "classroom" && <ScheduleClassroomCardContent
+                                    dayNumber={dayNumber}
+                                    index={index}
+                                    item={item}
+                                />
+                            }
+                          </div>
+                      ))}
+            </div>
+        ) : (
+            <div className={"flex items-center justify-center text-[#7B7984] text-[30px] leading-[71%] h-[700px]"}>
+              {t.schedule.noLessons}
+            </div>
+        )
+      }
+
     </div>
   );
 };

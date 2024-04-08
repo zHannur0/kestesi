@@ -43,7 +43,6 @@ const ScheduleClassTabs: FC<ScheduleProps> = ({
 
     setClassNumbers(uniqueClassNumbersArray);
   }, [classl]);
-  console.log(classl);
 
   return (
     <div className={"flex flex-wrap gap-[20px]"}>

@@ -53,9 +53,10 @@ export const en = {
             Thursday: "Thursday",
             Friday: "Friday",
             Saturday: "Saturday",
-            Today: "Today",
+            today: "Today",
             back: "back",
             toTheMainPage: "to the main page",
+            noMenu:"There are no menu on this day"
         },
     news: {
         news: "News",
@@ -97,7 +98,8 @@ export const en = {
         set: "class-set",
         students: "students",
         address: "Address",
-        specialist: "Specialist"
+        specialist: "Specialist",
+        noLessons: "There are no classes on this day"
     },
     sections: {
         clubsAndSections: "Clubs and sections",

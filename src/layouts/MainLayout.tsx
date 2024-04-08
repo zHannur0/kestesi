@@ -20,7 +20,6 @@ interface ILayouts {
 
 const MainLayout = ({ children, handleClick, isMain, link, page,bg, back}: ILayouts) => {
   const router = useRouter();
-  console.log(back)
   return (
     <div
       className={`w-[1920px] relative h-[1080px] bg-cover bg-no-repeat px-[100px] py-[30px] ${oswald.variable} font-sans`}

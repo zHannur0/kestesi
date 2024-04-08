@@ -60,13 +60,12 @@ const SchedulePage = () => {
     >
       <div className={"flex justify-between w-full"}>
         <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
-          {who === "class" && classl.class_name && (classl.class_name + " - ")}{t.schedule.name}
+          {who === "class" && classl.class_name && (classl.class_name + ` ${t.schedule.class} - `  )}{t.schedule.name}
         </h1>
         <div className={"text-2xl text-[#7B7984]"}>
           {who === "class" && classl.class_teacher && t.schedule.classTeacher}: <Link className={"text-[#524FA2]"} href={`/school/${id}/teacher/${classl?.class_teacher?.id}`} >{who === "class" && classl.class_teacher && getInitials(classl.class_teacher.full_name)}</Link>
         </div>
       </div>
-
       <Schedule />
     </MainLayout>
   );

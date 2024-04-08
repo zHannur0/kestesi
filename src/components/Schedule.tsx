@@ -27,9 +27,7 @@ const Schedule = () => {
   };
   const t = translations[router.locale || "kz"] || en;
   const dispatch = useAppDispatch();
-  const os = useTypedSelector((state) => who === "teacher" ? state.schoolInfo.scheduleTeacher :
-      who === "classroom" ? state.schoolInfo.scheduleClassroom : state.schoolInfo.scheduleClass);
-  console.log(os)
+  const os = useTypedSelector((state) => who === "teacher" ? state.schoolInfo.scheduleTeacher : who === "classroom" ? state.schoolInfo.scheduleClassroom : state.schoolInfo.scheduleClass);
   const dop = useTypedSelector((state) => state.schoolInfo.dopSchedule);
   const [day, setDay] = useState<number>(1);
   const [currSchedule, setCurrSchedule] = useState<ISchedule[]>([]);

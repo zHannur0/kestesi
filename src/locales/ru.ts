@@ -53,9 +53,11 @@ export const ru = {
         Thursday: "Четверг",
         Friday: "Пятница",
         Saturday: "Суббота",
-        Today: "Сегодня",
+        today: "Сегодня",
         back: "назад",
         toTheMainPage: "на главную",
+        noMenu:"В этот день меню не предусмотрено"
+
     },
     news: {
         news: "Новости",
@@ -92,7 +94,8 @@ export const ru = {
         toTheMainPage: "на главную",
         toChooseClass: "к выбору класса",
         lesson: "урок",
-        cabinet: "Кабинет"
+        cabinet: "Кабинет",
+        noLessons: "В этот день занятий нет"
     },
     sections: {
         clubsAndSections: "Кружки и секций",

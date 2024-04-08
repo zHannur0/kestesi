@@ -97,7 +97,7 @@ const ScheduleTabsPage = () => {
     >
       <>
         <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
-          {curr && (curr + " - ")}{t.schedule.name}
+          {curr && (curr + " " + t.schedule.classes + " - ")}{t.schedule.name}
         </h1>
       </>
       <div

@@ -116,19 +116,22 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
                     >
                         {item.subject?.full_name}
                     </div>
-                    <div>
-                        {isCurrentTimeWithinLesson(
-                            item.ring?.start_time,
-                            item.ring?.end_time,
-                        ) && (
-                            <div
-                                className={
-                                    "text-right text-[18px] font-bold leading-[85%] text-[#ED008C]"
-                                }
-                            >
-                                {t.schedule.atPresent}
-                            </div>
-                        )}
+                    <div className={"flex items-center"}>
+                        <div className={"text-[18px] leading-[85%] text-[#7B7984]"}>{item.typez?.type_full_name}</div>
+                        <div>
+                            {isCurrentTimeWithinLesson(
+                                item.ring?.start_time,
+                                item.ring?.end_time,
+                            ) && (
+                                <div
+                                    className={
+                                        "text-right text-[18px] font-bold leading-[85%] text-[#ED008C] ml-[20px]"
+                                    }
+                                >
+                                    {t.schedule.atPresent}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
                 <div
@@ -136,8 +139,10 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
                         "flex justify-between text-[#524FA2] text-[18px] leading-[26%] font-bold "
                     }
                 >
-                    <Link href={`/school/${id}/teacher/${item.classroom?.id === classId ? item.teacher?.id : item.teacher2?.id}`}>
-                        <div className={""}>{item.classroom?.id === classId ? item.teacher?.full_name : item.teacher2?.full_name}
+                    <Link
+                        href={`/school/${id}/teacher/${item.classroom?.id === classId ? item.teacher?.id : item.teacher2?.id}`}>
+                        <div
+                            className={""}>{item.classroom?.id === classId ? item.teacher?.full_name : item.teacher2?.full_name}
                         </div>
                     </Link>
                     <Link href={`/school/${id}/schedule/class/${item.classl?.id}`}>

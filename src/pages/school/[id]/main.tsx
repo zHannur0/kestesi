@@ -54,33 +54,53 @@ const MainPage = () => {
             className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center pr-[20px] pl-[50px]">
           <div className=" h-[100%] flex flex-col gap-[36px] py-[50px]">
             <div className="flex flex-col gap-[16px]">
-              <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
-                {schoolLang
-                        ?.substring(schoolLang?.indexOf(" ") + 1)
-                        .charAt(0)
-                        .toUpperCase() +
-                    "" +
-                    schoolLang?.substring(
-                        schoolLang?.indexOf(" ") + 2,
-                    )}
-              </div>
-              <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px]">
-                {schoolLang?.split(" ")[0]}
-              </div>
-              <div
-                  className="w-[310px] h-[120px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
-                {cities
-                    .find((city) => city.name === school?.region)
-                    ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
-              </div>
+              {
+                schoolLang?.indexOf("№") != -1 ? (
+                    <>
+                      <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
+                        {schoolLang
+                                ?.substring(schoolLang?.indexOf(" ") + 1)
+                                .charAt(0)
+                                .toUpperCase() +
+                            "" +
+                            schoolLang?.substring(
+                                schoolLang?.indexOf(" ") + 2,
+                            )}
+                      </div>
+                      <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px]">
+                        {schoolLang?.split(" ")[0]}
+                      </div>
+                    </>
+                ): (
+                    <>
+                      <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
+                        {/*{schoolLang*/}
+                        {/*        ?.substring(schoolLang?.indexOf(" ") + 1)*/}
+                        {/*        .charAt(0)*/}
+                        {/*        .toUpperCase() +*/}
+                        {/*    "" +*/}
+                        {/*    schoolLang?.substring(*/}
+                        {/*        schoolLang?.indexOf(" ") + 2,*/}
+                        {/*    )}*/}
+                        {schoolLang}
+                      </div>
+                      <div
+                          className="w-[310px] h-[120px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
+                        {cities
+                            .find((city) => city.name === school?.region)
+                            ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
+                      </div>
+                    </>
+                )
+              }
+
+
             </div>
             <Link href={`/school/${id}/schoolInformation`}>
-              {/*<div className="text-center text-indigo-800 text-4xl font-bold border-2 border-[#5D49A0] rounded-[20px] w-[300px] h-[70px] flex leading-[20px]  justify-center items-center">*/}
-              {/*  {t.main.aboutSchool}*/}
-              {/*</div>*/}
-                <div className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center"}>
-                  {t.main.aboutSchool}
-                </div>
+              <div
+                  className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center"}>
+                {t.main.aboutSchool}
+              </div>
             </Link>
           </div>
           <div>

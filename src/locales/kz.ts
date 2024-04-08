@@ -53,9 +53,11 @@ export const kz = {
         Thursday: "Бейсенбі",
         Friday: "Жұма",
         Saturday: "Сенбі",
-        Today: "Бүгін",
+        today: "Бүгін",
         back: "артқа",
         toTheMainPage: "басты бетке",
+        noMenu:"Бұл күнге ас мәзірі жоқ"
+
     },
     news: {
         news: "Жаңалықтар",
@@ -93,7 +95,8 @@ export const kz = {
         toTheMainPage: "басты бетке",
         toChooseClass: "сынып таңдауға",
         lesson: "сабақ",
-        cabinet: "Кабинет"
+        cabinet: "Кабинет",
+        noLessons: "Бұл күні сабақтар жоқ"
 
     },
     sections: {

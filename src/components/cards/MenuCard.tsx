@@ -3,6 +3,10 @@ import { IDopSchedule, IMenu, ISchedule } from "@/types/assets.type";
 import { allowedDisplayValues } from "next/dist/compiled/@next/font/dist/constants";
 import ScheduleCardContent from "@/components/cards/ScheduleCardContent";
 import MenuCardContent from "@/components/cards/MenuCardContent";
+import {useRouter} from "next/router";
+import {kz} from "@/locales/kz";
+import {ru} from "@/locales/ru";
+import {en} from "@/locales/en";
 
 interface IProps {
   menu: IMenu[];
@@ -12,7 +16,13 @@ interface IProps {
 
 const ScheduleCards: FC<IProps> = ({ menu, day, dayNumber }) => {
   const [time, setTime] = useState<Date>(new Date());
-
+  const router = useRouter();
+  const translations: any= {
+    kz: kz,
+    ru: ru,
+    en: en,
+  };
+  const t = translations[router.locale || "kz"] || en;
   return (
     <div
       className={
@@ -29,24 +39,33 @@ const ScheduleCards: FC<IProps> = ({ menu, day, dayNumber }) => {
               "text-right text-[18px] font-bold leading-[85%] text-[#ED008C]"
             }
           >
-            Сегодня
+            {t.menu.today}
           </div>
         )}
       </div>
-      <div
-        className={
-          "flex flex-col gap-[20px] max-h-[690px] overflow-auto scrollbar-hide"
-        }
-      >
-        {menu.map((item, index) => (
-          <MenuCardContent
-            key={item.id}
-            dayNumber={dayNumber}
-            index={index}
-            item={item}
-          />
-        ))}
-      </div>
+      {
+        menu && menu.length > 0 ? (
+            <div
+                className={
+                  "flex flex-col gap-[20px] max-h-[690px] overflow-auto scrollbar-hide"
+                }
+            >
+              {menu.map((item, index) => (
+                  <MenuCardContent
+                      key={item.id}
+                      dayNumber={dayNumber}
+                      index={index}
+                      item={item}
+                  />
+              ))}
+            </div>
+        ) : (
+            <div className={"flex items-center justify-center text-[#7B7984] text-[30px] leading-[71%] h-[700px]"}>
+              {t.menu.noMenu}
+            </div>
+        )
+      }
+
     </div>
   );
 };
