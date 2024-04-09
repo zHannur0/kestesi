@@ -13,7 +13,7 @@ import {en} from "@/locales/en";
 
 const ScheduleTabsPage = () => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
   const translations: any= {
     kz: kz,
     ru: ru,
@@ -39,7 +39,7 @@ const ScheduleTabsPage = () => {
       setSelectedClassII(null);
       setSelectedClassIII(null);
       setCurr(null)
-    } else router.push(`/school/${id}/main`);
+    } else router.push(`/${id}/main`);
   };
 
   const chooseClassNumber = (classNum: number) => {
@@ -92,7 +92,7 @@ const ScheduleTabsPage = () => {
           ? t.schedule.toChooseClass
           : t.schedule.toTheMainPage
       }
-      page={`/school/${id}/scheduleTabs`}
+      page={`/${id}/scheduleTabs`}
       bg={curr ? "bg3" : "bg2"}
     >
       <>

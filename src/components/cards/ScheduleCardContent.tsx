@@ -16,7 +16,7 @@ interface IProps {
 
 const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
   const translations: any= {
     kz: kz,
     ru: ru,
@@ -135,12 +135,12 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
               "flex justify-between text-[#524FA2] text-[18px] leading-[26%] "
             }
         >
-          <Link href={`/school/${id}/teacher/${item.teacher?.id}`}>
+          <Link href={`/${id}/teacher/${item.teacher?.id}`}>
             <div className={"font-bold"}>{getInitials(item.teacher?.full_name)}</div>
           </Link>
           <div className={""}>
             <span className={"text-[#7B7984] font-normal"}>{t.schedule.cabinet}</span>{" "}
-            <Link href={`/school/${id}/schedule/classroom/${item.classroom?.id}`} className={"font-bold"}>
+            <Link href={`/${id}/schedule/classroom/${item.classroom?.id}`} className={"font-bold"}>
               {item.classroom?.classroom_number}
             </Link>
           </div>
@@ -155,13 +155,13 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
                 "flex justify-between text-[#524FA2] text-[18px] leading-[26%]  "
               }
             >
-              <Link href={`/school/${id}/teacher/${item.teacher2?.id}`}>
+              <Link href={`/${id}/teacher/${item.teacher2?.id}`}>
               <div className={"font-bold"}>{getInitials(item.teacher2?.full_name)}</div>
               </Link>
 
               <div className={""}>
                 <span className={"text-[#7B7984] font-normal"}>Кабинет</span>{" "}
-                <Link href={`/school/${id}/schedule/classroom/${item.classroom2?.id}`} className={"font-bold"}>
+                <Link href={`/${id}/schedule/classroom/${item.classroom2?.id}`} className={"font-bold"}>
                   {item.classroom2?.classroom_number}
                 </Link>
               </div>

@@ -15,7 +15,7 @@ interface TeachersTableProps {
 
 const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
     const router = useRouter();
-    const id = Number(router.query.id);
+    const id = String(router.query.id);
     const time = new Date();
 
     const translations: any= {
@@ -40,7 +40,7 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
                             {section?.teacher?.full_name}{" "}
                         </p>
                     </div>
-                    <Link href={`/school/${id}/teacher/${section?.teacher?.id}`}>
+                    <Link href={`/${id}/teacher/${section?.teacher?.id}`}>
                         <div
                             className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center inline-flex w-[280px] h-[64px]">
                             {t.sections.resume}

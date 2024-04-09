@@ -19,7 +19,7 @@ interface IProps {
 const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
     const router = useRouter();
     const classId = Number(router.query.scheduleId);
-    const id = Number(router.query.id);
+    const id = String(router.query.id);
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -140,12 +140,12 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
                     }
                 >
                     <Link
-                        href={`/school/${id}/teacher/${item.classroom?.id === classId ? item.teacher?.id : item.teacher2?.id}`}>
+                        href={`/${id}/teacher/${item.classroom?.id === classId ? item.teacher?.id : item.teacher2?.id}`}>
                         <div
                             className={""}>{item.classroom?.id === classId ? item.teacher?.full_name : item.teacher2?.full_name}
                         </div>
                     </Link>
-                    <Link href={`/school/${id}/schedule/class/${item.classl?.id}`}>
+                    <Link href={`/${id}/schedule/class/${item.classl?.id}`}>
                         <div className={""}>
                             {item.classl?.class_name}
                         </div>

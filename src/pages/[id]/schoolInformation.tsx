@@ -39,7 +39,7 @@ interface IType {
 const SchoolInformationPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
   const translations: any= {
     kz: kz,
     ru: ru,
@@ -120,7 +120,7 @@ const SchoolInformationPage = () => {
     }
   }, [sch, school,t]);
   const handleBack = () => {
-    router.push(`/school/${id}/main`);
+    router.push(`/${id}/main`);
   };
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -191,10 +191,10 @@ const SchoolInformationPage = () => {
       ref={bigRef}
     >
       {bgHeader ? (
-        <HeaderWBg onClick={handleBack} isMain={false} toMain={"на главную"} page={`/school/${id}/schoolInformation`}/>
+        <HeaderWBg onClick={handleBack} isMain={false} toMain={"на главную"} page={`/${id}/schoolInformation`}/>
       ) : (
         <div className={"w-[1720px] absolute z-40"}>
-          <Header onClick={handleBack} isMain={false} toMain={"на главную"} page={`/school/${id}/schoolInformation`}/>
+          <Header onClick={handleBack} isMain={false} toMain={"на главную"} page={`/${id}/schoolInformation`}/>
         </div>
       )}
       <div
@@ -223,7 +223,7 @@ const SchoolInformationPage = () => {
         <div className={"flex flex-col gap-[20px]"}>
           {sideBar?.map((item) => (
               <Link
-                  href={`/school/${router.query.id}/${item.link}`}
+                  href={`/${router.query.id}/${item.link}`}
                   key={item.id}
             >
               <div

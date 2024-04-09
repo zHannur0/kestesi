@@ -17,7 +17,7 @@ interface IType {
 
 const ProudOfSchool = () => {
     const router = useRouter();
-    const id = Number(router.query.id);
+    const id = String(router.query.id);
     const proudId = Number(router.query.proud);
     const dispatch = useAppDispatch();
     const translations: any= {
@@ -100,10 +100,10 @@ const ProudOfSchool = () => {
 
     console.log(curr)
     const handleBack = () => {
-        router.push(`/school/${id}/main`);
+        router.push(`/${id}/main`);
     };
     return (
-        <MainLayout isMain={false} link={t.proud.toTheMainPage} handleClick={handleBack} page={`/school/${id}/proudOfSchool/${proudId}`} bg={"bg2"}>
+        <MainLayout isMain={false} link={t.proud.toTheMainPage} handleClick={handleBack} page={`/${id}/proudOfSchool/${proudId}`} bg={"bg2"}>
             <h1 className="text-[#211F23] text-[36px] font-bold leading-[80%] mb-[30px]">
                 {t.proud.schoolPride}
             </h1>
@@ -111,7 +111,7 @@ const ProudOfSchool = () => {
                 className={"w-full relative max-h-[910px] py-[30px] px-[60px] bg-white flex flex-col gap-[30px] rounded-[40px] overflow-hidden scrollbar-hide"}>
                 <div className={"flex gap-[20px] bg-white"}>
                     {sideBar?.map((item) => (
-                        <Link href={`/school/${router.query.id}/proudOfSchool/${item.link}`} key={item.id}>
+                        <Link href={`/${router.query.id}/proudOfSchool/${item.link}`} key={item.id}>
                             <div
                                 className={"flex items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px]"}
                                 style={{

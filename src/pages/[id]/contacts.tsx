@@ -13,7 +13,7 @@ import {en} from "@/locales/en";
 
 const Contacts = () => {
     const router = useRouter();
-    const id = Number(router.query.id);
+    const id = String(router.query.id);
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -44,15 +44,15 @@ const Contacts = () => {
         }
     }, [socialMedia]);
     const handleBack = () => {
-        router.push(`/school/${id}/schoolInformation`);
+        router.push(`/${id}/schoolInformation`);
     };
 
     return (
-        <MainLayout isMain={false} link={t.contacts.toSchoolPassport} handleClick={handleBack} page={`/school/${id}/contacts`} bg={"bg3"}>
+        <MainLayout isMain={false} link={t.contacts.toSchoolPassport} handleClick={handleBack} page={`/${id}/contacts`} bg={"bg3"}>
             <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
                 {t.contacts.contacts}
             </h1>
-            <div className={"bg-white py-[40px] px-[60px] gap-[60px] flex flex-col w-full min-h-[860px]"}>
+            <div className={"bg-white py-[40px] px-[60px] gap-[60px] flex flex-col rounded-[40px] w-full min-h-[860px]"}>
                 <div className={"flex flex-col gap-[30px]"}>
                     <div className={"text-[30px] font-bold leading-[80%]"}>
                         {t.contacts.waysToConnect}

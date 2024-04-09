@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const SchedulePage = () => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
   const who = router.query.which;
   const classId = Number(router.query.scheduleId);
   const translations: any= {
@@ -22,8 +22,8 @@ const SchedulePage = () => {
   };
   const t = translations[router.locale || "kz"] || en;
   const handleBack = () => {
-    if(who === "teacher") router.push(`/school/${id}/teacher/${classId}`);
-    else router.push(`/school/${id}/scheduleTabs`);
+    if(who === "teacher") router.push(`/${id}/teacher/${classId}`);
+    else router.push(`/${id}/scheduleTabs`);
   };
   const dispatch = useAppDispatch();
   let classl = useTypedSelector((state) => state.schoolInfo.classId);
@@ -54,7 +54,7 @@ const SchedulePage = () => {
       isMain={false}
       link={t.schedule.toChooseClass}
       handleClick={handleBack}
-      page={`/school/${id}/schedule/${who}/${classId}`}
+      page={`/${id}/schedule/${who}/${classId}`}
       bg={"bg4"}
       back={true}
     >
@@ -63,7 +63,7 @@ const SchedulePage = () => {
           {who === "class" && classl.class_name && (classl.class_name + ` ${t.schedule.class} - `  )}{t.schedule.name}
         </h1>
         <div className={"text-2xl text-[#7B7984]"}>
-          {who === "class" && classl.class_teacher && t.schedule.classTeacher}: <Link className={"text-[#524FA2]"} href={`/school/${id}/teacher/${classl?.class_teacher?.id}`} >{who === "class" && classl.class_teacher && getInitials(classl.class_teacher.full_name)}</Link>
+          {who === "class" && classl.class_teacher && t.schedule.classTeacher}: <Link className={"text-[#524FA2]"} href={`/${id}/teacher/${classl?.class_teacher?.id}`} >{who === "class" && classl.class_teacher && getInitials(classl.class_teacher.full_name)}</Link>
         </div>
       </div>
       <Schedule />

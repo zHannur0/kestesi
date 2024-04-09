@@ -14,13 +14,13 @@ const MenuPage = () => {
         en: en,
     };
     const t = translations[router.locale || "kz"] || en;
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
   const handleBack = () => {
     router.push(`/school/${id}/main`);
   };
 
   return (
-    <MainLayout isMain={false} link={t.menu.toTheMainPage} handleClick={handleBack} page={`/school/${id}/menu`} bg={"bg2"}>
+    <MainLayout isMain={false} link={t.menu.toTheMainPage} handleClick={handleBack} page={`/${id}/menu`} bg={"bg2"}>
       <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
         {t.menu.name}
       </h1>

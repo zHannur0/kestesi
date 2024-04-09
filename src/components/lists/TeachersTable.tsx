@@ -107,7 +107,12 @@ const TeachersTable: FC<TeachersTableProps> = ({
                         }
                         return user.full_name && user.full_name.toLowerCase().startsWith(inputValue.toLowerCase());
                       }
-                  )
+                  ).sort((a, b) => {
+                const nameA = a.full_name || "";
+                const nameB = b.full_name || "";
+
+                return nameA.localeCompare(nameB);
+              })
                   .map((item, index) => (
                       <TeachersCard
                           key={index}

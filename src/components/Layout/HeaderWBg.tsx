@@ -16,9 +16,9 @@ interface HeaderProps {
 }
 const HeaderWBg: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
   const handleBack = () => {
-    router.push(`/school/${id}/main`);
+    router.push(`/${id}/main`);
   };
 
   const [time, setTime] = useState<Date>(new Date());
@@ -82,17 +82,17 @@ const HeaderWBg: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
         <img className="w-[100%] h-[50px]" src="/images/Logo.svg" alt="" />
       </div>
       <div className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex">
-        <Link href={page || `/school/${id}/main`}  locale="kz">
+        <Link href={page || `/${id}/main`}  locale="kz">
           <div className="text-center text-neutral-800 text-[27px] font-normal">
             KZ
           </div>
         </Link>
-        <Link href={page || `/school/${id}/main`} locale="ru">
+        <Link href={page || `/${id}/main`} locale="ru">
           <div className="text-center text-zinc-500 text-[27px] font-normal">
             RU
           </div>
         </Link>
-        <Link href={page || `/school/${id}/main`}  locale="en">
+        <Link href={page || `/${id}/main`}  locale="en">
           <div className="text-center text-zinc-500 text-[27px] font-normal">
             EN
           </div>

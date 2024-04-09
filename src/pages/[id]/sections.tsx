@@ -14,7 +14,7 @@ import SectionsBlock from "@/components/blocks/SectionsBlock";
 const SectionsPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -37,11 +37,11 @@ const SectionsPage = () => {
   const handleBack = () => {
       if(curr) setCurr(null)
       else
-        router.push(`/school/${id}/main`);
+        router.push(`/${id}/main`);
   };
 
   return (
-    <MainLayout isMain={false} link={t.sections.toTheMainPage} handleClick={handleBack} page={`/school/${id}/sections`} bg={curr ? "bg3":"bg2"}>
+    <MainLayout isMain={false} link={t.sections.toTheMainPage} handleClick={handleBack} page={`/${id}/sections`} bg={curr ? "bg3":"bg2"}>
       <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
           {t.sections.clubsAndSections}
       </h1>

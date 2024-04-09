@@ -15,7 +15,7 @@ interface TeachersTableProps {
 
 const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
 
   const translations: any= {
     kz: kz,
@@ -45,7 +45,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
               : "Учитель"}{" "}
           </p>
         </div>
-        <Link href={`/school/${id}/schedule/teacher/${teacher?.id}`}>
+        <Link href={`/${id}/schedule/teacher/${teacher?.id}`}>
             <div className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center inline-flex w-[280px] h-[64px]">{t.teachers.schedule}</div>
         </Link>
 

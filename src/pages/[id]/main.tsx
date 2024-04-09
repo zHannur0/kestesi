@@ -16,7 +16,7 @@ import { ru } from "@/locales/ru";
 
 const MainPage = () => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
   const translations: any= {
     kz: kz,
     ru: ru,
@@ -32,10 +32,9 @@ const MainPage = () => {
   const [schoolLang, setSchoolLang] = useState<string>();
 
   useEffect(() => {
-    id && dispatch(getSchoolIdThunk(id));
-    id && dispatch(getSchoolPassportThunk(id));
-  }, [dispatch, id]);
-  console.log(schoolLang)
+      id && dispatch(getSchoolIdThunk(id));
+      id && dispatch(getSchoolPassportThunk(id));
+  }, [dispatch, id,]);
 
   useEffect(() => {
     if(router.locale === "kz") {
@@ -96,7 +95,7 @@ const MainPage = () => {
 
 
             </div>
-            <Link href={`/school/${id}/schoolInformation`}>
+            <Link href={`/${id}/schoolInformation`}>
               <div
                   className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center"}>
                 {t.main.aboutSchool}
@@ -118,7 +117,7 @@ const MainPage = () => {
       <div
           className="w-[1720px] h-[180px] bg-gradient-to-r from-purple-800 to-pink-600 rounded-[40px] flex justify-center items-center mt-[20px] hover:cursor-pointer"
           onClick={() => {
-            router.push(`/school/${id}/scheduleTabs`);
+            router.push(`/${id}/scheduleTabs`);
           }}
       >
         <div className="h-[44px] text-white text-7xl font-bold leading-[30%] text-center">
@@ -127,7 +126,7 @@ const MainPage = () => {
       </div>
       <div className={"flex justify-between flex-wrap"}>
         {sidebar.map((item) => (
-            <Link href={`/school/${router.query.id}/${item.link}`} key={item.id}>
+            <Link href={`/${router.query.id}/${item.link}`} key={item.id}>
               <div className="w-[560px] h-[130px] bg-white rounded-[40px] flex justify-center items-center  mt-[20px]">
                 <div className="h-[10px] text-center text-indigo-800 text-4xl font-bold leading-[27%] tracking-normal">
                   {router.locale === "kz" ? item.typeKz : router.locale === "ru" ? item.type : item.typeEn}

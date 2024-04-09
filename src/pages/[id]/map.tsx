@@ -20,7 +20,7 @@ import {en} from "@/locales/en";
 
 const SchoolMapPage = () => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -65,11 +65,11 @@ const SchoolMapPage = () => {
         }
     };
   const handleBack = () => {
-    router.push(`/school/${id}/main`);
+    router.push(`/${id}/main`);
   };
 
   return (
-    <MainLayout handleClick={handleBack} isMain={false} link={t.map.toTheMainPage} page={`/school/${id}/map`} bg={"bg2"}>
+    <MainLayout handleClick={handleBack} isMain={false} link={t.map.toTheMainPage} page={`/${id}/map`} bg={"bg2"}>
       <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px]">
           {t.map.schoolMap}
       </h1>
@@ -160,9 +160,12 @@ const SchoolMapPage = () => {
                 }).map((item, index) => (
                     <div key={item.id}
                          className={"min-h-[90px] pl-[26px] pr-[30px] flex gap-[20px] bg-white items-center rounded-xl"}>
-                        <div className={"text-[#524FA2] text-[32px] font-normal leading-[94%]"}>
-                            {item.classroom_number}
-                        </div>
+                        <Link href={`/${id}/schedule/classroom/${item?.id}`}>
+                            <div className={"text-[#524FA2] text-[32px] font-normal leading-[94%]"}>
+                                {item.classroom_number}
+                            </div>
+                        </Link>
+
                         <div className={"text-[28px] text-[#211F23] font-normal leading-[90%]"}>
                             {item.classroom_name}
                         </div>

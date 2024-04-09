@@ -12,7 +12,7 @@ interface IProps {
 
 const ClassLetterTabs: FC<IProps> = ({ classes, smena }) => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -21,7 +21,7 @@ const ClassLetterTabs: FC<IProps> = ({ classes, smena }) => {
     const t = translations[router.locale || "kz"] || en;
 
   const handleClick = (scheduleId: any) => {
-    router.push(`/school/${id}/schedule/class/${scheduleId}`);
+    router.push(`/${id}/schedule/class/${scheduleId}`);
   };
   return (
     <div className={"flex flex-col gap-[30px]"}>

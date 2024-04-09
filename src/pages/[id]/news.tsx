@@ -17,7 +17,7 @@ import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
 const NewsPage = () => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
   const dispatch = useAppDispatch();
   const translations: any= {
     kz: kz,
@@ -33,7 +33,7 @@ const NewsPage = () => {
 
   const handleBack = () => {
     if (currNews) setCurrNews(null);
-    else router.push(`/school/${id}/main`);
+    else router.push(`/${id}/main`);
   };
 
   const handleClick = (index: number) => {

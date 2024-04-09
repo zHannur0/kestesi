@@ -18,7 +18,7 @@ import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
 const TeachersPage = () => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
   const dispatch = useAppDispatch();
   const translations: any= {
     kz: kz,
@@ -34,18 +34,18 @@ const TeachersPage = () => {
   }, [dispatch, id]);
 
   const handleChooseTeacher = (idTeacher?: number) => {
-    router.push(`/school/${id}/teacher/${idTeacher}`);
+    router.push(`/${id}/teacher/${idTeacher}`);
   };
 
   const handleBack = () => {
-    router.push(`/school/${id}/main`);
+    router.push(`/${id}/main`);
   };
   return (
     <MainLayout
       handleClick={handleBack}
       isMain={false}
       link={teacherId ? t.teachers.toQueueOfTeachers : t.teachers.back}
-      page={`/school/${id}/teachers`}
+      page={`/${id}/teachers`}
       bg={"bg2"}
     >
       <div className={``}>

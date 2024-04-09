@@ -1,7 +1,7 @@
-import {FC, useState} from "react";
+import { FC, useState, useEffect } from "react";
 
 interface IProps {
-    slides: any[];
+    slides: string[]; // предполагаем, что slides - это массив URL изображений
 }
 
 const Slider: FC<IProps> = ({ slides }) => {
@@ -23,27 +23,17 @@ const Slider: FC<IProps> = ({ slides }) => {
         setCurrentIndex(slideIndex);
     };
 
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            goToNext();
+        }, 3000);
+
+        return () => clearInterval(intervalId); // Очищаем интервал, когда компонент будет размонтирован
+    }, [currentIndex, slides.length]); // Зависимости useEffect, чтобы перезапустить интервал при изменении currentIndex или количества слайдов
+
     return (
         <div className="relative w-[898px] rounded-[40px]">
-            {/*<div>*/}
-            {/*    <div*/}
-            {/*        onClick={goToPrevious}*/}
-            {/*        className="absolute top-1/2 -translate-y-1/2 left-8 text-4xl text-white z-10 cursor-pointer"*/}
-            {/*    >*/}
-            {/*        ❰*/}
-            {/*    </div>*/}
-            {/*    <div*/}
-            {/*        onClick={goToNext}*/}
-            {/*        className="absolute top-1/2 -translate-y-1/2 right-8 text-4xl text-white z-10 cursor-pointer"*/}
-            {/*    >*/}
-            {/*        ❱*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*<div*/}
-            {/*    className="w-full h-full rounded-[40px] bg-cover bg-center"*/}
-            {/*    style={{ backgroundImage: `url(${slides[currentIndex]})` }}*/}
-            {/*></div>*/}
-            <img src={slides[currentIndex]} alt=""/>
+            <img src={slides[currentIndex]} alt="" className={"rounded-[40px]"}/>
             <div className={"absolute bottom-4 flex justify-center items-center w-[100%]"}>
                 <div className="flex gap-1 justify-center">
                     {slides.length > 1 && slides.map((slide, slideIndex) => (
@@ -63,7 +53,6 @@ const Slider: FC<IProps> = ({ slides }) => {
                     ))}
                 </div>
             </div>
-
         </div>
     );
 };

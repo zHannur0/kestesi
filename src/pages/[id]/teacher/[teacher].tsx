@@ -18,7 +18,7 @@ import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
 const TeachersPage = () => {
     const router = useRouter();
-    const id = Number(router.query.id);
+    const id = String(router.query.id);
     const dispatch = useAppDispatch();
     const translations: any= {
         kz: kz,
@@ -42,7 +42,7 @@ const TeachersPage = () => {
             handleClick={handleBack}
             isMain={false}
             // link={t.teachers.toQueueOfTeachers}
-            page={`/school/${id}/teacher/${teach}`}
+            page={`/${id}/teacher/${teach}`}
             bg={"bg3"}
             back={true}
         >

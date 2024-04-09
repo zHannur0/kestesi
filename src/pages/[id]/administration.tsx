@@ -10,7 +10,7 @@ import {en} from "@/locales/en";
 
 const Administration = () => {
     const router = useRouter();
-    const id = Number(router.query.id);
+    const id = String(router.query.id);
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -25,10 +25,10 @@ const Administration = () => {
         id && dispatch(getAdministrationThunk(id));
     }, [dispatch, id]);
     const handleBack = () => {
-        router.push(`/school/${id}/schoolInformation`);
+        router.push(`/${id}/schoolInformation`);
     };
     return (
-        <MainLayout isMain={false} link={t.administration.toSchoolPassport} handleClick={handleBack} page={`/school/${id}/administration`} bg={"bg3"}>
+        <MainLayout isMain={false} link={t.administration.toSchoolPassport} handleClick={handleBack} page={`/${id}/administration`} bg={"bg3"}>
             <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
                 {t.administration.administration}
             </h1>

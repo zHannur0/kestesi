@@ -14,7 +14,7 @@ interface IProps {
 
 const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
     const router = useRouter();
-    const id = Number(router.query.id);
+    const id = String(router.query.id);
     const classId = Number(router.query.scheduleId);
     const translations: any= {
         kz: kz,
@@ -128,14 +128,14 @@ const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) =>
                         "flex justify-between text-[#524FA2] text-[18px] leading-[26%] "
                     }
                 >
-                    <Link href={`/school/${id}/schedule/class/${item.classl?.id}`}>
+                    <Link href={`/${id}/schedule/class/${item.classl?.id}`}>
                         <div className={"font-bold"}>
                             {item.classl?.class_name}
                         </div>
                     </Link>
                     <div className={""}>
                         <span className={"text-[#7B7984] font-normal"}>{t.schedule.cabinet}</span>{" "}
-                        <Link href={`/school/${id}/schedule/classroom/${item.teacher?.id === classId ? item.classroom?.id : item.classroom2?.id}`} className={"font-bold "}>
+                        <Link href={`/${id}/schedule/classroom/${item.teacher?.id === classId ? item.classroom?.id : item.classroom2?.id}`} className={"font-bold "}>
                             {item.teacher?.id === classId ? item.classroom?.classroom_number : item.classroom2?.classroom_number }
                         </Link>
                     </div>

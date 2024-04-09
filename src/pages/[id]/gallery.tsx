@@ -11,7 +11,7 @@ import MainLayout from "@/layouts/MainLayout";
 
 const Gallery = () => {
     const router = useRouter();
-    const id = Number(router.query.id);
+    const id = String(router.query.id);
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -25,13 +25,13 @@ const Gallery = () => {
 
     const handleBack = () => {
         if(curr) setSurr(null)
-        else router.push(`/school/${id}/schoolInformation`);
+        else router.push(`/${id}/schoolInformation`);
     };
     useEffect(() => {
         id && dispatch(getPhotosThunk(id));
     }, [dispatch, id]);
     return (
-        <MainLayout isMain={false} link={curr ? t.gallery.back : t.contacts.toSchoolPassport} handleClick={handleBack} page={`/school/${id}/gallery`} bg={"bg3"}>
+        <MainLayout isMain={false} link={curr ? t.gallery.back : t.contacts.toSchoolPassport} handleClick={handleBack} page={`/${id}/gallery`} bg={"bg3"}>
             <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
                 {t.gallery.photoGallery}
             </h1>
