@@ -25,9 +25,12 @@ const SectionsPage = () => {
   const sectionId = useTypedSelector((state) => state.schoolInfo.sectionId);
     const [curr, setCurr] = useState<number | null>(null);
 
-  useEffect(() => {
-    id && dispatch(getSectionsThunk(id));
-  }, [dispatch, id]);
+    useEffect(() => {
+        if (router.isReady && id) {
+            dispatch(getSectionsThunk(id));
+        }
+    }, [router.isReady, dispatch, id]);
+
 
     useEffect(() => {
         if(curr)

@@ -30,10 +30,13 @@ const SchoolMapPage = () => {
   const dispatch = useAppDispatch();
   const map = useTypedSelector((state) => state.schoolInfo.map);
   const classrooms = useTypedSelector((state) => state.schoolInfo.classrooms);
-  useEffect(() => {
-    id && dispatch(getMapThunk(id));
-    id && dispatch(getClassroomsThunk(id));
-  }, [dispatch, id]);
+    console.log(map)
+    useEffect(() => {
+        if (router.isReady && id) {
+            dispatch(getMapThunk(id));
+            dispatch(getClassroomsThunk(id));
+        }
+    }, [router.isReady, dispatch, id]);
   const [curr, setCurr] = useState<string>("flat1");
   const [currLink, setCurrLink] = useState<string>();
   const [filter,setFilter] = useState<number>();
@@ -75,7 +78,7 @@ const SchoolMapPage = () => {
       </h1>
         <div className={"flex gap-[20px]"}>
             <div
-                className={"w-[1200] cursor-pointer h-[890px] bg-white rounded-[40px] p-[50px] flex flex-col gap-[27px]"}>
+                className={"w-[1200px]  cursor-pointer h-[890px] bg-white rounded-[40px] p-[50px] flex flex-col gap-[27px]"}>
                 <div className={"flex gap-[20px]"}>
                     <div
                         className={"flex items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px]"}

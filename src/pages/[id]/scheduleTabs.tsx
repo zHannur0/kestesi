@@ -30,8 +30,10 @@ const ScheduleTabsPage = () => {
   );
 
   useEffect(() => {
-    id && dispatch(getClassThunk(id));
-  }, [dispatch, id]);
+    if (router.isReady && id) {
+      dispatch(getClassThunk(id));
+    }
+  }, [router.isReady, dispatch, id]);
 
   const handleBack = () => {
     if (selectedClassI || selectedClassII || selectedClassIII) {

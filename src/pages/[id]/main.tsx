@@ -23,18 +23,23 @@ const MainPage = () => {
     en: en,
   };
   const t = translations[router.locale || "kz"] || en;
-
   const dispatch = useAppDispatch();
   const school = useTypedSelector((state) => state.schoolInfo.schoolId);
   const schoolPassport = useTypedSelector(
     (state) => state.schoolInfo.schoolPassport,
   );
-  const [schoolLang, setSchoolLang] = useState<string>();
 
+  const [schoolLang, setSchoolLang] = useState<string>();
   useEffect(() => {
-      id && dispatch(getSchoolIdThunk(id));
-      id && dispatch(getSchoolPassportThunk(id));
-  }, [dispatch, id,]);
+    if (router.isReady) {
+      const id = String(router.query.id);
+      if (id) {
+        dispatch(getSchoolIdThunk(id));
+        dispatch(getSchoolPassportThunk(id));
+      }
+    }
+  }, [router.isReady, dispatch, router.query.id]);
+
 
   useEffect(() => {
     if(router.locale === "kz") {
@@ -51,48 +56,52 @@ const MainPage = () => {
       <div className={"flex gap-[30px]"}>
         <div
             className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center pr-[20px] pl-[50px]">
-          <div className=" h-[100%] flex flex-col gap-[36px] py-[50px]">
+          <div className=" h-[100%] justify-between flex flex-col gap-[36px] py-[50px]">
             <div className="flex flex-col gap-[16px]">
               {
-                schoolLang?.indexOf("№") != -1 ? (
-                    <>
-                      <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
-                        {schoolLang
-                                ?.substring(schoolLang?.indexOf(" ") + 1)
-                                .charAt(0)
-                                .toUpperCase() +
-                            "" +
-                            schoolLang?.substring(
-                                schoolLang?.indexOf(" ") + 2,
-                            )}
-                      </div>
-                      <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px]">
-                        {schoolLang?.split(" ")[0]}
-                      </div>
-                    </>
-                ): (
-                    <>
-                      <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
-                        {/*{schoolLang*/}
-                        {/*        ?.substring(schoolLang?.indexOf(" ") + 1)*/}
-                        {/*        .charAt(0)*/}
-                        {/*        .toUpperCase() +*/}
-                        {/*    "" +*/}
-                        {/*    schoolLang?.substring(*/}
-                        {/*        schoolLang?.indexOf(" ") + 2,*/}
-                        {/*    )}*/}
-                        {schoolLang}
-                      </div>
-                      <div
-                          className="w-[310px] h-[120px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
-                        {cities
-                            .find((city) => city.name === school?.region)
-                            ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
-                      </div>
-                    </>
+                schoolLang ? (
+                      schoolLang?.indexOf("№") != -1 ? (
+                        <>
+                          <div className="text-neutral-800 text-3xl font-bold leading-[30px]">
+                            {schoolLang
+                                    ?.substring(schoolLang?.indexOf(" ") + 1)
+                                    .charAt(0)
+                                    .toUpperCase() +
+                                "" +
+                                schoolLang?.substring(
+                                    schoolLang?.indexOf(" ") + 2,
+                                )}
+                          </div>
+                          <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px]">
+                            {schoolLang?.split(" ")[0]}
+                          </div>
+                        </>
+                    ): (
+                        <>
+                          <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
+                            {/*{schoolLang*/}
+                            {/*        ?.substring(schoolLang?.indexOf(" ") + 1)*/}
+                            {/*        .charAt(0)*/}
+                            {/*        .toUpperCase() +*/}
+                            {/*    "" +*/}
+                            {/*    schoolLang?.substring(*/}
+                            {/*        schoolLang?.indexOf(" ") + 2,*/}
+                            {/*    )}*/}
+                            {schoolLang}
+                          </div>
+                          <div
+                              className="w-[310px] h-[120px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
+                            {cities
+                                .find((city) => city.name === school?.region)
+                                ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
+                          </div>
+                        </>
+                    )
+
+                ) : (
+                    <div></div>
                 )
               }
-
 
             </div>
             <Link href={`/${id}/schoolInformation`}>

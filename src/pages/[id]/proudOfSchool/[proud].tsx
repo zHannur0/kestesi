@@ -71,14 +71,14 @@ const ProudOfSchool = () => {
             },])
     }, [t]);
     useEffect(() => {
-        if(id) {
+        if (router.isReady && id) {
             dispatch(getSportThunk(id));
             dispatch(getArtThunk(id));
             dispatch(getOlympiadThunk(id));
             dispatch(getRedThunk(id));
             dispatch(getGoldThunk(id));
         }
-    }, [dispatch,id]);
+    }, [router.isReady, dispatch, id]);
 
     useEffect(() => {
         if (proudId) {

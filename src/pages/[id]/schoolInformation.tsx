@@ -51,8 +51,11 @@ const SchoolInformationPage = () => {
   const [aboutCount, setAboutCount] = useState<CountType[]>([]);
   const [tableTeacher, setTableTeacher] = useState<TableType[]>([]);
   useEffect(() => {
-    id && dispatch(getSchoolPassportThunk(id));
-  }, [dispatch, id]);
+    if (router.isReady && id) {
+      dispatch(getSchoolPassportThunk(id));
+    }
+  }, [router.isReady, dispatch, id]);
+
 
   useEffect(() => {
     if (school) {
@@ -249,7 +252,7 @@ const SchoolInformationPage = () => {
             }
         >
           <div className={"flex flex-col gap-[20px]"}>
-            <div className={"text-[30px] font-bold leading-[28%]"}>
+            <div className={"text-[30px] font-bold "}>
               {sch?.school_name}
             </div>
             <img

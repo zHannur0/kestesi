@@ -30,9 +30,15 @@ const Contacts = () => {
     const [site,setSite] = useState<ISchoolSocialMedia | null>(null);
 
     useEffect(() => {
-        id && dispatch(getDirectorThunk(id));
-        id && dispatch(getSocialMediaThunk(id));
-    }, [dispatch, id]);
+        if (router.isReady) {
+            const id = String(router.query.id);
+            if (id) {
+                dispatch(getDirectorThunk(id));
+                dispatch(getSocialMediaThunk(id));
+            }
+        }
+    }, [router.isReady, dispatch, router.query.id]);
+
 
     useEffect(() => {
         if(socialMedia) {

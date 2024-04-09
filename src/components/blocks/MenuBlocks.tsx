@@ -30,8 +30,10 @@ const MenuBlocks = () => {
   const [currMenu, setCurrMenu] = useState<IMenu[]>([]);
   const [weekDays, setWeekDays] = useState<any[]>();
   useEffect(() => {
-    id && dispatch(getMenuThunk(id));
-  }, [dispatch, id]);
+    if (router.isReady && id) {
+      dispatch(getMenuThunk(id));
+    }
+  }, [router.isReady, dispatch, id]);
 
   useEffect(() => {
     let arr = menus?.filter((item) => Number(item.week_day) === day);

@@ -47,7 +47,7 @@ const Schedule = () => {
     setWeekDays(getLocalizedWeekdays);
   }, [t]);
   useEffect(() => {
-    if(id) {
+    if (router.isReady && id) {
       if (who === "teacher") {
         dispatch(getTeacherScheduleThunk({id: id, teacherId: classId}));
       } else if (who === "classroom") {
@@ -55,9 +55,10 @@ const Schedule = () => {
       } else {
         dispatch(getClassScheduleThunk({id: id, classId: classId}));
       }
+      dispatch(getDopScheduleThunk(id));
     }
-    id && dispatch(getDopScheduleThunk(id));
-  }, [dispatch, id, who]);
+  }, [router.isReady, dispatch, id, who, classId]);
+
 
 
   useEffect(() => {

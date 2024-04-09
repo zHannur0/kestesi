@@ -27,16 +27,21 @@ const QrComponent = () => {
     const [insta,setInsta] = useState<ISchoolSocialMedia | null>(null);
     const [tg,setTg] = useState<ISchoolSocialMedia | null>(null);
     const [site,setSite] = useState<ISchoolSocialMedia | null>(null);
-
     useEffect(() => {
-        id && dispatch(getDirectorThunk(id));
-        id && dispatch(getSocialMediaThunk(id));
-    }, [dispatch, id]);
+        if (router.isReady) {
+            const id = String(router.query.id);
+            if (id) {
+                dispatch(getDirectorThunk(id));
+                dispatch(getSocialMediaThunk(id));
+            }
+        }
+    }, [router.isReady, dispatch, router.query.id]);
+
 
     useEffect(() => {
         if(socialMedia) {
             setFacebook(socialMedia?.find((item) => item.type === "facebook") || null);
-            setYoutube(socialMedia?.find((item) => item.type === "Youtube") || null);
+            setYoutube(socialMedia?.find((item) => item.type === "youtube") || null);
             setInsta(socialMedia?.find((item) => item.type === "instagram") || null);
             setTg(socialMedia?.find((item) => item.type === "tgbot") || null);
             setSite(socialMedia?.find((item) => item.type === "website") || null);
@@ -57,7 +62,7 @@ const QrComponent = () => {
             }
         }
 
-    }, [socialMedia,site, insta, facebook, insta, tg]);
+    }, [socialMedia,site,youtube,facebook,tg, insta]);
 
     return(
         <div className={"flex flex-col p-[30px] bg-[#F9F8FD] w-[341px] h-[419px]  rounded-[40px]"}>

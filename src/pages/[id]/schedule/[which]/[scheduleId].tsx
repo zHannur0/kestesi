@@ -28,8 +28,10 @@ const SchedulePage = () => {
   const dispatch = useAppDispatch();
   let classl = useTypedSelector((state) => state.schoolInfo.classId);
   useEffect(() => {
-    id && dispatch(getClassIdThunk(classId));
-  }, [dispatch, id, classId, who]);
+    if (router.isReady && id && classId) {
+      dispatch(getClassIdThunk(classId));
+    }
+  }, [router.isReady, dispatch, id, classId, who]);
 
   const getInitials = (fullName?: string) => {
     if (!fullName) return ""; // Return empty if fullName is falsy

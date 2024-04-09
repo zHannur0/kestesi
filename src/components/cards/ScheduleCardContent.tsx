@@ -30,12 +30,12 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
     if (parts.length === 0) return ""; // Return empty if no parts
 
     // Attempt to construct the desired format
-    let initials = parts[0]; // Always add the first part
+    let initials = parts[0] ? parts[0] : ""; // Always add the first part
     if (parts.length > 1) {
-      initials += ` ${parts[1][0]}.`; // Add the first initial of the second part, if exists
+      initials += parts[1][0] ? ` ${ parts[1][0]}.` : ""; // Add the first initial of the second part, if exists
     }
     if (parts.length > 2) {
-      initials += ` ${parts[2][0]}.`; // Add the first initial of the third part, if exists
+      initials += parts[2][0] ? ` ${parts[2][0] }.` : ""; // Add the first initial of the third part, if exists
     }
 
     return initials;

@@ -30,8 +30,10 @@ const TeachersPage = () => {
   const teacher = useTypedSelector((state) => state.schoolInfo.teacher);
   const [teacherId, setTeacherId] = useState<number | null>();
   useEffect(() => {
-    id && dispatch(getTeachersThunk(id));
-  }, [dispatch, id]);
+    if (router.isReady && id) {
+      dispatch(getTeachersThunk(id));
+    }
+  }, [router.isReady, dispatch, id]);
 
   const handleChooseTeacher = (idTeacher?: number) => {
     router.push(`/${id}/teacher/${idTeacher}`);

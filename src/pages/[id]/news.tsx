@@ -28,8 +28,11 @@ const NewsPage = () => {
   const news = useTypedSelector((state) => state.schoolInfo.news);
   const [currNews, setCurrNews] = useState<number | null>();
   useEffect(() => {
-    dispatch(getNewsThunk(id));
-  }, [dispatch, id]);
+    if (router.isReady) {
+      dispatch(getNewsThunk(id));
+    }
+  }, [router.isReady, dispatch, id]);
+
 
   const handleBack = () => {
     if (currNews) setCurrNews(null);

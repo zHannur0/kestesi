@@ -28,11 +28,11 @@ const TeachersPage = () => {
     const t = translations[router.locale || "kz"] || en;
     const teach = Number(router.query.teacher);
     const teacher = useTypedSelector((state) => state.schoolInfo.teacher);
-    console.log(teacher)
-
     useEffect(() => {
-        id && teach && dispatch(getTeacherThunk(teach));
-    }, [dispatch, id, teach]);
+        if (router.isReady && id && teach) {
+            dispatch(getTeacherThunk(teach));
+        }
+    }, [router.isReady, dispatch, id, teach]);
 
     const handleBack = () => {
         router.push(`/school/${id}/teachers`);

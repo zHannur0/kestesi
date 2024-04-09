@@ -21,9 +21,12 @@ const Administration = () => {
     const director = useTypedSelector((state) => state.schoolInfo.director);
     const administration = useTypedSelector((state) => state.schoolInfo.administration);
     useEffect(() => {
-        id && dispatch(getDirectorThunk(id));
-        id && dispatch(getAdministrationThunk(id));
-    }, [dispatch, id]);
+        if (router.isReady && id) {
+            dispatch(getDirectorThunk(id));
+            dispatch(getAdministrationThunk(id));
+        }
+    }, [router.isReady, dispatch, id]);
+
     const handleBack = () => {
         router.push(`/${id}/schoolInformation`);
     };
