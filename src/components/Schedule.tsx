@@ -17,7 +17,7 @@ import {en} from "@/locales/en";
 
 const Schedule = () => {
   const router = useRouter();
-  const id = Number(router.query.id);
+  const id = String(router.query.id);
   const classId = Number(router.query.scheduleId);
   const who = router.query.which;
   const translations: any= {

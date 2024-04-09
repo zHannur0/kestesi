@@ -11,7 +11,7 @@ import {en} from "@/locales/en";
 
 const QrComponent = () => {
     const router = useRouter();
-    const id = Number(router.query.id);
+    const id = String(router.query.id);
     const translations: any= {
         kz: kz,
         ru: ru,
