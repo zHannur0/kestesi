@@ -11,22 +11,17 @@ import {en} from "@/locales/en";
 
 const QrComponent = () => {
     const router = useRouter();
-    const id = String(router.query.id);
-    const translations: any= {
-        kz: kz,
-        ru: ru,
-        en: en,
-    };
-    const t = translations[router.locale || "kz"] || en;
-
     const dispatch = useAppDispatch();
-    const [isSelected, setIsSelected] = useState<string>("site");
+    const translations: any = { kz, ru, en };
+    const t = translations[router.locale || "kz"] || en;
     const socialMedia = useTypedSelector((state) => state.schoolInfo.socialMedia);
-    const [facebook,setFacebook] = useState<ISchoolSocialMedia | null>(null);
-    const [youtube,setYoutube] = useState<ISchoolSocialMedia | null>(null);
-    const [insta,setInsta] = useState<ISchoolSocialMedia | null>(null);
-    const [tg,setTg] = useState<ISchoolSocialMedia | null>(null);
-    const [site,setSite] = useState<ISchoolSocialMedia | null>(null);
+    const [isSelected, setIsSelected] = useState<string>("site");
+    const [facebook, setFacebook] = useState<ISchoolSocialMedia | null>(null);
+    const [youtube, setYoutube] = useState<ISchoolSocialMedia | null>(null);
+    const [insta, setInsta] = useState<ISchoolSocialMedia | null>(null);
+    const [tg, setTg] = useState<ISchoolSocialMedia | null>(null);
+    const [site, setSite] = useState<ISchoolSocialMedia | null>(null);
+
     useEffect(() => {
         if (router.isReady) {
             const id = String(router.query.id);
@@ -37,21 +32,17 @@ const QrComponent = () => {
         }
     }, [router.isReady, dispatch, router.query.id]);
 
-
     useEffect(() => {
-        if(socialMedia) {
-            setFacebook(socialMedia?.find((item) => item.type === "facebook") || null);
-            setYoutube(socialMedia?.find((item) => item.type === "youtube") || null);
-            setInsta(socialMedia?.find((item) => item.type === "instagram") || null);
-            setTg(socialMedia?.find((item) => item.type === "tgbot") || null);
-            setSite(socialMedia?.find((item) => item.type === "website") || null);
-        }
+        setFacebook(socialMedia?.find((item) => item.type === "facebook") || null);
+        setYoutube(socialMedia?.find((item) => item.type === "youtube") || null);
+        setInsta(socialMedia?.find((item) => item.type === "instagram") || null);
+        setTg(socialMedia?.find((item) => item.type === "tgbot") || null);
+        setSite(socialMedia?.find((item) => item.type === "site") || null);
         if(site) {
             setIsSelected("site");
         }else {
             if(facebook) {
                 setIsSelected("facebook");
-
             }else {
                 if(insta) {
                     setIsSelected("instagram");
@@ -61,8 +52,37 @@ const QrComponent = () => {
                 }
             }
         }
+    }, [socialMedia,site, facebook, insta, youtube, tg]);
 
-    }, [socialMedia,site,youtube,facebook,tg, insta]);
+    useEffect(() => {
+        const socialMediaTypes = ['site', 'facebook', 'instagram', 'youtube', 'tg'];
+        const socialMediaAvailable = socialMediaTypes.filter(type => {
+            if (type === 'site') return site;
+            if (type === 'facebook') return facebook;
+            if (type === 'instagram') return insta;
+            if (type === 'youtube') return youtube;
+            if (type === 'tg') return tg;
+        }).map(type => {
+            if (type === 'site') return site;
+            if (type === 'facebook') return facebook;
+            if (type === 'instagram') return insta;
+            if (type === 'youtube') return youtube;
+            if (type === 'tg') return tg;
+        }).filter(Boolean);
+
+        let index = socialMediaAvailable.findIndex(socialMedia => socialMedia?.type === isSelected);
+        index = index === -1 ? 0 : index; // Если не найдено, начинаем с первого
+
+        const intervalId = setInterval(() => {
+            if (socialMediaAvailable.length > 0) {
+                index = (index + 1) % socialMediaAvailable.length; // Увеличиваем индекс
+                setIsSelected(socialMediaAvailable[index]?.type || "site");
+            }
+        }, 10000); // Изменяем isSelected каждые 10 секунд
+
+        return () => clearInterval(intervalId); // Очистка при размонтировании компонента
+    }, [site, facebook, insta, youtube, tg, isSelected]);
+
 
     return(
         <div className={"flex flex-col p-[30px] bg-[#F9F8FD] w-[341px] h-[419px]  rounded-[40px]"}>
@@ -155,7 +175,7 @@ const QrComponent = () => {
                             isSelected === "site" && "Сайт школы:"
                         }
                         {
-                            isSelected === "facebook" && "Facebook:"
+                            isSelected === "facebook" && "Facebook"
                         }
                         {
                             isSelected === "instagram" && "Instagram:"
@@ -171,9 +191,9 @@ const QrComponent = () => {
                         {
                             isSelected === "site" && site?.account_name?.split("/").slice(-2)
                         }
-                        {
-                            isSelected === "facebook" && facebook?.account_name?.split("/").slice(-2)
-                        }
+                        {/*{*/}
+                        {/*    isSelected === "facebook" && facebook?.account_name?.split("/").slice(-2)*/}
+                        {/*}*/}
                         {
                             isSelected === "instagram" && insta?.account_name?.split("/").slice(-2)
                         }
