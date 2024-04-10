@@ -71,7 +71,7 @@ const Administration = () => {
                         </div>
                     </div>
                 </div>
-                <div className={"flex flex-col px-[35px] py-[50px] w-full gap-[30px]"}>
+                <div className={"flex flex-col px-[35px] py-[50px] w-full gap-[30px]  overflow-auto scrollbar-hide"}>
                     <div className={"text-[#211F23] font-bold leading-[80%] text-[30px]"}>
                         {t.administration.schoolAdministration}
                     </div>
