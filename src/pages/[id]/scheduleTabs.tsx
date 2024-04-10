@@ -41,7 +41,7 @@ const ScheduleTabsPage = () => {
       setSelectedClassII(null);
       setSelectedClassIII(null);
       setCurr(null)
-    } else router.push(`/${id}/main`);
+    } else router.push(`/${id}`);
   };
 
   const chooseClassNumber = (classNum: number) => {

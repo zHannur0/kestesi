@@ -40,7 +40,7 @@ const TeachersPage = () => {
   };
 
   const handleBack = () => {
-    router.push(`/${id}/main`);
+    router.push(`/${id}`);
   };
   return (
     <MainLayout

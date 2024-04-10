@@ -40,7 +40,7 @@ const SectionsPage = () => {
   const handleBack = () => {
       if(curr) setCurr(null)
       else
-        router.push(`/${id}/main`);
+        router.push(`/${id}`);
   };
 
   return (

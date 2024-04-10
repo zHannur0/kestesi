@@ -100,7 +100,7 @@ const ProudOfSchool = () => {
 
     console.log(curr)
     const handleBack = () => {
-        router.push(`/${id}/main`);
+        router.push(`/${id}`);
     };
     return (
         <MainLayout isMain={false} link={t.proud.toTheMainPage} handleClick={handleBack} page={`/${id}/proudOfSchool/${proudId}`} bg={"bg2"}>

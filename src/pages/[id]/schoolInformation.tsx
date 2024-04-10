@@ -123,7 +123,7 @@ const SchoolInformationPage = () => {
     }
   }, [sch, school,t]);
   const handleBack = () => {
-    router.push(`/${id}/main`);
+    router.push(`/${id}`);
   };
 
   const scrollRef = useRef<HTMLDivElement>(null);

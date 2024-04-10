@@ -36,7 +36,7 @@ const NewsPage = () => {
 
   const handleBack = () => {
     if (currNews) setCurrNews(null);
-    else router.push(`/${id}/main`);
+    else router.push(`/${id}`);
   };
 
   const handleClick = (index: number) => {

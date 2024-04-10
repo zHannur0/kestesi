@@ -16,7 +16,7 @@ const MenuPage = () => {
     const t = translations[router.locale || "kz"] || en;
   const id = String(router.query.id);
   const handleBack = () => {
-    router.push(`/school/${id}/main`);
+    router.push(`/school/${id}`);
   };
 
   return (
