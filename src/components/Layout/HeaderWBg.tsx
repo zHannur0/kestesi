@@ -18,7 +18,7 @@ const HeaderWBg: FC<HeaderProps> = ({ isMain, onClick, toMain,page }) => {
   const router = useRouter();
   const id = String(router.query.id);
   const handleBack = () => {
-    router.push(`/${id}/main`);
+    router.push(`/${id}`);
   };
 
   const [time, setTime] = useState<Date>(new Date());

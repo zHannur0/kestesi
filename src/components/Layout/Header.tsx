@@ -28,7 +28,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
   };
   const t = translations[router.locale || "kz"] || en;
   const handleBack = () => {
-    router.push(`/${id}/main`);
+    router.push(`/${id}`);
   };
 
   const [time, setTime] = useState<Date>(new Date());

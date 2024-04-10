@@ -55,7 +55,7 @@ const SchedulePage = () => {
     <MainLayout
       isMain={false}
       link={t.schedule.toChooseClass}
-      handleClick={handleBack}
+      // handleClick={handleBack}
       page={`/${id}/schedule/${who}/${classId}`}
       bg={"bg4"}
       back={true}
