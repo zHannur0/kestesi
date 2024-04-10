@@ -23,7 +23,7 @@ const TeachersCard: FC<StudentCardProps> = ({
                 alt="Teacher"
             />
             <div>
-                <h2 className={`text-2xl font-bold leading-normal text-[#524FA2]`}>
+                <h2 className={`text-2xl font-bold leading-normal text-[#211F23]`}>
                     {fullname}
                 </h2>
                 <p className={`text-[#211F23] text-2xl font-normal leading-[34.40px]`}>

@@ -39,14 +39,15 @@ const Gallery = () => {
                     curr ? (
                         <div className={"rounded-[20px] relative"}
                              style={{
-                                 backgroundImage: `url(${curr})`,
+                                 // backgroundImage: `url(${curr})`,
                                  width: "1720px",
                                  height: "814px",
-                                 backgroundSize: "cover",
-                                 backgroundPosition: "center",
-                                 backgroundRepeat: "no-repeat"
+                                 // backgroundSize: "cover",
+                                 // backgroundPosition: "center",
+                                 // backgroundRepeat: "no-repeat"
                              }}>
-                            <div className={"absolute w-[50%] left-[25%] bottom-[40px] p-[40px] rounded-[20px] text-white text-[14px] leading-[20.75px] flex items-center bg-black bg-opacity-[60%]"}>
+                            <img src={curr} className={"w-[100%] h-[100%] rounded-[20px]"} alt=""/>
+                            <div className={"absolute w-[50%] left-[25%] bottom-[40px] p-[40px] rounded-[20px] text-white text-[24px] leading-[20.75px] flex items-center bg-black bg-opacity-[60%]"}>
                                 {currText}
                             </div>
                         </div>
@@ -54,7 +55,7 @@ const Gallery = () => {
                         <div className={"flex flex-wrap max-h-[910px] w-full gap-[20px] bg-white pt-[50px] px-[50px] pb-[30px] overflow-auto scrollbar-hide rounded-[40px]"}>
                             {
                                 photos.map((item) => (
-                                    <div key={item.id} className={"rounded-[20px] relative"} onClick={() => {
+                                    <div key={item.id} className={"rounded-[20px] relative cursor-pointer"} onClick={() => {
                                         setSurr(item?.slider_photo || null)
                                         setCurrText(item?.slider_name || null)
                                     }}
@@ -66,7 +67,7 @@ const Gallery = () => {
                                              backgroundPosition: "center",
                                              backgroundRepeat: "no-repeat"
                                          }}>
-                                        <div className={"absolute w-[90%] left-[5%] bottom-[20px] p-[10px] rounded-[20px] text-white text-[14px] leading-[20.75px] flex items-center bg-black bg-opacity-[60%]"}>
+                                        <div className={"absolute w-[90%] left-[5%] bottom-[20px] py-[4px] px-[20px] rounded-[10px] text-white text-[14px] flex items-center bg-black bg-opacity-[60%]"}>
                                             {item.slider_name}
                                         </div>
                                     </div>
