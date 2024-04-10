@@ -32,13 +32,16 @@ const Gallery = () => {
     }, [dispatch, id]);
     return (
         <MainLayout isMain={false} link={curr ? t.gallery.back : t.contacts.toSchoolPassport} handleClick={handleBack} page={`/${id}/gallery`} bg={"bg3"}>
-            <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
-                {t.gallery.photoGallery}
-            </h1>
-                {
-                    curr ? (
-                        <div className={"rounded-[20px] relative"}
-                             style={{
+            <div className={"flex justify-between mb-[50px]"}>
+                <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] ">
+                    {t.gallery.photoGallery}
+                </h1>
+                <img src="/images/noBgX.svg" alt="" className={"w-[50px] h-[50px] cursor-pointer"} onClick={() => setSurr(null)}/>
+            </div>
+            {
+                curr ? (
+                    <div className={"rounded-[20px] relative"}
+                         style={{
                                  // backgroundImage: `url(${curr})`,
                                  width: "1720px",
                                  height: "814px",
