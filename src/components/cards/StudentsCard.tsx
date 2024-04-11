@@ -7,7 +7,7 @@ interface StudentCardProps {
     photo?: string;
 }
 
-const TeachersCard: FC<StudentCardProps> = ({
+const StudentsCard: FC<StudentCardProps> = ({
                                                  id,
                                                  fullname,
                                                  student_success,
@@ -34,4 +34,4 @@ const TeachersCard: FC<StudentCardProps> = ({
     );
 };
 
-export default TeachersCard;
+export default StudentsCard;

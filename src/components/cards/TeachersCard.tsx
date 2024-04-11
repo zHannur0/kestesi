@@ -18,7 +18,7 @@ const TeachersCard: FC<TeachersCardProps> = ({
   return (
     <div
       onClick={() => handleChooseTeacher(id)}
-      className={`flex py-[20px] w-[520px] h-[200px] px-[30px] gap-[20px] rounded-[30px] bg-[#F8F8FB]`}
+      className={`flex py-[20px] w-[520px] h-[200px] px-[30px] gap-[20px] rounded-[30px] bg-[#F8F8FB] items-center`}
     >
       <img
         className={`w-40 h-40 min-w-40 rounded-[80px]`}

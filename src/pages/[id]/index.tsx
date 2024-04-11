@@ -60,7 +60,7 @@ const MainPage = () => {
             <div className="flex flex-col gap-[16px]">
               {
                 schoolLang ? (
-                      schoolLang?.indexOf("№") != -1 ? (
+                    schoolLang?.indexOf("№") != -1 ? (
                         <>
                           <div className="text-neutral-800 text-3xl font-bold leading-[30px]">
                             {schoolLang
@@ -75,8 +75,14 @@ const MainPage = () => {
                           <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px]">
                             {schoolLang?.split(" ")[0]}
                           </div>
+                          <div
+                              className="w-[310px] h-[120px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
+                            {cities
+                                .find((city) => city.name === school?.region)
+                                ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
+                          </div>
                         </>
-                    ): (
+                    ) : (
                         <>
                           <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
                             {/*{schoolLang*/}
@@ -95,6 +101,7 @@ const MainPage = () => {
                                 .find((city) => city.name === school?.region)
                                 ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
                           </div>
+
                         </>
                     )
 
@@ -104,6 +111,7 @@ const MainPage = () => {
               }
 
             </div>
+
             <Link href={`/${id}/schoolInformation`}>
               <div
                   className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center"}>

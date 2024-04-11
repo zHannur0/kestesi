@@ -35,7 +35,7 @@ const Administration = () => {
             <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
                 {t.administration.administration}
             </h1>
-            <div className={"flex flex-col bg-white rounded-[40px] w-[100%] max-h-[933px]"}>
+            <div className={"flex flex-col bg-white rounded-[40px] w-[100%] max-h-[900px]"}>
                 <div className={"flex gap-[50px] py-[46px] px-[50px] bg-[#F8F8FB] rounded-tl-[40px] rounded-tr-[40px] w-[100%] h-[362px] items-center"}>
                     <img src={director ? director?.[0]?.director_photo : "/images/user.svg"} alt="" className={"w-[270px] h-[270px] rounded-full"}/>
                     <div className={"flex flex-col gap-[20px]"}>
@@ -71,7 +71,7 @@ const Administration = () => {
                         </div>
                     </div>
                 </div>
-                <div className={"flex flex-col px-[35px] py-[50px] w-full gap-[30px]  overflow-auto scrollbar-hide"}>
+                <div className={"flex flex-col px-[35px] py-[50px] w-full gap-[30px] overflow-auto scrollbar-hide"}>
                     <div className={"text-[#211F23] font-bold leading-[80%] text-[30px]"}>
                         {t.administration.schoolAdministration}
                     </div>

@@ -18,7 +18,7 @@ const QrBlock :FC<IProps> = ({img,type,content,qr}) => {
             </div>
             <img src={qr} alt="" className={"w-[140px] h-[140px]"}/>
             <div className={"text-2xl leading-[80%] text-[#524FA2]"}>
-                {content?.split("/").slice(-2)}
+                {type !== "Facebook" ? content?.split("/").slice(-2) : ""}
             </div>
         </div>
     )

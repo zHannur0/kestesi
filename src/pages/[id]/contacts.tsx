@@ -43,7 +43,7 @@ const Contacts = () => {
     useEffect(() => {
         if(socialMedia) {
             setFacebook(socialMedia?.find((item) => item.type === "facebook") || null);
-            setYoutube(socialMedia?.find((item) => item.type === "Youtube") || null);
+            setYoutube(socialMedia?.find((item) => item.type === "youtube") || null);
             setInsta(socialMedia?.find((item) => item.type === "instagram") || null);
             setTg(socialMedia?.find((item) => item.type === "tgbot") || null);
             setSite(socialMedia?.find((item) => item.type === "website") || null);
