@@ -126,7 +126,7 @@ const ProudOfSchool = () => {
                 </div>
                 <div className={"flex gap-[20px] flex-wrap max-h-[810px] overflow-auto scrollbar-hide rounded-[2px]"}>
                     {
-                        curr.sort((a,b) => a.id - b.id).map((item, index) => (
+                        curr?.slice().sort((a,b) => a.id - b.id).map((item, index) => (
                             <StudentsCard id={item.id} key={index} photo={item.photo}
                                           student_success={item.student_success} fullname={item.fullname}/>
                         ))
