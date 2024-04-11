@@ -53,7 +53,7 @@ const NewsPage = () => {
       isMain={false}
       link={currNews ? t.news.toTheNewsList : t.news.back}
       handleClick={handleBack}
-      page={`/school/${id}/news`}
+      page={`/${id}/news`}
       bg={currNews ? "bg3" : "bg2"}
     >
       {currNews ? (

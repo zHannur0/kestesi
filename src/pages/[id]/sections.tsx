@@ -10,6 +10,7 @@ import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
 import SectionsBlock from "@/components/blocks/SectionsBlock";
+import {log} from "node:util";
 
 const SectionsPage = () => {
   const router = useRouter();
@@ -24,7 +25,7 @@ const SectionsPage = () => {
   const sections = useTypedSelector((state) => state.schoolInfo.sections);
   const sectionId = useTypedSelector((state) => state.schoolInfo.sectionId);
     const [curr, setCurr] = useState<number | null>(null);
-
+    console.log(curr)
     useEffect(() => {
         if (router.isReady && id) {
             dispatch(getSectionsThunk(id));
@@ -42,6 +43,7 @@ const SectionsPage = () => {
       else
         router.push(`/${id}`);
   };
+
 
   return (
     <MainLayout isMain={false} link={t.sections.toTheMainPage} handleClick={handleBack} page={`/${id}/sections`} bg={curr ? "bg3":"bg2"}>
