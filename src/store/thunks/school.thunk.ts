@@ -127,6 +127,11 @@ export const getPhotosThunk = createAsyncThunk(
     async (id?: string) => await allApi.getPhotos(id),
 );
 
+export const getSliderThunk = createAsyncThunk(
+    "getSliderThunk",
+    async (id?: string) => await allApi.getSlider(id),
+);
+
 export const getClassScheduleThunk = createAsyncThunk(
     "getClassScheduleThunk",
     async ({id, classId} : { id?: string, classId?: number }) => await allApi.getClassSchedule(id, classId),

@@ -182,5 +182,9 @@ export const en = {
         5: "Friday",
         6: "Saturday",
         none: ""
+    },
+    yandexMap : {
+        back: "go to school passport",
+        title: "School in map"
     }
 }

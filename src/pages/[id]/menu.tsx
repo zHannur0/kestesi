@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import MainLayout from "@/layouts/MainLayout";
-import Schedule from "@/components/Schedule";
 import MenuBlocks from "@/components/blocks/MenuBlocks";
 import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";

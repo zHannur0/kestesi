@@ -7,12 +7,14 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import {
   getSchoolIdThunk,
   getSchoolPassportThunk,
-  getSchoolThunk,
+  getSchoolThunk, getSliderThunk,
 } from "@/store/thunks/school.thunk";
 import QrComponent from "@/components/QrComponent";
 import { en } from "@/locales/en";
 import { kz } from "@/locales/kz";
 import { ru } from "@/locales/ru";
+import {ISlider} from "@/types/assets.type";
+import Slider from "@/components/Slider/Slider";
 
 const MainPage = () => {
   const router = useRouter();
@@ -25,9 +27,11 @@ const MainPage = () => {
   const t = translations[router.locale || "kz"] || en;
   const dispatch = useAppDispatch();
   const school = useTypedSelector((state) => state.schoolInfo.schoolId);
+  const slider = useTypedSelector((state) => state.schoolInfo.slider);
   const schoolPassport = useTypedSelector(
     (state) => state.schoolInfo.schoolPassport,
   );
+  const [currSlider, setCurrSlider] = useState<string[]>([]);
 
   const [schoolLang, setSchoolLang] = useState<string>();
   useEffect(() => {
@@ -36,10 +40,10 @@ const MainPage = () => {
       if (id) {
         dispatch(getSchoolIdThunk(id));
         dispatch(getSchoolPassportThunk(id));
+        dispatch(getSliderThunk(id));
       }
     }
   }, [router.isReady, dispatch, router.query.id]);
-
 
   useEffect(() => {
     if(router.locale === "kz") {
@@ -49,7 +53,22 @@ const MainPage = () => {
     }else  {
       setSchoolLang(school?.school_ru_name);
     }
-  },[school, router.locale])
+  },[school, router.locale]);
+
+  useEffect(() => {
+    if (slider && slider[0]) {
+      let arr: any[] = [];
+      for (let i: number = 1; i < 11; i++) {
+        const photoKey = `photo${i}` as keyof ISlider;
+        if (slider[0][photoKey]) {
+          arr.push(slider[0][photoKey]);
+        }
+      }
+      setCurrSlider(arr);
+    }
+  }, [slider]);
+
+  console.log(schoolLang)
 
   return (
     <MainLayout isMain={true} bg={"bg"}>
@@ -111,7 +130,6 @@ const MainPage = () => {
               }
 
             </div>
-
             <Link href={`/${id}/schoolInformation`}>
               <div
                   className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center"}>
@@ -121,10 +139,7 @@ const MainPage = () => {
           </div>
           <div>
             <div className="w-[900px] h-[380px]  justify-center items-center inline-flex">
-              <img
-                  className="w-[900px] h-[380px] rounded-[40px]"
-                  src={schoolPassport?.[0]?.photo}
-              />
+              <Slider slides={currSlider} time={10000}/>
             </div>
           </div>
         </div>

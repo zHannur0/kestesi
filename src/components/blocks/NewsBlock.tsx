@@ -87,7 +87,7 @@ const NewsBlock: FC<IProps> = ({ news, currNews, handleClick }) => {
           {/*  className="w-[898px]  rounded-[40px]"*/}
           {/*  src={news && currNews ? news[currNews - 1].img1 : ""}*/}
           {/*/>*/}
-          <Slider slides={slider || []}/>
+          <Slider slides={slider || []} time={3000}/>
           <div className="text-neutral-800 text-[18px] font-medium">
             {news && currNews && news[currNews - 1].text}
           </div>

@@ -7,13 +7,7 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import {
   getClassroomsThunk,
   getMapThunk,
-  getSchoolIdThunk,
-  getSchoolPassportThunk,
-  getSchoolThunk,
-  getTeachersThunk,
-  getTeacherThunk,
 } from "@/store/thunks/school.thunk";
-import {IMap} from "@/types/assets.type";
 import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";

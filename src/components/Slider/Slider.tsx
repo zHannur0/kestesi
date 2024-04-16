@@ -2,9 +2,10 @@ import { FC, useState, useEffect } from "react";
 
 interface IProps {
     slides: string[]; // предполагаем, что slides - это массив URL изображений
+    time?: number;
 }
 
-const Slider: FC<IProps> = ({ slides }) => {
+const Slider: FC<IProps> = ({ slides,time }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToPrevious = () => {
@@ -26,14 +27,14 @@ const Slider: FC<IProps> = ({ slides }) => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             goToNext();
-        }, 3000);
+        }, time);
 
         return () => clearInterval(intervalId); // Очищаем интервал, когда компонент будет размонтирован
     }, [currentIndex, slides.length]); // Зависимости useEffect, чтобы перезапустить интервал при изменении currentIndex или количества слайдов
 
     return (
-        <div className="relative w-[898px] rounded-[40px]">
-            <img src={slides[currentIndex]} alt="" className={"rounded-[40px]"}/>
+        <div className="relative w-[100%] h-[100%] rounded-[40px]">
+            <img src={slides[currentIndex]} alt="" className={"rounded-[40px] w-[100%] h-[100%]"}/>
             <div className={"absolute bottom-4 flex justify-center items-center w-[100%]"}>
                 <div className="flex gap-1 justify-center">
                     {slides.length > 1 && slides.map((slide, slideIndex) => (

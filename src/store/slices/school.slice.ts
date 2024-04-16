@@ -15,7 +15,7 @@ import {
     getSchoolIdThunk,
     getSchoolPassportThunk,
     getSchoolThunk,
-    getSectionsThunk, getSectionThunk, getSocialMediaThunk, getSportThunk, getTeacherScheduleThunk,
+    getSectionsThunk, getSectionThunk, getSliderThunk, getSocialMediaThunk, getSportThunk, getTeacherScheduleThunk,
     getTeachersThunk,
     getTeacherThunk,
 } from "@/store/thunks/school.thunk";
@@ -34,7 +34,7 @@ import {
     ISchoolOlimp,
     ISchoolOner, ISchoolPhotos,
     ISchoolSocialMedia,
-    ISchoolSport,
+    ISchoolSport, ISlider,
     News,
     School,
     SchoolPassport,
@@ -365,6 +365,17 @@ export const schoolSlice = createSlice({
                 return {
                     ...state,
                     sectionId: action.payload,
+                };
+            }
+            return state;
+        },
+    ).addCase(
+        getSliderThunk.fulfilled,
+        (state, action: PayloadAction<ISlider[]>) => {
+            if (action.payload) {
+                return {
+                    ...state,
+                    slider: action.payload,
                 };
             }
             return state;

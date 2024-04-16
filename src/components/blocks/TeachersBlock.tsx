@@ -11,6 +11,7 @@ import Link from "next/link";
 
 interface TeachersTableProps {
   teacher?: Teachers;
+  t?: any;
 }
 
 const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
@@ -48,10 +49,9 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
         <Link href={`/${id}/schedule/teacher/${teacher?.id}`}>
             <div className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center inline-flex w-[280px] h-[64px]">{t.teachers.schedule}</div>
         </Link>
-
       </div>
       <div
-        className={`p-[50px] flex flex-col items-start gap-[50px] bg-white w-[998px] max-h-[910px] rounded-[40px] overflow-auto scrollbar-hide `}
+        className={`p-[50px] flex flex-col gap-[50px] bg-white w-[998px] max-h-[910px] rounded-[40px] overflow-auto scrollbar-hide `}
       >
         <div className={`flex flex-col gap-[20px] w-full`}>
           <h1 className={`text-[#211F23] text-3xl font-bold leading-[8.40px]`}>

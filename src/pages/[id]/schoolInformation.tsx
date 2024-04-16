@@ -151,12 +151,10 @@ const SchoolInformationPage = () => {
       }
     };
 
-    // Отслеживание событий прокрутки
     if (scrollRef.current) {
       scrollRef.current.addEventListener("scroll", handleScroll, { passive: true });
     }
 
-    // Отслеживание событий колесика мыши
     window.addEventListener("wheel", handleWindowScroll, { passive: false });
 
     return () => {
@@ -208,11 +206,13 @@ const SchoolInformationPage = () => {
             "flex flex-col w-[341px] gap-[30px] bg-white text-2xl pb-[50px] rounded-[40px]"
           }
         >
-          <img
-            src="/images/defMap.png"
-            alt=""
-            className={"w-[341px] h-[365px] rounded-t-[40px]"}
-          />
+          <Link href={`/${id}/yandexMap`}>
+            <img
+                src="/images/defMap.png"
+                alt=""
+                className={"w-[341px] h-[365px] rounded-t-[40px]"}
+            />
+          </Link>
           <div className={"flex flex-col gap-[30px] px-[20px]"}>
             <div className={"text-[#211F23] font-bold text-left"}>
               {t.school.address}

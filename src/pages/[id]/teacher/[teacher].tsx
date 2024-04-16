@@ -1,17 +1,11 @@
 import { useRouter } from "next/router";
 import MainLayout from "@/layouts/MainLayout";
-import Link from "next/link";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import {
-    getSchoolIdThunk,
-    getSchoolPassportThunk,
-    getSchoolThunk,
-    getTeachersThunk,
     getTeacherThunk,
 } from "@/store/thunks/school.thunk";
-import TeachersTable from "@/components/lists/TeachersTable";
 import TeachersBlock from "@/components/blocks/TeachersBlock";
 import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";

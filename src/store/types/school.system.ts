@@ -13,7 +13,7 @@ import {
   ISchoolOlimp,
   ISchoolOner, ISchoolPhotos,
   ISchoolSocialMedia,
-  ISchoolSport,
+  ISchoolSport, ISlider,
   News,
   School,
   SchoolPassport,
@@ -52,6 +52,7 @@ export interface SchoolInfo {
   scheduleTeacher: ISchedule[];
   scheduleClassroom: ISchedule[];
   sectionId: IKruzhok;
+  slider: ISlider[];
 }
 
 export const initialStateSchoolInfo: SchoolInfo = {
@@ -84,5 +85,6 @@ export const initialStateSchoolInfo: SchoolInfo = {
   scheduleClass: [],
   scheduleClassroom: [],
   scheduleTeacher: [],
-  sectionId: {}
+  sectionId: {},
+  slider: []
 };

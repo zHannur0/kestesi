@@ -14,7 +14,7 @@ import {
   ISchoolOlimp,
   ISchoolOner,
   ISchoolSocialMedia,
-  ISchoolSport,
+  ISchoolSport, ISlider,
   News,
   School,
   SchoolPassport,
@@ -108,6 +108,9 @@ export const allApi = {
   },
   async getPhotos(id?: string): Promise<ISchoolSocialMedia[]> {
     return await instance.get(`/admins/api/slider/?school=${id}`);
+  },
+  async getSlider(id?: string): Promise<ISlider[]> {
+    return await instance.get(`/admins/api/main_slider/?school=${id}`);
   },
   async getClassSchedule(id?: string, classId?:number): Promise<ISchedule[]> {
     return await instance.get(`/admins/api/schedule/?school=${id}&classl=${classId}`);
