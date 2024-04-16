@@ -75,7 +75,7 @@ const MainPage = () => {
       <div className={"flex gap-[30px]"}>
         <div
             className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center pr-[20px] pl-[50px]">
-          <div className=" h-[100%] justify-between flex flex-col gap-[36px] py-[50px]">
+          <div className=" h-[100%] flex flex-col justify-between gap-[36px] py-[50px]">
             <div className="flex flex-col gap-[16px]">
               {
                 schoolLang ? (
@@ -94,12 +94,6 @@ const MainPage = () => {
                           <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px]">
                             {schoolLang?.split(" ")[0]}
                           </div>
-                          <div
-                              className="w-[310px] h-[120px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
-                            {cities
-                                .find((city) => city.name === school?.region)
-                                ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
-                          </div>
                         </>
                     ) : (
                         <>
@@ -114,13 +108,6 @@ const MainPage = () => {
                             {/*    )}*/}
                             {schoolLang}
                           </div>
-                          <div
-                              className="w-[310px] h-[120px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
-                            {cities
-                                .find((city) => city.name === school?.region)
-                                ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
-                          </div>
-
                         </>
                     )
 
@@ -129,6 +116,12 @@ const MainPage = () => {
                 )
               }
 
+            </div>
+            <div
+                className="w-[310px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
+              {cities
+                  .find((city) => city.name === school?.region)
+                  ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
             </div>
             <Link href={`/${id}/schoolInformation`}>
               <div
