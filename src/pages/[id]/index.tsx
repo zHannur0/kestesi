@@ -72,16 +72,19 @@ const MainPage = () => {
 
   return (
     <MainLayout isMain={true} bg={"bg"}>
-      <div className={"flex gap-[30px]"}>
+      <div className={"flex gap-[30px] max-sm:flex-col max-sm:gap-[0px]" }>
         <div
-            className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center pr-[20px] pl-[50px]">
-          <div className=" h-[100%] flex flex-col justify-between gap-[36px] py-[50px]">
-            <div className="flex flex-col gap-[16px]">
+            className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center pr-[20px] pl-[50px]
+            max-sm:h-auto max-sm:w-full max-sm:px-[20px] max-sm:pt-[20px] max-sm:pb-[0px]
+            max-sm:flex-col max-sm:gap-[20px] max-sm:rounded-[20px]">
+          <div className=" h-[100%] flex flex-col justify-between gap-[36px] py-[50px]
+          max-sm:py-0 max-sm:px-0 max-sm:items-start max-sm:w-[100%] max-sm:gap-[10px]">
+            <div className="flex flex-col gap-[16px] max-sm:flex-row max-sm:justify-start">
               {
                 schoolLang ? (
                     schoolLang?.indexOf("№") != -1 ? (
                         <>
-                          <div className="text-neutral-800 text-3xl font-bold leading-[30px]">
+                          <div className="text-neutral-800 text-3xl font-bold leading-[30px] max-sm:text-2xl ">
                             {schoolLang
                                     ?.substring(schoolLang?.indexOf(" ") + 1)
                                     .charAt(0)
@@ -91,26 +94,17 @@ const MainPage = () => {
                                     schoolLang?.indexOf(" ") + 2,
                                 )}
                           </div>
-                          <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px]">
+                          <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px] max-sm:w-auto max-sm:text-3xl">
                             {schoolLang?.split(" ")[0]}
                           </div>
                         </>
                     ) : (
                         <>
-                          <div className=" text-neutral-800 text-3xl font-bold leading-[30px]">
-                            {/*{schoolLang*/}
-                            {/*        ?.substring(schoolLang?.indexOf(" ") + 1)*/}
-                            {/*        .charAt(0)*/}
-                            {/*        .toUpperCase() +*/}
-                            {/*    "" +*/}
-                            {/*    schoolLang?.substring(*/}
-                            {/*        schoolLang?.indexOf(" ") + 2,*/}
-                            {/*    )}*/}
+                          <div className=" text-neutral-800 text-3xl font-bold leading-[30px] ">
                             {schoolLang}
                           </div>
                         </>
                     )
-
                 ) : (
                     <div></div>
                 )
@@ -118,44 +112,49 @@ const MainPage = () => {
 
             </div>
             <div
-                className="w-[310px] flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end">
+                className="w-[310px] max-sm:w-auto flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end
+                max-sm:text-lg">
               {cities
                   .find((city) => city.name === school?.region)
                   ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
             </div>
             <Link href={`/${id}/schoolInformation`}>
               <div
-                  className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center"}>
+                  className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center" +
+                      " max-sm:bg-none max-sm:w-auto max-sm:text-lg max-sm:h-auto"}>
                 {t.main.aboutSchool}
               </div>
             </Link>
           </div>
           <div>
-            <div className="w-[900px] h-[380px]  justify-center items-center inline-flex">
+            <div className="w-[900px] h-[380px]  justify-center items-center inline-flex
+            max-sm:w-[100vw] max-sm:h-[277px] max-sm:rounded-0">
               <Slider slides={currSlider} time={10000}/>
             </div>
           </div>
         </div>
-        <QrComponent/>
+        <div className={"max-sm:hidden"}>
+          <QrComponent/>
+        </div>
       </div>
-
       <div
-          className="w-[1720px] h-[180px] bg-gradient-to-r from-purple-800 to-pink-600 rounded-[40px] flex justify-center items-center mt-[20px] hover:cursor-pointer"
+          className="w-[full] h-[180px] bg-gradient-to-r from-purple-800 to-pink-600 rounded-[40px] flex justify-center items-center mt-[20px] hover:cursor-pointer
+          max-sm:h-[91px] max-sm:rounded-[20px]"
           onClick={() => {
             router.push(`/${id}/scheduleTabs`);
           }}
       >
-        <div className="h-[44px] text-white text-7xl font-bold leading-[30%] text-center">
+        <div className="h-[44px] text-white text-7xl font-bold leading-[30%] text-center max-sm:text-4xl">
           {t.main.schedule}
         </div>
       </div>
-      <div className={"flex justify-between flex-wrap"}>
+      <div className={"flex justify-between flex-wrap w-[100%] max-sm:flex-col "}>
         {sidebar.map((item) => (
             <Link href={`/${router.query.id}/${item.link}`} key={item.id}>
-              <div className="w-[560px] h-[130px] bg-white rounded-[40px] flex justify-center items-center  mt-[20px]">
-                <div className="h-[10px] text-center text-indigo-800 text-4xl font-bold leading-[27%] tracking-normal">
+              <div className="w-[560px] h-[130px] bg-white rounded-[40px] flex justify-center items-center  mt-[20px]
+              max-sm:w-full  max-sm:rounded-[20px]  max-sm:h-[60px]
+              max-sm:text-2xl  text-center text-indigo-800 text-4xl font-bold leading-[27%] max-sm:leading-[24px] tracking-normal">
                   {router.locale === "kz" ? item.typeKz : router.locale === "ru" ? item.type : item.typeEn}
-                </div>
               </div>
             </Link>
         ))}

@@ -22,7 +22,8 @@ const MainLayout = ({ children, handleClick, isMain, link, page,bg, back}: ILayo
   const router = useRouter();
   return (
     <div
-      className={`w-[1920px] relative h-[1080px] bg-cover bg-no-repeat px-[100px] py-[30px] ${oswald.variable} font-sans`}
+      className={`w-[1920px] relative h-[1080px] bg-cover bg-no-repeat px-[100px] py-[30px] ${oswald.variable} font-sans
+      max-sm:w-full max-sm:h-full max-sm:p-[10px]`}
       style={{ background: bg ? `url('/images/${bg}.svg')` : "url('/images/bg.svg')" }}
     >
       <Header onClick={handleClick} isMain={isMain} toMain={link} page={page} back={back}/>

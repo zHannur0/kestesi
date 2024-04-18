@@ -57,3 +57,16 @@
   border-radius: 20px;
   border: 3px solid transparent;
 }
+
+.gradient-underline {
+  background-image: linear-gradient(to right, #ff7e5f, #feb47b); /* Define your gradient colors */
+  background-repeat: no-repeat;
+  background-size: 100% 2px; /* Width and height of the underline */
+  background-position: bottom center; /* Position the underline at the bottom center */
+}
+.btn-no-gradient {
+  background: none !important;
+  border: none !important;
+  color: black !important;
+}
+

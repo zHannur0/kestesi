@@ -45,10 +45,10 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
 
   return (
     <div
-      className={`flex justify-between ${oswald.variable} font-sans mb-[30px]`}
+      className={`flex justify-between ${oswald.variable} font-sans mb-[30px] max-sm:justify-center`}
     >
       {isMain ? (
-        <div className="w-[114px] h-[33px] relative">
+        <div className="w-[114px] h-[33px] relative max-sm:hidden">
           <div className="w-[67px] h-[33px] left-0 top-0 absolute text-center text-black text-[27px] font-bold">
             {time && time.getHours() < 10
               ? "0" + time?.getHours()
@@ -93,7 +93,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
       >
         <img className="w-[100%] h-[50px]" src="/images/Logo.svg" alt="" />
       </div>
-      <div className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex">
+      <div className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex max-sm:hidden">
         <Link href={page || `/${id}`}  locale="kz">
         <div className="text-center text-[27px] font-normal"
              style={{color: router.locale === "kz" ? "#211F23" : "#7B7984",

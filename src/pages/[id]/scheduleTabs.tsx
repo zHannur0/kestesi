@@ -49,8 +49,8 @@ const ScheduleTabsPage = () => {
       let arr = classl
         .filter((item) => item.class_number === classNum)
         .sort((a, b) => {
-          if (a.class_letter === undefined) return 1; // Поместить a после b, если class_letter у a не определен
-          if (b.class_letter === undefined) return -1; // Поместить a перед b, если class_letter у b не определен
+          if (a.class_letter === undefined) return 1;
+          if (b.class_letter === undefined) return -1;
 
           return a.class_letter?.charCodeAt(0) - b.class_letter?.charCodeAt(0);
         });
@@ -80,7 +80,6 @@ const ScheduleTabsPage = () => {
       if (iii.length !== 0) {
         setSelectedClassIII(iii);
       }
-      console.log(arr)
       setCurr(arr?.[0]?.class_number || null);
     }
   };
