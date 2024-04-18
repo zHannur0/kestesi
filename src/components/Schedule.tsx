@@ -102,14 +102,15 @@ const Schedule = () => {
   }, []);
 
   return (
-    <div className={"flex gap-[20px]"}>
+    <div className={"flex gap-[20px] max-sm:flex-col  max-sm:gap-[10px] "}>
       {weekDays?.map((item) =>
         item.id !== day ? (
           <div
             key={item.id}
             onClick={() => setDay(item.id)}
             className={
-              "flex w-[132px] cursor-pointer h-[132px] items-center justify-center rounded-[40px] bg-white text-[32px] font-bold leading-[71%] text-[#524FA2]"
+              "flex w-[132px] cursor-pointer h-[132px] items-center justify-center rounded-[40px] bg-white text-[32px] font-bold leading-[71%] text-[#524FA2]" +
+                " max-sm:w-full max-sm:h-[60px] max-sm:rounded-[20px]"
             }
           >
             {item.short}

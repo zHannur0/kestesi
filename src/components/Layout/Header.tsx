@@ -45,7 +45,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
 
   return (
     <div
-      className={`flex justify-between ${oswald.variable} font-sans mb-[30px] max-sm:justify-center`}
+      className={`flex relative justify-between ${oswald.variable} font-sans mb-[30px] max-sm:justify-center `}
     >
       {isMain ? (
         <div className="w-[114px] h-[33px] relative max-sm:hidden">
@@ -73,12 +73,12 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
           </div>
         </div>
       ) : (
-        <div className={"flex gap-[20px]"}>
+        <div className={"flex gap-[20px] max-sm:absolute max-sm:left-[0px]"}>
           <div className={"hover:cursor-pointer"} onClick={!back ? onClick : () => router.back()}>
-            <img src="/images/back.svg" alt="" />
+            <img src="/images/back.svg" alt=""/>
           </div>
           <div
-            className={"flex flex-col items-start justify-center text-center"}
+            className={"flex flex-col items-start justify-center text-center max-sm:hidden "}
           >
             <div className={"text-[14px] font-bold"}>{t.contacts.back}</div>
             <div className={"text-[10px] font-normal text-[#7B7984]"}>
@@ -93,7 +93,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
       >
         <img className="w-[100%] h-[50px]" src="/images/Logo.svg" alt="" />
       </div>
-      <div className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex max-sm:hidden">
+      <div className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex max-sm:hidden max-sm:absolute max-sm:right-[0px]">
         <Link href={page || `/${id}`}  locale="kz">
         <div className="text-center text-[27px] font-normal"
              style={{color: router.locale === "kz" ? "#211F23" : "#7B7984",

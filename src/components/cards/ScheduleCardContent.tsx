@@ -74,7 +74,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
   return (
     <div
       key={item.id}
-      className={"w-[870px] rounded-[20px] bg-[#F9F8FD] flex"}
+      className={"w-[870px] rounded-[20px] bg-[#F9F8FD] flex max-sm:w-full max-sm:flex-col"}
       style={{ height: item.teacher2 && item.classroom2 ? "137px" : "100px" }}
     >
       <div

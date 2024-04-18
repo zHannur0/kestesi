@@ -109,11 +109,10 @@ const MainPage = () => {
                     <div></div>
                 )
               }
-
             </div>
             <div
-                className="w-[310px] max-sm:w-auto flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end
-                max-sm:text-lg">
+                className=" flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end
+                max-sm:text-[18px]">
               {cities
                   .find((city) => city.name === school?.region)
                   ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
@@ -121,14 +120,14 @@ const MainPage = () => {
             <Link href={`/${id}/schoolInformation`}>
               <div
                   className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center" +
-                      " max-sm:bg-none max-sm:w-auto max-sm:text-lg max-sm:h-auto"}>
+                      " max-sm:bg-none max-sm:w-auto max-sm:text-[18px] max-sm:h-auto max-sm:leading-[24px]"}>
                 {t.main.aboutSchool}
               </div>
             </Link>
           </div>
           <div>
             <div className="w-[900px] h-[380px]  justify-center items-center inline-flex
-            max-sm:w-[100vw] max-sm:h-[277px] max-sm:rounded-0">
+            max-sm:w-[100vw] max-sm:h-[210px] max-sm:rounded-0">
               <Slider slides={currSlider} time={10000}/>
             </div>
           </div>
@@ -152,7 +151,7 @@ const MainPage = () => {
         {sidebar.map((item) => (
             <Link href={`/${router.query.id}/${item.link}`} key={item.id}>
               <div className="w-[560px] h-[130px] bg-white rounded-[40px] flex justify-center items-center  mt-[20px]
-              max-sm:w-full  max-sm:rounded-[20px]  max-sm:h-[60px]
+              max-sm:w-full  max-sm:rounded-[20px]  max-sm:h-[60px] max-sm:mt-[10px]
               max-sm:text-2xl  text-center text-indigo-800 text-4xl font-bold leading-[27%] max-sm:leading-[24px] tracking-normal">
                   {router.locale === "kz" ? item.typeKz : router.locale === "ru" ? item.type : item.typeEn}
               </div>

@@ -45,7 +45,7 @@ const ScheduleClassTabs: FC<ScheduleProps> = ({
   }, [classl]);
 
   return (
-    <div className={"flex flex-wrap gap-[20px]"}>
+    <div className={"flex flex-wrap gap-[20px] max-sm:gap-[10px] max-sm:justify-between w-[100%]"}>
       {!selectedClassI && !selectedClassII && !selectedClassIII ? (
         classNumbers
           .sort((a, b) => a - b)
@@ -53,20 +53,21 @@ const ScheduleClassTabs: FC<ScheduleProps> = ({
             <div
               key={item}
               onClick={() => chooseClassNumber(item)}
-              className="flex btn-gradient-1 cursor-pointer flex-col items-center gap-[15px] rounded-[28px] border-[3px] border-purple-800 justify-center w-[390px] h-[240px]"
+              className="flex btn-gradient-1 cursor-pointer flex-col items-center gap-[15px] rounded-[28px] justify-center w-[390px] h-[240px]
+              max-sm:w-[31%] max-sm:h-[120px] "
             >
               <div
-                className={"text-[72px] text-[#524FA2] font-bold leading-[80%]"}
+                className={"text-[72px] text-[#524FA2] font-bold leading-[80%] max-sm:text-[48px] max-sm:leading-[30px]"}
               >
                 {item}
               </div>
-              <div className={"text-[36px] text-black font-bold leading-[30%]"}>
+              <div className={"text-[36px] text-black font-bold leading-[30%] max-sm:text-2xl max-sm:leading-[6px]"}>
                 {t.schedule.class}
               </div>
             </div>
           ))
       ) : (
-        <div className={"flex flex-col gap-[30px]"}>
+        <div className={"flex flex-col gap-[30px] w-[100%] "}>
           {selectedClassI && (
             <ClassLetterTabs classes={selectedClassI} smena={1} />
           )}
