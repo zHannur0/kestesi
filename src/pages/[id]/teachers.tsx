@@ -51,7 +51,7 @@ const TeachersPage = () => {
       bg={"bg2"}
     >
       <div className={``}>
-        <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
+        <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-[24px] max-sm:mb-[20px]">
           {t.teachers.teachers }
         </h1>
           <TeachersTable

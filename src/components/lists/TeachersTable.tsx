@@ -64,11 +64,11 @@ const TeachersTable: FC<TeachersTableProps> = ({
   return (
     <>
       <div
-        className={`px-[50px] py-[30px] bg-white rounded-[40px] flex flex-col items-start gap-5 w-[100%] max-h-[910px]`}
+        className={`px-[50px] py-[30px] bg-white rounded-[40px] max-sm:rounded-[20px] flex flex-col items-start gap-5 w-[100%] max-h-[910px] max-sm:p-[20px]`}
       >
-        <div className={"flex gap-[10px] w-[100%]"}>
+        <div className={"flex flex-wrap gap-[10px] w-[100%]"}>
           <div onClick={() => setInputValue("all")}
-              className={"px-[35px] py-[14px] flex justify-center items-center border-2 rounded-[20px] text-2xl font-bold leading-normal cursor-pointer"}
+              className={"px-[35px] py-[14px] max-sm:px-[16px] max-sm:py-[10px] flex justify-center items-center border-2 rounded-[20px] max-sm:rounded-[10px] text-2xl max-sm:text-lg max-sm:leading-[30px] font-bold leading-normal cursor-pointer"}
                style={{
                  backgroundColor: inputValue === "all" ? "#ED008C" : "white",
                  color: inputValue === "all" ? "white" : "#211F23",
@@ -80,7 +80,7 @@ const TeachersTable: FC<TeachersTableProps> = ({
           {
             filterValues.sort((a,b) => a.localeCompare(b)).map((item, index) => (
                 <div key={index}
-                     className={"w-[60px] h-[65px] flex justify-center items-center rounded-[20px] text-2xl font-bold leading-normal cursor-pointer"}
+                     className={"w-[60px] h-[65px] max-sm:w-[50px] max-sm:h-[50px] max-sm:text-lg flex justify-center items-center rounded-[20px] max-sm:rounded-[10px] text-2xl font-bold leading-normal cursor-pointer"}
                      style={{
                        background: inputValue === item ? "#ED008C" : "transparent",
                        color: inputValue === item ? "white" : "#211F23",

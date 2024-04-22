@@ -28,6 +28,7 @@ const ScheduleTabsPage = () => {
   const [selectedClassIII, setSelectedClassIII] = useState<IClass[] | null>(
     null,
   );
+  console.log(classl)
 
   useEffect(() => {
     if (router.isReady && id) {

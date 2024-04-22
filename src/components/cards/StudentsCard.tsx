@@ -15,10 +15,10 @@ const StudentsCard: FC<StudentCardProps> = ({
                                              }) => {
     return (
         <div
-            className={`flex py-[20px] w-[520px] h-[200px] px-[30px] gap-[20px] rounded-[30px] bg-[#F8F8FB]`}
+            className={`flex py-[20px] w-[520px] h-[200px] px-[30px] gap-[20px] rounded-[30px] bg-[#F8F8FB] max-sm:w-full max-sm:rounded-[20px]`}
         >
             <img
-                className={`w-40 h-40 min-w-40 rounded-[80px]`}
+                className={`w-40 h-40 min-w-40 rounded-[100%] max-sm:w-[120px] max-sm:h-[120px]`}
                 src={photo ? photo : "/images/user.svg"}
                 alt="Teacher"
             />
@@ -26,7 +26,7 @@ const StudentsCard: FC<StudentCardProps> = ({
                 <h2 className={`text-2xl font-bold leading-normal text-[#211F23]`}>
                     {fullname}
                 </h2>
-                <p className={`text-[#211F23] text-2xl font-normal leading-[34.40px]`}>
+                <p className={`text-[#211F23] text-2xl font-normal leading-[34.40px] max-sm:text-[14px] max-sm:leading-normal`}>
                     {student_success}
                 </p>
             </div>

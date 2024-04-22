@@ -104,16 +104,16 @@ const ProudOfSchool = () => {
     };
     return (
         <MainLayout isMain={false} link={t.proud.toTheMainPage} handleClick={handleBack} page={`/${id}/proudOfSchool/${proudId}`} bg={"bg2"}>
-            <h1 className="text-[#211F23] text-[36px] font-bold leading-[80%] mb-[30px]">
+            <h1 className="text-[#211F23] text-[36px] font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px]">
                 {t.proud.schoolPride}
             </h1>
             <div
-                className={"w-full relative max-h-[910px] py-[30px] px-[60px] bg-white flex flex-col gap-[30px] rounded-[40px] overflow-hidden scrollbar-hide"}>
-                <div className={"flex gap-[20px] bg-white"}>
+                className={"w-full relative max-h-[910px] py-[30px] px-[60px] bg-white flex flex-col gap-[30px] rounded-[40px] overflow-hidden scrollbar-hide  max-sm:px-[20px]"}>
+                <div className={"flex flex-wrap gap-[20px] bg-white max-sm:gap-[10px]"}>
                     {sideBar?.map((item) => (
                         <Link href={`/${router.query.id}/proudOfSchool/${item.link}`} key={item.id}>
                             <div
-                                className={"flex items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px]"}
+                                className={"flex items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px] max-sm:py-[10px] max-sm:rounded-[10px]"}
                                 style={{
                                     backgroundColor: item.id === proudId ? "#ED008C" : "white",
                                     color: item.id === proudId ? "white" : "#211F23",
@@ -124,7 +124,7 @@ const ProudOfSchool = () => {
                         </Link>
                     ))}
                 </div>
-                <div className={"flex gap-[20px] flex-wrap max-h-[810px] overflow-auto scrollbar-hide rounded-[2px]"}>
+                <div className={"flex gap-[20px] flex-wrap max-h-[810px] overflow-auto scrollbar-hide rounded-[2px] max-sm:flex-col max-sm:gap-[10px] max-sm:flex-nowrap"}>
                     {
                         curr?.slice().sort((a,b) => a.id - b.id).map((item, index) => (
                             <StudentsCard id={item.id} key={index} photo={item.photo}

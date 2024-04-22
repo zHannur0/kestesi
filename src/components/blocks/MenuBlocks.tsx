@@ -61,14 +61,15 @@ const MenuBlocks = () => {
   }, [t]);
 
   return (
-    <div className={"flex gap-[20px]"}>
+    <div className={"flex gap-[20px] max-sm:flex-col"}>
       {weekDays?.map((item) =>
         item.id !== day ? (
           <div
             key={item.id}
             onClick={() => setDay(item.id)}
             className={
-              "flex w-[132px] h-[132px] items-center justify-center rounded-[40px] bg-white text-[32px] font-bold leading-[71%] text-[#524FA2]"
+              "flex w-[132px] h-[132px] items-center justify-center rounded-[40px] bg-white text-[32px] font-bold leading-[71%] text-[#524FA2]" +
+                " max-sm:w-full max-sm:rounded-[20px] max-sm:text-2xl max-sm:h-[60px]"
             }
           >
             {item.short}
