@@ -85,7 +85,7 @@ const QrComponent = () => {
 
 
     return(
-        <div className={"flex flex-col p-[30px] bg-[#F9F8FD] w-[341px] h-[419px]  rounded-[40px]"}>
+        <div className={"flex flex-col p-[30px] bg-[#F9F8FD] w-[341px] h-[419px]  rounded-[40px] max-sm:hidden"}>
             <div className={"flex"}>
                 {
                     site && (

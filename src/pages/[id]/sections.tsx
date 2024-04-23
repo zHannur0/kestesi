@@ -2,15 +2,13 @@ import { useRouter } from "next/router";
 import MainLayout from "@/layouts/MainLayout";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { useEffect, useState } from "react";
-import { IMenu } from "@/types/assets.type";
-import {getMenuThunk, getSectionsThunk, getSectionThunk} from "@/store/thunks/school.thunk";
+import {getSectionsThunk, getSectionThunk} from "@/store/thunks/school.thunk";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import SectionCard from "@/components/cards/SectionCard";
 import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
 import SectionsBlock from "@/components/blocks/SectionsBlock";
-import {log} from "node:util";
 
 const SectionsPage = () => {
   const router = useRouter();
@@ -25,7 +23,6 @@ const SectionsPage = () => {
   const sections = useTypedSelector((state) => state.schoolInfo.sections);
   const sectionId = useTypedSelector((state) => state.schoolInfo.sectionId);
     const [curr, setCurr] = useState<number | null>(null);
-    console.log(curr)
     useEffect(() => {
         if (router.isReady && id) {
             dispatch(getSectionsThunk(id));
@@ -47,7 +44,7 @@ const SectionsPage = () => {
 
   return (
     <MainLayout isMain={false} link={t.sections.toTheMainPage} handleClick={handleBack} page={`/${id}/sections`} bg={curr ? "bg3":"bg2"}>
-      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
+      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px]">
           {t.sections.clubsAndSections}
       </h1>
         {
@@ -56,7 +53,7 @@ const SectionsPage = () => {
             ) : (
                 <div
                     className={
-                        "flex flex-col gap-[20px] overflow-auto scrollbar-hide h-[910px] rounded-[20px] pb-[30px]"
+                        "flex flex-col gap-[20px] overflow-auto scrollbar-hide h-[910px] rounded-[20px] pb-[30px] max-sm:gap-[10px] "
                     }
                 >
                     {sections.map((item) => (
