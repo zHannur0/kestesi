@@ -113,7 +113,8 @@ const ProudOfSchool = () => {
                     {sideBar?.map((item) => (
                         <Link href={`/${router.query.id}/proudOfSchool/${item.link}`} key={item.id}>
                             <div
-                                className={"flex items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px] max-sm:py-[10px] max-sm:rounded-[10px]"}
+                                className={"flex items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px] " +
+                                    " max-sm:py-[10px] max-sm:rounded-[10px] max-sm:text-lg "}
                                 style={{
                                     backgroundColor: item.id === proudId ? "#ED008C" : "white",
                                     color: item.id === proudId ? "white" : "#211F23",
@@ -124,7 +125,8 @@ const ProudOfSchool = () => {
                         </Link>
                     ))}
                 </div>
-                <div className={"flex gap-[20px] flex-wrap max-h-[810px] overflow-auto scrollbar-hide rounded-[2px] max-sm:flex-col max-sm:gap-[10px] max-sm:flex-nowrap"}>
+                <div className={"flex gap-[20px] flex-wrap max-h-[810px] overflow-auto scrollbar-hide rounded-[2px] " +
+                    " max-sm:flex-col max-sm:gap-[10px] max-sm:flex-nowrap max-sm:w-full"}>
                     {
                         curr?.slice().sort((a,b) => a.id - b.id).map((item, index) => (
                             <StudentsCard id={item.id} key={index} photo={item.photo}

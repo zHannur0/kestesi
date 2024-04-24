@@ -72,7 +72,7 @@ const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) =>
     return (
         <div
             key={item.id}
-            className={"w-[870px] rounded-[20px] bg-[#F9F8FD] flex"}
+            className={"w-full rounded-[20px] bg-[#F9F8FD] flex max-sm:flex-col max-sm:rounded-[10px]"}
             style={{ height: item.teacher2 && item.classroom2 ? "137px" : "100px" }}
         >
             <div
@@ -85,25 +85,27 @@ const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) =>
                         : "#7B7984",
                 }}
                 className={
-                    "w-[100px] flex flex-col items-center pt-[23px]  gap-[20px] pb-[24px]  rounded-tl-[20px] rounded-bl-[20px]"
+                    "w-[100px] flex flex-col items-center pt-[23px]  gap-[20px] pb-[24px]  rounded-tl-[20px] rounded-bl-[20px]" +
+                    " max-sm:w-full max-sm:h-[35px] max-sm:rounded-l-none max-sm:rounded-t-[10px] max-sm:flex-row max-sm:py-0 max-sm:px-[20px]"
                 }
             >
-                <div className={"text-white text-2xl leading-[85%] font-bold"}>
+                <div className={"text-white text-2xl leading-[85%] font-bold max-sm:text-[14px]"}>
                     {removeSecondOfTime(item.ring?.start_time)}
                 </div>
-                <div className={"text-white text-[18px] leading-[26%] font-normal"}>
+                <div className={"text-white text-[18px] leading-[26%] font-normal max-sm:text-[14px]"}>
                     {index + 1 + " " + t.schedule.lesson}
                 </div>
             </div>
             <div
                 className={
-                    "pt-[23px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]"
+                    "pt-[23px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]" +
+                    " max-sm:py-[10px] max-sm:p-[20px]"
                 }
             >
                 <div className={"flex justify-between"}>
                     <div
                         className={
-                            "text-[#211F23] text-2xl leading-[85%] font-bold"
+                            "text-[#211F23] text-2xl leading-[85%] font-bold max-sm:text-lg"
                         }
                     >
                         {item.subject?.full_name}
@@ -115,7 +117,7 @@ const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) =>
                         ) && (
                             <div
                                 className={
-                                    "text-right text-[18px] font-bold leading-[85%] text-[#ED008C]"
+                                    "text-right text-[18px] font-bold leading-[85%] text-[#ED008C] max-sm:text-[14px]"
                                 }
                             >
                                 {t.schedule.atPresent}
@@ -125,7 +127,7 @@ const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) =>
                 </div>
                 <div
                     className={
-                        "flex justify-between text-[#524FA2] text-[18px] leading-[26%] "
+                        "flex justify-between text-[#524FA2] text-[18px] leading-[26%] max-sm:text-[14px]"
                     }
                 >
                     <Link href={`/${id}/schedule/class/${item.classl?.id}`}>
