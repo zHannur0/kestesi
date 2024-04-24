@@ -25,52 +25,58 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
   };
   const t = translations[router.locale || "kz"] || en;
   return (
-    <div className={`w-full flex gap-[20px]`}>
+    <div className={`w-full flex gap-[20px] max-sm:flex-col max-sm:h-[90vh] max-sm:gap-[10px]`}>
       <div
-        className={`w-[341px] h-[575px] flex flex-col items-center justify-between bg-white rounded-[40px] py-[30px]`}
+        className={`w-[341px] h-[575px] flex flex-col items-center justify-between bg-white rounded-[40px] py-[30px]
+        max-sm:w-full max-sm:h-auto max-sm:flex-row max-sm:p-[20px] max-sm:gap-[10px]`}
       >
         <img
           src={teacher?.photo3x4 ? teacher?.photo3x4 : "/images/user.svg"}
           alt="teacher"
-          className={`w-[280px] h-[280px] max-h-[280px] rounded-full`}
+          className={`w-[280px] h-[280px] max-h-[280px] rounded-full max-sm:w-[140px] max-sm:h-[140px] max-sm:min-w-[140px]`}
         />
-        <div className={`flex flex-col gap-[20px] text-left px-[30px] items-start w-full`}>
-          <div className={`text-neutral-800 text-2xl font-bold leading-[100%]`}>
+        <div className={`flex flex-col gap-[20px] text-left px-[30px] items-start w-full max-sm:gap-[10px] max-sm:p-0`}>
+          <div className={`text-neutral-800 text-2xl font-bold leading-[100%] max-sm:text-lg`}>
             {teacher?.pedagog !== "Null" && teacher?.pedagog
               ? pedagog[teacher?.pedagog]
               : "Педагог"}
           </div>
-          <p className="text-zinc-500 text-2xl leading-[143.3%]">
+          <p className="text-zinc-500 text-2xl leading-[143.3%] max-sm:text-[14px]">
             {teacher?.subject !== "Null" && teacher?.subject
               ? teacher?.subject
               : "Учитель"}{" "}
           </p>
+          <Link href={`/${id}/schedule/teacher/${teacher?.id}`}>
+            <div className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center inline-flex w-full py-[18px]
+            max-sm:py-[9px] max-sm:text-lg max-sm:px-[20px] max-sm:rounded-[10px]">
+              {t.teachers.schedule}
+            </div>
+          </Link>
         </div>
-        <Link href={`/${id}/schedule/teacher/${teacher?.id}`}>
-            <div className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center inline-flex w-[280px] h-[64px]">{t.teachers.schedule}</div>
-        </Link>
       </div>
       <div
-        className={`p-[50px] flex flex-col gap-[50px] bg-white w-[998px] max-h-[910px] rounded-[40px] overflow-auto scrollbar-hide `}
+        className={`p-[50px] flex flex-col gap-[50px] bg-white w-[998px] max-h-[910px] rounded-[40px] overflow-auto scrollbar-hide 
+        max-sm:w-full max-sm:px-[20px] max-sm:py-[10px] max-sm:h-[100%]`}
       >
         <div className={`flex flex-col gap-[20px] w-full`}>
-          <h1 className={`text-[#211F23] text-3xl font-bold leading-[8.40px]`}>
+          <h1 className={`text-[#211F23] text-3xl font-bold leading-[8.40px] max-sm:text-2xl max-sm:leading-[30px]`}>
             {t.teachers.workExperience}
           </h1>
           {teacher?.job_history?.map((item, index) => (
             <div
               key={index}
-              className={`py-[20px] px-[30px] w-[full] min-h-[80px]  flex flex-col bg-slate-50 text-start gap-[20px] rounded-[20px]`}
+              className={`py-[20px] px-[30px] w-[full] min-h-[80px]  flex flex-col bg-slate-50 text-start gap-[20px] rounded-[20px]
+              max-sm:p-[20px] max-sm:gap-[10px]`}
             >
               <h1
-                className={`text-pink-600 text-2xl font-bold leading-tight tracking-wider`}
+                className={`text-pink-600 text-2xl font-bold leading-tight tracking-wider max-sm:text-lg`}
               >
                 {item.start_date +
                   "-" +
                   (item.end_date ? item.end_date : t.teachers.today)}
               </h1>
               <p
-                className={`text-neutral-800 text-lg font-medium leading-none`}
+                className={`text-neutral-800 text-lg font-medium leading-none max-sm:text-[14px]`}
               >
                 {item.job_characteristic}
               </p>

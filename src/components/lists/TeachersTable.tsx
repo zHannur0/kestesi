@@ -97,7 +97,7 @@ const TeachersTable: FC<TeachersTableProps> = ({
             ))
           }
         </div>
-        <div className={`flex flex-wrap gap-[30px] h-[100%] overflow-auto scrollbar-hide rounded-[20px] `}>
+        <div className={`flex flex-wrap gap-[30px] h-[100%] overflow-auto scrollbar-hide rounded-[20px] w-full max-sm:gap-[10px]`}>
           {teachers ? (
               teachers
                   .filter(

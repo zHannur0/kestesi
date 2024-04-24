@@ -20,12 +20,12 @@ const TeachersCard: FC<TeachersCardProps> = ({
       onClick={() => handleChooseTeacher(id)}
       className={`flex py-[20px] w-[520px] h-[200px] px-[30px] gap-[20px] rounded-[30px] bg-[#F8F8FB] items-center max-sm:w-full max-sm:h-auto`}
     >
-      <div className={`w-40 h-40 rounded-[100%] max-sm:w-[120px] max-sm:h-[120px] bg-no-repeat bg-center bg-cover`}
+      <div className={`w-40 h-40 rounded-[100%] max-sm:w-[120px] max-sm:min-w-[120px] max-sm:h-[120px] bg-no-repeat bg-center bg-cover`}
            style={{
              backgroundImage: `url("${img || "/images/user.svg"}")`
            }}>
       </div>
-      <div >
+      <div>
         <div className={`flex text-2xl font-bold leading-normal text-[#524FA2] max-sm:text-[18px]`}>
           {fullname}
         </div>

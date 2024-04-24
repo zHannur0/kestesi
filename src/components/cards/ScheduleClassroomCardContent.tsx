@@ -80,8 +80,8 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
     return (
         <div
             key={item.id}
-            className={"w-[870px] rounded-[20px] bg-[#F9F8FD] flex"}
-            style={{ height: item.teacher2 && item.classroom2 ? "137px" : "100px" }}
+            className={"w-full rounded-[20px] bg-[#F9F8FD] flex "}
+            // style={{ height: item.teacher2 && item.classroom2 ? "137px" : "100px" }}
         >
             <div
                 style={{
@@ -93,7 +93,7 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
                         : "#7B7984",
                 }}
                 className={
-                    "w-[100px] flex flex-col items-center pt-[23px] gap-[20px] pb-[24px]  rounded-tl-[20px] rounded-bl-[20px]"
+                    "flex flex-col items-center pt-[23px] gap-[20px] pb-[24px]  rounded-tl-[20px] rounded-bl-[20px] max-sm:w-[100%]"
                 }
             >
                 <div className={"text-white text-2xl leading-[85%] font-bold"}>

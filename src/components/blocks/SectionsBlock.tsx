@@ -33,7 +33,7 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
                 <img
                     src={section?.teacher?.photo3x4 ? section?.teacher?.photo3x4 : "/images/user.svg"}
                     alt="teacher"
-                    className={`w-[544px] h-[369px] rounded-t-[20px] max-sm:w-[210px] max-sm:h-[210px] max-sm:rounded-full`}
+                    className={`w-[544px] h-[369px] rounded-t-[20px] max-sm:w-[140px] max-sm:h-[140px] max-sm:rounded-full`}
                 />
                 <div className={"flex flex-col gap-[20px] items-start text-left p-[30px] pb-[35px]"}>
                     <div className={`flex flex-col gap-[20px] text-left`}>

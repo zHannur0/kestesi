@@ -30,7 +30,7 @@ const ClassLetterTabs: FC<IProps> = ({ classes, smena }) => {
         {smena === 2 && t.schedule.secondShift}
         {smena === 3 && t.schedule.thirdShift}
       </div>
-      <div className={"flex gap-[20px] flex-wrap max-sm:gap-[10px] w-[100%]"}>
+      <div className={"flex gap-[20px] flex-wrap justify-between max-sm:gap-[10px] w-[100%]"}>
         {classes?.map((item) => (
           <div
             key={item.id}

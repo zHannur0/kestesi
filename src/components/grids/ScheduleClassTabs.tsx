@@ -81,6 +81,7 @@ const ScheduleClassTabs: FC<ScheduleProps> = ({
                   <ClassLetterTabs classes={selectedClassIII} smena={3} />
               )}
             </div>
+
         )}
       </>
   );
