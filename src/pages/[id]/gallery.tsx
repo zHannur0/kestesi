@@ -22,6 +22,19 @@ const Gallery = () => {
     const photos = useTypedSelector((state) => state.schoolInfo.photos);
     const [curr,setSurr] = useState<string | null>(null)
     const [currText,setCurrText] = useState<string | null>(null)
+    const [clickable, setClickable] = useState(true);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setClickable(window.innerWidth > 640); // Предположим, что 640px - это breakpoint для max-sm
+        };
+
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const handleBack = () => {
         if(curr) setSurr(null)
@@ -30,24 +43,32 @@ const Gallery = () => {
     useEffect(() => {
         id && dispatch(getPhotosThunk(id));
     }, [dispatch, id]);
+
+    const handleImageClick = (photoUrl: string, photoName:string) => {
+        if (!clickable) return;
+        setSurr(photoUrl);
+        setCurrText(photoName);
+    };
+
     return (
         <MainLayout isMain={false} link={curr ? t.gallery.back : t.contacts.toSchoolPassport} handleClick={handleBack} page={`/${id}/gallery`} bg={"bg3"}>
-            <div className={"flex justify-between mb-[50px]"}>
-                <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] ">
+            <div className={"flex justify-between mb-[50px] max-sm:mb-[20px]"}>
+                <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] max-sm:text-2xl">
                     {t.gallery.photoGallery}
                 </h1>
-                <img src="/images/noBgX.svg" alt="" className={"w-[50px] h-[50px] cursor-pointer"} onClick={() => setSurr(null)}/>
+                {
+                    curr && (
+                        <img src="/images/noBgX.svg" alt="" className={"w-[50px] h-[50px] cursor-pointer"}
+                             onClick={() => setSurr(null)}/>
+                    )
+                }
             </div>
             {
                 curr ? (
                     <div className={"rounded-[20px] relative"}
                          style={{
-                                 // backgroundImage: `url(${curr})`,
                                  width: "1720px",
                                  height: "814px",
-                                 // backgroundSize: "cover",
-                                 // backgroundPosition: "center",
-                                 // backgroundRepeat: "no-repeat"
                              }}>
                             <img src={curr} className={"w-[100%] h-[100%] rounded-[20px]"} alt=""/>
                             <div className={"absolute w-[50%] left-[25%] bottom-[40px] p-[40px] rounded-[20px] text-white text-[24px] leading-[20.75px] flex items-center bg-black bg-opacity-[60%]"}>
@@ -55,22 +76,22 @@ const Gallery = () => {
                             </div>
                         </div>
                     ) : (
-                        <div className={"flex flex-wrap max-h-[910px] w-full gap-[20px] bg-white pt-[50px] px-[50px] pb-[30px] overflow-auto scrollbar-hide rounded-[40px]"}>
+                        <div className={"flex flex-wrap max-h-[910px] w-full gap-[20px] bg-white pt-[50px] px-[50px] pb-[30px] overflow-auto scrollbar-hide rounded-[40px] " +
+                            " max-sm:gap-[10px] max-sm:p-[10px] max-sm:rounded-[20px]"}>
                             {
                                 photos.map((item) => (
-                                    <div key={item.id} className={"rounded-[20px] relative cursor-pointer"} onClick={() => {
-                                        setSurr(item?.slider_photo || null)
-                                        setCurrText(item?.slider_name || null)
-                                    }}
+                                    <div key={item.id} className={"rounded-[20px] relative cursor-pointer w-[520px] h-[290px] max-sm:w-full max-sm:h-[250px]"}
+                                         onClick={() =>
+                                             handleImageClick(item?.slider_photo || "", item?.slider_name || "")
+                                    }
                                          style={{
                                              backgroundImage: `url(${item.slider_photo})`,
-                                             width: "520px",
-                                             height: "290px",
                                              backgroundSize: "cover",
                                              backgroundPosition: "center",
                                              backgroundRepeat: "no-repeat"
                                          }}>
-                                        <div className={"absolute w-[90%] left-[5%] bottom-[20px] py-[4px] px-[20px] rounded-[10px] text-white text-[14px] flex items-center bg-black bg-opacity-[60%]"}>
+                                        <div className={"absolute w-[90%] left-[5%] bottom-[20px] py-[4px] px-[20px] rounded-[10px] text-white text-[14px] flex items-center bg-black bg-opacity-[60%]" +
+                                            " max-sm:rounded-[10px]"}>
                                             {item.slider_name}
                                         </div>
                                     </div>
