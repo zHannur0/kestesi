@@ -156,6 +156,7 @@ export const en = {
         teacherIntern: "Teacher Intern",
         back: "back",
         toTheMainPage: "to the Main Page",
+        schoolPassport:"School Passport"
     },
     proud: {
         schoolPride: "School Pride",

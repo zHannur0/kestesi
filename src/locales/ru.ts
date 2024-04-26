@@ -156,7 +156,9 @@ export const ru = {
         set: "класс-комплект",
         students: "учеников",
         address: "Адрес",
-        specialist: "Специалист"
+        specialist: "Специалист",
+        schoolPassport:"Паспорт школы"
+
     },
     proud: {
         schoolPride: "Гордость школы",

@@ -14,6 +14,7 @@ import QrComponent from "@/components/QrComponent";
 import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
+import MainLayout from "@/layouts/MainLayout";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -186,44 +187,55 @@ const SchoolInformationPage = () => {
          }])
   }, [t]);
   return (
-    <div
-      className={`w-[1920px] relative h-[1080px] bg-cover bg-no-repeat px-[100px] pt-[30px] ${oswald.variable} font-sans`}
-      style={{ background: "url('/images/bg2.svg')" }}
-      ref={bigRef}
-    >
-      {bgHeader ? (
-        <HeaderWBg onClick={handleBack} isMain={false} toMain={"на главную"} page={`/${id}/schoolInformation`}/>
-      ) : (
-        <div className={"w-[1720px] absolute z-40"}>
-          <Header onClick={handleBack} isMain={false} toMain={"на главную"} page={`/${id}/schoolInformation`}/>
-        </div>
-      )}
+    <MainLayout isMain={false} link={t.school.toTheMainPage} page={`/${id}/schoolInformation`} bg={'bg2'} handleClick={handleBack}>
+      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px] max-sm:text-2xl">
+        {t.school.schoolPassport}
+      </h1>
+      <div className={"flex gap-[20px] max-sm:flex-col"}>
       <div
-        className={"flex flex-col gap-[30px] absolute left-[100px] top-[110px]"}
+        className={"flex flex-col gap-[30px] max-sm:"}
       >
         <div
           className={
-            "flex flex-col w-[341px] gap-[30px] bg-white text-2xl pb-[50px] rounded-[40px]"
+            "flex flex-col w-[341px] gap-[30px] bg-white text-2xl pb-[50px] rounded-[40px] max-sm:w-full max-sm:flex-row " +
+              " max-sm:p-[20px] max-sm:gap-[10px] max-sm:rounded-[20px] max-sm:text-lg items-center"
           }
         >
           <Link href={`/${id}/yandexMap`}>
             <img
                 src="/images/defMap.png"
                 alt=""
-                className={"w-[341px] h-[365px] rounded-t-[40px]"}
+                className={"w-[341px] h-[365px] rounded-t-[40px] max-sm:w-[140px] max-sm:h-[140px] max-sm:rounded-full max-sm:min-w-[140px]"}
             />
           </Link>
-          <div className={"flex flex-col gap-[30px] px-[20px]"}>
+          <div className={"flex flex-col gap-[30px] px-[20px] max-sm:gap-[5px] max-sm:p-0"}>
             <div className={"text-[#211F23] font-bold text-left"}>
               {t.school.address}
             </div>
-            <div className={"text-[#7B7984] font-medium text-left"}>
+            <div className={"text-[#7B7984] font-medium text-left max-sm:text-[14px] max-sm:font-normal"}>
               {sch?.school_address}
             </div>
+            <div className={"sm:hidden"}>
+              {sideBar?.map((item) => (
+                  <Link
+                      href={`/${router.query.id}/${item.link}`}
+                      key={item.id}
+                  >
+                    <div
+                        className={
+                          "sm:hidden flex text-lg font-bold  text-[#524FA2] "
+                        }
+                    >
+                      {item.type}
+                    </div>
+                  </Link>
+              ))}
+            </div>
+
           </div>
 
         </div>
-        <div className={"flex flex-col gap-[20px]"}>
+        <div className={"flex flex-col gap-[20px] max-sm:hidden"}>
           {sideBar?.map((item) => (
               <Link
                   href={`/${router.query.id}/${item.link}`}
@@ -240,26 +252,22 @@ const SchoolInformationPage = () => {
           ))}
         </div>
       </div>
-      <div
-        className={
-          "absolute w-[998px] h-[100%] top-0 left-[461px] overflow-auto scrollbar-hide pt-[110px] z-0"
-        }
-        ref={scrollRef}
-      >
         <div
             className={
-              "bg-white w-full  z-0 p-[50px] rounded-[40px] flex flex-col gap-[30px]"
+              "bg-white w-full h-[900px] overflow-y-auto scrollbar-hide p-[50px] rounded-[40px] flex flex-col gap-[30px]" +
+                " max-sm:rounded-[20px] max-sm:p-[20px] "
             }
         >
-          <div className={"flex flex-col gap-[20px]"}>
-            <div className={"text-[30px] font-bold "}>
+          <div className={"flex flex-col gap-[20px] max-sm:gap-[10px]"}>
+            <div className={"text-[30px] font-bold max-sm:text-2xl "}>
               {sch?.school_name}
             </div>
-            <img
-                src={sch?.photo}
-                alt=""
-                className={"w-[898px] h-[427px] rounded-[40px]"}
-            />
+              <img
+                  src={sch?.photo}
+                  alt=""
+                  className={"w-[898px] h-[427px] rounded-[40px] max-sm:w-[100vw]"}
+              />
+
           </div>
           <div className={"flex flex-col gap-[30px] h-[158px] flex-wrap"}>
             {aboutCount?.map((item, index) => (
@@ -278,15 +286,15 @@ const SchoolInformationPage = () => {
             ))}
           </div>
           <div className={"flex flex-col gap-[20px]"}>
-            <div className={"text-2xl font-bold leading-[100%]"}>
+            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg"}>
               {t.school.generalInformation}
             </div>
             <div
                 className={
-                  "w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px]"
+                  "w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px] max-sm:w-full  "
                 }
             >
-              <table className="w-full text-[20px] leading-[100%]">
+              <table className="w-full text-[20px] leading-[100%] max-sm:text-[14px]">
                 <tbody>
                 <tr className="border-b border-b-black ">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
@@ -325,15 +333,15 @@ const SchoolInformationPage = () => {
             </div>
           </div>
           <div className={"flex flex-col gap-[20px]"}>
-            <div className={"text-2xl font-bold leading-[100%]"}>
+            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg"}>
               {t.school.distributionOfStudentsByClass}
             </div>
             <div
                 className={
-                  "w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px]"
+                  "w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px] max-sm:w-full"
                 }
             >
-              <table className="w-full text-[20px] leading-[100%]">
+              <table className="w-full text-[20px] leading-[100%] max-sm:text-[14px]">
                 <tbody>
                 <tr className="border-b border-b-black ">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
@@ -384,15 +392,15 @@ const SchoolInformationPage = () => {
             </div>
           </div>
           <div className={"flex flex-col gap-[20px]"}>
-            <div className={"text-2xl font-bold leading-[100%]"}>
+            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg"}>
               {t.school.distributionOfTeachersByCategory}
             </div>
             <div
                 className={
-                  "w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px]"
+                  "w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px] max-sm:w-full"
                 }
             >
-              <table className="w-full text-[20px] leading-[100%]">
+              <table className="w-full text-[20px] leading-[100%] max-sm:text-[14px]">
                 <tbody>
                 {
                   tableTeacher.map((item, index) => (
@@ -410,17 +418,15 @@ const SchoolInformationPage = () => {
               </table>
             </div>
           </div>
-          <div className={"text-[18px] leading-[32px] text-[#211F23]"}>
+          <div className={"text-[18px] leading-[32px] text-[#211F23] max-sm:text-[14px]"}>
             {sch?.school_history}
           </div>
         </div>
-      </div>
-      <div
-          className="absolute right-[100px] top-[110px]">
         <QrComponent/>
 
       </div>
-    </div>
+
+    </MainLayout>
   );
 };
 

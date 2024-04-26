@@ -158,7 +158,10 @@ export const kz = {
         set: "сынып-комплект",
         students: "оқушы",
         address: "Мекен-жай",
-        specialist: "Маман"
+        specialist: "Маман",
+        schoolPassport:"Мектеп куәлігі",
+
+
     },
     proud: {
         schoolPride: "Мектеп мақтаныштары",
