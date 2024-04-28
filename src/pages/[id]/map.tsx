@@ -129,7 +129,7 @@ interface FloorButtonProps {
 
 const FloorButton: React.FC<FloorButtonProps> = ({ floorNum, handleClick, isSelected, translation }) => {
     const className = `flex items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px] cursor-pointer 
-    max-sm:text-lg max-sm:px-[20px] max-sm:py-[15px] max-sm:rounded-[10px]`;
+    max-sm:text-[14px] max-sm:px-[20px] max-sm:py-[15px] max-sm:rounded-[10px]`;
     const style = {
         backgroundColor: isSelected ? "#ED008C" : "white",
         color: isSelected ? "white" : "#211F23",

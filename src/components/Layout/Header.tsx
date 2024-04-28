@@ -30,6 +30,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
   const handleBack = () => {
     router.push(`/${id}`);
   };
+  const [locale,setLocal] = useState<string>(String(router.locale));
 
   const [time, setTime] = useState<Date>(new Date());
   useEffect(() => {
@@ -43,106 +44,132 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
 
   const localeKey = router.locale as 'ru' | 'kz' | 'en';
 
+  const localeSetter = () =>{
+    if(locale === "kz") setLocal("ru");
+    else if(locale === "ru") setLocal("en");
+    else if(locale === "eng") setLocal("kz")
+  }
+
   return (
-    <div
-      className={`flex relative justify-between ${oswald.variable} font-sans mb-[30px] max-sm:justify-center `}
-    >
-      {isMain ? (
-        <div className="w-[114px] h-[33px] relative max-sm:hidden">
-          <div className="w-[67px] h-[33px] left-0 top-0 absolute text-center text-black text-[27px] font-bold">
-            {time && time.getHours() < 10
-              ? "0" + time?.getHours()
-              : time?.getHours()}
-            :
-            {time && time.getMinutes() < 10
-              ? "0" + time?.getMinutes()
-              : time?.getMinutes()}
-          </div>
-          <div className="w-10 h-[31px] left-[74px] top-[3px] absolute">
-            <div className="left-0 top-0 absolute text-center text-black text-sm font-normal leading-[18px]">
-              {time && weekDay[time.getDay() - 1]?.[localeKey || "kz"]}
-            </div>
-            <div className="w-10 h-[15px] left-0 top-[16px] absolute justify-start items-start gap-[3px] inline-flex">
-              <div className="text-center text-zinc-500 text-[10px] font-normal ">
-                {time?.getDate()}
-              </div>
-              <div className="text-center text-zinc-500 text-[10px] font-normal ">
-                {time && months[time.getMonth()]?.[localeKey || "kz"]}
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className={"flex gap-[20px] max-sm:absolute max-sm:left-[0px]"}>
-          <div className={"hover:cursor-pointer"} onClick={!back ? onClick : () => router.back()}>
-            <img src="/images/back.svg" alt=""/>
-          </div>
-          <div
-            className={"flex flex-col items-start justify-center text-center max-sm:hidden "}
-          >
-            <div className={"text-[14px] font-bold"}>{t.contacts.back}</div>
-            <div className={"text-[10px] font-normal text-[#7B7984]"}>
-              {toMain}
-            </div>
-          </div>
-        </div>
-      )}
       <div
-        className={"w-[134.42px] h-[50px] hover:cursor-pointer"}
-        onClick={handleBack}
+          className={`flex relative justify-between ${oswald.variable} font-sans mb-[30px] max-sm:justify-center `}
       >
-        <img className="w-[100%] h-[50px]" src="/images/Logo.svg" alt="" />
+        {isMain ? (
+            <div className="w-[114px] h-[33px] relative max-sm:hidden">
+              <div className="w-[67px] h-[33px] left-0 top-0 absolute text-center text-black text-[27px] font-bold">
+                {time && time.getHours() < 10
+                    ? "0" + time?.getHours()
+                    : time?.getHours()}
+                :
+                {time && time.getMinutes() < 10
+                    ? "0" + time?.getMinutes()
+                    : time?.getMinutes()}
+              </div>
+              <div className="w-10 h-[31px] left-[74px] top-[3px] absolute">
+                <div className="left-0 top-0 absolute text-center text-black text-sm font-normal leading-[18px]">
+                  {time && weekDay[time.getDay() - 1]?.[localeKey || "kz"]}
+                </div>
+                <div
+                    className="w-10 h-[15px] left-0 top-[16px] absolute justify-start items-start gap-[3px] inline-flex">
+                  <div className="text-center text-zinc-500 text-[10px] font-normal ">
+                    {time?.getDate()}
+                  </div>
+                  <div className="text-center text-zinc-500 text-[10px] font-normal ">
+                    {time && months[time.getMonth()]?.[localeKey || "kz"]}
+                  </div>
+                </div>
+              </div>
+            </div>
+        ) : (
+            <div className={"flex gap-[20px] max-sm:absolute max-sm:left-[0px]"}>
+              <div className={"hover:cursor-pointer"} onClick={!back ? onClick : () => router.back()}>
+                <img src="/images/back.svg" alt=""/>
+              </div>
+              <div
+                  className={"flex flex-col items-start justify-center text-center max-sm:hidden "}
+              >
+                <div className={"text-[14px] font-bold"}>{t.contacts.back}</div>
+                <div className={"text-[10px] font-normal text-[#7B7984]"}>
+                  {toMain}
+                </div>
+              </div>
+            </div>
+        )}
+        <div
+            className={"w-[134.42px] h-[50px] hover:cursor-pointer"}
+            onClick={handleBack}
+        >
+          <img className="w-[100%] h-[50px]" src="/images/Logo.svg" alt=""/>
+        </div>
+        <div
+            className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex max-sm:hidden max-sm:absolute max-sm:right-[0px]">
+          <Link href={page || `/${id}`} locale="kz">
+            <div className="text-center text-[27px] font-normal"
+                 style={{
+                   color: router.locale === "kz" ? "#211F23" : "#7B7984",
+                   textDecoration: router.locale === "kz" ? "underline #524FA2" : "none"
+                 }}>
+              KZ
+            </div>
+          </Link>
+          <Link href={page || `/${id}`} locale="ru">
+            <div className="text-center text-zinc-500 text-[27px] font-normal"
+                 style={{
+                   color: router.locale === "ru" ? "#211F23" : "#7B7984",
+                   textDecoration: router.locale === "ru" ? "underline #524FA2" : "none"
+                 }}>
+              RU
+            </div>
+          </Link>
+          <Link href={page || `/${id}`} locale="en">
+            <div className="text-center text-zinc-500 text-[27px] font-normal"
+                 style={{
+                   color: router.locale === "en" ? "#211F23" : "#7B7984",
+                   textDecoration: router.locale === "en" ? "underline #524FA2" : "none"
+                 }}>
+              EN
+            </div>
+          </Link>
+        </div>
+        <div
+            className="sm:hidden max-sm:absolute max-sm:right-[0px] flex items-end h-full">
+          <Link href={page || `/${id}`} locale={router.locale === "kz" ? "ru" : router.locale === "ru" ? "en" : "kz"}>
+            <div className="text-center text-[27px] font-normal cursor-pointer"
+                 style={{
+                   color: "#211F23" ,
+                   textDecoration: "underline #524FA2"
+                 }}>
+              {router.locale?.toUpperCase()}
+            </div>
+          </Link>
+        </div>
       </div>
-      <div className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex max-sm:hidden max-sm:absolute max-sm:right-[0px]">
-        <Link href={page || `/${id}`}  locale="kz">
-        <div className="text-center text-[27px] font-normal"
-             style={{color: router.locale === "kz" ? "#211F23" : "#7B7984",
-               textDecoration: router.locale === "kz" ? "underline #524FA2" : "none"}}>
-          KZ
-        </div>
-        </Link>
-        <Link href={page || `/${id}`} locale="ru">
-        <div className="text-center text-zinc-500 text-[27px] font-normal"
-             style={{color: router.locale === "ru" ? "#211F23" : "#7B7984",
-               textDecoration: router.locale === "ru" ? "underline #524FA2" : "none"}}>
-          RU
-        </div>
-        </Link>
-        <Link href={page || `/${id}`}  locale="en">
-        <div className="text-center text-zinc-500 text-[27px] font-normal"
-             style={{color: router.locale === "en" ? "#211F23" : "#7B7984",
-             textDecoration: router.locale === "en" ? "underline #524FA2" : "none"}}>
-          EN
-        </div>
-        </Link>
-      </div>
-    </div>
   );
 };
 
 const weekDay = [
-  { ru: "понедельник", kz: "дүйсенбі", en: "monday" },
-  { ru: "вторник", kz: "сейсенбі", en: "tuesday" },
-  { ru: "среда", kz: "сәрсенбі", en: "wednesday" },
-  { ru: "четверг", kz: "бейсенбі", en: "thursday" },
-  { ru: "пятница", kz: "жұма", en: "friday" },
-  { ru: "суббота", kz: "сенбі", en: "saturday" },
-  { ru: "воскресенье", kz: "жексенбі", en: "sunday" },
+  {ru: "понедельник", kz: "дүйсенбі", en: "monday"},
+  {ru: "вторник", kz: "сейсенбі", en: "tuesday"},
+  {ru: "среда", kz: "сәрсенбі", en: "wednesday"},
+  {ru: "четверг", kz: "бейсенбі", en: "thursday"},
+  {ru: "пятница", kz: "жұма", en: "friday"},
+  {ru: "суббота", kz: "сенбі", en: "saturday"},
+  {ru: "воскресенье", kz: "жексенбі", en: "sunday"},
 ];
 
 const months = [
-  { ru: "января", kz: "қаңтар", en: "january" },
-  { ru: "февраля", kz: "ақпан", en: "february" },
-  { ru: "марта", kz: "наурыз", en: "march" },
-  { ru: "апреля", kz: "сәуір", en: "april" },
-  { ru: "май", kz: "мамыр", en: "may" },
-  { ru: "июня", kz: "маусым", en: "june" },
-  { ru: "июля", kz: "шілде", en: "july" },
-  { ru: "августа", kz: "тамыз", en: "august" },
-  { ru: "сентября", kz: "қыркүйек", en: "september" },
-  { ru: "октября", kz: "қазан", en: "october" },
-  { ru: "ноября", kz: "қараша", en: "november" },
-  { ru: "декабря", kz: "желтоқсан", en: "december" },
+  {ru: "января", kz: "қаңтар", en: "january"},
+  {ru: "февраля", kz: "ақпан", en: "february"},
+  {ru: "марта", kz: "наурыз", en: "march"},
+  {ru: "апреля", kz: "сәуір", en: "april"},
+  {ru: "май", kz: "мамыр", en: "may"},
+  {ru: "июня", kz: "маусым", en: "june"},
+  {ru: "июля", kz: "шілде", en: "july"},
+  {ru: "августа", kz: "тамыз", en: "august"},
+  {ru: "сентября", kz: "қыркүйек", en: "september"},
+  {ru: "октября", kz: "қазан", en: "october"},
+  {ru: "ноября", kz: "қараша", en: "november"},
+  {ru: "декабря", kz: "желтоқсан", en: "december"},
 ];
 
 

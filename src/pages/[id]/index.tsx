@@ -132,9 +132,7 @@ const MainPage = () => {
             </div>
           </div>
         </div>
-        <div className={"max-sm:hidden"}>
           <QrComponent/>
-        </div>
       </div>
       <div
           className="w-[full] h-[180px] bg-gradient-to-r from-purple-800 to-pink-600 rounded-[40px] flex justify-center items-center mt-[20px] hover:cursor-pointer

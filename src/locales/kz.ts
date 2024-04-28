@@ -159,7 +159,7 @@ export const kz = {
         students: "оқушы",
         address: "Мекен-жай",
         specialist: "Маман",
-        schoolPassport:"Мектеп куәлігі",
+        schoolPassport:"Мектеп төлқұжаты",
 
 
     },

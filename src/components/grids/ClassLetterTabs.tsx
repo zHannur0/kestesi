@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
+import {sort} from "next/dist/build/webpack/loaders/css-loader/src/utils";
 
 interface IProps {
   classes: IClass[] | null;
@@ -30,8 +31,11 @@ const ClassLetterTabs: FC<IProps> = ({ classes, smena }) => {
         {smena === 2 && t.schedule.secondShift}
         {smena === 3 && t.schedule.thirdShift}
       </div>
-      <div className={"flex gap-[20px] flex-wrap justify-between max-sm:gap-[10px] w-[100%]"}>
-        {classes?.map((item) => (
+      <div className={"flex gap-[20px] flex-wrap max-sm:gap-[10px] w-[100%]"}>
+        {classes?.sort((a, b) => {
+            if (!a.class_letter || !b.class_letter) return 0;
+            return a.class_letter.localeCompare(b.class_letter);
+        }).map((item) => (
           <div
             key={item.id}
             onClick={() => handleClick(item.id)}

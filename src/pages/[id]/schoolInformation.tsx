@@ -265,19 +265,19 @@ const SchoolInformationPage = () => {
               <img
                   src={sch?.photo}
                   alt=""
-                  className={"w-[898px] h-[427px] rounded-[40px] max-sm:w-[100vw]"}
+                  className={"w-[898px] h-[427px] rounded-[40px] max-sm:w-[100vw] max-sm:h-[277px]"}
               />
 
           </div>
-          <div className={"flex flex-col gap-[30px] h-[158px] flex-wrap"}>
+          <div className={"flex flex-col gap-[30px] h-[158px] flex-wrap max-sm:h-[250px]"}>
             {aboutCount?.map((item, index) => (
                 <div key={index} className={"flex flex-col gap-[10px]"}>
-                  <div className={"text-[18px] font-medium leading-[100%]"}>
+                  <div className={"text-[18px] font-medium leading-[100%] max-sm:text-[14px]"}>
                     {item.title}
                   </div>
                   <div
                       className={
-                        "text-3xl font-bold leading-[100%] text-[#ED008C]"
+                        "text-3xl font-bold leading-[100%] text-[#ED008C] max-sm:text-lg"
                       }
                   >
                     {item.count ? item.count : "0"}

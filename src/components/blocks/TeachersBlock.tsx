@@ -35,7 +35,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
           alt="teacher"
           className={`w-[280px] h-[280px] max-h-[280px] rounded-full max-sm:w-[140px] max-sm:h-[140px] max-sm:min-w-[140px]`}
         />
-        <div className={`flex flex-col gap-[20px] text-left px-[30px] items-start w-full max-sm:gap-[10px] max-sm:p-0`}>
+        <div className={`flex flex-col gap-[20px] text-left px-[30px] items-start w-full max-sm:gap-[10px] max-sm:p-0 w-full`}>
           <div className={`text-neutral-800 text-2xl font-bold leading-[100%] max-sm:text-lg`}>
             {teacher?.pedagog !== "Null" && teacher?.pedagog
               ? pedagog[teacher?.pedagog]
@@ -46,8 +46,8 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
               ? teacher?.subject
               : "Учитель"}{" "}
           </p>
-          <Link href={`/${id}/schedule/teacher/${teacher?.id}`}>
-            <div className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center inline-flex w-full py-[18px]
+          <Link href={`/${id}/schedule/teacher/${teacher?.id}`} className={"w-full"}>
+            <div className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center flex w-[100%] py-[18px]
             max-sm:py-[9px] max-sm:text-lg max-sm:px-[20px] max-sm:rounded-[10px]">
               {t.teachers.schedule}
             </div>
@@ -101,8 +101,8 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
                 className={`text-neutral-800 text-lg font-medium leading-none flex flex-col`}
               >
                 <div>{t.teachers.yearOfGraduation + ": " + item.end_date}</div>
-                <div>{t.teachers.educationalInstitution + " - " + item.speciality_university}</div>
-                <div>{t.teachers.level + " - " + educationLevels[item.degree ? item.degree : ""] }</div>
+                <div>{t.teachers.educationalInstitution + ": " + item.speciality_university}</div>
+                <div>{t.teachers.level + ": " + educationLevels[item.degree ? item.degree : ""] }</div>
                 <div>{t.teachers.profession +": " + item.mamandygy}</div>
               </div>
             </div>

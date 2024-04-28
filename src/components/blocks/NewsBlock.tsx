@@ -50,7 +50,7 @@ const NewsBlock: FC<IProps> = ({ news, currNews, handleClick }) => {
 
   return (
     <div>
-      <div className="w-[100%] flex gap-[20px]">
+      <div className="w-[100%] flex gap-[20px] max-sm:flex-col">
         <div className={"flex gap-[20px] max-sm:flex-col-reverse"}>
           <div
               onClick={() => handleClick(currNews ? currNews - 1 : 1)}
