@@ -31,8 +31,8 @@ const MenuCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
             "flex justify-between text-[#7B7984] text-[18px] max-sm:text-[14px] max-sm:leading-none"
           }
         >
-          <div className={"w-[55%]"}>{item.food_sostav}</div>
-          <div className={"w-[40%]"}>
+          <div className={"w-[60%]"}>{item.food_sostav}</div>
+          <div className={""}>
             Выход: {item.vihod_1} гр, {item.vihod_2} гр, {item.vihod_3} гр
           </div>
         </div>

@@ -74,7 +74,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
   return (
     <div
       key={item.id}
-      className={"w-full  rounded-[20px] bg-[#F9F8FD] flex max-sm:flex-col max-sm:rounded-[10px]"}
+      className={"w-full rounded-[20px] bg-[#F9F8FD] flex max-sm:flex-col max-sm:rounded-[10px]"}
     >
       <div
         style={{
@@ -100,7 +100,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
       <div
         className={
             "pt-[23px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]" +
-            " max-sm:py-[10px] max-sm:p-[20px]"
+            " max-sm:py-[10px] max-sm:p-[20px] max-sm:gap-[10px]"
         }
       >
         <div className={"flex justify-between"}>
@@ -112,7 +112,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
             {item.subject?.full_name}
           </div>
           <div className={"flex items-center"}>
-            <div className={"text-[18px] leading-[85%] text-[#7B7984] max-sm:text-[14px]"}>{item.typez?.type_full_name}</div>
+            <div className={"text-[18px] leading-[85%] text-[#7B7984] max-sm:leading-[2]  max-sm:text-[14px]"}>{item.typez?.type_full_name}</div>
             <div>
               {isCurrentTimeWithinLesson(
                   item.ring?.start_time,
@@ -132,7 +132,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
         </div>
         <div
             className={
-              "flex justify-between text-[#524FA2] text-[18px] leading-[26%] max-sm:text-[14px]"
+              "flex justify-between text-[#524FA2] text-[18px] max-sm:text-[14px]"
             }
         >
           <Link href={`/${id}/teacher/${item.teacher?.id}`}>

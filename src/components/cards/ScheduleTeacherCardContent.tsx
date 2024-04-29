@@ -89,7 +89,7 @@ const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) =>
                     " max-sm:w-full max-sm:h-[35px] max-sm:rounded-l-none max-sm:rounded-t-[10px] max-sm:flex-row max-sm:py-0 max-sm:px-[20px]"
                 }
             >
-                <div className={"text-white text-2xl leading-[85%] font-bold max-sm:text-[14px]"}>
+                <div className={"text-white text-2xl leading-[85%] max-sm:leading-[2] font-bold max-sm:text-[14px]"}>
                     {removeSecondOfTime(item.ring?.start_time)}
                 </div>
                 <div className={"text-white text-[18px] leading-[26%] font-normal max-sm:text-[14px]"}>
@@ -99,7 +99,7 @@ const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) =>
             <div
                 className={
                     "pt-[23px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]" +
-                    " max-sm:py-[10px] max-sm:p-[20px]"
+                    " max-sm:py-[10px] max-sm:p-[20px] max-sm:gap-[10px]"
                 }
             >
                 <div className={"flex justify-between"}>
@@ -127,7 +127,7 @@ const ScheduleTeacherCardComponent: FC<IProps> = ({ item, index, dayNumber }) =>
                 </div>
                 <div
                     className={
-                        "flex justify-between text-[#524FA2] text-[18px] leading-[26%] max-sm:text-[14px]"
+                        "flex justify-between text-[#524FA2] text-[18px] max-sm:text-[14px]"
                     }
                 >
                     <Link href={`/${id}/schedule/class/${item.classl?.id}`}>

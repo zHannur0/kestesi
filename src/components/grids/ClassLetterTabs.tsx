@@ -41,7 +41,7 @@ const ClassLetterTabs: FC<IProps> = ({ classes, smena }) => {
             onClick={() => handleClick(item.id)}
             className={
               "flex justify-center btn-gradient-1 items-center w-[145px] h-[150px] rounded-[30px] text-[72px] text-[#524FA2] font-bold leading-[80%]" +
-                " max-sm:h-[120px] max-sm:w-[30%]"
+                " max-sm:h-[120px] max-sm:w-[120px]"
             }
           >
             {item.class_letter}

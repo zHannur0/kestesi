@@ -92,7 +92,7 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
                         : "#7B7984",
                 }}
                 className={
-                    "flex flex-col items-center pt-[23px] gap-[20px] pb-[24px] rounded-l-[20px]" +
+                    "w-[100px] flex flex-col items-center pt-[23px] gap-[20px] pb-[24px] rounded-l-[20px] " +
                     " max-sm:w-full max-sm:h-[35px] max-sm:rounded-l-none max-sm:rounded-t-[10px] max-sm:flex-row max-sm:py-0 max-sm:px-[20px]"
                 }
             >
@@ -118,7 +118,8 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
                         {item.subject?.full_name}
                     </div>
                     <div className={"flex items-center"}>
-                        <div className={"text-[18px] leading-[85%] text-[#7B7984] max-sm:text-[14px]"}>{item.typez?.type_full_name}</div>
+                        <div
+                            className={"text-[18px] leading-[85%] text-[#7B7984] max-sm:text-[14px]"}>{item.typez?.type_full_name}</div>
                         <div>
                             {isCurrentTimeWithinLesson(
                                 item.ring?.start_time,
