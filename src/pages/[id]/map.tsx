@@ -128,17 +128,22 @@ interface FloorButtonProps {
 }
 
 const FloorButton: React.FC<FloorButtonProps> = ({ floorNum, handleClick, isSelected, translation }) => {
-    const className = `flex items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px] cursor-pointer 
-    max-sm:text-[14px] max-sm:px-[20px] max-sm:py-[15px] max-sm:rounded-[10px]`;
+    const className = `flex items-center justify-center  border-2 rounded-[20px] text-2xl font-bold leading-[20px] cursor-pointer 
+    max-sm:text-[14px] max-sm:rounded-[10px]`;
     const style = {
         backgroundColor: isSelected ? "#ED008C" : "white",
         color: isSelected ? "white" : "#211F23",
-        borderColor: isSelected ? "#ED008C" : "#5D49A0",
+        border: "3px solid transparent",
+        backgroundImage: isSelected ? "none" : "linear-gradient(white, white), linear-gradient(to right, #5D49A0, #E9028E)",
+        backgroundOrigin: 'border-box',
+        backgroundClip: isSelected ? 'padding-box' : 'content-box, border-box',
     };
 
     return (
         <div className={className} style={style} onClick={() => handleClick(`flat${floorNum}`)}>
-            {floorNum} {translation.map.floor}
+            <p className={"p-[20px] max-sm:px-[20px] max-sm:py-[15px]"}>
+                {floorNum} {translation.map.floor}
+            </p>
         </div>
     );
 };

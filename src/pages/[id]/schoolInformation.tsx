@@ -225,7 +225,7 @@ const SchoolInformationPage = () => {
                   >
                     <div
                         className={
-                          "sm:hidden flex text-lg font-bold  text-[#524FA2] "
+                          "sm:hidden flex text-lg font-bold  text-[#524FA2]"
                         }
                     >
                       {item.type}
@@ -243,20 +243,20 @@ const SchoolInformationPage = () => {
                   href={`/${router.query.id}/${item.link}`}
                   key={item.id}
             >
-              <div
-                className={
-                  "w-[341px] h-[64px] flex items-center justify-center text-center text-2xl font-bold leading-[20px] rounded-[20px] text-[#524FA2] border-2 border-[#5D49A0]"
-                }
-              >
-                {item.type}
-              </div>
-            </Link>
+                  <div
+                      className={
+                        "w-[341px] h-[64px] flex items-center justify-center text-center text-2xl font-bold leading-[20px] rounded-[20px] border-2 border-[#5D49A0]"
+                      }
+                  >
+                    {item.type}
+                  </div>
+              </Link>
           ))}
         </div>
       </div>
         <div
             className={
-              "bg-white w-full h-[900px] overflow-y-auto scrollbar-hide p-[50px] rounded-[40px] flex flex-col gap-[30px]" +
+                "bg-white w-full h-[900px] overflow-y-auto scrollbar-hide p-[50px] rounded-[40px] flex flex-col gap-[30px]" +
                 " max-sm:rounded-[20px] max-sm:p-[20px] "
             }
         >

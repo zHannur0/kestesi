@@ -71,7 +71,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
               <h1
                 className={`text-pink-600 text-2xl font-bold leading-tight tracking-wider max-sm:text-lg`}
               >
-                {item.start_date +
+                {item.start_date && item.start_date +
                   "-" +
                   (item.end_date ? item.end_date : t.teachers.today)}
               </h1>
@@ -95,15 +95,15 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
               <h1
                 className={`text-pink-600 text-2xl font-bold leading-tight tracking-wider`}
               >
-                {item.end_date ? item.end_date : t.teachers.today}
+                {item.end_date ? item.end_date : item.mamandygy && t.teachers.today}
               </h1>
               <div
                 className={`text-neutral-800 text-lg font-medium leading-none flex flex-col`}
               >
-                <div>{t.teachers.yearOfGraduation + ": " + item.end_date}</div>
-                <div>{t.teachers.educationalInstitution + ": " + item.speciality_university}</div>
-                <div>{t.teachers.level + ": " + educationLevels[item.degree ? item.degree : ""] }</div>
-                <div>{t.teachers.profession +": " + item.mamandygy}</div>
+                <div>{item.end_date && t.teachers.yearOfGraduation + ": " + item.end_date}</div>
+                <div>{item.speciality_university && t.teachers.educationalInstitution + ": " + item.speciality_university}</div>
+                <div>{item.degree && t.teachers.level + ": " + educationLevels[item.degree ? item.degree : ""] }</div>
+                <div>{item.mamandygy &&   t.teachers.profession +": " + item.mamandygy}</div>
               </div>
             </div>
           ))}

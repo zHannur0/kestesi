@@ -31,7 +31,7 @@ const YandexMapPage = () => {
     }, [router.isReady, dispatch, router.query.id]);
 
     const handleBack = () => {
-        router.push(`/${id}`);
+        router.push(`/${id}/schoolInformation`);
     };
     return (
         <MainLayout isMain={false} link={t.yandexMap.back} handleClick={handleBack} page={`/${id}/yandexMap`}

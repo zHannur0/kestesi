@@ -28,9 +28,14 @@ const NewsCard: FC<IProps> = ({ item }) => {
             item.text?.split(" ")[2] +
             "..."}
         </div>
-        <div className={"text-2xl font-normal leading-[143.333%] max-sm:text-[14px]"}>
-          {item.text}
-        </div>
+        {/*<div className={"text-2xl font-normal leading-[143.333%] max-sm:text-[14px]"}>*/}
+        {/*    {item.text?.split(" ")[0] +*/}
+        {/*        " " +*/}
+        {/*        item.text?.split(" ")[1] +*/}
+        {/*        " " +*/}
+        {/*        item.text?.split(" ")[2] +*/}
+        {/*        "..."}*/}
+        {/*</div>*/}
         <div className={"text-[20px] text-[#7B7984] max-sm:text-[14px]"}>{item.date}</div>
       </div>
     </div>

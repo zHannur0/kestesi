@@ -1,4 +1,6 @@
-export const ru = {
+
+import {en} from "./en"
+export const ru:typeof en= {
     main: {
         schedule: "Расписание",
         teachers: "Преподаватели",
@@ -91,6 +93,10 @@ export const ru = {
         group: "Группа",
         additionalLessons: "Дополнительные занятия",
         back: "назад",
+        set: "класс комплект",
+        students: "ученики",
+        address: "Адрес",
+        specialist: "Специалист",
         toTheMainPage: "на главную",
         toChooseClass: "к выбору класса",
         lesson: "урок",
@@ -156,7 +162,7 @@ export const ru = {
         set: "класс-комплект",
         students: "учеников",
         address: "Адрес",
-        specialist: "Специалист",
+        specialist: "специалист",
         schoolPassport:"Паспорт школы"
 
     },

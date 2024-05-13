@@ -51,11 +51,26 @@
   min-height: 100vh;
 }
 
+.module-border-wrap {
+  padding: 1rem;
+  position: relative;
+  background: linear-gradient(to right, #5D49A0, #E9028E);
+  padding: 3px;
+}
+
+.module {
+  background: #222;
+  color: white;
+  padding: 2rem;
+}
+
 .btn-gradient-1 {
   background: linear-gradient(white, white) padding-box,
   linear-gradient(to right, #5D49A0, #E9028E) border-box;
   border-radius: 20px;
   border: 3px solid transparent;
+  background-clip: content-box, border-box;
+  background-origin: border-box;
 }
 
 .gradient-underline {

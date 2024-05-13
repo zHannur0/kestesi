@@ -1,4 +1,5 @@
-export const kz = {
+import {en} from "./en"
+export const kz:typeof en= {
     main: {
         schedule: "Сабақ кестесі",
         teachers: "Мұғалімдер",
@@ -68,15 +69,15 @@ export const kz = {
 
     },
     schedule: {
-        name:"Сабақтар мен қосымша сабақтардың кестесі",
+        name: "Сабақтар мен қосымша сабақтардың кестесі",
         class: "сынып",
         classes: "сыныптар",
         firstShift: "Бірінші ауысым",
         secondShift: "Екінші ауысым",
-        thirdShift: "Үшінші смена",
+        thirdShift: "Үшінші ауысым",
         Mon: "Дс",
         Tue: "Сс",
-        Wen: "Ср",
+        Wen: "Срс",
         Thu: "Бс",
         Fri: "Жм",
         Sat: "Сб",
@@ -96,8 +97,11 @@ export const kz = {
         toChooseClass: "сынып таңдауға",
         lesson: "сабақ",
         cabinet: "Кабинет",
-        noLessons: "Бұл күні сабақтар жоқ"
-
+        noLessons: "Бұл күні сабақтар жоқ",
+        set: "сынып жиынтығы",
+        students: "оқушылар",
+        address: "Мекенжай",
+        specialist: "Маман"
     },
     sections: {
         clubsAndSections: "Үйірмелер мен секциялар",
@@ -158,10 +162,8 @@ export const kz = {
         set: "сынып-комплект",
         students: "оқушы",
         address: "Мекен-жай",
-        specialist: "Маман",
+        specialist: "маман",
         schoolPassport:"Мектеп төлқұжаты",
-
-
     },
     proud: {
         schoolPride: "Мектеп мақтаныштары",

@@ -99,7 +99,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
       </div>
       <div
         className={
-            "pt-[23px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]" +
+            "pt-[23px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col  gap-[20px] w-[100%]" +
             " max-sm:py-[10px] max-sm:p-[20px] max-sm:gap-[10px]"
         }
       >
@@ -130,44 +130,47 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
           </div>
 
         </div>
-        <div
-            className={
-              "flex justify-between text-[#524FA2] text-[18px] max-sm:text-[14px]"
-            }
-        >
-          <Link href={`/${id}/teacher/${item.teacher?.id}`}>
-            <div className={"font-bold"}>{getInitials(item.teacher?.full_name)}</div>
-          </Link>
-          <div className={""}>
-            <span className={"text-[#7B7984] font-normal"}>{t.schedule.cabinet}</span>{" "}
-            <Link href={`/${id}/schedule/classroom/${item.classroom?.id}`} className={"font-bold"}>
-              {item.classroom?.classroom_number}
-            </Link>
-          </div>
-        </div>
-        {item.teacher2 && item.classroom2 && (
-          <div className={"flex flex-col gap-[10px]"}>
-            <div>
-              <hr />
-            </div>
-            <div
+        <div>
+          <div
               className={
-                "flex justify-between text-[#524FA2] text-[18px] leading-[26%] max-sm:text-[14px]"
+                "flex justify-between text-[#524FA2] text-[18px] max-sm:text-[14px]"
               }
-            >
-              <Link href={`/${id}/teacher/${item.teacher2?.id}`}>
-              <div className={"font-bold"}>{getInitials(item.teacher2?.full_name)}</div>
+          >
+            <Link href={`/${id}/teacher/${item.teacher?.id}`}>
+              <div className={"font-bold"}>{getInitials(item.teacher?.full_name)}</div>
+            </Link>
+            <div className={""}>
+              <span className={"text-[#7B7984] font-normal"}>{t.schedule.cabinet}</span>{" "}
+              <Link href={`/${id}/schedule/classroom/${item.classroom?.id}`} className={"font-bold"}>
+                {item.classroom?.classroom_number}
               </Link>
-
-              <div className={""}>
-                <span className={"text-[#7B7984] font-normal"}>Кабинет</span>{" "}
-                <Link href={`/${id}/schedule/classroom/${item.classroom2?.id}`} className={"font-bold"}>
-                  {item.classroom2?.classroom_number}
-                </Link>
-              </div>
             </div>
           </div>
-        )}
+          {item.teacher2 && item.classroom2 && (
+              <div className={"flex flex-col"}>
+                <div>
+                  <hr />
+                </div>
+                <div
+                    className={
+                      "flex justify-between text-[#524FA2] text-[18px] max-sm:text-[14px]"
+                    }
+                >
+                  <Link href={`/${id}/teacher/${item.teacher2?.id}`}>
+                    <div className={"font-bold"}>{getInitials(item.teacher2?.full_name)}</div>
+                  </Link>
+
+                  <div className={""}>
+                    <span className={"text-[#7B7984] font-normal"}>Кабинет</span>{" "}
+                    <Link href={`/${id}/schedule/classroom/${item.classroom2?.id}`} className={"font-bold"}>
+                      {item.classroom2?.classroom_number}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+          )}
+        </div>
+
       </div>
     </div>
   );
