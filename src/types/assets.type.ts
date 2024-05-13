@@ -8,6 +8,7 @@ export interface School {
   logo?: string;
   timezone?: string;
   user?: number;
+  school_map?: string;
 }
 
 export interface SchoolPassport {

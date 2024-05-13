@@ -104,28 +104,25 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
         <div
             className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex max-sm:hidden max-sm:absolute max-sm:right-[0px]">
           <Link href={page || `/${id}`} locale="kz">
-            <div className="text-center text-[27px] font-normal"
+            <div className={`text-center text-[27px] font-normal ${router.locale === "kz" ? "icon-container" : ""}`}
                  style={{
                    color: router.locale === "kz" ? "#211F23" : "#7B7984",
-                   textDecoration: router.locale === "kz" ? "underline #524FA2" : "none"
                  }}>
               KZ
             </div>
           </Link>
           <Link href={page || `/${id}`} locale="ru">
-            <div className="text-center text-zinc-500 text-[27px] font-normal"
+            <div className={`text-center text-[27px] font-normal ${router.locale === "ru" ? "icon-container" : ""}`}
                  style={{
                    color: router.locale === "ru" ? "#211F23" : "#7B7984",
-                   textDecoration: router.locale === "ru" ? "underline #524FA2" : "none"
                  }}>
               RU
             </div>
           </Link>
           <Link href={page || `/${id}`} locale="en">
-            <div className="text-center text-zinc-500 text-[27px] font-normal"
+              <div className={`text-center text-[27px] font-normal ${router.locale === "en" ? "icon-container" : ""}`}
                  style={{
                    color: router.locale === "en" ? "#211F23" : "#7B7984",
-                   textDecoration: router.locale === "en" ? "underline #524FA2" : "none"
                  }}>
               EN
             </div>
@@ -134,10 +131,9 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
         <div
             className="sm:hidden max-sm:absolute max-sm:right-[0px] flex items-end h-full">
           <Link href={page || `/${id}`} locale={router.locale === "kz" ? "ru" : router.locale === "ru" ? "en" : "kz"}>
-            <div className="text-center text-[27px] font-normal cursor-pointer"
+            <div className="text-center text-[27px] font-normal cursor-pointer icon-container"
                  style={{
                    color: "#211F23" ,
-                   textDecoration: "underline #524FA2"
                  }}>
               {router.locale?.toUpperCase()}
             </div>

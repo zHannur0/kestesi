@@ -48,6 +48,8 @@ const SchoolInformationPage = () => {
   };
   const t = translations[router.locale || "kz"] || en;
   const school = useTypedSelector((state) => state.schoolInfo.schoolPassport);
+  const schoolId = useTypedSelector((state) => state.schoolInfo.schoolId);
+
   const [sch, setSch] = useState<SchoolPassport>();
   const [aboutCount, setAboutCount] = useState<CountType[]>([]);
   const [tableTeacher, setTableTeacher] = useState<TableType[]>([]);
@@ -203,7 +205,7 @@ const SchoolInformationPage = () => {
         >
           <Link href={`/${id}/yandexMap`}>
             <img
-                src="/images/defMap.png"
+                src={schoolId?.school_map || ""}
                 alt=""
                 className={"w-[341px] h-[365px] rounded-t-[40px] max-sm:w-[140px] max-sm:h-[140px] max-sm:rounded-full max-sm:min-w-[140px]"}
             />

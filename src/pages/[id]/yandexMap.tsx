@@ -19,6 +19,8 @@ const YandexMapPage = () => {
     const id = String(router.query.id);
     const dispatch = useAppDispatch();
     const school = useTypedSelector((state) => state.schoolInfo.schoolId);
+    const schoolId = useTypedSelector((state) => state.schoolInfo.schoolId);
+
     useEffect(() => {
         if (router.isReady) {
             const id = String(router.query.id);
@@ -31,14 +33,14 @@ const YandexMapPage = () => {
     const handleBack = () => {
         router.push(`/${id}`);
     };
-    console.log(school)
-
     return (
-        <MainLayout isMain={false} link={t.yandexMap.back} handleClick={handleBack} page={`/${id}/yandexMap`} bg={"bg3"}>
+        <MainLayout isMain={false} link={t.yandexMap.back} handleClick={handleBack} page={`/${id}/yandexMap`}
+                    bg={"bg3"}>
             <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px]">
                 {t.yandexMap.title}
             </h1>
-            <img src={``} alt="" className={"w-[1779px] h-[863px] rounded-[40px]"}/>
+            <img  src={schoolId?.school_map || ""} alt="" className={"w-[1779px] h-[863px] rounded-[40px]"}/>
+
         </MainLayout>
     );
 };

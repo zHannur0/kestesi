@@ -68,14 +68,17 @@ const TeachersTable: FC<TeachersTableProps> = ({
       >
         <div className={"flex flex-wrap gap-[10px] w-[100%]"}>
           <div onClick={() => setInputValue("all")}
-              className={"px-[35px] py-[14px] max-sm:px-[16px] max-sm:py-[10px] flex justify-center items-center border-2 rounded-[20px] max-sm:rounded-[10px] text-2xl max-sm:text-lg max-sm:leading-[30px] font-bold leading-normal cursor-pointer"}
+              className={"flex justify-center items-center border-2 rounded-[20px] max-sm:rounded-[10px] text-2xl max-sm:text-lg max-sm:leading-[30px] font-bold leading-normal cursor-pointer"}
                style={{
                  backgroundColor: inputValue === "all" ? "#ED008C" : "white",
                  color: inputValue === "all" ? "white" : "#211F23",
-                 borderColor: inputValue === "all" ? "#ED008C" : "#5D49A0",
+                 border: "3px solid transparent",
+                 backgroundImage: inputValue === "all" ? "none" : "linear-gradient(white, white), linear-gradient(to right, #5D49A0, #E9028E)",
+                 backgroundOrigin: 'border-box',
+                 backgroundClip: inputValue === "all" ? 'padding-box' : 'content-box, border-box',
                }}
           >
-            {t.teachers.all}
+            <p className={`px-[35px] py-[14px] max-sm:px-[16px] max-sm:py-[10px]`}>{t.teachers.all}</p>
           </div>
           {
             filterValues.sort((a,b) => a.localeCompare(b)).map((item, index) => (

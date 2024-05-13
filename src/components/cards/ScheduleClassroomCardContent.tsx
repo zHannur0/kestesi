@@ -106,7 +106,7 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
             <div
                 className={
                     "pt-[23px] pb-[24px] pr-[50px] pl-[23px] h-[100%] flex flex-col gap-[20px] w-[100%]" +
-                    " max-sm:py-[10px] max-sm:p-[20px]"
+                    " max-sm:py-[10px] max-sm:p-[20px] max-sm:gap-[10px]"
                 }
             >
                 <div className={"flex justify-between "}>
@@ -138,7 +138,7 @@ const ScheduleClassroomCardComponent: FC<IProps> = ({ item, index, dayNumber }) 
                 </div>
                 <div
                     className={
-                        "flex justify-between text-[#524FA2] text-[18px] leading-[26%] font-bold max-sm:text-[14px]"
+                        "flex justify-between text-[#524FA2] text-[18px] font-bold max-sm:text-[14px]"
                     }
                 >
                     <Link

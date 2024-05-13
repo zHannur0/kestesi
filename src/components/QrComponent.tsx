@@ -210,23 +210,34 @@ const QrComponent = () => {
                     </div>
                 </div>
             </div>
-            <div className={"sm:hidden w-full py-[10px] px-[20px] flex justify-between bg-white rounded-[10px] items-center"}>
-                <Link href={site?.account_name || ""}>
+            <div className={"sm:hidden w-full py-[10px] px-[20px] flex justify-center bg-white rounded-[10px] items-center gap-[50px] overflow-auto scrollbar-hide"}>
+                {site?.account_name && <Link href={site?.account_name || ""}>
                     <img src="/images/siteContact.svg" alt="" className={"w-[40px] h-[40px]"}/>
-                </Link>
-                <Link href={facebook?.account_name || ""}>
-                    <img src="/images/facebook.svg" alt="" className={"w-[40px] h-[40px]"}/>
-                </Link>
-                <Link href={insta?.account_name || ""}>
-                    <img src="/images/instagram.svg" alt="" className={"w-[40px] h-[40px]"}/>
+                </Link>}
+                {
+                    facebook?.account_name &&   <Link href={facebook?.account_name || ""}>
+                        <img src="/images/facebook.svg" alt="" className={"w-[40px] h-[40px]"}/>
+                    </Link>
+                }
+                {
+                    insta?.account_name &&  <Link href={insta?.account_name || ""}>
+                        <img src="/images/instagram.svg" alt="" className={"w-[40px] h-[40px]"}/>
+                    </Link>
+                }
+                {
+                    youtube?.account_name &&  <Link href={youtube?.account_name || ""}>
+                        <img src="/images/youtube.svg" alt="" className={"w-[40px]"}/>
 
-                </Link>
-                <Link href={youtube?.account_name || ""}>
-                    <img src="/images/youtube.svg" alt="" className={"w-[40px]"}/>
-
-                </Link>
-                <Link href={tg?.account_name || ""}>
-                    <img src="/images/telegram.svg" alt="" className={"w-[40px] h-[40px]"}/>
+                    </Link>
+                }
+                {
+                    tg?.account_name &&
+                    <Link href={tg?.account_name || ""}>
+                        <img src="/images/telegram.svg" alt="" className={"w-[40px] h-[40px]"}/>
+                    </Link>
+                }
+                <Link href={""}>
+                    <img src="/images/android.svg" alt="" className={"w-[40px] h-[40px]"}/>
                 </Link>
             </div>
         </div>

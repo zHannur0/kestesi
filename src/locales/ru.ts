@@ -188,6 +188,6 @@ export const ru = {
     },
     yandexMap : {
         back: "к пасспорту школы",
-        title: "Школа на карта"
+        title: "Школа на карте"
     }
 }

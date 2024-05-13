@@ -70,3 +70,18 @@
   color: black !important;
 }
 
+.icon-container {
+  position: relative;
+}
+
+.icon-container::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  left: 0;
+  height: 3px;
+  border-radius: 2px;
+  background:  linear-gradient(to right, #5D49A0, #E9028E);
+}
+

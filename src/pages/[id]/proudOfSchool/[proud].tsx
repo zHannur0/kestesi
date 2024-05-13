@@ -113,14 +113,17 @@ const ProudOfSchool = () => {
                     {sideBar?.map((item) => (
                         <Link href={`/${router.query.id}/proudOfSchool/${item.link}`} key={item.id}>
                             <div
-                                className={"flex items-center justify-center p-[20px] border-2 rounded-[20px] text-2xl font-bold leading-[20px] " +
-                                    " max-sm:py-[10px] max-sm:rounded-[10px] max-sm:text-lg "}
+                                className={"flex items-center justify-center rounded-[20px] text-2xl font-bold leading-[20px] " +
+                                    " max-sm:rounded-[10px] max-sm:text-lg "}
                                 style={{
                                     backgroundColor: item.id === proudId ? "#ED008C" : "white",
                                     color: item.id === proudId ? "white" : "#211F23",
-                                    borderColor: item.id === proudId ? "#ED008C" : "#5D49A0",
+                                    border: "3px solid transparent",
+                                    backgroundImage: item.id === proudId ? "none" : "linear-gradient(white, white), linear-gradient(to right, #5D49A0, #E9028E)",
+                                    backgroundOrigin: 'border-box',
+                                    backgroundClip: item.id === proudId ? 'padding-box' : 'content-box, border-box',
                                 }}>
-                                {item.type}
+                                <p className={"p-[20px] max-sm:py-[10px]"}>{item.type}</p>
                             </div>
                         </Link>
                     ))}
