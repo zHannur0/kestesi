@@ -9,6 +9,7 @@ export interface School {
   timezone?: string;
   user?: number;
   school_map?: string;
+  qrcode?:string
 }
 
 export interface SchoolPassport {

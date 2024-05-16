@@ -35,7 +35,6 @@ const ProudOfSchool = () => {
     };
     const t = translations[router.locale || "kz"] || en;
     const pride = useTypedSelector((state) => state.schoolInfo.pride);
-    console.log(pride)
     const [curr, setCurr] = useState<ISchoolPride[]>([]);
     const [sideBar, setSideBar] = useState<IType[]>();
     useEffect(() => {

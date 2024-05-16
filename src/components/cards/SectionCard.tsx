@@ -7,7 +7,7 @@ interface IProps {
 
 const SectionCard: FC<IProps> = ({ section }) => {
   return (
-    <div className={"w-[1720px] min-h-[320px] bg-white flex rounded-[20px] max-sm:w-full max-sm:flex-col"}>
+    <div className={"w-full min-h-[320px] bg-white flex rounded-[20px] max-sm:flex-col"}>
       <div
         className={"rounded-l-[20px] w-[560px] max-sm:w-full max-sm:h-[200px] max-sm:rounded-t-[20px] max-sm:rounded-l-none"}
         style={{
@@ -34,13 +34,13 @@ const SectionCard: FC<IProps> = ({ section }) => {
         >
           Цель:{section.purpose || "Отсутствует"}
         </div>
-        <div className={"flex gap-[20px]"}>
+        <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px]"}>
           {section.lessons?.map((item, index) => (
             <div
               key={index}
               className={
                 "py-[19px] px-[23px] flex rounded-[20px] justify-center items-center leading-[23px] tracking-[0.5px] text-[16px] bg-[#F9F8FD]" +
-                  " max-sm:text-[14px] max-sm:py-[8px] max-sm:px-[11px] max-sm:rounded-[10px]"
+                  " max-sm:text-[14px] max-sm:py-[8px] max-sm:px-[11px] max-sm:rounded-[10px] max-sm:w-full max-sm:justify-start max-sm:gap-[10px]"
               }
             >
               <div className={"font-medium "}>

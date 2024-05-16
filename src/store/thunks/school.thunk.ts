@@ -149,5 +149,5 @@ export const getClassroomScheduleThunk = createAsyncThunk(
 
 export const getPrideThunk = createAsyncThunk(
     "getPrideThunk",
-    async (id?: string) => await allApi.getPride(),
+    async (id?: string) => await allApi.getPride(id),
 );
