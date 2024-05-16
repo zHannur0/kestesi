@@ -360,3 +360,14 @@ export interface ISlider {
   photo9?: string;
   photo10?: string;
 }
+
+export interface ISchoolPride {
+  id: number;
+  fullname?: string;
+  photo?: string;
+  student_success?: string;
+  classl?: any;
+  school?: number;
+  class_id?: string;
+  success?: string;
+}

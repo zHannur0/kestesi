@@ -3,12 +3,20 @@ import {useRouter} from "next/router";
 import {useAppDispatch} from "@/hooks/useAppDispatch";
 import {useTypedSelector} from "@/hooks/useTypedSelector";
 import {useEffect, useState} from "react";
-import {getArtThunk, getGoldThunk, getOlympiadThunk, getRedThunk, getSportThunk} from "@/store/thunks/school.thunk";
+import {
+    getArtThunk,
+    getGoldThunk,
+    getOlympiadThunk,
+    getPrideThunk,
+    getRedThunk,
+    getSportThunk
+} from "@/store/thunks/school.thunk";
 import Link from "next/link";
 import StudentsCard from "@/components/cards/StudentsCard";
 import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
+import {ISchoolPride} from "@/types/assets.type";
 interface IType {
     id?: number;
     type?: string;
@@ -26,13 +34,9 @@ const ProudOfSchool = () => {
         en: en,
     };
     const t = translations[router.locale || "kz"] || en;
-    const sport = useTypedSelector((state) => state.schoolInfo.sport) || [];
-    const oner = useTypedSelector((state) => state.schoolInfo.oner) || [];
-    const altyn = useTypedSelector((state) => state.schoolInfo.altyn) || [];
-    const atest = useTypedSelector((state) => state.schoolInfo.atest) || [];
-    const olimp = useTypedSelector((state) => state.schoolInfo.olimp) || [];
-
-    const [curr, setCurr] = useState<any[]>([]);
+    const pride = useTypedSelector((state) => state.schoolInfo.pride);
+    console.log(pride)
+    const [curr, setCurr] = useState<ISchoolPride[]>([]);
     const [sideBar, setSideBar] = useState<IType[]>();
     useEffect(() => {
         setSideBar( [  {
@@ -72,31 +76,27 @@ const ProudOfSchool = () => {
     }, [t]);
     useEffect(() => {
         if (router.isReady && id) {
-            dispatch(getSportThunk(id));
-            dispatch(getArtThunk(id));
-            dispatch(getOlympiadThunk(id));
-            dispatch(getRedThunk(id));
-            dispatch(getGoldThunk(id));
+            dispatch(getPrideThunk(id));
         }
     }, [router.isReady, dispatch, id]);
 
     useEffect(() => {
-        if (proudId) {
+        if (proudId && pride) {
             if(proudId === 1) {
-                setCurr([...sport, ...oner, ...olimp, ...altyn, ...atest]);
+                setCurr(pride);
             }else if(proudId === 2) {
-                setCurr(sport);
+                setCurr(pride.filter((item) => item.success === "sport"));
             }else if(proudId === 3) {
-                setCurr(oner);
+                setCurr(pride.filter((item) => item.success === "oner"));
             }else if(proudId === 4) {
-                setCurr(olimp);
+                setCurr(pride.filter((item) => item.success === "olimpiada"));
             }else if(proudId === 5) {
-                setCurr(altyn);
+                setCurr(pride.filter((item) => item.success === "altynbelgi"));
             }else if(proudId === 6) {
-                setCurr(atest);
+                setCurr(pride.filter((item) => item.success === "redcertificate"));
             }
         }
-    }, [id, proudId, sport, oner, altyn, olimp, atest]);
+    }, [id, proudId, pride]);
 
     console.log(curr)
     const handleBack = () => {

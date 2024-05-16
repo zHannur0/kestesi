@@ -12,7 +12,7 @@ import {
   ISchoolAtest,
   ISchoolDirector,
   ISchoolOlimp,
-  ISchoolOner,
+  ISchoolOner, ISchoolPride,
   ISchoolSocialMedia,
   ISchoolSport, ISlider,
   News,
@@ -120,5 +120,8 @@ export const allApi = {
   },
   async getTeacherSchedule(id?: string, teacherId?:number): Promise<ISchedule[]> {
     return await instance.get(`/admins/api/schedule/?school=${id}&teacher=${teacherId}`);
+  },
+  async getPride(id?: string): Promise<ISchoolPride[]> {
+    return await instance.get(`/admins/api/proudofschool/?school=${id}`);
   },
 };

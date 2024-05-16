@@ -146,3 +146,8 @@ export const getClassroomScheduleThunk = createAsyncThunk(
     "getClassroomScheduleThunk",
     async ({id, classroomId} : { id?: string, classroomId?: number }) => await allApi.getClassroomSchedule(id, classroomId),
 );
+
+export const getPrideThunk = createAsyncThunk(
+    "getPrideThunk",
+    async (id?: string) => await allApi.getPride(),
+);

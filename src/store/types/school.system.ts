@@ -11,7 +11,7 @@ import {
   ISchoolAtest,
   ISchoolDirector,
   ISchoolOlimp,
-  ISchoolOner, ISchoolPhotos,
+  ISchoolOner, ISchoolPhotos, ISchoolPride,
   ISchoolSocialMedia,
   ISchoolSport, ISlider,
   News,
@@ -53,6 +53,8 @@ export interface SchoolInfo {
   scheduleClassroom: ISchedule[];
   sectionId: IKruzhok;
   slider: ISlider[];
+  pride?: ISchoolPride[];
+
 }
 
 export const initialStateSchoolInfo: SchoolInfo = {
@@ -86,5 +88,6 @@ export const initialStateSchoolInfo: SchoolInfo = {
   scheduleClassroom: [],
   scheduleTeacher: [],
   sectionId: {},
-  slider: []
+  slider: [],
+  pride: []
 };
