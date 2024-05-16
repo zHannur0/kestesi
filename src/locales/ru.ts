@@ -11,6 +11,11 @@ export const ru:typeof en= {
         mapOfTheSchool: "Карта школы",
         aboutSchool: "О школе",
         schoolInKestesiKz: "Школа в Kestesi.kz",
+        "qrScan": "Сканируя QR-код",
+        "youCanSee": "Вы можете открыть расписание занятий на телефоне",
+        "androidApp": "Приложение для Android:",
+        installing: "Что бы установить приложение"
+
     },
     contacts: {
         contacts: "Контакты",

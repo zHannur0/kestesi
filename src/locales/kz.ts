@@ -10,6 +10,11 @@ export const kz:typeof en= {
         mapOfTheSchool: "Мектеп картасы",
         aboutSchool: "Мектеп туралы",
         schoolInKestesiKz: "Мектеп Kestesi.kz-те",
+        "qrScan": "QR кодын сканерлеу арқылы",
+        "youCanSee": "Сабақтар кестесін телефонда аша аласыз",
+        "androidApp": "Android қосымшасы:",
+        installing: "Қосымшаны орнату үшін"
+
     },
     contacts: {
         contacts: "Байланыс",

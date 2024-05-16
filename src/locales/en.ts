@@ -9,6 +9,10 @@ export const en = {
         mapOfTheSchool: "Map of the school",
         aboutSchool: "About school",
         schoolInKestesiKz: "School in Kestesi.kz",
+        qrScan: "By scanning the QR code",
+        youCanSee: "You can open the schedule of classes on the phone",
+        androidApp: "Android application:",
+        installing: "To install the app"
     },
     contacts: {
         contacts: "Contacts",

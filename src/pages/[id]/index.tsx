@@ -179,7 +179,7 @@ const sidebar: IType[] = [
   {
     id: 2,
     type: "Гордость школы",
-    typeKz: "Мектеп мақтанышы",
+    typeKz: "Мектеп мақтаныштары",
     typeEn: "School Pride",
     link: "proudOfSchool/1",
   },

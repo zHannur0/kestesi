@@ -13,7 +13,7 @@ const QrComponent = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const translations: any = { kz, ru, en };
-    const t = translations[router.locale || "kz"] || en;
+    const t:typeof en= translations[router.locale || "kz"] || en;
     const school = useTypedSelector((state) => state.schoolInfo.schoolId);
     const socialMedia = useTypedSelector((state) => state.schoolInfo.socialMedia);
     const [isSelected, setIsSelected] = useState<string>("site");
@@ -67,7 +67,7 @@ const QrComponent = () => {
     return (
         <div>
             <div className={"flex flex-col p-[30px] bg-[#F9F8FD] w-[341px] h-[419px] rounded-[40px] max-sm:hidden"}>
-                <div className={"flex"}>
+                <div className={"flex overflow-x-auto scrollbar-hide"}>
                     <div onClick={() => setIsSelected("site")}
                          className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
                          style={{backgroundColor: isSelected === "site" ? "white" : "transparent"}}>
@@ -116,8 +116,8 @@ const QrComponent = () => {
                     </div>
                 </div>
                 <div
-                    className={"p-[30px] w-[281px] h-[305px] flex flex-col gap-[30px] bg-white rounded-b-[20px] rounded-tr-[20px]"}>
-                    <div className={"text-2xl font-bold leading-[28%]"}>
+                    className={"p-[30px] w-[281px] h-[305px] flex flex-col gap-[20px] bg-white rounded-b-[20px] rounded-tr-[20px]"}>
+                    <div className={"text-2xl font-bold leading-[90%]"}>
                         {
                             isSelected === "site" && t.main.schoolInKestesiKz
                         }
@@ -134,7 +134,7 @@ const QrComponent = () => {
                             isSelected === "tg" && "Telegram:"
                         }
                         {
-                            isSelected === "tg" && "Kestesi App:"
+                            isSelected === "android" && t.main.androidApp
                         }
                     </div>
                     {
@@ -169,20 +169,23 @@ const QrComponent = () => {
                     }
                     <div className={"flex flex-col gap-[10px]"}>
                         <div className={"text-[20px] text-[#524FA2] leading-[80%]"}>
-                            {/*{*/}
-                            {/*    isSelected === "site" && site?.account_name?.split("/").slice(-2).join("/")*/}
-                            {/*}*/}
+                            {
+                                isSelected === "site" && t.main.youCanSee
+                            }
                             {/*{*/}
                             {/*    isSelected === "facebook" && facebook?.account_name?.split("/").slice(-2).join("/")*/}
                             {/*}*/}
                             {
-                                isSelected === "instagram" && insta?.account_name?.split("/").slice(-2).join("/")
+                                isSelected === "instagram" && insta?.account_name?.split("/").slice(-2)
                             }
                             {
-                                isSelected === "youtube" && youtube?.account_name?.split("/").slice(-2).join("/")
+                                isSelected === "youtube" && youtube?.account_name?.split("/").slice(-2)
                             }
                             {
-                                isSelected === "tg" && "Kestesi bot"
+                                isSelected === "tg" && "@kestesi_bot"
+                            }
+                            {
+                                isSelected === "android" && t.main.installing
                             }
                         </div>
                     </div>
