@@ -22,6 +22,7 @@ const QrComponent = () => {
     const [insta, setInsta] = useState<ISchoolSocialMedia | null>(null);
     const [tg, setTg] = useState<string>("https://t.me/Kestesi_bot");
     const [site, setSite] = useState<string>("link");
+    const [android, setAndroid] = useState<string>("https://drive.google.com/drive/folders/1Ow2YKSWsl1VEvJmEprPz3Iegn51GoNCi?usp=sharing");
 
     useEffect(() => {
         if (router.isReady) {
@@ -40,13 +41,14 @@ const QrComponent = () => {
     }, [socialMedia]);
 
     useEffect(() => {
-        const socialMediaTypes = ['site', 'facebook', 'instagram', 'youtube', 'tg'];
+        const socialMediaTypes = ['site', 'facebook', 'instagram', 'youtube', 'tg','android'];
         const socialMediaAvailable = socialMediaTypes.filter(type => {
             if (type === 'site') return site;
             if (type === 'facebook') return facebook;
             if (type === 'instagram') return insta;
             if (type === 'youtube') return youtube;
             if (type === 'tg') return tg;
+            if (type === 'android') return android;
         }).filter(Boolean);
 
         let index = socialMediaAvailable.findIndex(socialMedia => socialMedia === isSelected);
@@ -68,46 +70,53 @@ const QrComponent = () => {
                 <div className={"flex"}>
                     <div onClick={() => setIsSelected("site")}
                          className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
-                         style={{ backgroundColor: isSelected === "site" ? "white" : "transparent" }}>
+                         style={{backgroundColor: isSelected === "site" ? "white" : "transparent"}}>
                         <img src={isSelected === "site" ? "/images/siteContact.svg" : "/images/siteBlack.svg"}
                              alt="site"
-                             className={"w-[36px]"} />
+                             className={"w-[36px]"}/>
                     </div>
                     {facebook && (
                         <div onClick={() => setIsSelected("facebook")}
                              className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
-                             style={{ backgroundColor: isSelected === "facebook" ? "white" : "transparent" }}>
+                             style={{backgroundColor: isSelected === "facebook" ? "white" : "transparent"}}>
                             <img src={isSelected === "facebook" ? "/images/facebook.svg" : "/images/facebookBlack.svg"}
                                  alt="facebook"
-                                 className={"w-[36px]"} />
+                                 className={"w-[36px]"}/>
                         </div>
                     )}
                     {insta && (
                         <div onClick={() => setIsSelected("instagram")}
                              className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
-                             style={{ backgroundColor: isSelected === "instagram" ? "white" : "transparent" }}>
+                             style={{backgroundColor: isSelected === "instagram" ? "white" : "transparent"}}>
                             <img src={isSelected === "instagram" ? "/images/instagram.svg" : "/images/instaBlack.svg"}
                                  alt="instagram"
-                                 className={"w-[36px]"} />
+                                 className={"w-[36px]"}/>
                         </div>
                     )}
                     {youtube && (
                         <div onClick={() => setIsSelected("youtube")}
                              className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
-                             style={{ backgroundColor: isSelected === "youtube" ? "white" : "transparent" }}>
+                             style={{backgroundColor: isSelected === "youtube" ? "white" : "transparent"}}>
                             <img src={isSelected === "youtube" ? "/images/youtube.svg" : "/images/youtubeBlack.svg"}
                                  alt="youtube"
-                                 className={"w-[36px]"} />
+                                 className={"w-[36px]"}/>
                         </div>
                     )}
                     <div onClick={() => setIsSelected("tg")}
                          className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
-                         style={{ backgroundColor: isSelected === "tg" ? "white" : "transparent" }}>
+                         style={{backgroundColor: isSelected === "tg" ? "white" : "transparent"}}>
                         <img src={isSelected === "tg" ? "/images/telegram.svg" : "/images/tgBlack.svg"} alt="tg"
-                             className={"w-[36px]"} />
+                             className={"w-[36px]"}/>
+                    </div>
+                    <div onClick={() => setIsSelected('android')}
+                         className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
+                         style={{backgroundColor: isSelected === "tg" ? "white" : "transparent"}}>
+                        <img src={isSelected === "android" ? "/images/android.svg" : "/images/androidBlack.svg"} alt="tg"
+                             className={"w-[36px]"}/>
                     </div>
                 </div>
-                <div className={"p-[30px] w-[281px] h-[305px] flex flex-col gap-[30px] bg-white rounded-b-[20px] rounded-tr-[20px]"}>
+                <div
+                    className={"p-[30px] w-[281px] h-[305px] flex flex-col gap-[30px] bg-white rounded-b-[20px] rounded-tr-[20px]"}>
                     <div className={"text-2xl font-bold leading-[28%]"}>
                         {
                             isSelected === "site" && t.main.schoolInKestesiKz
@@ -123,6 +132,9 @@ const QrComponent = () => {
                         }
                         {
                             isSelected === "tg" && "Telegram:"
+                        }
+                        {
+                            isSelected === "tg" && "Kestesi App:"
                         }
                     </div>
                     {
@@ -148,6 +160,11 @@ const QrComponent = () => {
                     {
                         isSelected === "tg" && (
                             <img src="/images/qrBot.svg" alt="tg qr code" className={"w-[160px] h-[150px]"} />
+                        )
+                    }
+                    {
+                        isSelected === "android" && (
+                            <img src="/images/appQR.svg" alt="android qr" className={"w-[160px] h-[150px]"} />
                         )
                     }
                     <div className={"flex flex-col gap-[10px]"}>
@@ -187,7 +204,7 @@ const QrComponent = () => {
                 <Link href={tg || ""}>
                     <img src="/images/telegram.svg" alt="tg link" className={"w-[40px] h-[40px]"} />
                 </Link>
-                <Link href="">
+                <Link href={android || ""}>
                     <img src="/images/android.svg" alt="android link" className={"w-[40px] h-[40px]"} />
                 </Link>
             </div>
