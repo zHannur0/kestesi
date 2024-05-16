@@ -6,9 +6,6 @@ import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import {
   getNewsThunk,
-  getSchoolIdThunk,
-  getSchoolPassportThunk,
-  getSchoolThunk,
 } from "@/store/thunks/school.thunk";
 import NewsList from "@/components/lists/NewsList";
 import NewsBlock from "@/components/blocks/NewsBlock";
