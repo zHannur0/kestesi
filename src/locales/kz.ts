@@ -11,7 +11,7 @@ export const kz:typeof en= {
         aboutSchool: "Мектеп туралы",
         schoolInKestesiKz: "Мектеп Kestesi.kz-те",
         "qrScan": "QR кодын сканерлеу арқылы",
-        "youCanSee": "Сабақтар кестесін телефонда аша аласыз",
+        "youCanSee": "Сабақ кестесін телефонда аша аласыз",
         "androidApp": "Android қосымшасы:",
         installing: "Қосымшаны орнату үшін"
 

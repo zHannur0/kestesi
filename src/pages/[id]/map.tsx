@@ -73,7 +73,7 @@ const SchoolMapPage = () => {
       </h1>
         <div className={"flex gap-[20px] max-sm:flex-col h-full"}>
             <div
-                className={"w-[1200px] cursor-pointer h-[890px] bg-white rounded-[40px] max-sm:rounded-[20px] p-[50px] flex flex-col gap-[27px] max-sm:w-full max-sm:p-[20px] max-sm:max-h-[450px] max-sm:h-auto max-sm:gap-[20px]"}>
+                className={"w-[1200px] cursor-pointer h-[890px] bg-white rounded-[40px] max-sm:rounded-[20px] p-[50px] flex flex-col gap-[27px] relative overflow-hidden max-sm:w-full max-sm:p-[20px] max-sm:max-h-[450px] max-sm:h-auto max-sm:gap-[20px]"}>
                 <div className="flex gap-[20px]">
                     {map && [1, 2, 3, 4, 5].map(floorNum => {
                         const flatKey = `flat${floorNum}` as keyof IMap; // Утверждение типа для ключей
@@ -91,7 +91,7 @@ const SchoolMapPage = () => {
                         return null;
                     })}
                 </div>
-                <img src={currLink ? currLink : "/images/map.svg"} alt="" className={"w-[100%] h-[100%]"}/>
+                <img src={currLink ? currLink : "/images/map.svg"} alt="" className={"w-[100%] h-auto max-h-full object-contain"}/>
             </div>
             <div
                 className={"flex flex-col grow gap-[10px] max-h-[890px] overflow-auto  w-[500px] scrollbar-hide rounded-xl max-sm:w-full max-sm:bg-white max-sm:max-h-[450px] max-sm:p-[20px]"}>

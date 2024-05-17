@@ -110,7 +110,7 @@ const QrComponent = () => {
                     </div>
                     <div onClick={() => setIsSelected('android')}
                          className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
-                         style={{backgroundColor: isSelected === "tg" ? "white" : "transparent"}}>
+                         style={{backgroundColor: isSelected === "android" ? "white" : "transparent"}}>
                         <img src={isSelected === "android" ? "/images/android.svg" : "/images/androidBlack.svg"} alt="tg"
                              className={"w-[36px]"}/>
                     </div>

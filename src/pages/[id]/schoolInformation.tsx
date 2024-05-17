@@ -49,7 +49,6 @@ const SchoolInformationPage = () => {
   const t = translations[router.locale || "kz"] || en;
   const school = useTypedSelector((state) => state.schoolInfo.schoolPassport);
   const schoolId = useTypedSelector((state) => state.schoolInfo.schoolId);
-
   const [sch, setSch] = useState<SchoolPassport>();
   const [aboutCount, setAboutCount] = useState<CountType[]>([]);
   const [tableTeacher, setTableTeacher] = useState<TableType[]>([]);
@@ -303,7 +302,7 @@ const SchoolInformationPage = () => {
                     {t.school.languageOfInstruction}
                   </td>
                   <td className="text-right text-[#211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.school_lang}
+                    {sch?.school_lang  || ""}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
@@ -311,7 +310,7 @@ const SchoolInformationPage = () => {
                     {t.school.status}
                   </td>
                   <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.status}
+                    {sch?.status  || ""}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
@@ -319,7 +318,7 @@ const SchoolInformationPage = () => {
                     {t.school.capacity}
                   </td>
                   <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.vmestimost}
+                    {sch?.vmestimost  || ""}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
@@ -327,7 +326,7 @@ const SchoolInformationPage = () => {
                     {t.school.actualNumberOfStudents}
                   </td>
                   <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.number_of_students}
+                    {sch?.number_of_students || ""}
                   </td>
                 </tr>
                 </tbody>
@@ -350,10 +349,10 @@ const SchoolInformationPage = () => {
                     {t.school.preparatoryClass}
                   </td>
                   <td className="text-center text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.dayarlyk_class_number + " " + t.school.set}
+                    {(sch?.dayarlyk_class_number || "0") + " " + t.school.set}
                   </td>
                   <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.dayarlyk_student_number  + " " + t.school.students}
+                    {(sch?.dayarlyk_student_number || "0") + " " + t.school.students}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
@@ -361,10 +360,10 @@ const SchoolInformationPage = () => {
                     {t.school.classes1To4}
                   </td>
                   <td className="text-center text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.number_of_1_4_classes + " " + t.school.set}
+                    {(sch?.number_of_1_4_classes || "0") + " " + t.school.set}
                   </td>
                   <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.number_of_1_4_students  + " " + t.school.students}
+                    {(sch?.number_of_1_4_students || "0") + " " + t.school.students}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
@@ -372,10 +371,10 @@ const SchoolInformationPage = () => {
                     {t.school.classes5To9}
                   </td>
                   <td className="text-center text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.number_of_5_9_classes + " " + t.school.set}
+                    {(sch?.number_of_5_9_classes || "0") + " " + t.school.set}
                   </td>
                   <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.number_of_5_9_students  + " " + t.school.students}
+                    {(sch?.number_of_5_9_students || "0") + " " + t.school.students}
                   </td>
                 </tr>
                 <tr className="border-b border-b-black">
@@ -383,10 +382,10 @@ const SchoolInformationPage = () => {
                     {t.school.classes10To11}
                   </td>
                   <td className="text-center text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.number_of_10_11_classes + " " + t.school.set}
+                    {(sch?.number_of_10_11_classes || "0") + " " + t.school.set}
                   </td>
                   <td className="text-right text-[211F23] font-bold pb-[14px] pt-[10px]">
-                    {sch?.number_of_10_11_students  + " " + t.school.students}
+                    {(sch?.number_of_10_11_students || "0" )+ " " + t.school.students}
                   </td>
                 </tr>
                 </tbody>
