@@ -140,7 +140,7 @@ export const ru:typeof en= {
         totalNumberOfStudents: "Общее количество учеников",
         numberOfBoys: "Количество мальчиков",
         numberOfGirls: "Количество девочек",
-        numberOfFamilies: "Количество семьей",
+        numberOfFamilies: "Количество семей",
         numberOfParents: "Количество родителей",
         generalInformation: "Общая информация",
         languageOfInstruction: "Язык обучения",

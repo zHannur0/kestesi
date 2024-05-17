@@ -64,18 +64,12 @@ const Contacts = () => {
                         {t.contacts.waysToConnect}
                     </div>
                     <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px]"}>
-                        {
                             <ContactBlock img={"/images/phoneContact.svg"} type={`${t.contacts.receptionPhones}:`}
                                           content={director?.[0]?.phone_number}/>
-                        }
-                        {
                             <ContactBlock img={"/images/emailContact.svg"} type={`${t.contacts.emailAddress}:`}
                                           content={director?.[0]?.email}/>
-                        }
-                        {
                             <ContactBlock img={"/images/siteContact.svg"} type={`${t.contacts.website}:`}
                                           content={site?.account_name}/>
-                        }
                     </div>
                 </div>
                 <div className={"flex flex-col gap-[30px] max-sm:gap-[20px]"}>
