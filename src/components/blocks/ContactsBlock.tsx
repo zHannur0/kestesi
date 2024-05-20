@@ -15,7 +15,7 @@ const ContactBlock: FC<IProps> = ({ img, type, content }) => {
                 <div className={"text-[20px] leading-[80%] tracking-[-0.8px] text-[#211F23] max-sm:text-[14px]"}>
                     {type}
                 </div>
-                <div className={"text-[24px] font-bold leading-[20px] max-sm:text-[14px] text-ellipsis overflow-hidden w-full"} style={{
+                <div className={"text-[24px] font-bold max-sm:text-[14px] text-ellipsis overflow-hidden w-full"} style={{
                     color: type !== "Приемная:" ? "#524FA2" : "#211F23",
                     whiteSpace: "nowrap"
                 }}>
