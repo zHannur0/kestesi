@@ -102,23 +102,28 @@ const Schedule = () => {
   }, []);
 
   return (
-    <div className={"flex gap-[20px] max-sm:flex-col  max-sm:gap-[10px] "}>
+    <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] "}>
       {weekDays?.map((item) =>
         item.id !== day ? (
-          <div
-            key={item.id}
-            onClick={() => setDay(item.id)}
-            className={
-              "flex w-[132px] cursor-pointer h-[132px] items-center justify-center rounded-[40px] bg-white text-[32px] font-bold leading-[71%] text-[#524FA2]" +
-                " max-sm:w-full max-sm:h-[60px] max-sm:rounded-[20px] max-sm:text-2xl"
-            }
-          >
-            {item.short}
-          </div>
+            <div
+                key={item.id}
+                onClick={() => setDay(item.id)}
+                className={
+                    "flex w-[132px] cursor-pointer h-[132px] items-center justify-center rounded-[40px] bg-white text-[32px] font-bold leading-[71%] text-[#524FA2]" +
+                    " max-sm:w-full max-sm:h-[60px] max-sm:rounded-[20px] max-sm:text-2xl px-[20px]"
+                }
+            >
+              <div className={"w-full flex justify-center max-sm:hidden"}>
+                {item.short}
+              </div>
+              <div className={"w-full flex justify-start sm:hidden"}>
+                {item.type}
+              </div>
+            </div>
         ) : (
-          <ScheduleCard
-            key={item.id}
-            os={currSchedule}
+            <ScheduleCard
+                key={item.id}
+                os={currSchedule}
             dop={currDopSchedule}
             day={item.type}
             dayNumber={day}

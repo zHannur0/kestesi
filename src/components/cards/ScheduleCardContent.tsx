@@ -87,7 +87,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
         }}
         className={
           "w-[100px] flex flex-col items-center pt-[23px] gap-[20px] pb-[24px] rounded-l-[20px] " +
-            " max-sm:w-full max-sm:h-[35px] max-sm:rounded-l-none max-sm:rounded-t-[10px] max-sm:flex-row max-sm:py-0 max-sm:px-[20px]"
+            " max-sm:w-full max-sm:h-[35px] max-sm:rounded-l-none max-sm:rounded-t-[10px] max-sm:flex-row max-sm:py-0 max-sm:px-[20px] max-sm:relative"
         }
       >
         <div className={"text-white text-2xl leading-[85%] font-bold max-sm:text-[14px]"}>
@@ -96,6 +96,18 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
         <div className={"text-white text-[18px] leading-[26%] font-normal max-sm:text-[14px]"}>
           {index + 1 + " " + t.schedule.lesson}
         </div>
+        {isCurrentTimeWithinLesson(
+            item.ring?.start_time,
+            item.ring?.end_time,
+        ) && (
+            <div
+                className={
+                  "text-right text-[18px] font-bold leading-[85%] text-white   ml-[20px] max-sm:text-[14px] sm:hidden absolute right-[20px]"
+                }
+            >
+              {t.schedule.atPresent}
+            </div>
+        )}
       </div>
       <div
         className={
@@ -120,7 +132,7 @@ const ScheduleCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
               ) && (
                   <div
                       className={
-                        "text-right text-[18px] font-bold leading-[85%] text-[#ED008C] ml-[20px] max-sm:ext-[14px]"
+                        "text-right text-[18px] font-bold leading-[85%] text-[#ED008C] ml-[20px] max-sm:text-[14px] max-sm:hidden"
                       }
                   >
                     {t.schedule.atPresent}

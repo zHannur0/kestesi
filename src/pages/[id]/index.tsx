@@ -75,7 +75,7 @@ const MainPage = () => {
       <div className={"flex gap-[30px] max-sm:flex-col max-sm:gap-[0px]" }>
         <div
             className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center pr-[20px] pl-[50px]
-            max-sm:h-auto max-sm:w-full max-sm:px-[20px] max-sm:pt-[20px] max-sm:pb-[0px]
+            max-sm:h-auto max-sm:w-full max-sm:px-[20px] gap-[10px] max-sm:pt-[20px] max-sm:pb-[0px]
             max-sm:flex-col max-sm:gap-[20px] max-sm:rounded-[20px]">
           <div className=" h-[100%] flex flex-col justify-between gap-[36px] py-[50px]
           max-sm:py-0 max-sm:px-0 max-sm:items-start max-sm:w-[100%] max-sm:gap-[10px]">

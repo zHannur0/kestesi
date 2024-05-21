@@ -61,7 +61,7 @@ const SchedulePage = () => {
       back={true}
     >
       <div className={"flex justify-between w-full"}>
-        <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px]">
+        <h1 className="text-[#211F23] text-4xl leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px]">
           {who === "class" && classl.class_name && (classl.class_name + ` ${t.schedule.class} - `  )}{t.schedule.name}
         </h1>
         <div className={"text-2xl text-[#7B7984]"}>
