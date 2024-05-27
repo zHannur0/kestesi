@@ -1,12 +1,15 @@
 import { IKruzhok } from "@/types/assets.type";
 import { FC } from "react";
+import {useRouter} from "next/router";
 
 interface IProps {
   section: IKruzhok;
 }
 
 const SectionCard: FC<IProps> = ({ section }) => {
-  return (
+    const router = useRouter();
+
+    return (
     <div className={"w-full min-h-[320px] bg-white flex rounded-[20px] max-sm:flex-col"}>
       <div
         className={"rounded-l-[20px] w-[560px] max-sm:w-full max-sm:h-[200px] max-sm:rounded-t-[20px] max-sm:rounded-l-none"}
@@ -32,7 +35,7 @@ const SectionCard: FC<IProps> = ({ section }) => {
             "text-[20px] leading-[23px] tracking-[0.5px] text-[#7B7984] max-sm:text-[14px]"
           }
         >
-          Цель:{section.purpose || "Отсутствует"}
+            {router.locale === "kz" ? "Мақсаты" : router.locale === "ru" ? "Цель" : "Aim"}: {section.purpose || "Отсутствует"}
         </div>
         <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px]"}>
           {section.lessons?.map((item, index) => (

@@ -68,23 +68,23 @@ const MainPage = () => {
     }
   }, [slider]);
 
-  console.log(schoolLang)
-
   return (
     <MainLayout isMain={true} bg={"bg"}>
-      <div className={"flex gap-[30px] max-sm:flex-col max-sm:gap-[0px]" }>
+      <div className={"flex gap-[30px] max-sm:flex-col max-sm:gap-[0px] vr:flex-col vr-gap-[10px]" }>
         <div
-            className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center pr-[20px] pl-[50px]
-            max-sm:h-auto max-sm:w-full max-sm:px-[20px] gap-[10px] max-sm:pt-[20px] max-sm:pb-[0px]
-            max-sm:flex-col max-sm:gap-[20px] max-sm:rounded-[20px]">
+            className="h-[420px] w-[1350px] relative bg-white rounded-[40px] flex justify-between items-center pr-[20px] pl-[50px] gap-[10px]
+            max-sm:h-auto max-sm:w-full max-sm:px-[20px] max-sm:pt-[20px] max-sm:pb-[0px]
+            max-sm:flex-col max-sm:gap-[20px] max-sm:rounded-[20px] vr:h-auto vr:w-full vr:px-[20px] vr:pt-[20px] vr:pb-[0px]
+          vr:flex-col vr:gap-[20px] vr:rounded-[20px]">
           <div className=" h-[100%] flex flex-col justify-between gap-[36px] py-[50px]
-          max-sm:py-0 max-sm:px-0 max-sm:items-start max-sm:w-[100%] max-sm:gap-[10px]">
-            <div className="flex flex-col gap-[16px] max-sm:flex-row max-sm:justify-start">
+          max-sm:py-0 max-sm:px-0 max-sm:items-start max-sm:w-[100%] max-sm:gap-[10px]
+           vr:py-0 vr:px-0 vr:items-start vr:w-[100%] vr:gap-[10px]">
+            <div className="flex flex-col gap-[16px] max-sm:flex-row max-sm:justify-start vr:flex-row vr:justify-start">
               {
                 schoolLang ? (
                     schoolLang?.indexOf("№") != -1 ? (
                         <>
-                          <div className="text-neutral-800 text-3xl font-bold leading-[30px] max-sm:text-2xl ">
+                          <div className="text-neutral-800 text-3xl font-bold leading-[30px] max-sm:text-2xl vr:text-[50px]">
                             {schoolLang
                                     ?.substring(schoolLang?.indexOf(" ") + 1)
                                     .charAt(0)
@@ -94,13 +94,13 @@ const MainPage = () => {
                                     schoolLang?.indexOf(" ") + 2,
                                 )}
                           </div>
-                          <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px] max-sm:w-auto max-sm:text-3xl">
+                          <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px] max-sm:w-auto max-sm:text-3xl vr:w-auto vr:text-[64px]">
                             {schoolLang?.split(" ")[0]}
                           </div>
                         </>
                     ) : (
                         <>
-                          <div className=" text-neutral-800 text-3xl font-bold leading-[30px] ">
+                          <div className=" text-neutral-800 text-3xl font-bold leading-[30px] max-sm:text-2xl vr:text-[50px]">
                             {schoolLang}
                           </div>
                         </>
@@ -112,7 +112,7 @@ const MainPage = () => {
             </div>
             <div
                 className=" flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end
-                max-sm:text-[18px]">
+                max-sm:text-[18px] vr:text-[18px] ">
               {cities
                   .find((city) => city.name === school?.region)
                   ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
@@ -120,14 +120,14 @@ const MainPage = () => {
             <Link href={`/${id}/schoolInformation`}>
               <div
                   className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center" +
-                      " max-sm:bg-none max-sm:w-auto max-sm:text-[18px] max-sm:h-auto max-sm:leading-[24px]"}>
+                      " max-sm:bg-none max-sm:w-auto max-sm:text-[18px] max-sm:h-auto max-sm:leading-[24px] vr:bg-none vr:w-auto vr:text-[18px] vr:h-auto vr:leading-[24px]"}>
                 {t.main.aboutSchool}
               </div>
             </Link>
           </div>
           <div>
             <div className="w-[900px] h-[380px]  justify-center items-center inline-flex
-            max-sm:w-[100vw] max-sm:h-[210px] max-sm:rounded-0">
+            max-sm:w-[100vw] max-sm:h-[210px] max-sm:rounded-0  vr:w-[100vw] vr:h-[210px] vr:rounded-0">
               <Slider slides={currSlider} time={10000}/>
             </div>
           </div>
@@ -136,7 +136,7 @@ const MainPage = () => {
       </div>
       <div
           className="w-[full] h-[180px] bg-gradient-to-r from-purple-800 to-pink-600 rounded-[40px] flex justify-center items-center mt-[20px] hover:cursor-pointer
-          max-sm:h-[91px] max-sm:rounded-[20px]"
+          max-sm:h-[91px] max-sm:rounded-[20px] vr:text-4xl"
           onClick={() => {
             router.push(`/${id}/scheduleTabs`);
           }}
@@ -145,12 +145,14 @@ const MainPage = () => {
           {t.main.schedule}
         </div>
       </div>
-      <div className={"flex justify-between flex-wrap w-[100%] max-sm:flex-col "}>
+      <div className={"flex justify-between flex-wrap w-[100%] max-sm:flex-col vr:flex-col"}>
         {sidebar.map((item) => (
             <Link href={`/${router.query.id}/${item.link}`} key={item.id}>
               <div className="w-[560px] h-[130px] bg-white rounded-[40px] flex justify-center items-center  mt-[20px]
               max-sm:w-full  max-sm:rounded-[20px]  max-sm:h-[60px] max-sm:mt-[10px]
-              max-sm:text-2xl  text-center text-indigo-800 text-4xl font-bold leading-[27%] max-sm:leading-[24px] tracking-normal">
+              max-sm:text-2xl  text-center text-indigo-800 text-4xl font-bold leading-[27%] max-sm:leading-[24px] tracking-normal
+              vr:w-full  vr:rounded-[20px]  vr:h-[60px] vr:mt-[10px]
+            vr:text-2xl  vr:leading-[24px]">
                   {router.locale === "kz" ? item.typeKz : router.locale === "ru" ? item.type : item.typeEn}
               </div>
             </Link>
@@ -162,9 +164,9 @@ const MainPage = () => {
 
 interface IType {
   id: number;
-  type: string; // Русский
-  typeKz: string; // Казахский
-  typeEn: string; // Английский
+  type: string;
+  typeKz: string;
+  typeEn: string;
   link: string;
 }
 

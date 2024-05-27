@@ -18,6 +18,9 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-oswald)"],
       },
+      screens: {
+        'vr': {'min': '1080px', max: '1080px'}
+      }
     },
   },
   plugins: [],

@@ -52,10 +52,10 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
 
   return (
       <div
-          className={`flex relative justify-between ${oswald.variable} font-sans mb-[30px] max-sm:justify-center `}
+          className={`flex relative justify-between ${oswald.variable} font-sans mb-[30px] max-sm:justify-center vr:justify-center  `}
       >
         {isMain ? (
-            <div className="w-[114px] h-[33px] relative max-sm:hidden">
+            <div className="w-[114px] h-[33px] relative max-sm:hidden vr:hidden">
               <div className="w-[67px] h-[33px] left-0 top-0 absolute text-center text-black text-[27px] font-bold">
                 {time && time.getHours() < 10
                     ? "0" + time?.getHours()
@@ -81,12 +81,12 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
               </div>
             </div>
         ) : (
-            <div className={"flex gap-[20px] max-sm:absolute max-sm:left-[0px]"}>
+            <div className={"flex gap-[20px] max-sm:absolute max-sm:left-[0px] vr:absolute vr:left-[0px]"}>
               <div className={"hover:cursor-pointer"} onClick={!back ? onClick : () => router.back()}>
                 <img src="/images/back.svg" alt=""/>
               </div>
               <div
-                  className={"flex flex-col items-start justify-center text-center max-sm:hidden "}
+                  className={"flex flex-col items-start justify-center text-center max-sm:hidden vr:hidden"}
               >
                 <div className={"text-[14px] font-bold"}>{t.contacts.back}</div>
                 <div className={"text-[10px] font-normal text-[#7B7984]"}>
@@ -102,7 +102,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
           <img className="w-[100%] h-[50px]" src="/images/Logo.svg" alt=""/>
         </div>
         <div
-            className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex max-sm:hidden max-sm:absolute max-sm:right-[0px]">
+            className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex max-sm:hidden max-sm:absolute max-sm:right-[0px] vr:hidden vr:absolute vr:right-[0px]">
           <Link href={page || `/${id}`} locale="kz">
             <div className={`text-center text-[27px] font-normal ${router.locale === "kz" ? "icon-container" : ""}`}
                  style={{
@@ -129,7 +129,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
           </Link>
         </div>
         <div
-            className="sm:hidden max-sm:absolute max-sm:right-[0px] flex items-end h-full">
+            className="sm:hidden max-sm:absolute max-sm:right-[0px] vr:absolute vr:block vr:right-[0px] flex items-end h-full">
           <Link href={page || `/${id}`} locale={router.locale === "kz" ? "ru" : router.locale === "ru" ? "en" : "kz"}>
             <div className="text-center text-[27px] font-normal cursor-pointer icon-container"
                  style={{
