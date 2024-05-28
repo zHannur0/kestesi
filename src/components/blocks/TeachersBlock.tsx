@@ -35,7 +35,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
           alt="teacher"
           className={`w-[280px] h-[280px] max-h-[280px] rounded-full max-sm:w-[140px] max-sm:h-[140px] max-sm:min-w-[140px]`}
         />
-        <div className={`flex flex-col gap-[20px] text-left px-[30px] items-start w-full max-sm:gap-[10px] max-sm:p-0 w-full`}>
+        <div className={`flex flex-col gap-[20px] text-left px-[30px] items-start max-sm:gap-[10px] max-sm:p-0 w-full`}>
           <div className={`text-neutral-800 text-2xl font-bold leading-[100%] max-sm:text-lg`}>
             {teacher?.pedagog !== "Null" && teacher?.pedagog
               ? pedagog[teacher?.pedagog]

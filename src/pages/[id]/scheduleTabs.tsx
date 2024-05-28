@@ -98,13 +98,13 @@ const ScheduleTabsPage = () => {
       bg={curr ? "bg3" : "bg2"}
     >
       <>
-        <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:leading-[30px] max-sm:px-[10px] max-sm:mb-[15px]">
-          {curr && (curr + " " + t.schedule.classes + " - ")}{t.schedule.name}
+        <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:leading-[30px] max-sm:px-[10px] max-sm:mb-[15px] vr:text-[50px] vr:leading-[65px] vr:mb-[50px]">
+          {curr && (curr + " " + t.schedule.classes + " - ")}<span className={`${curr ? "font-normal" : "font-bold"}`}>{t.schedule.name}</span>
         </h1>
       </>
       <div
         className={
-          "flex p-[50px] max-h-[860px] bg-[#FFF] rounded-[40px] w-[100%] max-sm:p-[20px] max-sm:rounded-[20px] max-sm:max-h-none"
+          "flex p-[50px] max-h-[860px] bg-[#FFF] rounded-[40px] w-[100%] max-sm:p-[20px] vr:p-[40px] max-sm:rounded-[20px] vr:rounded-[40px] vr:max-h-none max-sm:max-h-none"
         }
       >
         <div>

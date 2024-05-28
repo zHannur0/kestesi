@@ -61,26 +61,31 @@ const MenuBlocks = () => {
   }, [t]);
 
   return (
-    <div className={"flex gap-[20px] max-sm:flex-col"}>
+    <div className={"flex gap-[20px] max-sm:flex-col vr:flex-col"}>
       {weekDays?.map((item) =>
         item.id !== day ? (
-          <div
-            key={item.id}
-            onClick={() => setDay(item.id)}
-            className={
-              "flex w-[132px] h-[132px] items-center justify-center rounded-[40px] bg-white text-[32px] font-bold leading-[71%] text-[#524FA2]" +
-                " max-sm:w-full max-sm:rounded-[20px] max-sm:text-2xl max-sm:h-[60px]"
-            }
-          >
-            {item.short}
-          </div>
+            <div
+                key={item.id}
+                onClick={() => setDay(item.id)}
+                className={
+                    "flex w-[132px] cursor-pointer h-[132px] items-center justify-center rounded-[40px] bg-white text-[32px] font-bold leading-[71%] text-[#524FA2]" +
+                    " max-sm:w-full max-sm:h-[60px] max-sm:rounded-[20px] max-sm:text-2xl px-[20px] vr:w-full vr:h-[120px] vr:px-[40px] vr:text-[50px]"
+                }
+            >
+              <div className={"w-full flex justify-center max-sm:hidden vr:hidden"}>
+                {item.short}
+              </div>
+              <div className={"w-full flex justify-start sm:hidden vr:block"}>
+                {item.type}
+              </div>
+            </div>
         ) : (
-          <MenuCard
-            key={item.id}
-            menu={currMenu}
-            day={item.type}
-            dayNumber={day}
-          />
+            <MenuCard
+                key={item.id}
+                menu={currMenu}
+                day={item.type}
+                dayNumber={day}
+            />
         ),
       )}
     </div>

@@ -66,7 +66,7 @@ const QrComponent = () => {
 
     return (
         <div>
-            <div className={"flex flex-col p-[30px] bg-[#F9F8FD] w-[341px] h-[419px] rounded-[40px] max-sm:hidden"}>
+            <div className={"flex flex-col p-[30px] bg-[#F9F8FD] w-[341px] h-[419px] rounded-[40px] max-sm:hidden vr:hidden"}>
                 <div className={"flex overflow-x-auto scrollbar-hide"}>
                     <div onClick={() => setIsSelected("site")}
                          className={"flex items-center justify-center w-[53px] h-[53px] rounded-t-[10px]"}
@@ -191,24 +191,24 @@ const QrComponent = () => {
                     </div>
                 </div>
             </div>
-            <div className={"sm:hidden w-full py-[10px] px-[20px] flex justify-center bg-white rounded-[10px] items-center gap-[50px] overflow-auto scrollbar-hide"}>
+            <div className={"sm:hidden w-full py-[10px]  px-[20px] vr:px-[85px] vr:py-[40px] flex justify-between bg-white rounded-[10px] items-center gap-[50px] overflow-auto scrollbar-hide vr:flex"}>
                 <Link href={`https://my.kestesi.kz/${router.query.id}}` || ""}>
-                    <img src="/images/siteContact.svg" alt="site link" className={"w-[40px] h-[40px]"} />
+                    <img src="/images/siteContact.svg" alt="site link" className={"w-[40px] h-[40px] vr:w-[88px] vr:h-[88px]"} />
                 </Link>
                 {facebook?.account_name && <Link href={facebook?.account_name || ""}>
-                    <img src="/images/facebook.svg" alt="facebook link" className={"w-[40px] h-[40px]"} />
+                    <img src="/images/facebook.svg" alt="facebook link" className={"w-[40px] h-[40px] vr:w-[88px] vr:h-[88px]"} />
                 </Link>}
                 {insta?.account_name && <Link href={insta?.account_name || ""}>
-                    <img src="/images/instagram.svg" alt="instagram link" className={"w-[40px] h-[40px]"} />
+                    <img src="/images/instagram.svg" alt="instagram link" className={"w-[40px] h-[40px] vr:w-[88px] vr:h-[88px]"} />
                 </Link>}
                 {youtube?.account_name && <Link href={youtube?.account_name || ""}>
-                    <img src="/images/youtube.svg" alt="youtube link" className={"w-[40px]"} />
+                    <img src="/images/youtube.svg" alt="youtube link" className={"w-[40px] vr:w-[88px]"} />
                 </Link>}
                 <Link href={tg || ""}>
-                    <img src="/images/telegram.svg" alt="tg link" className={"w-[40px] h-[40px]"} />
+                    <img src="/images/telegram.svg" alt="tg link" className={"w-[40px] h-[40px] vr:w-[88px] vr:h-[88px]"} />
                 </Link>
                 <Link href={android || ""}>
-                    <img src="/images/android.svg" alt="android link" className={"w-[40px] h-[40px]"} />
+                    <img src="/images/android.svg" alt="android link" className={"w-[40px] h-[40px] vr:w-[88px] vr:h-[88px]"} />
                 </Link>
             </div>
         </div>

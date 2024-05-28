@@ -61,10 +61,10 @@ const SchedulePage = () => {
       back={true}
     >
       <div className={"flex justify-between w-full"}>
-        <h1 className="text-[#211F23] text-4xl leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px]">
+        <h1 className="text-[#211F23] text-4xl leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px] vr:text-[50px] vr:mb-[50px]">
           {who === "class" && classl.class_name && (classl.class_name + ` ${t.schedule.class} - `  )}{t.schedule.name}
         </h1>
-        <div className={"text-2xl text-[#7B7984]"}>
+        <div className={"text-2xl text-[#7B7984] vr:hidden max-sm:hidden"}>
           {who === "class" && classl.class_teacher && t.schedule.classTeacher}: <Link className={"text-[#524FA2]"} href={`/${id}/teacher/${classl?.class_teacher?.id}`} >{who === "class" && classl.class_teacher && getInitials(classl.class_teacher.full_name)}</Link>
         </div>
       </div>

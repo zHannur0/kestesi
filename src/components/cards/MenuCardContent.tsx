@@ -15,7 +15,7 @@ const MenuCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
       key={item.id}
       className={
         "w-[870px] rounded-[20px] bg-[#F9F8FD] flex pt-[20px] pb-[30px] px-[30px] max-sm:h-auto max-sm:w-full " +
-          " max-sm:py-[15px] max-sm:px-[20px]"
+          " max-sm:py-[15px] max-sm:px-[20px] vr:w-full"
       }
     >
       <div className={" h-[100%] flex flex-col gap-[20px] w-[100%]"}>

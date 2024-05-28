@@ -102,7 +102,7 @@ const Schedule = () => {
   }, []);
 
   return (
-    <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] "}>
+    <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col "}>
       {weekDays?.map((item) =>
         item.id !== day ? (
             <div
@@ -110,13 +110,13 @@ const Schedule = () => {
                 onClick={() => setDay(item.id)}
                 className={
                     "flex w-[132px] cursor-pointer h-[132px] items-center justify-center rounded-[40px] bg-white text-[32px] font-bold leading-[71%] text-[#524FA2]" +
-                    " max-sm:w-full max-sm:h-[60px] max-sm:rounded-[20px] max-sm:text-2xl px-[20px]"
+                    " max-sm:w-full max-sm:h-[60px] max-sm:rounded-[20px] max-sm:text-2xl px-[20px] vr:w-full vr:h-[120px] vr:px-[40px] vr:text-[50px]"
                 }
             >
-              <div className={"w-full flex justify-center max-sm:hidden"}>
+              <div className={"w-full flex justify-center max-sm:hidden vr:hidden"}>
                 {item.short}
               </div>
-              <div className={"w-full flex justify-start sm:hidden"}>
+              <div className={"w-full flex justify-start sm:hidden vr:block"}>
                 {item.type}
               </div>
             </div>

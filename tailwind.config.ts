@@ -19,7 +19,8 @@ const config: Config = {
         sans: ["var(--font-oswald)"],
       },
       screens: {
-        'vr': {'min': '1080px', max: '1080px'}
+        'vr': {'min': '1080px', max: '1080px'},
+        'max-sm': {max: '640px'}
       }
     },
   },

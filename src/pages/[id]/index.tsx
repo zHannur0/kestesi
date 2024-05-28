@@ -120,14 +120,14 @@ const MainPage = () => {
             <Link href={`/${id}/schoolInformation`}>
               <div
                   className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center" +
-                      " max-sm:bg-none max-sm:w-auto max-sm:text-[18px] max-sm:h-auto max-sm:leading-[24px] vr:bg-none vr:w-auto vr:text-[18px] vr:h-auto vr:leading-[24px]"}>
+                      " max-sm:bg-none max-sm:w-auto max-sm:text-[18px] max-sm:h-auto max-sm:leading-[24px] vr:bg-none vr:w-auto vr:text-[38px] vr:h-auto vr:leading-[50px]"}>
                 {t.main.aboutSchool}
               </div>
             </Link>
           </div>
           <div>
             <div className="w-[900px] h-[380px]  justify-center items-center inline-flex
-            max-sm:w-[100vw] max-sm:h-[210px] max-sm:rounded-0  vr:w-[100vw] vr:h-[210px] vr:rounded-0">
+            max-sm:w-[100vw] max-sm:h-[210px] max-sm:rounded-0  vr:w-[100vw] vr:h-[600px] vr:rounded-0">
               <Slider slides={currSlider} time={10000}/>
             </div>
           </div>
@@ -151,8 +151,8 @@ const MainPage = () => {
               <div className="w-[560px] h-[130px] bg-white rounded-[40px] flex justify-center items-center  mt-[20px]
               max-sm:w-full  max-sm:rounded-[20px]  max-sm:h-[60px] max-sm:mt-[10px]
               max-sm:text-2xl  text-center text-indigo-800 text-4xl font-bold leading-[27%] max-sm:leading-[24px] tracking-normal
-              vr:w-full  vr:rounded-[20px]  vr:h-[60px] vr:mt-[10px]
-            vr:text-2xl  vr:leading-[24px]">
+              vr:w-full  vr:rounded-[20px]  vr:h-[130px] vr:mt-[10px]
+            vr:text-[50px]  vr:leading-[24px]">
                   {router.locale === "kz" ? item.typeKz : router.locale === "ru" ? item.type : item.typeEn}
               </div>
             </Link>
