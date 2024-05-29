@@ -84,7 +84,7 @@ const MainPage = () => {
                 schoolLang ? (
                     schoolLang?.indexOf("№") != -1 ? (
                         <>
-                          <div className="text-neutral-800 text-3xl font-bold leading-[30px] max-sm:text-2xl vr:text-[50px]">
+                          <div className="text-neutral-800 text-3xl font-bold leading-[30px] max-sm:text-2xl vr:text-[50px] vr:leading-[51px]">
                             {schoolLang
                                     ?.substring(schoolLang?.indexOf(" ") + 1)
                                     .charAt(0)

@@ -96,10 +96,10 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
             </div>
         )}
         <div
-            className={"w-[134.42px] h-[50px] hover:cursor-pointer"}
+            className={"w-[134.42px] h-[50px] vr:h-[110px] vr:w-[300px] hover:cursor-pointer"}
             onClick={handleBack}
         >
-          <img className="w-[100%] h-[50px]" src="/images/Logo.svg" alt=""/>
+          <img className="w-[100%] h-[50px] vr:h-[110px]" src="/images/Logo.svg" alt=""/>
         </div>
         <div
             className="w-[116px] h-[40px] justify-start items-start gap-[18px] inline-flex max-sm:hidden max-sm:absolute max-sm:right-[0px] vr:hidden vr:absolute vr:right-[0px]">
@@ -131,7 +131,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
         <div
             className="sm:hidden max-sm:absolute max-sm:right-[0px] vr:absolute vr:block vr:right-[0px] flex items-end h-full">
           <Link href={page || `/${id}`} locale={router.locale === "kz" ? "ru" : router.locale === "ru" ? "en" : "kz"}>
-            <div className="text-center text-[27px] font-normal cursor-pointer icon-container"
+            <div className="text-center text-[27px] font-normal cursor-pointer icon-container vr:text-[60px] "
                  style={{
                    color: "#211F23" ,
                  }}>

@@ -35,7 +35,6 @@ const TeachersPage = () => {
         <MainLayout
             handleClick={handleBack}
             isMain={false}
-            // link={t.teachers.toQueueOfTeachers}
             page={`/${id}/teacher/${teach}`}
             bg={"bg3"}
             back={true}

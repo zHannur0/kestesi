@@ -25,30 +25,30 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
   };
   const t = translations[router.locale || "kz"] || en;
   return (
-    <div className={`w-full flex gap-[20px] max-sm:flex-col max-sm:h-[90vh] max-sm:gap-[10px]`}>
+    <div className={`w-full flex gap-[20px] max-sm:flex-col max-sm:h-[90vh] max-sm:gap-[10px] vr:flex-col `}>
       <div
         className={`w-[341px] h-[575px] flex flex-col items-center justify-between bg-white rounded-[40px] py-[30px]
-        max-sm:w-full max-sm:h-auto max-sm:flex-row max-sm:p-[20px] max-sm:gap-[10px]`}
+        max-sm:w-full max-sm:h-auto max-sm:flex-row max-sm:p-[20px] max-sm:gap-[10px] vr:w-full vr:h-auto vr:flex-row vr:p-[20px]`}
       >
         <img
           src={teacher?.photo3x4 ? teacher?.photo3x4 : "/images/user.svg"}
           alt="teacher"
-          className={`w-[280px] h-[280px] max-h-[280px] rounded-full max-sm:w-[140px] max-sm:h-[140px] max-sm:min-w-[140px]`}
+          className={`w-[280px] h-[280px] max-h-[280px] rounded-full max-sm:w-[140px] max-sm:h-[140px] max-sm:min-w-[140px] vr:w-[455px] vr:h-[460px]`}
         />
-        <div className={`flex flex-col gap-[20px] text-left px-[30px] items-start max-sm:gap-[10px] max-sm:p-0 w-full`}>
-          <div className={`text-neutral-800 text-2xl font-bold leading-[100%] max-sm:text-lg`}>
+        <div className={`flex flex-col gap-[20px] text-left px-[30px] items-start max-sm:gap-[10px] max-sm:p-0 w-full `}>
+          <div className={`text-neutral-800 text-2xl font-bold leading-[100%] max-sm:text-lg vr:text-[40px]`}>
             {teacher?.pedagog !== "Null" && teacher?.pedagog
               ? pedagog[teacher?.pedagog]
               : "Педагог"}
           </div>
-          <p className="text-zinc-500 text-2xl leading-[143.3%] max-sm:text-[14px]">
+          <p className="text-zinc-500 text-2xl leading-[143.3%] max-sm:text-[14px] vr:text-[30px]">
             {teacher?.subject !== "Null" && teacher?.subject
               ? teacher?.subject
               : "Учитель"}{" "}
           </p>
           <Link href={`/${id}/schedule/teacher/${teacher?.id}`} className={"w-full"}>
             <div className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center flex w-[100%] py-[18px]
-            max-sm:py-[9px] max-sm:text-lg max-sm:px-[20px] max-sm:rounded-[10px]">
+            max-sm:py-[9px] max-sm:text-lg max-sm:px-[20px] max-sm:rounded-[10px] vr:text-[40px]">
               {t.teachers.schedule}
             </div>
           </Link>
@@ -56,7 +56,7 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
       </div>
       <div
         className={`p-[50px] flex flex-col gap-[50px] bg-white w-[998px] max-h-[910px] rounded-[40px] overflow-auto scrollbar-hide 
-        max-sm:w-full max-sm:px-[20px] max-sm:py-[10px] max-sm:h-[100%]`}
+        max-sm:w-full max-sm:px-[20px] max-sm:py-[10px] max-sm:h-[100%] vr:w-full vr:px-[40px] vr:max-h-[1300px]`}
       >
         <div className={`flex flex-col gap-[20px] w-full`}>
           <h1 className={`text-[#211F23] text-3xl font-bold leading-[8.40px] max-sm:text-2xl max-sm:leading-[30px]`}>
