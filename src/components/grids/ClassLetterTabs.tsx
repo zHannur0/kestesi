@@ -26,7 +26,7 @@ const ClassLetterTabs: FC<IProps> = ({ classes, smena }) => {
   };
   return (
     <div className={"flex flex-col gap-[30px] w-[100%] max-sm:gap-[20px]"}>
-      <div className={"text-[30px] font-bold leading-[71%] max-sm:text-2xl w-full"}>
+      <div className={"text-[30px] font-bold leading-[71%] max-sm:text-2xl w-full vr:text-[50px]"}>
         {smena === 1 && t.schedule.firstShift}
         {smena === 2 && t.schedule.secondShift}
         {smena === 3 && t.schedule.thirdShift}

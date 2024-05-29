@@ -34,13 +34,13 @@ const ScheduleCards: FC<IProps> = ({ os, dop, day, dayNumber }) => {
       }
     >
       <div className={"flex justify-between items-center"}>
-        <div className={"text-[32px] font-bold leading-[71%] text-[#211F23] max-sm:leading-[30px] max-sm:text-2xl"}>
+        <div className={"text-[32px] font-bold leading-[71%] text-[#211F23] max-sm:leading-[30px] max-sm:text-2xl vr:text-[50px]"}>
           {day}
         </div>
         {time?.getDay() === dayNumber && (
           <div
             className={
-              "text-right text-[18px] font-bold leading-[85%] text-[#ED008C] max-sm:text-lg max-sm:leading-[30px]"
+              "text-right text-[18px] font-bold leading-[85%] text-[#ED008C] max-sm:text-lg max-sm:leading-[30px] vr:text-[40px]"
             }
           >
             {t.schedule.Today}

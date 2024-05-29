@@ -107,7 +107,7 @@ const ProudOfSchool = () => {
                 {t.proud.schoolPride}
             </h1>
             <div
-                className={"w-full relative max-h-[910px] vr:max-h-[2000px] vr:h-auto py-[30px] px-[60px] bg-white flex flex-col gap-[30px] rounded-[40px] overflow-hidden scrollbar-hide  max-sm:px-[20px]"}>
+                className={"w-full relative max-h-[910px] vr:max-h-[1600px] vr:h-auto py-[30px] px-[60px] bg-white flex flex-col gap-[30px] rounded-[40px] overflow-hidden scrollbar-hide  max-sm:px-[20px]"}>
                 <div className={"flex flex-wrap gap-[20px] bg-white max-sm:gap-[10px]"}>
                     {sideBar?.map((item) => (
                         <Link href={`/${router.query.id}/proudOfSchool/${item.link}`} key={item.id}>
@@ -127,7 +127,7 @@ const ProudOfSchool = () => {
                         </Link>
                     ))}
                 </div>
-                <div className={"flex gap-[20px] flex-wrap max-h-[810px] overflow-auto scrollbar-hide rounded-[2px] " +
+                <div className={"flex gap-[20px] flex-wrap max-h-[810px] vr:max-h-[1500px] overflow-auto scrollbar-hide rounded-[2px] " +
                     " max-sm:flex-col max-sm:gap-[10px] max-sm:flex-nowrap max-sm:w-full vr:flex-nowrap vr:flex-col vr:w-full"}>
                     {
                         curr?.slice().sort((a,b) => a.id - b.id).map((item, index) => (

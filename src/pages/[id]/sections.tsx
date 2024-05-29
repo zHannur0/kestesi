@@ -44,7 +44,7 @@ const SectionsPage = () => {
 
   return (
     <MainLayout isMain={false} link={t.sections.toTheMainPage} handleClick={handleBack} page={`/${id}/sections`} bg={curr ? "bg3":"bg2"}>
-      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px]">
+      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px] vr:text-[50px]">
           {t.sections.clubsAndSections}
       </h1>
         {
@@ -53,7 +53,7 @@ const SectionsPage = () => {
             ) : (
                 <div
                     className={
-                        "flex flex-col gap-[20px] overflow-auto scrollbar-hide h-[910px] rounded-[20px] pb-[30px] max-sm:gap-[10px] "
+                        "flex flex-col gap-[20px] overflow-auto scrollbar-hide h-[910px] rounded-[20px] pb-[30px] max-sm:gap-[10px] vr:h-[1600px]"
                     }
                 >
                     {sections.map((item) => (

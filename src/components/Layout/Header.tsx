@@ -52,7 +52,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
 
   return (
       <div
-          className={`flex relative justify-between ${oswald.variable} font-sans mb-[30px] max-sm:justify-center vr:justify-center  `}
+          className={`flex relative justify-between ${oswald.variable} font-sans mb-[30px] max-sm:justify-center vr:justify-center  vr:mb-[60px]`}
       >
         {isMain ? (
             <div className="w-[114px] h-[33px] relative max-sm:hidden vr:hidden">
@@ -83,7 +83,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
         ) : (
             <div className={"flex gap-[20px] max-sm:absolute max-sm:left-[0px] vr:absolute vr:left-[0px]"}>
               <div className={"hover:cursor-pointer"} onClick={!back ? onClick : () => router.back()}>
-                <img src="/images/back.svg" alt=""/>
+                <img src="/images/back.svg" alt="" className={"vr:w-[108px] vr:h-[108px]"}/>
               </div>
               <div
                   className={"flex flex-col items-start justify-center text-center max-sm:hidden vr:hidden"}
