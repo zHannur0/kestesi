@@ -57,7 +57,7 @@ const NewsPage = () => {
         <NewsBlock news={news} currNews={currNews} handleClick={handleClick} />
       ) : (
         <div>
-          <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px]">
+          <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px] vr:text-[50px]">
             {t.news.news}
           </h1>
           <NewsList news={news} handleClick={handleClick} />

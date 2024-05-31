@@ -14,7 +14,7 @@ const NewsList: FC<IProps> = ({ news, handleClick }) => {
     <div>
       <div
         className={
-          "flex flex-col gap-[20px] overflow-auto scrollbar-hide h-[910px] pb-[30px] max-sm:gap-[10px]"
+          "flex flex-col gap-[20px] overflow-auto scrollbar-hide h-[910px] pb-[30px] max-sm:gap-[10px] vr:h-[85vh] vr:w-full"
         }
       >
         {news &&

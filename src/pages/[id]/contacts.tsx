@@ -55,15 +55,15 @@ const Contacts = () => {
 
     return (
         <MainLayout isMain={false} link={t.contacts.toSchoolPassport} handleClick={handleBack} page={`/${id}/contacts`} bg={"bg3"}>
-            <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px]">
+            <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px] vr:text-[50px]">
                 {t.contacts.contacts}
             </h1>
             <div className={"bg-white py-[40px] px-[60px] max-sm:p-[20px] max-sm:gap-[20px] max-sm:rounded-[20px] gap-[60px] flex flex-col rounded-[40px] w-full min-h-[860px]"}>
                 <div className={"flex flex-col gap-[30px] max-sm:gap-[20px]"}>
-                    <div className={"text-[30px] font-bold leading-[80%] max-sm:text-lg"}>
+                    <div className={"text-[30px] font-bold leading-[80%] max-sm:text-lg vr:text-[40px]"}>
                         {t.contacts.waysToConnect}
                     </div>
-                    <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px]"}>
+                    <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col"}>
                             <ContactBlock img={"/images/phoneContact.svg"} type={`${t.contacts.receptionPhones}:`}
                                           content={director?.[0]?.phone_number}/>
                             <ContactBlock img={"/images/emailContact.svg"} type={`${t.contacts.emailAddress}:`}
@@ -73,10 +73,10 @@ const Contacts = () => {
                     </div>
                 </div>
                 <div className={"flex flex-col gap-[30px] max-sm:gap-[20px]"}>
-                    <div className={"text-[30px] font-bold leading-[80%] max-sm:text-lg"}>
+                    <div className={"text-[30px] font-bold leading-[80%] max-sm:text-lg vr:text-[40px]"}>
                         {t.contacts.socialNetworks}
                     </div>
-                    <div className={"flex gap-[20px] max-sm:gap-[10px] max-sm:flex-col"}>
+                    <div className={"flex gap-[20px] max-sm:gap-[10px] max-sm:flex-col vr:flex-col"}>
                         {
                             facebook &&
                             <QrBlock img={"/images/facebook.svg"} type={"Facebook"} qr={facebook.qr_code} content={facebook.account_name}/>

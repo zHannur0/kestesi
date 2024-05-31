@@ -31,7 +31,7 @@ const MenuCard: FC<IProps> = ({ menu, day, dayNumber }) => {
       }
     >
       <div className={"flex justify-between items-center"}>
-        <div className={"text-[32px] font-bold leading-[71%] text-[#211F23] max-sm:text-2xl"}>
+        <div className={"text-[32px] font-bold leading-[71%] text-[#211F23] max-sm:text-2xl vr:text-[50px]"}>
           {day}
         </div>
         {time?.getDay() === dayNumber && (

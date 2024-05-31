@@ -68,12 +68,12 @@ const SchoolMapPage = () => {
 
   return (
     <MainLayout handleClick={handleBack} isMain={false} link={t.map.toTheMainPage} page={`/${id}/map`} bg={"bg2"}>
-      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px] max-sm:text-2xl">
+      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px] max-sm:text-2xl  vr:text-[50px]">
           {t.map.schoolMap}
       </h1>
-        <div className={"flex gap-[20px] max-sm:flex-col h-full"}>
+        <div className={"flex gap-[20px] max-sm:flex-col h-full vr:flex-col"}>
             <div
-                className={"w-[1200px] cursor-pointer h-[890px] bg-white rounded-[40px] max-sm:rounded-[20px] p-[50px] flex flex-col gap-[27px] relative overflow-hidden max-sm:w-full max-sm:p-[20px] max-sm:max-h-[450px] max-sm:h-auto max-sm:gap-[20px]"}>
+                className={"w-[1200px] cursor-pointer h-[890px] bg-white rounded-[40px] max-sm:rounded-[20px] p-[50px] flex flex-col gap-[27px] relative overflow-hidden max-sm:w-full max-sm:p-[20px] vr:w-full vr:mah-h-[964px] max-sm:max-h-[450px] max-sm:h-auto max-sm:gap-[20px]"}>
                 <div className="flex gap-[20px]">
                     {map && [1, 2, 3, 4, 5].map(floorNum => {
                         const flatKey = `flat${floorNum}` as keyof IMap; // Утверждение типа для ключей
@@ -94,7 +94,7 @@ const SchoolMapPage = () => {
                 <img src={currLink ? currLink : "/images/map.svg"} alt="" className={"w-[100%] h-auto max-h-full object-contain"}/>
             </div>
             <div
-                className={"flex flex-col grow gap-[10px] max-h-[890px] overflow-auto  w-[500px] scrollbar-hide rounded-xl max-sm:w-full max-sm:bg-white max-sm:max-h-[450px] max-sm:p-[20px]"}>
+                className={"flex flex-col grow gap-[10px] max-h-[890px] overflow-auto  w-[500px] scrollbar-hide rounded-xl max-sm:w-full max-sm:bg-white max-sm:max-h-[450px] max-sm:p-[20px] vr:w-full vr:bg-white vr:max-h-[730px] vr:rounded-[20px]"}>
                 {classrooms && classrooms.filter((item) => item.flat === filter).sort((a, b) => {
                     if (a.classroom_number && b.classroom_number) {
                         return a.classroom_number - b.classroom_number;
@@ -129,7 +129,7 @@ interface FloorButtonProps {
 
 const FloorButton: React.FC<FloorButtonProps> = ({ floorNum, handleClick, isSelected, translation }) => {
     const className = `flex items-center justify-center  border-2 rounded-[20px] text-2xl font-bold leading-[20px] cursor-pointer 
-    max-sm:text-[14px] max-sm:rounded-[10px]`;
+    max-sm:text-[14px] max-sm:rounded-[10px] vr:text-[40px]`;
     const style = {
         backgroundColor: isSelected ? "#ED008C" : "white",
         color: isSelected ? "white" : "#211F23",
@@ -141,7 +141,7 @@ const FloorButton: React.FC<FloorButtonProps> = ({ floorNum, handleClick, isSele
 
     return (
         <div className={className} style={style} onClick={() => handleClick(`flat${floorNum}`)}>
-            <p className={"p-[20px] max-sm:px-[20px] max-sm:py-[15px]"}>
+            <p className={"p-[20px] max-sm:px-[20px] max-sm:py-[15px] vr:px-[40px] vr:py-[35px]"}>
                 {floorNum} {translation.map.floor}
             </p>
         </div>

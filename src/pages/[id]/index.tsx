@@ -112,7 +112,7 @@ const MainPage = () => {
             </div>
             <div
                 className=" flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end
-                max-sm:text-[18px] vr:text-[18px] ">
+                max-sm:text-[18px] vr:text-[38px] ">
               {cities
                   .find((city) => city.name === school?.region)
                   ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}

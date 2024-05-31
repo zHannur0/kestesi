@@ -21,19 +21,19 @@ const MenuCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
       <div className={" h-[100%] flex flex-col gap-[20px] w-[100%]"}>
         <div
           className={
-            "text-[#211F23] text-2xl leading-[85%] font-bold max-sm:text-lg "
+            "text-[#211F23] text-2xl leading-[85%] font-bold max-sm:text-lg vr:text-[40px]"
           }
         >
           {item.food_name}
         </div>
         <div
           className={
-            "flex justify-between text-[#7B7984] text-[18px] max-sm:text-[14px] max-sm:leading-none"
+            "flex justify-between text-[#7B7984] text-[18px] max-sm:text-[14px] leading-none vr:text-[40px]"
           }
         >
           <div className={"w-[60%]"}>{item.food_sostav}</div>
-          <div className={""}>
-            Выход: {item.vihod_1} гр, {item.vihod_2} гр, {item.vihod_3} гр
+          <div className={"w-[40%] flex justify-start"}>
+            {item.vihod_1} гр, {item.vihod_2} гр, {item.vihod_3} гр
           </div>
         </div>
       </div>

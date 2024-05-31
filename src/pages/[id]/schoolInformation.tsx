@@ -189,34 +189,34 @@ const SchoolInformationPage = () => {
   }, [t]);
   return (
     <MainLayout isMain={false} link={t.school.toTheMainPage} page={`/${id}/schoolInformation`} bg={'bg2'} handleClick={handleBack}>
-      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px] max-sm:text-2xl">
+      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px] max-sm:text-2xl vr:text-[50px]">
         {t.school.schoolPassport}
       </h1>
-      <div className={"flex gap-[20px] max-sm:flex-col"}>
+      <div className={"flex gap-[20px] max-sm:flex-col vr:flex-col"}>
       <div
-        className={"flex flex-col gap-[30px] max-sm:"}
+        className={"flex flex-col gap-[30px] "}
       >
         <div
           className={
             "flex flex-col w-[341px] gap-[30px] bg-white text-2xl pb-[50px] rounded-[40px] max-sm:w-full max-sm:flex-row " +
-              " max-sm:p-[20px] max-sm:gap-[10px] max-sm:rounded-[20px] max-sm:text-lg items-center"
+              " max-sm:p-[20px] max-sm:gap-[10px] max-sm:rounded-[20px] max-sm:text-lg items-center vr:w-full vr:flex-row vr:p-[40px]"
           }
         >
           <Link href={`/${id}/yandexMap`}>
             <img
                 src={schoolId?.school_map || ""}
                 alt=""
-                className={"w-[341px] h-[365px] rounded-t-[40px] max-sm:w-[140px] max-sm:h-[140px] max-sm:rounded-full max-sm:min-w-[140px]"}
+                className={"w-[341px] h-[365px] rounded-t-[40px] max-sm:w-[140px] max-sm:h-[140px] max-sm:rounded-full max-sm:min-w-[140px] vr:rounded-full vr:w-[454px] vr:min-w-[454px] vr:h-[454px]"}
             />
           </Link>
           <div className={"flex flex-col gap-[30px] px-[20px] max-sm:gap-[5px] max-sm:p-0"}>
-            <div className={"text-[#211F23] font-bold text-left"}>
+            <div className={"text-[#211F23] font-bold text-left vr:text-[40px]"}>
               {t.school.address}
             </div>
-            <div className={"text-[#7B7984] font-medium text-left max-sm:text-[14px] max-sm:font-normal"}>
+            <div className={"text-[#7B7984] font-medium text-left max-sm:text-[14px] max-sm:font-normal vr:text-[30px] vr:font-normal"}>
               {sch?.school_address}
             </div>
-            <div className={"sm:hidden"}>
+            <div className={"sm:hidden vr:flex flex flex-col vr:gap-[10px]"}>
               {sideBar?.map((item) => (
                   <Link
                       href={`/${router.query.id}/${item.link}`}
@@ -224,7 +224,7 @@ const SchoolInformationPage = () => {
                   >
                     <div
                         className={
-                          "sm:hidden flex text-lg font-bold  text-[#524FA2]"
+                          "flex text-lg font-bold text-[#524FA2] vr:text-[40px]"
                         }
                     >
                       {item.type}
@@ -236,7 +236,7 @@ const SchoolInformationPage = () => {
           </div>
 
         </div>
-        <div className={"flex flex-col gap-[20px] max-sm:hidden"}>
+        <div className={"flex flex-col gap-[20px] max-sm:hidden vr:hidden"}>
           {sideBar?.map((item) => (
               <Link
                   href={`/${router.query.id}/${item.link}`}
@@ -256,11 +256,11 @@ const SchoolInformationPage = () => {
         <div
             className={
                 "bg-white w-full h-[900px] overflow-y-auto scrollbar-hide p-[50px] rounded-[40px] flex flex-col gap-[30px]" +
-                " max-sm:rounded-[20px] max-sm:p-[20px] "
+                " max-sm:rounded-[20px] max-sm:p-[20px] vr:w-full"
             }
         >
           <div className={"flex flex-col gap-[20px] max-sm:gap-[10px]"}>
-            <div className={"text-[30px] font-bold max-sm:text-2xl "}>
+            <div className={"text-[30px] font-bold max-sm:text-2xl vr:text-[50px]"}>
               {sch?.school_name}
             </div>
               <img
@@ -270,15 +270,15 @@ const SchoolInformationPage = () => {
               />
 
           </div>
-          <div className={"flex flex-col gap-[30px] h-[158px] flex-wrap max-sm:h-[250px]"}>
+          <div className={"flex flex-col gap-[30px] h-[158px] flex-wrap max-sm:h-[250px] vr:h-[400px]"}>
             {aboutCount?.map((item, index) => (
                 <div key={index} className={"flex flex-col gap-[10px]"}>
-                  <div className={"text-[18px] font-medium leading-[100%] max-sm:text-[14px]"}>
+                  <div className={"text-[18px] font-medium leading-[100%] max-sm:text-[14px] vr:text-[30px]"}>
                     {item.title}
                   </div>
                   <div
                       className={
-                        "text-3xl font-bold leading-[100%] text-[#ED008C] max-sm:text-lg"
+                        "text-3xl font-bold leading-[100%] text-[#ED008C] max-sm:text-lg vr:text-[40px]"
                       }
                   >
                     {item.count ? item.count : "0"}
@@ -287,7 +287,7 @@ const SchoolInformationPage = () => {
             ))}
           </div>
           <div className={"flex flex-col gap-[20px]"}>
-            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg"}>
+            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg vr:text-[40px]"}>
               {t.school.generalInformation}
             </div>
             <div
@@ -295,7 +295,7 @@ const SchoolInformationPage = () => {
                   "w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px] max-sm:w-full  "
                 }
             >
-              <table className="w-full text-[20px] leading-[100%] max-sm:text-[14px]">
+              <table className="w-full text-[20px] leading-[100%] max-sm:text-[14px] vr:text-[30px]">
                 <tbody>
                 <tr className="border-b border-b-black ">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
@@ -334,7 +334,7 @@ const SchoolInformationPage = () => {
             </div>
           </div>
           <div className={"flex flex-col gap-[20px]"}>
-            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg"}>
+            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg vr:text-[40px]"}>
               {t.school.distributionOfStudentsByClass}
             </div>
             <div
@@ -342,7 +342,7 @@ const SchoolInformationPage = () => {
                   "w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px] max-sm:w-full"
                 }
             >
-              <table className="w-full text-[20px] leading-[100%] max-sm:text-[14px]">
+              <table className="w-full text-[20px] leading-[100%] max-sm:text-[14px] vr:text-[30px]">
                 <tbody>
                 <tr className="border-b border-b-black ">
                   <td className="text-[#211F23] text-left pb-[14px] pt-[10px]">
@@ -393,7 +393,7 @@ const SchoolInformationPage = () => {
             </div>
           </div>
           <div className={"flex flex-col gap-[20px]"}>
-            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg"}>
+            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg vr:text-[40px]"}>
               {t.school.distributionOfTeachersByCategory}
             </div>
             <div
@@ -401,7 +401,7 @@ const SchoolInformationPage = () => {
                   "w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px] max-sm:w-full"
                 }
             >
-              <table className="w-full text-[20px] leading-[100%] max-sm:text-[14px]">
+              <table className="w-full text-[20px] leading-[100%] max-sm:text-[14px] vr:text-[30px]">
                 <tbody>
                 {
                   tableTeacher.map((item, index) => (
@@ -419,7 +419,7 @@ const SchoolInformationPage = () => {
               </table>
             </div>
           </div>
-          <div className={"text-[18px] leading-[32px] text-[#211F23] max-sm:text-[14px]"}>
+          <div className={"text-[18px] leading-[32px] text-[#211F23] max-sm:text-[14px] vr:text-[30px]"}>
             {sch?.school_history}
           </div>
         </div>
