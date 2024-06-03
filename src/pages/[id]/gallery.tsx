@@ -53,7 +53,7 @@ const Gallery = () => {
     return (
         <MainLayout isMain={false} link={curr ? t.gallery.back : t.contacts.toSchoolPassport} handleClick={handleBack} page={`/${id}/gallery`} bg={"bg3"}>
             <div className={"flex justify-between mb-[50px] max-sm:mb-[20px]"}>
-                <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] max-sm:text-2xl">
+                <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] max-sm:text-2xl vr:text-[50px]">
                     {t.gallery.photoGallery}
                 </h1>
                 {
@@ -65,22 +65,18 @@ const Gallery = () => {
             </div>
             {
                 curr ? (
-                    <div className={"rounded-[20px] relative"}
-                         style={{
-                                 width: "1720px",
-                                 height: "814px",
-                             }}>
+                    <div className={"rounded-[20px] relative w-full h-[814px]"}>
                             <img src={curr} className={"w-[100%] h-[100%] rounded-[20px]"} alt=""/>
-                            <div className={"absolute w-[50%] left-[25%] bottom-[40px] p-[40px] rounded-[20px] text-white text-[24px] leading-[20.75px] flex items-center bg-black bg-opacity-[60%]"}>
+                            <div className={"absolute w-[50%] left-[25%] bottom-[40px] p-[40px] rounded-[20px] text-white text-[24px] leading-[20.75px] flex items-center bg-black bg-opacity-[60%] vr:text-[30px]"}>
                                 {currText}
                             </div>
                         </div>
                     ) : (
                         <div className={"flex flex-wrap max-h-[910px] w-full gap-[20px] bg-white pt-[50px] px-[50px] pb-[30px] overflow-auto scrollbar-hide rounded-[40px] " +
-                            " max-sm:gap-[10px] max-sm:p-[10px] max-sm:rounded-[20px]"}>
+                            " max-sm:gap-[10px] max-sm:p-[10px] max-sm:rounded-[20px] vr:max-h-[1600px]"}>
                             {
                                 photos.map((item) => (
-                                    <div key={item.id} className={"rounded-[20px] relative cursor-pointer w-[520px] h-[290px] max-sm:w-full max-sm:h-[250px]"}
+                                    <div key={item.id} className={"rounded-[20px] relative cursor-pointer w-[520px] h-[290px] max-sm:w-full max-sm:h-[250px] vr:w-full vr:h-[540px]"}
                                          onClick={() =>
                                              handleImageClick(item?.slider_photo || "", item?.slider_name || "")
                                     }
@@ -91,7 +87,7 @@ const Gallery = () => {
                                              backgroundRepeat: "no-repeat"
                                          }}>
                                         <div className={"absolute w-[90%] left-[5%] bottom-[20px] py-[4px] px-[20px] rounded-[10px] text-white text-[14px] flex items-center bg-black bg-opacity-[60%]" +
-                                            " max-sm:rounded-[10px]"}>
+                                            " max-sm:rounded-[10px] vr:text-[30px]"}>
                                             {item.slider_name}
                                         </div>
                                     </div>
