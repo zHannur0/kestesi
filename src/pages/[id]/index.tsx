@@ -84,7 +84,7 @@ const MainPage = () => {
                 schoolLang ? (
                     schoolLang?.indexOf("№") != -1 ? (
                         <>
-                          <div className="text-neutral-800 text-3xl font-bold leading-[30px] max-sm:text-2xl vr:text-[50px] vr:leading-[51px]">
+                          <div className="text-neutral-800 text-3xl font-bold leading-[30px] max-sm:text-2xl vr:text-[50px] vr:leading-none">
                             {schoolLang
                                     ?.substring(schoolLang?.indexOf(" ") + 1)
                                     .charAt(0)
@@ -94,13 +94,13 @@ const MainPage = () => {
                                     schoolLang?.indexOf(" ") + 2,
                                 )}
                           </div>
-                          <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px] max-sm:w-auto max-sm:text-3xl vr:w-auto vr:text-[64px]">
+                          <div className="w-[325px] text-pink-600 text-5xl font-bold leading-[48px] max-sm:w-auto max-sm:text-3xl vr:w-auto vr:text-[64px] vr:leading-none">
                             {schoolLang?.split(" ")[0]}
                           </div>
                         </>
                     ) : (
                         <>
-                          <div className=" text-neutral-800 text-3xl font-bold leading-[30px] max-sm:text-2xl vr:text-[50px]">
+                          <div className=" text-neutral-800 text-3xl font-bold leading-[30px] max-sm:text-2xl vr:text-[50px] vr:leading-none">
                             {schoolLang}
                           </div>
                         </>
@@ -112,7 +112,7 @@ const MainPage = () => {
             </div>
             <div
                 className=" flex text-zinc-500 indent-0 text-2xl font-normal leading-[24px] items-end
-                max-sm:text-[18px] vr:text-[38px] ">
+                max-sm:text-[18px] vr:text-[38px] vr:leading-none">
               {cities
                   .find((city) => city.name === school?.region)
                   ?.[`${router.locale === "kz" ? "nameUpperKz" : router.locale === "ru" ? "nameUpper" : "nameEn"}`].toUpperCase()}
@@ -127,7 +127,7 @@ const MainPage = () => {
           </div>
           <div>
             <div className="w-[900px] h-[380px]  justify-center items-center inline-flex
-            max-sm:w-[100vw] max-sm:h-[210px] max-sm:rounded-0  vr:w-[100vw] vr:h-[600px] vr:rounded-0">
+            max-sm:w-[100vw] max-sm:h-[210px] max-sm:rounded-0  vr:w-[100vw] vr:h-[450px] vr:rounded-0">
               <Slider slides={currSlider} time={10000}/>
             </div>
           </div>

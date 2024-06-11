@@ -216,7 +216,7 @@ const SchoolInformationPage = () => {
             <div className={"text-[#7B7984] font-medium text-left max-sm:text-[14px] max-sm:font-normal vr:text-[30px] vr:font-normal"}>
               {sch?.school_address}
             </div>
-            <div className={"sm:hidden vr:flex flex flex-col vr:gap-[10px]"}>
+            <div className={"sm:hidden vr:flex flex flex-col vr:gap-[20px]"}>
               {sideBar?.map((item) => (
                   <Link
                       href={`/${router.query.id}/${item.link}`}

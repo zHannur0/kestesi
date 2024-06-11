@@ -104,7 +104,7 @@ const ScheduleTabsPage = () => {
       </>
       <div
         className={
-          "flex p-[50px] max-h-[860px] bg-[#FFF] rounded-[40px] w-[100%] max-sm:p-[20px] vr:p-[40px] max-sm:rounded-[20px] vr:rounded-[40px] vr:max-h-none max-sm:max-h-none"
+          "flex p-[50px] max-h-[860px] bg-[#FFF] rounded-[40px] w-[100%] max-sm:p-[20px] vr:p-[40px] max-sm:rounded-[20px] vr:rounded-[40px] vr:max-h-none max-sm:max-h-none vr:justify-center"
         }
       >
         <div>

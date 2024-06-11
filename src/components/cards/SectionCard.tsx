@@ -37,7 +37,7 @@ const SectionCard: FC<IProps> = ({ section }) => {
         >
             {router.locale === "kz" ? "Мақсаты" : router.locale === "ru" ? "Цель" : "Aim"}: {section.purpose || "Отсутствует"}
         </div>
-        <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col"}>
+        <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col vr:hidden"}>
           {section.lessons?.map((item, index) => (
             <div
               key={index}

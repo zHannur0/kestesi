@@ -47,7 +47,7 @@ const ScheduleClassTabs: FC<ScheduleProps> = ({
   return (
       <>
       {!selectedClassI && !selectedClassII && !selectedClassIII ? (
-          <div className={"flex flex-wrap gap-[20px] max-sm:gap-[10px] w-[100%]"}>
+          <div className={"flex flex-wrap gap-[20px] max-sm:gap-[10px] w-[100%] "}>
             {classNumbers
                 .sort((a, b) => a - b)
                 .map((item) => (
