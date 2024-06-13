@@ -28,12 +28,12 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
         <div className={`w-full flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col`}>
             <div
                 className={`w-[341px] h-[575px] flex flex-col items-center bg-white rounded-[40px]
-                max-sm:flex-row max-sm:w-full max-sm:h-[250px] max-sm:p-[20px] max-sm:rounded-[20px] vr:flex-row vr:w-full vr:h-[540px] vr:p-[40px]`}
+                max-sm:flex-row max-sm:w-full max-sm:h-[250px] max-sm:p-[20px] max-sm:rounded-[20px] vr:flex-row vr:w-full vr:h-[400px] vr:p-[40px]`}
             >
                 <img
                     src={section?.teacher?.photo3x4 ? section?.teacher?.photo3x4 : "/images/user.svg"}
                     alt="teacher"
-                    className={`w-[544px] h-[369px] rounded-t-[20px] max-sm:w-[140px] max-sm:h-[140px] max-sm:rounded-full vr:rounded-full vr:h-[464px] vr:w-[434px]`}
+                    className={`w-[544px] h-[369px] rounded-t-[20px] max-sm:w-[140px] max-sm:h-[140px] max-sm:rounded-full vr:rounded-full vr:h-[300px] vr:w-[300px]`}
                 />
                 <div className={"flex flex-col gap-[20px] items-start text-left p-[30px] pb-[35px] vr:gap-[40px]"}>
                     <div className={`flex flex-col gap-[20px] text-left `}>
@@ -52,7 +52,7 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
             </div>
             <div
                 className={`flex flex-col items-start bg-white w-[998px] max-h-[910px] rounded-[40px] overflow-auto scrollbar-hide 
-                max-sm:w-full max-sm:h-[600px] vr:w-full`}
+                max-sm:w-full max-sm:h-[600px] vr:w-full vr:h-[1250px] vr:max-h-none`}
             >
                 <img src={section?.photo} alt="" className={"w-full h-[660px] max-sm:h-[300px] vr:h-[648px]"}/>
                 <div className={"px-[50px] py-[30px] flex flex-col gap-[30px] max-sm:p-[20px] vr:w-full"}>

@@ -41,15 +41,15 @@ const Administration = () => {
                     <img src={director ? director?.[0]?.director_photo : "/images/user.svg"} alt="" className={"w-[270px] h-[270px] rounded-full max-sm:w-[145px] max-sm:h-[145px] max-sm:min-w-[145px] vr:min-w-[464px] vr:w-[464px] vr:h-[464px]"}/>
                     <div className={"flex flex-col gap-[20px] max-sm:gap-[10px] vr:gap-[40px]"}>
                         <div className={"flex flex-col"}>
-                            <div className={"text-[30px] leading-[50px] font-bold text-[#524FA2] max-sm:text-2xl vr:text-[50px]"}>
+                            <div className={"text-[30px] leading-[50px] font-bold text-[#524FA2] max-sm:text-2xl vr:text-[50px] vr:leading-normal"}>
                                 {director?.[0]?.director_name}
                             </div>
-                            <div className={"text-[24px] leading-[20px] text-[#211F23] max-sm:text-lg vr:text-[40px]"}>
+                            <div className={"text-[24px] leading-[20px] text-[#211F23] max-sm:text-lg vr:text-[40px] vr:leading-normal"}>
                                 {t.administration.schoolPrincipal}
                             </div>
                         </div>
-                        <div className={"flex h-[60px] rounded-[20px] bg-white max-sm:bg-transparent max-sm:h-auto vr:max-h-none"}>
-                            <img src="/images/phone.svg" alt="" className={"w-[60px] h-[60px] rounded-l-[20px] max-sm:hidden"}/>
+                        <div className={"flex h-[60px] rounded-[20px] bg-white max-sm:bg-transparent max-sm:h-auto vr:max-h-none vr:h-auto"}>
+                            <img src="/images/phone.svg" alt="" className={"w-[60px] h-[60px] rounded-l-[20px] max-sm:hidden "}/>
                             <div className={"flex flex-col pl-[10px] justify-center pr-[20px] max-sm:p-0"}>
                                 <div className={"text-[14px] text-[#202020] max-sm:text-[14px] vr:text-[30px]"}>
                                     {t.administration.receptionPhones}:

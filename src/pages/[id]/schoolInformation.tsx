@@ -189,7 +189,7 @@ const SchoolInformationPage = () => {
   }, [t]);
   return (
     <MainLayout isMain={false} link={t.school.toTheMainPage} page={`/${id}/schoolInformation`} bg={'bg2'} handleClick={handleBack}>
-      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px] max-sm:text-2xl vr:text-[50px]">
+      <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[20px] max-sm:text-2xl vr:text-[50px] vr:mb-[50px]">
         {t.school.schoolPassport}
       </h1>
       <div className={"flex gap-[20px] max-sm:flex-col vr:flex-col"}>
@@ -216,7 +216,7 @@ const SchoolInformationPage = () => {
             <div className={"text-[#7B7984] font-medium text-left max-sm:text-[14px] max-sm:font-normal vr:text-[30px] vr:font-normal"}>
               {sch?.school_address}
             </div>
-            <div className={"sm:hidden vr:flex flex flex-col vr:gap-[20px]"}>
+            <div className={"sm:hidden vr:flex flex flex-col vr:gap-[40px]"}>
               {sideBar?.map((item) => (
                   <Link
                       href={`/${router.query.id}/${item.link}`}
@@ -256,7 +256,7 @@ const SchoolInformationPage = () => {
         <div
             className={
                 "bg-white w-full h-[900px] overflow-y-auto scrollbar-hide p-[50px] rounded-[40px] flex flex-col gap-[30px]" +
-                " max-sm:rounded-[20px] max-sm:p-[20px] vr:w-full"
+                " max-sm:rounded-[20px] max-sm:p-[20px] vr:w-full vr:h-[1100px]"
             }
         >
           <div className={"flex flex-col gap-[20px] max-sm:gap-[10px]"}>

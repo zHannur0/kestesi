@@ -120,7 +120,7 @@ const MainPage = () => {
             <Link href={`/${id}/schoolInformation`}>
               <div
                   className={"btn-gradient-1 w-[300px] h-[70px] text-center text-indigo-800 text-4xl font-bold flex leading-[20px] justify-center items-center" +
-                      " max-sm:bg-none max-sm:w-auto max-sm:text-[18px] max-sm:h-auto max-sm:leading-[24px] vr:bg-none vr:w-auto vr:text-[38px] vr:h-auto vr:leading-[50px]"}>
+                      " max-sm:bg-none max-sm:w-auto max-sm:text-[18px] max-sm:h-auto max-sm:leading-[24px] vr:bg-none vr:w-auto vr:text-[38px] vr:h-auto vr:leading-[50px] vr:mt-2"}>
                 {t.main.aboutSchool}
               </div>
             </Link>
