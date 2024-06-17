@@ -10,6 +10,23 @@ import {useEffect, useState} from "react";
 import {getClassIdThunk, getClassThunk} from "@/store/thunks/school.thunk";
 import Link from "next/link";
 
+const getInitials = (fullName?: string) => {
+  if (!fullName) return "";
+
+  const parts = fullName.split(" ");
+  if (parts.length === 0) return "";
+
+  let initials = parts[0];
+  if (parts.length > 1) {
+    initials += ` ${parts[1][0]}.`;
+  }
+  if (parts.length > 2) {
+    initials += ` ${parts[2][0]}.`;
+  }
+
+  return initials;
+};
+
 const SchedulePage = () => {
   const router = useRouter();
   const id = String(router.query.id);
@@ -33,23 +50,6 @@ const SchedulePage = () => {
     }
   }, [router.isReady, dispatch, id, classId, who]);
 
-  const getInitials = (fullName?: string) => {
-    if (!fullName) return ""; // Return empty if fullName is falsy
-
-    const parts = fullName.split(" ");
-    if (parts.length === 0) return ""; // Return empty if no parts
-
-    // Attempt to construct the desired format
-    let initials = parts[0]; // Always add the first part
-    if (parts.length > 1) {
-      initials += ` ${parts[1][0]}.`; // Add the first initial of the second part, if exists
-    }
-    if (parts.length > 2) {
-      initials += ` ${parts[2][0]}.`; // Add the first initial of the third part, if exists
-    }
-
-    return initials;
-  };
 
   return (
     <MainLayout
@@ -61,14 +61,22 @@ const SchedulePage = () => {
       back={true}
     >
       <div className={"flex justify-between w-full"}>
-        <h1 className="text-[#211F23] text-4xl leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px] vr:text-[50px] vr:mb-[50px]">
-          {who === "class" && classl.class_name && (classl.class_name + ` ${t.schedule.class} - `  )}{t.schedule.name}
-        </h1>
+        {who === "class" && classl.class_name && (
+            <h1 className="text-[#211F23] text-4xl leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px] vr:text-[50px] vr:mb-[50px]">
+    <span className="font-bold">
+      {classl.class_name} {t.schedule.class} -
+    </span>
+              {t.schedule.name}
+            </h1>
+        )}
+
+
         <div className={"text-2xl text-[#7B7984] vr:hidden max-sm:hidden"}>
-          {who === "class" && classl.class_teacher && t.schedule.classTeacher}: <Link className={"text-[#524FA2]"} href={`/${id}/teacher/${classl?.class_teacher?.id}`} >{who === "class" && classl.class_teacher && getInitials(classl.class_teacher.full_name)}</Link>
+          {who === "class" && classl.class_teacher && t.schedule.classTeacher}: <Link className={"text-[#524FA2]"}
+                                                                                      href={`/${id}/teacher/${classl?.class_teacher?.id}`}>{who === "class" && classl.class_teacher && getInitials(classl.class_teacher.full_name)}</Link>
         </div>
       </div>
-      <Schedule />
+      <Schedule/>
     </MainLayout>
   );
 };
