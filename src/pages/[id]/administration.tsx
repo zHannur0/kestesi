@@ -70,7 +70,7 @@ const Administration = () => {
                                  style={{backgroundImage: "url('/images/email.svg')"}}></div>
                             <div className="flex flex-col pl-[70px] justify-center pr-[20px] max-sm:p-0 relative z-10">
                                 <div className="text-[14px] text-[#202020] max-sm:text-[14px] vr:text-[30px]">
-                                    {t.administration.receptionPhones}:
+                                    {t.administration.emailAddress}:
                                 </div>
                                 <div className="text-[18px] font-bold max-sm:text-[14px] vr:text-[30px]">
                                     {director?.[0]?.phone_number}

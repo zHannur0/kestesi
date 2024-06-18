@@ -10,7 +10,7 @@ const ContactBlock: FC<IProps> = ({ img, type, content }) => {
     return (
         <div className={"flex p-[30px] bg-[#F8F8FB] gap-[25px] items-center w-[520px] rounded-[30px]" +
             " max-sm:w-full max-sm:h-auto max-sm:gap-[10px] max-sm:p-[20px] vr:w-full vr:h-auto"}>
-            <img src={img} className="w-[60px] h-[60px] max-sm:w-[40px] max-sm:h-[40px] vr:w-[170px] vr:h-[170px] " alt={""} />
+            <img src={img} className="w-[60px] h-[60px] max-sm:w-[40px] max-sm:h-[40px] vr:w-[120px] vr:h-[120px] " alt={""} />
             <div className={"flex flex-col gap-[10px] overflow-hidden"}>
                 <div className={"text-[20px] leading-[80%] tracking-[-0.8px] text-[#211F23] max-sm:text-[14px] vr:text-[30px]"}>
                     {type}

@@ -28,23 +28,23 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
         <div className={`w-full flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col`}>
             <div
                 className={`w-[341px] h-[575px] flex flex-col items-center bg-white rounded-[40px]
-                max-sm:flex-row max-sm:w-full max-sm:h-[250px] max-sm:p-[20px] max-sm:rounded-[20px] vr:flex-row vr:w-full vr:h-[400px] vr:p-[40px]`}
+                max-sm:flex-row max-sm:w-full max-sm:h-[250px] max-sm:p-[20px] max-sm:rounded-[20px] vr:flex-row vr:w-full vr:h-[300px] vr:p-[40px]`}
             >
                 <img
                     src={section?.teacher?.photo3x4 ? section?.teacher?.photo3x4 : "/images/user.svg"}
                     alt="teacher"
-                    className={`w-[544px] h-[369px] rounded-t-[20px] max-sm:w-[140px] max-sm:h-[140px] max-sm:rounded-full vr:rounded-full vr:h-[300px] vr:w-[300px]`}
+                    className={`w-[544px] h-[369px] rounded-t-[20px] max-sm:w-[140px] max-sm:h-[140px] max-sm:rounded-full vr:rounded-full vr:h-[200px] vr:w-[200px]`}
                 />
                 <div className={"flex flex-col gap-[20px] items-start text-left p-[30px] pb-[35px] vr:gap-[40px]"}>
                     <div className={`flex flex-col gap-[20px] text-left `}>
-                        <p className="text-[#211F23] font-bold text-2xl max-sm:text-lg vr:text-[40px]">
+                        <p className="text-[#211F23] font-bold text-2xl max-sm:text-lg vr:text-[30px]">
                             {section?.teacher?.full_name}{" "}
                         </p>
                     </div>
                     <Link href={`/${id}/teacher/${section?.teacher?.id}`}>
                         <div
                             className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center inline-flex w-[280px] h-[64px]
-                            max-sm:text-lg max-sm:px-[35px] max-sm:py-[10px] max-sm:w-auto max-sm:h-auto max-sm:rounded-[10px] vr:text-[40px]">
+                            max-sm:text-lg max-sm:px-[35px] max-sm:py-[10px] max-sm:w-auto max-sm:h-auto max-sm:rounded-[10px] vr:text-[30px]">
                             {t.sections.resume}
                         </div>
                     </Link>

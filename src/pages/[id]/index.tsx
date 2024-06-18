@@ -125,12 +125,10 @@ const MainPage = () => {
               </div>
             </Link>
           </div>
-          <div>
             <div className="w-[900px] h-[380px]  justify-center items-center inline-flex
             max-sm:w-[100vw] max-sm:h-[210px] max-sm:rounded-0  vr:w-[100vw] vr:h-[450px] vr:rounded-0">
               <Slider slides={currSlider} time={10000}/>
             </div>
-          </div>
         </div>
           <QrComponent/>
       </div>

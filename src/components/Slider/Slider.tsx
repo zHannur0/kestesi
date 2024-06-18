@@ -33,7 +33,7 @@ const Slider: FC<IProps> = ({ slides,time }) => {
     }, [currentIndex, slides.length]); // Зависимости useEffect, чтобы перезапустить интервал при изменении currentIndex или количества слайдов
 
     return (
-        <div className="relative w-[100%] h-[100%] rounded-[40px] max-sm:rounded-0 vr:rounded-0">
+        <div className="relative w-[100%] h-[100%] rounded-[40px] max-sm:rounded-0 vr:rounded-0 ">
             <img src={slides[currentIndex]} alt="" className={"rounded-[40px] max-sm:rounded-[0px] w-[100%] h-[100%] vr:rounded-0"}/>
             <div className={"absolute bottom-4 flex justify-center items-center w-[100%]"}>
                 <div className="flex justify-center">
