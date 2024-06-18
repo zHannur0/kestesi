@@ -73,7 +73,7 @@ const Administration = () => {
                                     {t.administration.emailAddress}:
                                 </div>
                                 <div className="text-[18px] font-bold max-sm:text-[14px] vr:text-[30px]">
-                                    {director?.[0]?.phone_number}
+                                    {director?.[0]?.email}
                                 </div>
                             </div>
                         </div>
