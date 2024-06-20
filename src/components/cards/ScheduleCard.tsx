@@ -30,7 +30,7 @@ const ScheduleCards: FC<IProps> = ({ os, dop, day, dayNumber }) => {
     <div
       className={
         "flex flex-col gap-[30px] bg-[#fff] w-[960px] max-h-[915px] px-[45px] pt-[53px] pb-[30px] rounded-[40px]" +
-          " max-sm:w-full max-sm:rounded-[20px] max-sm:h-[560px] max-sm:py-[10px] max-sm:px-[20px] vr:w-full vr:h-[1200px]"
+          " max-sm:w-full max-sm:rounded-[20px] max-sm:max-hh-[560px] max-sm:py-[10px] max-sm:px-[20px] vr:w-full vr:max-h-[915px]"
       }
     >
       <div className={"flex justify-between items-center"}>
