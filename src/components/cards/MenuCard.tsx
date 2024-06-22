@@ -27,7 +27,7 @@ const MenuCard: FC<IProps> = ({ menu, day, dayNumber }) => {
     <div
       className={
         "flex flex-col gap-[30px] bg-[#fff] w-[960px] max-h-[852px] px-[45px] py-[53px] rounded-[40px]" +
-          " max-sm:w-full max-sm:h-[440px] max-sm:p-[20px] vr:w-full vr:h-[1200px]"
+          " max-sm:w-full max-sm:max-h-[440px] max-sm:p-[20px] vr:w-full vr:max-h-[1200px]max-sm:rounded-[20px] "
       }
     >
       <div className={"flex justify-between items-center"}>
@@ -61,7 +61,7 @@ const MenuCard: FC<IProps> = ({ menu, day, dayNumber }) => {
               ))}
             </div>
         ) : (
-            <div className={"flex items-center justify-center text-[#7B7984] text-[30px] leading-[71%] h-[700px]"}>
+            <div className={"flex items-center justify-center text-[#7B7984] text-[30px] leading-[71%] h-[700px]  max-sm:h-[50px] max-sm:text-lg"}>
               {t.menu.noMenu}
             </div>
         )

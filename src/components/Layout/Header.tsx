@@ -129,7 +129,7 @@ const Header: FC<HeaderProps> = ({ isMain, onClick, toMain,page,back}) => {
           </Link>
         </div>
         <div
-            className="sm:hidden max-sm:absolute max-sm:right-[0px] vr:absolute vr:block vr:right-[0px] flex items-end h-full">
+            className="sm:hidden max-sm:absolute max-sm:right-[0px] vr:absolute vr:block vr:right-[0px] flex h-full">
           <Link href={page || `/${id}`} locale={router.locale === "kz" ? "ru" : router.locale === "ru" ? "en" : "kz"}>
             <div className="text-center text-[27px] font-normal cursor-pointer icon-container vr:text-[40px] "
                  style={{

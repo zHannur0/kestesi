@@ -36,7 +36,7 @@ const Administration = () => {
                 {t.administration.administration}
             </h1>
             <div className={"flex flex-col bg-white rounded-[40px] w-[100%] max-h-[900px] max-sm:rounded-[20px] vr:max-h-[1600px]"}>
-                <div className={"flex gap-[50px] py-[46px] px-[50px] bg-[#F8F8FB] rounded-tl-[40px] rounded-tr-[40px] w-[100%] h-[362px] items-center max-sm:h-auto" +
+                <div className={"flex gap-[50px] py-[46px] px-[50px] bg-[#F8F8FB] rounded-t-[40px] max-sm:rounded-t-[20px] w-[100%] h-[362px] items-center max-sm:h-auto" +
                     " max-sm:p-[20px] max-sm:gap-[10px] vr:h-auto"}>
                     <img src={director ? director?.[0]?.director_photo : "/images/user.svg"} alt="" className={"w-[270px] h-[270px] rounded-full max-sm:w-[145px] max-sm:h-[145px] max-sm:min-w-[145px] vr:min-w-[464px] vr:w-[464px] vr:h-[464px]"}/>
                     <div className={"flex flex-col gap-[20px] max-sm:gap-[10px] vr:gap-[40px]"}>
@@ -51,11 +51,11 @@ const Administration = () => {
                             </div>
                         </div>
                         <div
-                            className="flex h-[60px] rounded-[20px] bg-white max-sm:bg-transparent max-sm:h-auto vr:max-h-none vr:h-auto relative overflow-hidden">
+                            className="flex h-[60px] rounded-[20px] bg-white max-sm:bg-transparent max-sm:h-auto  max-sm:rounded-0 vr:max-h-none vr:h-auto relative ">
                             <div className="absolute inset-0 w-[60px] rounded-l-[20px] bg-cover bg-center max-sm:hidden"
                                  style={{backgroundImage: "url('/images/phone.svg')"}}></div>
                             <div className="flex flex-col pl-[70px] justify-center pr-[20px] max-sm:p-0 relative z-10">
-                                <div className="text-[14px] text-[#202020] max-sm:text-[14px] vr:text-[30px]">
+                                <div className="text-[14px] text-[#202020] max-sm:text-[14px] vr:text-[30px] ">
                                     {t.administration.receptionPhones}:
                                 </div>
                                 <div className="text-[18px] font-bold max-sm:text-[14px] vr:text-[30px]">
@@ -65,7 +65,7 @@ const Administration = () => {
                         </div>
 
                         <div
-                            className="flex h-[60px] rounded-[20px] bg-white max-sm:bg-transparent max-sm:h-auto vr:max-h-none vr:h-auto relative overflow-hidden">
+                            className="flex h-[60px] rounded-[20px] bg-white max-sm:bg-transparent max-sm:h-auto vr:max-h-none vr:h-auto relative ">
                             <div className="absolute inset-0 w-[60px] rounded-l-[20px] bg-cover bg-center max-sm:hidden"
                                  style={{backgroundImage: "url('/images/email.svg')"}}></div>
                             <div className="flex flex-col pl-[70px] justify-center pr-[20px] max-sm:p-0 relative z-10">

@@ -9,7 +9,7 @@ interface IProps{
 
 const QrBlock :FC<IProps> = ({img,type,content,qr}) => {
     return(
-        <div className={"flex flex-col p-[30px] bg-[#F9F8FD] gap-[30px] w-[307px]  rounded-[30px] max-sm:p-[20px] max-sm:gap-0 max-sm:h-auto vr:h-auto vr:w-full vr:gap-[10px]"}>
+        <div className={"flex flex-col p-[30px] bg-[#F9F8FD] gap-[30px] w-[307px] max-sm:w-full rounded-[30px] max-sm:p-[20px] max-sm:gap-0 max-sm:h-auto vr:h-auto vr:w-full vr:gap-[10px]"}>
             <div className={"flex justify-between "}>
                 <div className={"text-2xl font-bold leading-[80%] max-sm:text-lg vr:text-[40px]"}>
                     {type}

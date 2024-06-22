@@ -28,12 +28,12 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
         <div className={`w-full flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col`}>
             <div
                 className={`w-[341px] h-[575px] flex flex-col items-center bg-white rounded-[40px]
-                max-sm:flex-row max-sm:w-full max-sm:h-[250px] max-sm:p-[20px] max-sm:rounded-[20px] vr:flex-row vr:w-full vr:h-[300px] vr:p-[40px]`}
+                max-sm:flex-row max-sm:w-full max-sm:h-auto max-sm:px-[10px] max-sm:rounded-[20px] vr:flex-row vr:w-full vr:h-[300px] vr:p-[40px]`}
             >
                 <img
                     src={section?.teacher?.photo3x4 ? section?.teacher?.photo3x4 : "/images/user.svg"}
                     alt="teacher"
-                    className={`w-[544px] h-[369px] rounded-t-[20px] max-sm:w-[140px] max-sm:h-[140px] max-sm:rounded-full vr:rounded-full vr:h-[200px] vr:w-[200px]`}
+                    className={`w-[544px] h-[369px] rounded-t-[20px] max-sm:w-[140px] max-sm:min-w-[140px] max-sm:h-[140px] max-sm:rounded-full vr:rounded-full vr:h-[200px] vr:w-[200px]`}
                 />
                 <div className={"flex flex-col gap-[20px] items-start text-left p-[30px] pb-[35px] vr:gap-[40px]"}>
                     <div className={`flex flex-col gap-[20px] text-left `}>
@@ -56,14 +56,14 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
             >
                 <img src={section?.photo} alt="" className={"w-full h-[660px] max-sm:h-[300px] vr:h-[648px]"}/>
                 <div className={"px-[50px] py-[30px] flex flex-col gap-[30px] max-sm:p-[20px] vr:w-full"}>
-                    <div className={"flex flex-col gap-[20px] text-[#211F23]"}>
+                    { section?.purpose && <div className={"flex flex-col gap-[20px] text-[#211F23]"}>
                         <div className={"text-2xl font-bold vr:text-[50px]"}>
-                        {t.sections.aboutSection}
+                            {t.sections.aboutSection}
                         </div>
                         <div className={"text-[18px] max-sm:text-[14px] vr:text-[30px]"}>
                             {section?.purpose}
                         </div>
-                    </div>
+                    </div>}
                     <div className={"flex flex-col gap-[20px] "}>
                         <div className={"text-2xl font-bold vr:text-[50px]"}>
                             {t.teachers.schedule}

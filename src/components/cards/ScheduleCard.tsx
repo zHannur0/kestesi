@@ -113,7 +113,7 @@ const ScheduleCards: FC<IProps> = ({ os, dop, day, dayNumber }) => {
                       ))}
             </div>
         ) : (
-            <div className={"flex items-center justify-center text-[#7B7984] text-[30px] leading-[71%] h-[700px]"}>
+            <div className={"flex items-center justify-center text-[#7B7984] text-[30px] leading-[71%] h-[700px] max-sm:h-[50px] max-sm:text-lg"}>
               {t.schedule.noLessons}
             </div>
         )

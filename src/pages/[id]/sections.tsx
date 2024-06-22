@@ -45,7 +45,7 @@ const SectionsPage = () => {
   return (
     <MainLayout isMain={false} link={t.sections.toTheMainPage} handleClick={handleBack} page={`/${id}/sections`} bg={curr ? "bg3":"bg2"}>
       <h1 className="text-[#211F23] text-4xl font-bold leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px] vr:text-[50px]">
-          {t.sections.clubsAndSections}
+          {curr ? sectionId.kruzhok_name : t.sections.clubsAndSections}
       </h1>
         {
             curr ? (
