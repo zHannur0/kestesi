@@ -64,7 +64,6 @@ export const ru:typeof en= {
         back: "назад",
         toTheMainPage: "на главную",
         noMenu:"В этот день меню не предусмотрено"
-
     },
     news: {
         news: "Новости",

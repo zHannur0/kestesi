@@ -7,7 +7,7 @@ import {en} from "@/locales/en";
 import {useAppDispatch} from "@/hooks/useAppDispatch";
 import {useTypedSelector} from "@/hooks/useTypedSelector";
 import {useEffect, useState} from "react";
-import {getClassIdThunk, getClassThunk} from "@/store/thunks/school.thunk";
+import {getClassIdThunk, getClassroomThunk, getClassThunk, getTeacherThunk} from "@/store/thunks/school.thunk";
 import Link from "next/link";
 
 const getInitials = (fullName?: string) => {
@@ -38,15 +38,20 @@ const SchedulePage = () => {
     en: en,
   };
   const t = translations[router.locale || "kz"] || en;
-  const handleBack = () => {
-    if(who === "teacher") router.push(`/${id}/teacher/${classId}`);
-    else router.push(`/${id}/scheduleTabs`);
-  };
   const dispatch = useAppDispatch();
   let classl = useTypedSelector((state) => state.schoolInfo.classId);
+  let teacher = useTypedSelector((state) => state.schoolInfo.teacher);
+  let classroom = useTypedSelector((state) => state.schoolInfo.classroomId);
+
   useEffect(() => {
     if (router.isReady && id && classId) {
-      dispatch(getClassIdThunk(classId));
+      if(who === "teacher") {
+        dispatch(getTeacherThunk(classId));
+      }else if(who==="classroom") {
+        dispatch(getClassroomThunk(classId))
+      }else {
+        dispatch(getClassIdThunk(classId));
+      }
     }
   }, [router.isReady, dispatch, id, classId, who]);
 
@@ -63,11 +68,10 @@ const SchedulePage = () => {
       <div className={"flex justify-between w-full"}>
             <h1 className="text-[#211F23] text-4xl leading-[80%] mb-[30px] max-sm:text-2xl max-sm:mb-[20px] vr:text-[50px] vr:mb-[50px]">
     <span className="font-bold">
-      {classl.class_name} {t.schedule.class} -
+      {who === "teacher" ? teacher?.full_name && teacher.full_name  : who === "classroom" ? classroom?.classroom_number && classroom.classroom_number + " " + t.schedule.cabinet : classl.class_name + " " + t.schedule.class} -
     </span>
-              {t.schedule.name}
+               {" " + t.schedule.name}
             </h1>
-
         <div className={"text-2xl text-[#7B7984] vr:hidden max-sm:hidden"}>
           {who === "class" && classl.class_teacher && t.schedule.classTeacher}: <Link className={"text-[#524FA2]"} href={`/${id}/teacher/${classl?.class_teacher?.id}`}>{who === "class" && classl.class_teacher && getInitials(classl.class_teacher.full_name)}</Link>
         </div>

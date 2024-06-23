@@ -200,9 +200,9 @@ const sidebar: IType[] = [
   },
   {
     id: 5,
-    type: "Меню",
+    type: "Меню столовой",
     typeKz: "Ас мәзірі",
-    typeEn: "Menu",
+    typeEn: "School cafeteria menu",
     link: "menu",
   },
   {

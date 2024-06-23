@@ -8,6 +8,7 @@ import {kz} from "@/locales/kz";
 import {ru} from "@/locales/ru";
 import {en} from "@/locales/en";
 import Link from "next/link";
+import {loadGetInitialProps} from "next/dist/shared/lib/utils";
 
 interface TeachersTableProps {
     section?: IKruzhok;
@@ -17,7 +18,6 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
     const router = useRouter();
     const id = String(router.query.id);
     const time = new Date();
-
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -25,7 +25,7 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
     };
     const t = translations[router.locale || "kz"] || en;
     return (
-        <div className={`w-full flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col`}>
+        <div className={`w-full flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col items-start`}>
             <div
                 className={`w-[341px] h-[575px] flex flex-col items-center bg-white rounded-[40px]
                 max-sm:flex-row max-sm:w-full max-sm:h-auto max-sm:px-[10px] max-sm:rounded-[20px] vr:flex-row vr:w-full vr:h-[300px] vr:p-[40px]`}
@@ -33,7 +33,7 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
                 <img
                     src={section?.teacher?.photo3x4 ? section?.teacher?.photo3x4 : "/images/user.svg"}
                     alt="teacher"
-                    className={`w-[544px] h-[369px] rounded-t-[20px] max-sm:w-[140px] max-sm:min-w-[140px] max-sm:h-[140px] max-sm:rounded-full vr:rounded-full vr:h-[200px] vr:w-[200px]`}
+                    className={`w-[544px] h-[369px] rounded-t-[40px] max-sm:w-[140px] max-sm:min-w-[140px] max-sm:h-[140px] max-sm:rounded-full vr:rounded-full vr:h-[200px] vr:w-[200px]`}
                 />
                 <div className={"flex flex-col gap-[20px] items-start text-left p-[30px] pb-[35px] vr:gap-[40px]"}>
                     <div className={`flex flex-col gap-[20px] text-left `}>
@@ -55,7 +55,7 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
                 max-sm:w-full max-sm:h-[600px] vr:w-full vr:h-[1250px] vr:max-h-none`}
             >
                 <img src={section?.photo} alt="" className={"w-full h-[660px] max-sm:h-[300px] vr:h-[648px]"}/>
-                <div className={"px-[50px] py-[30px] flex flex-col gap-[30px] max-sm:p-[20px] vr:w-full"}>
+                <div className={"px-[50px] py-[30px] w-full flex flex-col gap-[30px] max-sm:p-[20px] vr:w-full"}>
                     { section?.purpose && <div className={"flex flex-col gap-[20px] text-[#211F23]"}>
                         <div className={"text-2xl font-bold vr:text-[50px]"}>
                             {t.sections.aboutSection}
@@ -64,20 +64,37 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
                             {section?.purpose}
                         </div>
                     </div>}
-                    <div className={"flex flex-col gap-[20px] "}>
+                    <div className={"flex flex-col gap-[20px] w-full"}>
                         <div className={"text-2xl font-bold vr:text-[50px]"}>
                             {t.teachers.schedule}
                         </div>
                         {
                             section?.lessons?.map((item, index) => (
-                                <div key={index} className={"w-full h-[100px] py-[20px] px-[30px] gap-[20px] flex flex-col items-start rounded-[20px] bg-[#F9F8FD] max-sm:p-[20px] vr:h-auto vr:w-full"}>
-                                    <div className={"text-2xl leading-[85%] font-bold max-sm:text-lg vr:text-[40px]"} style={{color: item.week_day === time.getDay() ? "#ED008C" : "#211F23"}}>
-                                        {t.days?.[item.week_day || "none"]}
+                                <div key={index} className={"w-full h-[100px] py-[20px] px-[30px] gap-[20px] flex justify-between rounded-[20px] bg-[#F9F8FD] max-sm:p-[20px] vr:h-auto vr:w-full"}>
+                                    <div className={`flex flex-col items-start h-full justify-between`}>
+                                        <div
+                                            className={"text-2xl leading-[85%] font-bold max-sm:text-lg vr:text-[40px]"}
+                                            style={{color: item.week_day === time.getDay() ? "#ED008C" : "#211F23"}}>
+                                            {t.days?.[item.week_day || ""]}
+                                        </div>
+                                        <div
+                                            className={"text-[18px] leading-[70%] text-[#7B7984] max-sm:text-[14px] vr:text-[30px]"}>
+                                            {item.start_end_time}
+                                        </div>
                                     </div>
-                                    <div className={"text-[18px] leading-[70%] text-[#7B7984] max-sm:text-[14px] vr:text-[30px]"}>
-                                        {item.start_end_time}
+                                    <div className={`flex flex-col h-full justify-between`}>
+                                        <div
+                                            className={"text-2xl leading-[85%] max-sm:text-lg vr:text-[40px]"}
+                                            style={{color: item.week_day === time.getDay() ? "#ED008C" : "#211F23"}}>
+                                            {t.schedule.today}
+                                        </div>
+                                        {item?.classroom &&
+                                            <div
+                                            className={"text-[18px] leading-[70%] text-[#7B7984] max-sm:text-[14px] vr:text-[30px]"}>
+                                            Кабинет <Link className={"text-[#524FA2] font-bold"}
+                                                          href={`/${id}/schedule/classroom/${item?.classroom}`}>{item.classroom}</Link>
+                                        </div>}
                                     </div>
-                                 <div></div>
                                 </div>
                             ))
                         }
@@ -92,8 +109,6 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
         </div>
     );
 };
-
-
 
 
 export default SectionsBlock;

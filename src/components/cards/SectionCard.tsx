@@ -47,9 +47,9 @@ const SectionCard: FC<IProps> = ({ section }) => {
               }
             >
               <div className={"font-medium "}>
-                {item.week_day && weekDays[item.week_day - 1]}:
+                {item.week_day && weekDays[item.week_day - 1]}
               </div>
-              <div className={"text-[#7B7984]"}>{item.start_end_time}</div>
+              <div className={"text-[#7B7984]"}>{": " + item.start_end_time}</div>
             </div>
           ))}
         </div>

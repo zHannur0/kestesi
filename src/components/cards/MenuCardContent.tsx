@@ -32,7 +32,7 @@ const MenuCardComponent: FC<IProps> = ({ item, index, dayNumber }) => {
           }
         >
           <div className={"w-[60%]"}>{item.food_sostav}</div>
-          <div className={"w-[40%] flex justify-start"}>
+          <div className={"w-[40%] flex justify-end"}>
             {item.vihod_1} гр, {item.vihod_2} гр, {item.vihod_3} гр
           </div>
         </div>
