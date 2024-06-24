@@ -35,9 +35,9 @@ const SectionCard: FC<IProps> = ({ section }) => {
             "text-[20px] leading-[23px] tracking-[0.5px] text-[#7B7984] max-sm:text-[14px] vr:text-[30px]"
           }
         >
-            {router.locale === "kz" ? "Мақсаты" : router.locale === "ru" ? "Цель" : "Aim"}: {section.purpose || "Отсутствует"}
+            {section.purpose && (router.locale === "kz" ? "Мақсаты:" : router.locale === "ru" ? "Цель:" : "Aim:")} {section.purpose || ""}
         </div>
-        <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col vr:hidden"}>
+        <div className={"flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col hidden"}>
           {section.lessons?.map((item, index) => (
             <div
               key={index}

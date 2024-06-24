@@ -18,6 +18,8 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
     const router = useRouter();
     const id = String(router.query.id);
     const time = new Date();
+    console.log(time.getDay())
+    console.log(section)
     const translations: any= {
         kz: kz,
         ru: ru,
@@ -25,7 +27,7 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
     };
     const t = translations[router.locale || "kz"] || en;
     return (
-        <div className={`w-full flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col items-start`}>
+        <div className={`w-full flex gap-[20px] max-sm:flex-col max-sm:gap-[10px] vr:flex-col sm:items-start`}>
             <div
                 className={`w-[341px] h-[575px] flex flex-col items-center bg-white rounded-[40px]
                 max-sm:flex-row max-sm:w-full max-sm:h-auto max-sm:px-[10px] max-sm:rounded-[20px] vr:flex-row vr:w-full vr:h-[300px] vr:p-[40px]`}
@@ -70,27 +72,28 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
                         </div>
                         {
                             section?.lessons?.map((item, index) => (
-                                <div key={index} className={"w-full h-[100px] py-[20px] px-[30px] gap-[20px] flex justify-between rounded-[20px] bg-[#F9F8FD] max-sm:p-[20px] vr:h-auto vr:w-full"}>
-                                    <div className={`flex flex-col items-start h-full justify-between`}>
+                                <div key={index} className={"w-full py-[20px] px-[30px] gap-[20px] flex justify-between rounded-[20px] bg-[#F9F8FD] max-sm:p-[20px] vr:h-auto vr:w-full"}>
+                                    <div className={`flex flex-col items-start h-full justify-between gap-[10px]`}>
                                         <div
-                                            className={"text-2xl leading-[85%] font-bold max-sm:text-lg vr:text-[40px]"}
-                                            style={{color: item.week_day === time.getDay() ? "#ED008C" : "#211F23"}}>
+                                            className={"text-2xl font-bold max-sm:text-lg vr:text-[40px]"}
+                                            style={{color: Number(item.week_day) === time.getDay() ? "#ED008C" : "#211F23"}}>
                                             {t.days?.[item.week_day || ""]}
                                         </div>
                                         <div
-                                            className={"text-[18px] leading-[70%] text-[#7B7984] max-sm:text-[14px] vr:text-[30px]"}>
+                                            className={"text-[18px] text-[#7B7984] max-sm:text-[14px] vr:text-[30px]"}>
                                             {item.start_end_time}
                                         </div>
                                     </div>
-                                    <div className={`flex flex-col h-full justify-between`}>
-                                        <div
-                                            className={"text-2xl leading-[85%] max-sm:text-lg vr:text-[40px]"}
-                                            style={{color: item.week_day === time.getDay() ? "#ED008C" : "#211F23"}}>
-                                            {t.schedule.today}
-                                        </div>
+                                    <div className={`flex flex-col h-full justify-between gap-[10px]`}>
+                                        {Number(item.week_day) === time.getDay() ?
+                                            <div
+                                            className={"text-2xl max-sm:text-lg vr:text-[40px]"}
+                                            style={{color: "#ED008C" }}>
+                                            {t.schedule.Today}
+                                        </div> : <div className={"text-[#F9F8FD]"}>a</div>}
                                         {item?.classroom &&
                                             <div
-                                            className={"text-[18px] leading-[70%] text-[#7B7984] max-sm:text-[14px] vr:text-[30px]"}>
+                                            className={"text-[18px] text-[#7B7984] max-sm:text-[14px] vr:text-[30px]"}>
                                             Кабинет <Link className={"text-[#524FA2] font-bold"}
                                                           href={`/${id}/schedule/classroom/${item?.classroom}`}>{item.classroom}</Link>
                                         </div>}

@@ -191,7 +191,7 @@ const QrComponent = () => {
                     </div>
                 </div>
             </div>
-            <div className={"sm:hidden w-full py-[10px]  px-[20px] vr:px-[85px] vr:py-[40px] flex justify-between bg-white rounded-[10px] items-center gap-[50px] overflow-auto scrollbar-hide "}>
+            <div className={"sm:hidden w-full py-[10px] px-[20px] vr:px-[85px] vr:py-[40px] flex justify-between bg-white rounded-[10px] items-center gap-[50px] overflow-auto scrollbar-hide "}>
                 <Link href={`https://my.kestesi.kz/${router.query.id}}` || ""}>
                     <img src="/images/siteContact.svg" alt="site link" className={"w-[40px] h-[40px] vr:w-[88px] vr:h-[88px]"} />
                 </Link>
