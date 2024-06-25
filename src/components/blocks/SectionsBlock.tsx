@@ -95,7 +95,7 @@ const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
                                             <div
                                             className={"text-[18px] text-[#7B7984] max-sm:text-[14px] vr:text-[30px]"}>
                                             Кабинет <Link className={"text-[#524FA2] font-bold"}
-                                                          href={`/${id}/schedule/classroom/${item?.classroom}`}>{item.classroom}</Link>
+                                                          href={`/${id}/schedule/classroom/${item?.classroom.id}`}>{item.classroom.classroom_number}</Link>
                                         </div>}
                                     </div>
                                 </div>

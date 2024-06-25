@@ -254,7 +254,7 @@ export interface IKruzhok {
 export interface ILesson {
   week_day?: number;
   start_end_time?: string;
-  classroom?:string
+  classroom?:IClassRoomSch;
 }
 
 
