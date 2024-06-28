@@ -59,6 +59,7 @@ const SchoolInformationPage = () => {
   }, [router.isReady, dispatch, id]);
 
 
+
   useEffect(() => {
     if (school) {
       setSch(school[0]);
@@ -334,9 +335,15 @@ const SchoolInformationPage = () => {
             </div>
           </div>
           <div className={"flex flex-col gap-[20px]"}>
-            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg vr:text-[40px]"}>
-              {t.school.distributionOfStudentsByClass}
+            <div className={"flex w-full justify-between"}>
+              <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg vr:text-[40px]"}>
+                {t.school.distributionOfStudentsByClass}
+              </div>
+              <div className={"text-2xl font-medium leading-[100%] max-sm:text-lg vr:text-[40px] text-[#ED008C]"}>
+                {sch?.number_of_classes + " " + t.school.class}
+              </div>
             </div>
+
             <div
                 className={
                   "w-[900px] bg-[#F9F8FD] py-[22px] px-[27px] rounded-[20px] max-sm:w-full"
@@ -393,8 +400,13 @@ const SchoolInformationPage = () => {
             </div>
           </div>
           <div className={"flex flex-col gap-[20px]"}>
-            <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg vr:text-[40px]"}>
-              {t.school.distributionOfTeachersByCategory}
+            <div className={"flex w-full justify-between"}>
+              <div className={"text-2xl font-bold leading-[100%] max-sm:text-lg vr:text-[40px]"}>
+                {t.school.distributionOfTeachersByCategory}
+              </div>
+              <div className={"text-2xl font-medium leading-[100%] max-sm:text-lg vr:text-[40px] text-[#ED008C]"}>
+                {sch?.all_pedagog_number + " " + t.school.specialist}
+              </div>
             </div>
             <div
                 className={
@@ -430,7 +442,6 @@ const SchoolInformationPage = () => {
     </MainLayout>
   );
 };
-
 
 
 const sidebar: IType[] = [
