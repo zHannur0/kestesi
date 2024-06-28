@@ -38,13 +38,13 @@ const TeachersBlock: FC<TeachersTableProps> = ({ teacher }) => {
         <div className={`flex flex-col gap-[20px] text-left px-[30px] items-start max-sm:gap-[10px] max-sm:p-0 w-full `}>
           <div className={`text-neutral-800 text-2xl font-bold leading-[100%] max-sm:text-lg vr:text-[40px]`}>
             {teacher?.pedagog !== "Null" && teacher?.pedagog
-              ? pedagog[teacher?.pedagog]
-              : "Педагог"}
+              ? router.locale === "kz" ? pedagog[teacher?.pedagog] : router.locale === "ru" ? pedagogRU[teacher?.pedagog] : pedagogEN[teacher?.pedagog]
+              : router.locale === "kz" ? pedagog.pedagog : router.locale === "ru" ? pedagogRU.pedagog : pedagogEN.pedagog}
           </div>
           <p className="text-zinc-500 text-2xl leading-[143.3%] max-sm:text-[14px] vr:text-[30px]">
             {teacher?.subject !== "Null" && teacher?.subject
               ? teacher?.subject
-              : "Учитель"}{" "}
+              : router.locale === "kz" ? "Мұғалім" : router.locale === "ru" ? "Учитель" : "Teacher"}
           </p>
           <Link href={`/${id}/schedule/teacher/${teacher?.id}`} className={"w-full"}>
             <div className="text-indigo-800 text-2xl font-medium btn-gradient-1 justify-center items-center flex w-[100%] py-[18px]
@@ -129,6 +129,32 @@ const pedagog: PedagogTypes = {
   pedagog1sanat: "1 санатты",
   pedagog2sanat: "2 санатты",
   pedagog_sanat_zhok: "Санаты жоқ",
+  pedagog: "Педагог",
+};
+
+const pedagogEN: PedagogTypes = {
+  pedagog_sheber: "Teacher-master",
+  pedagog_zertteushy: "Teacher-researcher",
+  pedagog_sarapshy: "Teacher-expert",
+  pedagog_moderator: "Teacher-moderator",
+  pedagog_zhogary: "The teacher of the highest category",
+  pedagog_stazher: "Teacher-intern",
+  pedagog1sanat: "The teacher of the I category",
+  pedagog2sanat: "The teacher of the II category",
+  pedagog_sanat_zhok: "Teacher without category",
+  pedagog: "Teacher",
+};
+
+const pedagogRU: PedagogTypes = {
+  pedagog_sheber: "Педагог-мастер",
+  pedagog_zertteushy: "Педагог-исследователь",
+  pedagog_sarapshy: "Педагог-эксперт",
+  pedagog_moderator: "Педагог-модератор",
+  pedagog_zhogary: "Педагог высшей категории",
+  pedagog_stazher: "Педагог-стажер",
+  pedagog1sanat: "Педагог I категории",
+  pedagog2sanat: "Педагог II категории",
+  pedagog_sanat_zhok: "Педагог без степени",
   pedagog: "Педагог",
 };
 

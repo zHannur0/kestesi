@@ -30,7 +30,6 @@ const NewsPage = () => {
     }
   }, [router.isReady, dispatch, id]);
 
-
   const handleBack = () => {
     if (currNews) setCurrNews(null);
     else router.push(`/${id}`);

@@ -169,6 +169,8 @@ export const kz:typeof en= {
         address: "Мекен-жай",
         specialist: "маман",
         schoolPassport:"Мектеп төлқұжаты",
+        class: "сынып"
+
     },
     proud: {
         schoolPride: "Мектеп мақтаныштары",
@@ -180,6 +182,7 @@ export const kz:typeof en= {
         redDiploma: "Қызыл аттестат",
         back: "артқа",
         toTheMainPage: "басты бетке",
+        head: "Жетекшісі",
     },
     gallery: {
         photoGallery: "Фото-галерея",

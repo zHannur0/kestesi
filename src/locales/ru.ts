@@ -14,7 +14,7 @@ export const ru:typeof en= {
         "qrScan": "Сканируя QR-код",
         "youCanSee": "Вы можете открыть расписание занятий на телефоне",
         "androidApp": "Приложение для Android:",
-        installing: "Что бы установить приложение"
+        installing: "Чтобы установить приложение"
 
     },
     contacts: {
@@ -105,7 +105,7 @@ export const ru:typeof en= {
         toChooseClass: "к выбору класса",
         lesson: "урок",
         cabinet: "Кабинет",
-        noLessons: "В этот день занятий нет"
+        noLessons: "В этот день занятий нет",
     },
     sections: {
         clubsAndSections: "Кружки и секций",
@@ -167,7 +167,8 @@ export const ru:typeof en= {
         students: "учеников",
         address: "Адрес",
         specialist: "специалист",
-        schoolPassport:"Паспорт школы"
+        schoolPassport:"Паспорт школы",
+        class: "класс"
 
     },
     proud: {
@@ -180,6 +181,8 @@ export const ru:typeof en= {
         redDiploma: "Красный аттестат",
         back: "назад",
         toTheMainPage: "на главную",
+        head: "Руководитель",
+
     },
     gallery: {
         photoGallery: "Фото-галерея",

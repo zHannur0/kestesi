@@ -5,7 +5,9 @@ interface StudentCardProps {
     fullname?: string;
     student_success?: any;
     photo?: string;
+    onClick?:  () => void;
 }
+
 
 const StudentsCard: FC<StudentCardProps> = ({
                                                  id,

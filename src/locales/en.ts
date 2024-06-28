@@ -164,7 +164,8 @@ export const en = {
         teacherIntern: "Teacher Intern",
         back: "back",
         toTheMainPage: "to the Main Page",
-        schoolPassport:"School Passport"
+        schoolPassport:"School Passport",
+        class: "classes"
     },
     proud: {
         schoolPride: "School Pride",
@@ -176,6 +177,7 @@ export const en = {
         redDiploma: "Red Diploma",
         back: "Back",
         toTheMainPage: "To the Main Page",
+        head: "Head",
     },
     gallery: {
         photoGallery: "Photo Gallery",

@@ -10,16 +10,14 @@ import {en} from "@/locales/en";
 import Link from "next/link";
 import {loadGetInitialProps} from "next/dist/shared/lib/utils";
 
-interface TeachersTableProps {
+interface SectionProps {
     section?: IKruzhok;
 }
 
-const SectionsBlock: FC<TeachersTableProps> = ({ section }) => {
+const SectionsBlock: FC<SectionProps> = ({ section }) => {
     const router = useRouter();
     const id = String(router.query.id);
     const time = new Date();
-    console.log(time.getDay())
-    console.log(section)
     const translations: any= {
         kz: kz,
         ru: ru,
